@@ -4,7 +4,6 @@ import Col from 'react-bootstrap/Col';
 import './Home.css'
 import { useSelector } from 'react-redux';
 import { userData } from '../userSlice';
-import GirarMovil from '../../image/gira el movil.png'
 import { TurnPhone } from '../../components/TurnPhone/TurnPhone';
 
 export const Home = () => {
