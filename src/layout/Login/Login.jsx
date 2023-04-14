@@ -5,14 +5,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "./Login.css";
 import "../../components/InputBox/InputBox.css"
-// import { logMe } from "../../services/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../userSlice";
 import { useNavigate } from "react-router-dom";
 import { validate } from "../../helpers/useful";
 import { logMe } from "../../services/apiCalls";
 // import { decodeToken } from "react-jwt";
-import jwt_decode from "jwt-decode";
+// import jwt_decode from "jwt-decode";
 
 export const Login = () => {
 
@@ -35,7 +34,7 @@ export const Login = () => {
 
   const [btnMessage, setBtnMessage] = useState("")
 
-  console.log(credentialsRdx.credentials.token);
+  // console.log(credentialsRdx.credentials.token);
 
 //   useEffect(() => {
 //     if (credentialsRdx.credentials.token) {
@@ -71,25 +70,20 @@ export const Login = () => {
     logMe(credentials)
         .then(
             respuesta => {
-                // let decodificado = jwt_decode(respuesta.data.token)
-                // const token = respuesta.data.token;
-                // let decoded = jwt_decode(token)
-                console.log(respuesta.data.token);
-                console.log(credentials);
 
               let dateBackend = {
                 token: respuesta.data.token,
-                // userName: decodificado.nameUser,
-                // userRole: decodificado.roleId
+                userName: respuesta.data.user.userName,
+                userRole: respuesta.data.user.role_id
               }
 
               dispatch(login({credentials: dateBackend}));
 
-                // setWelcome(`Welcome again ${dateBackend.userName}`);
+                setWelcome(`Welcome again ${dateBackend.userName}`);
 
-                // setTimeout(() => {
-                //   navigate("/");
-                // }, 3000);
+                setTimeout(() => {
+                  navigate("/");
+                }, 3000);
             }
         )
         .catch(error => {
@@ -110,8 +104,8 @@ export const Login = () => {
             <h1 className="text-center">Login</h1>
             <Form>
               {welcome !== "" ? (
-                <div className="welcomeBox1 d-flex flex-column align-items-center justify-content-center text-center"><h3>{welcome}</h3>
-                  <div><img className="welcomeGIF" src={ZGIF} alt="" /></div>
+                <div className="welcomeBox1 d-flex flex-column align-items-center justify-content-center text-center">
+                  <h3>{welcome}</h3>
                 </div>
               ) : (
                 <>
