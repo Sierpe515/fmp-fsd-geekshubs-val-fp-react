@@ -1,0 +1,28 @@
+.registerSendDeac {
+    height: 2em;
+    width: 100%;
+    background-color: lightgray;
+    border: 1px solid white;
+    border-radius: 0.2em;
+    color: white;
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: not-allowed;
+}
+
+.registerSendAct {
+    cursor: pointer;
+    background-color: rgb(253, 55, 55);
+    border: 1px solid darkred;
+}
+
+.errorMessage {
+    color: rgb(177, 2, 2);
+}
+
+.registerSendAct:hover {
+    transition: 1s;
+    background-color: darkred;
+}
