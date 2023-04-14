@@ -3,10 +3,28 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Dropdown from 'react-bootstrap/Dropdown';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import './NavBar.css'
+import { useDispatch, useSelector } from "react-redux";
+import { userData, clearRedux } from '../../layout/userSlice';
+import { useNavigate } from "react-router-dom";
 
 export const NavBar = () => {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const dataCredentialsRdx = useSelector(userData);
+
+  const logOut = () => {
+    // dispatch(logout(dataCredentialsRdx = ""));
+    dispatch(clearRedux());
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
+  }
+
   return (
     <Navbar className='navBarDesign' expand="lg">
       <Container fluid>
@@ -35,8 +53,24 @@ export const NavBar = () => {
             </Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link as={Link} to='/register'>Register</Nav.Link>
-            <Nav.Link as={Link} to='/login'>Login</Nav.Link>
+            {dataCredentialsRdx.credentials.token ? (
+                <DropdownButton
+                  align="end"
+                  title="User"
+                  id="dropdown-menu-align-end"
+                >
+                  {/* <Dropdown.Item eventKey="4"><Link as={Link} to='/profile'>Profile</Link></Dropdown.Item>
+                  <Dropdown.Item eventKey="5"><Link as={Link} to='/appointmentsUser'>Appointments</Link></Dropdown.Item> */}
+                  <Dropdown.Divider />
+                  <Dropdown.Item eventKey="6" onClick={() => {logOut()}}>Log Out</Dropdown.Item>
+                </DropdownButton>
+                
+              ) : (
+                <>
+              <Nav.Link as={Link} to='/register'>Register</Nav.Link>
+              <Nav.Link as={Link} to='/login'>Login</Nav.Link>
+              </>
+              )}
           </Nav>
         </Navbar.Collapse>
       </Container>
