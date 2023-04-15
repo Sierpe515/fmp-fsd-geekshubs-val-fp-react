@@ -1,16 +1,21 @@
-// import './MainApp.css'
+import './MainApp.css'
 import { Body } from './Body/Body';
 import { NavBar } from '../components/NavBar/NavBar';
-// import { Footer } from '../components/Footer/Footer';
+import { GameBar } from '../components/GameBar/GameBar';
+import { Container } from 'react-bootstrap';
 // import { NavBarSpace } from '../components/NavBarSpace/NavBarSpace';
 
 export const MainApp = () => {
   return (
-    <>
-    <NavBar/>
-    {/* <NavBarSpace/> */}
-    <Body/>
-    {/* <Footer/> */}
-    </>
+    <Container fluid className='mainBox p-0'>
+      <div>
+      <NavBar/>
+      {/* <NavBarSpace/> */}
+      </div>
+      <div className='d-flex'>
+      <GameBar/>
+      <Body/>
+      </div>
+    </Container>
   )
 }

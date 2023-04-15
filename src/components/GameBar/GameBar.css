@@ -1,0 +1,10 @@
+.gameBar {
+    width: 15vw;
+    background-color: aqua;
+}
+
+@media (min-width: 992px){
+    .gameBar{
+        width: 10vw;
+    }
+}

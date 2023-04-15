@@ -10,6 +10,7 @@ import { login, userData } from "../userSlice";
 import { useNavigate } from "react-router-dom";
 import { validate } from "../../helpers/useful";
 import { logMe } from "../../services/apiCalls";
+import { TurnPhone } from "../../components/TurnPhone/TurnPhone";
 // import { decodeToken } from "react-jwt";
 // import jwt_decode from "jwt-decode";
 
@@ -34,13 +35,13 @@ export const Login = () => {
 
   const [btnMessage, setBtnMessage] = useState("")
 
-  // console.log(credentialsRdx.credentials.token);
+  // console.log(credentialsRdx.credentials);
 
-//   useEffect(() => {
-//     if (credentialsRdx.credentials.token) {
-//       navigate("/");
-//     }
-//   }, []);
+  useEffect(() => {
+    if (credentialsRdx.credentials.token) {
+      navigate("/");
+    }
+  }, []);
 
   const newCredentials = (e) => {
     setCredentials((prevState) => ({
@@ -71,14 +72,15 @@ export const Login = () => {
         .then(
             respuesta => {
 
+              
               let dateBackend = {
                 token: respuesta.data.token,
                 userName: respuesta.data.user.userName,
-                userRole: respuesta.data.user.role_id
+                userRole: respuesta.data.user.role.privilege
               }
-
+              
               dispatch(login({credentials: dateBackend}));
-
+              
                 setWelcome(`Welcome again ${dateBackend.userName}`);
 
                 setTimeout(() => {
@@ -98,6 +100,7 @@ export const Login = () => {
       fluid
       className="homeContainerMin d-flex flex-column justify-content-between"
     >
+      <TurnPhone/>
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
           <div className="logRegContainer">

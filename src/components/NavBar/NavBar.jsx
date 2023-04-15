@@ -36,7 +36,7 @@ export const NavBar = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
+            <Nav.Link as={Link} to='/'>Home</Nav.Link>
             <Nav.Link href="#action2">Link</Nav.Link>
             <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
@@ -48,9 +48,20 @@ export const NavBar = () => {
                 Something else here
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#" disabled>
-              Link
-            </Nav.Link>
+            {dataCredentialsRdx.credentials.token ? (
+              dataCredentialsRdx.credentials.userRole?.includes('Admin') ? (
+                <>
+                <NavDropdown title="Admin Area" id="navbarScrollingDropdown2">
+                  <NavDropdown.Item eventKey="7"><Link as={Link} to='/usersList'>
+                    Users List</Link>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item eventKey="9"><Link as={Link} to='/appointments'>
+                    Appointments</Link>
+                  </NavDropdown.Item>
+                </NavDropdown>
+                </>
+              ):('')
+            ) : ("")}
           </Nav>
           <Nav>
             {dataCredentialsRdx.credentials.token ? (

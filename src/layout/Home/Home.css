@@ -1,0 +1,30 @@
+.title {
+    background-color: bisque;
+}
+
+.pjsContainer {
+    background-color: skyblue;
+    overflow-x:scroll;
+    width:100%;
+}
+
+.pjsContainer::-webkit-scrollbar {
+    width: 0;
+}
+
+.scrollBox {
+    display : inline-flex;
+    padding:1px;
+
+}
+
+.scrollBox .pjBox {
+    border:1px solid black;
+    margin: 0px 10px;
+    min-width:150px;
+    min-height:113px;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
