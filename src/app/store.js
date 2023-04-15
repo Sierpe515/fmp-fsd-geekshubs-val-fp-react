@@ -6,11 +6,12 @@ import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
+import characterSlice from '../layout/characterSlice';
 
 const reducers = combineReducers({
     user: userSlice,
     // detail: detailSlice,
-    // appointment: appointmentSlice
+    character: characterSlice
 })
 
 const persistConfig = {

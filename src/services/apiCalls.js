@@ -21,4 +21,15 @@ export const bringUserCharacters = async (token) => {
     };
   
     return await axios.get(`${root}/characters`, config);
-  }
+}
+
+export const bringLoadGames = async (params, token) => {
+
+    let config = {
+      headers: { 
+        'Authorization': 'Bearer '+ token,  
+      }
+    };
+  
+    return await axios.get(`${root}/games/byCharacter/${params}`, config);
+}

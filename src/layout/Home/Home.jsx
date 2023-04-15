@@ -1,18 +1,22 @@
+import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Home.css'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { userData } from '../userSlice';
 import { TurnPhone } from '../../components/TurnPhone/TurnPhone';
-import { useEffect, useState } from 'react';
 import { bringUserCharacters } from '../../services/apiCalls';
 import Spinner from 'react-bootstrap/Spinner';
+import { addCharacter } from '../characterSlice';
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
 
   const [characters, setCharacters] = useState([]);
   const dataCredentialsRdx = useSelector(userData);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
   if (dataCredentialsRdx?.credentials?.token && characters.length === 0) {
@@ -23,6 +27,15 @@ export const Home = () => {
       })
       .catch((error) => console.log(error));
   }}, [characters]);
+
+  const selected = (pj) => {
+    dispatch(addCharacter({ choosenCharacter: pj }))
+
+      setTimeout(()=>{
+          navigate("/loadGame");
+      },500)
+
+  }
 
   return (
     <Container fluid className="homeContainerMin d-flex flex-column justify-content-center align-items-center p-0">
