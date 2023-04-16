@@ -40,7 +40,12 @@ export const Home = () => {
       setTimeout(()=>{
           navigate("/loadGame");
       },500)
+  }
 
+  const goNewCharacter = () => {
+    setTimeout(()=>{
+      navigate("/newCharacter");
+    },500)
   }
 
   return (
@@ -62,6 +67,7 @@ export const Home = () => {
           <Col xxl={12} xl={12} md={12} sm={12} className="welcomeBox">
             <h2>Select Character</h2>
               {characters.length > 0 ? (
+                  <>
                   <div className='scrollBox'>
                     {characters.map((pj) => {
                       return (
@@ -71,8 +77,10 @@ export const Home = () => {
                       );
                     })}
                   </div>
+                  <div onClick={()=> goNewCharacter()}><h4>New Character</h4></div>
+                  </>
                 ) : (
-                  <div><Spinner animation="grow" variant="primary" /><h1>New Character</h1></div>
+                  <div onClick={()=> goNewCharacter()}><h4>New Character</h4></div>
                 )}
           </Col>
         </Row>

@@ -69,37 +69,30 @@ export const Login = () => {
   const logIn = () => {
 
     logMe(credentials)
-        .then(
-            respuesta => {
-
-              
-              let dateBackend = {
-                token: respuesta.data.token,
-                userName: respuesta.data.user.userName,
-                userRole: respuesta.data.user.role.privilege
-              }
-              
-              dispatch(login({credentials: dateBackend}));
-              
-                setWelcome(`Welcome again ${dateBackend.userName}`);
-
-                setTimeout(() => {
-                  navigate("/");
-                }, 3000);
+      .then(
+          respuesta => {
+            let dateBackend = {
+              token: respuesta.data.token,
+              userName: respuesta.data.user.userName,
+              userRole: respuesta.data.user.role.privilege
             }
-        )
-        .catch(error => {
-          console.log(error)
-          setBtnMessage("Email or password invalid")
-        })
-
+            
+            dispatch(login({credentials: dateBackend}));
+            
+              setWelcome(`Welcome again ${dateBackend.userName}`);
+              setTimeout(() => {
+                navigate("/");
+              }, 3000);
+          }
+      )
+      .catch(error => {
+        console.log(error)
+        setBtnMessage("Email or password invalid")
+      })
   }
 
   return (
-    <Container
-      fluid
-      className="homeContainerMin d-flex flex-column justify-content-between"
-    >
+    <Container fluid className="homeContainerMin d-flex flex-column justify-content-between">
       <TurnPhone/>
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
