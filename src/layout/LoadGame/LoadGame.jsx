@@ -32,7 +32,13 @@ export const LoadGame = () => {
                 console.log(loadGames);
             })
             .catch((error) => console.log(error));
-        }}, [loadGames]);
+        }}, []);
+
+    const goSelectGame = () => {
+        setTimeout(()=>{
+          navigate("/selectGame");
+        },500)
+    }
 
     return (
         <Container fluid className="homeContainerMin d-flex flex-column justify-content-center align-items-center p-0">
@@ -52,10 +58,10 @@ export const LoadGame = () => {
                         );
                         })}
                     </div>
-                    <div className='newGameBtn'><h1>New Game</h1></div>
+                    <div className='newGameBtn' onClick={() => goSelectGame()}><h1>Select Game</h1></div>
                     </>
                     ) : (
-                    <div className='newGameBtn'><h1>New Game</h1></div>
+                    <div className='newGameBtn' onClick={() => goSelectGame()}><h1>Select Game</h1></div>
                     )}
                 </Col>
             </Row>

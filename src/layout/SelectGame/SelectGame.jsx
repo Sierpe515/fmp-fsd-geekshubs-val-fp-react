@@ -62,7 +62,7 @@ export const SelectGame = () => {
             action => {
                 setTimeout(() => {
                     // Añadir Page Stage 1
-                    navigate("/");
+                    navigate("/stage01");
                   }, 500);
             }
 

@@ -32,7 +32,7 @@ export const Home = () => {
         console.log(result);
       })
       .catch((error) => console.log(error));
-  }}, [characters]);
+  }}, []);
 
   const selected = (pj) => {
     dispatch(addCharacter({ choosenCharacter: pj }))
