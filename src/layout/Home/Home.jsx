@@ -19,6 +19,12 @@ export const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (dataCredentialsRdx.credentials.token) {
+      navigate("/");
+    }
+  }, []);
+
+  useEffect(() => {
   if (dataCredentialsRdx?.credentials?.token && characters.length === 0) {
     bringUserCharacters(dataCredentialsRdx?.credentials.token)
       .then((result) => {
@@ -48,12 +54,13 @@ export const Home = () => {
       {dataCredentialsRdx.credentials.token ? (
         <>
         <Row>
-          <Col>
-              <h2> Welcome to the dream, <br/>{dataCredentialsRdx.credentials.userName}! </h2>
+          <Col xxl={12} xl={12} sm={12} className='text-center'>
+              <h2> Welcome to the dream, {dataCredentialsRdx.credentials.userName}! </h2>
           </Col>
         </Row>
         <Row className="pjsContainer d-flex justify-content-center align-items-center text-center">
           <Col xxl={12} xl={12} md={12} sm={12} className="welcomeBox">
+            <h2>Select Character</h2>
               {characters.length > 0 ? (
                   <div className='scrollBox'>
                     {characters.map((pj) => {
@@ -65,15 +72,19 @@ export const Home = () => {
                     })}
                   </div>
                 ) : (
-                  <div><Spinner animation="grow" variant="primary" /><h1>LOADING</h1></div>
+                  <div><Spinner animation="grow" variant="primary" /><h1>New Character</h1></div>
                 )}
           </Col>
         </Row>
         </>
-      ) : ("")}
+      ) : (
+        <Row className="appointmentBtn d-flex justify-content-center text-center">
+          <div><h1>Register</h1></div>
+        </Row>
+      )}
         
         <Row className="appointmentBtn d-flex justify-content-center text-center">
-          <div><h1>Select Game</h1></div>
+          <div><h1>Other</h1></div>
         </Row>
     </Container>
   )

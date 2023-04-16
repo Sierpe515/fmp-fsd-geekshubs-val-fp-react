@@ -5,6 +5,7 @@ import './Body.css'
 import { Register } from '../Register/Register';
 import { Login } from '../Login/Login';
 import { LoadGame } from '../LoadGame/LoadGame';
+import { SelectGame } from '../SelectGame/SelectGame';
 
 
 export const Body = () => {
@@ -16,6 +17,7 @@ export const Body = () => {
             <Route path='/register' element={<Register/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/loadGame' element={<LoadGame/>}/>
+            <Route path='/selectGame' element={<SelectGame/>}/>
         </Routes>
       </>
     );

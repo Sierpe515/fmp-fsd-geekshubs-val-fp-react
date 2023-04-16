@@ -17,6 +17,12 @@ export const LoadGame = () => {
 
     const params = characterRedux.choosenCharacter.id
 
+    // useEffect(() => {
+    //     if (dataCredentialsRdx.credentials.token) {
+    //       navigate("/");
+    //     }
+    //   }, []);
+
     useEffect(() => {
         if (dataCredentialsRdx?.credentials?.token && loadGames.length === 0) {
           bringLoadGames(params, dataCredentialsRdx?.credentials.token)
