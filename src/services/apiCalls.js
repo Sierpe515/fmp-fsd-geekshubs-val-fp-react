@@ -38,3 +38,14 @@ export const bringSelectableGames = async () => {
 
   return await axios.get(`${root}/selectGames`);
 }
+
+export const createNewGame = async (dataGame, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+    return await axios.post(`${root}/games`, dataGame, config);
+} 
