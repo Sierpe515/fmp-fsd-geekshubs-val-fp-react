@@ -49,8 +49,8 @@ export const LoadGame = () => {
                     <div className='loadGamesBox'>
                         {loadGames.map((load) => {
                         return (
-                            <div className="loadBox text-center" 
-                            // onClick={() => selected(pj)} key={pj.id}
+                            <div className="loadBox text-center" key={load.id}
+                            // onClick={() => selected(pj)} 
                             >
                             <p>Game:<strong> {load.select_games.name} </strong></p> 
                             <p>Saved at:<strong> {load.updated_at} </strong></p> 

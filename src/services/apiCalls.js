@@ -59,4 +59,15 @@ export const createCharacter = async (dataCharacter, token) => {
   };
 
     return await axios.post(`${root}/characters/newCharacter`, dataCharacter, config);
+}
+
+export const createSavedGame = async (dataSavedGame, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+    return await axios.post(`${root}/games/save`, dataSavedGame, config);
 } 

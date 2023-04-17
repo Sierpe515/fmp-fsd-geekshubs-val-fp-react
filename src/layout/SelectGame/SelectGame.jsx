@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { characterDetailData } from '../characterSlice'
 import { userData } from '../userSlice'
 import { useNavigate } from 'react-router-dom'
-import { bringSelectableGames, createNewGame } from '../../services/apiCalls'
+import { bringSelectableGames, createNewGame, createSavedGame } from '../../services/apiCalls'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -60,10 +60,18 @@ export const SelectGame = () => {
         createNewGame(dataGame, token)
         .then(
             action => {
-                setTimeout(() => {
-                    // Añadir Page Stage 1
-                    navigate("/stage01");
-                  }, 500);
+              console.log(action);
+              let dataSavedGame = {
+                game_id : action.data.data.id,
+                stage_id : 1
+              }
+              console.log(dataSavedGame);
+              createSavedGame(dataSavedGame, token)
+              .then(result => console.log(result)).catch((error) => console.log(error))
+              setTimeout(() => {
+                // Añadir Page Stage 1
+                navigate("/stage01");
+              }, 500);
             }
 
         )
