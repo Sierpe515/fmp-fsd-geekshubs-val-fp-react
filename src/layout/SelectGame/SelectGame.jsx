@@ -84,7 +84,6 @@ export const SelectGame = () => {
                 )
                 .catch((error) => console.log(error))
               setTimeout(() => {
-                // Añadir Page Stage 1
                 navigate("/opening");
               }, 500);
             }
