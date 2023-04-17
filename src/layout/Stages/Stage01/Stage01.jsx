@@ -13,9 +13,9 @@ export const Stage01 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  let token = dataCredentialsRdx.credentials.token
-
   const [answer, setAnswer] = useState("");
+
+  let token = dataCredentialsRdx.credentials.token
 
   const chooseAnswer = (resp) => {
     console.log(gameRedux);
@@ -23,17 +23,18 @@ export const Stage01 = () => {
     setAnswer(resp);
   }
 
+  const array = gameRedux.choosenGame.games_stages
+  console.log(gameRedux.choosenGame.games_stages[array.length - 1].id);
+  let dataAnswer = {
+    id : gameRedux.choosenGame.games_stages[array.length - 1].id,
+    answer_id : answer
+  }
+  console.log(dataAnswer);
+
   const saveAnswer = () => {
-    const array = gameRedux.choosenGame.games_stages
-    console.log(gameRedux.choosenGame.games_stages[array.length - 1].id);
-    let dataAnswer = {
-      id : gameRedux.choosenGame.games_stages[array.length - 1].id,
-      answer_id : answer
-    }
-    console.log(answer);
 
     updateGameStage(dataAnswer, token)
-      .then(
+    .then(
         result => {
           // SOLO HACE CASO DANDOLE DOS VECES
           console.log(result);
@@ -63,16 +64,16 @@ export const Stage01 = () => {
           //   navigate("/stage02");
           // }, 500);
         }
-      )
-      .catch((error) => console.log(error))
+    )
+    .catch((error) => console.log(error))
   }
 
   return (
     <Container fluid className="homeContainerMin d-flex flex-column justify-content-center">Stage01
-    <div className='d-flex'>
-    <div onClick={()=> {chooseAnswer("1"), saveAnswer()}}>RESPUESTA A</div>
-    <div onClick={()=> {chooseAnswer("2"), saveAnswer()}}>RESPUESTA B</div>
-    </div>
+      <div className='d-flex'>
+        <div onClick={()=> {chooseAnswer("1"), saveAnswer()}}>RESPUESTA A</div>
+        <div onClick={()=> {chooseAnswer("2"), saveAnswer()}}>RESPUESTA B</div>
+      </div>
     </Container>
   )
 }
