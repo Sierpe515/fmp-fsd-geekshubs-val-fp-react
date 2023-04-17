@@ -7,10 +7,11 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 import characterSlice from '../layout/characterSlice';
+import gameSlice from '../layout/gameSlice';
 
 const reducers = combineReducers({
     user: userSlice,
-    // detail: detailSlice,
+    game: gameSlice,
     character: characterSlice
 })
 
