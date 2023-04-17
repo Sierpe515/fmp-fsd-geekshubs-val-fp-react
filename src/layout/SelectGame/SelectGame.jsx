@@ -1,13 +1,14 @@
 
 import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { characterDetailData } from '../characterSlice'
 import { userData } from '../userSlice'
 import { useNavigate } from 'react-router-dom'
-import { bringSelectableGames, createNewGame, createSavedGame } from '../../services/apiCalls'
+import { bringLoadGamesById, bringSelectableGames, createNewGame, createSavedGame } from '../../services/apiCalls'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { addGame } from '../gameSlice'
 
 
 export const SelectGame = () => {
@@ -16,6 +17,7 @@ export const SelectGame = () => {
     const characterRedux = useSelector(characterDetailData);
     const dataCredentialsRdx = useSelector(userData);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [selectedGame, setSelectedGame] = useState("");
     const [difficulty, setDifficulty] = useState("");
@@ -67,10 +69,23 @@ export const SelectGame = () => {
               }
               console.log(dataSavedGame);
               createSavedGame(dataSavedGame, token)
-              .then(result => console.log(result)).catch((error) => console.log(error))
+                .then(
+                  result => {
+                    console.log(result)
+                    let params = result.data.data.game_id
+                    bringLoadGamesById(params, token)
+                    .then(
+                      result => {
+                        console.log(result.data.data[0])
+                        const selectGame = result.data.data[0]
+                        dispatch(addGame({choosenGame: selectGame}))
+                      })
+                  }
+                )
+                .catch((error) => console.log(error))
               setTimeout(() => {
                 // Añadir Page Stage 1
-                navigate("/stage01");
+                navigate("/opening");
               }, 500);
             }
 

@@ -45,7 +45,7 @@ export const LoadGame = () => {
     const selectedSavedGame = (selectedGame) => {
         dispatch(addGame({choosenGame: selectedGame}))
         const array = selectedGame.games_stages
-        console.log(array);
+        console.log(selectedGame);
         console.log(selectedGame.games_stages[array.length - 1].stage_id);
         const stageId = selectedGame.games_stages[array.length - 1].stage_id
 

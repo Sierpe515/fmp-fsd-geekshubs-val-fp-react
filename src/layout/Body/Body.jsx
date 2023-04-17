@@ -9,6 +9,7 @@ import { SelectGame } from '../SelectGame/SelectGame';
 import { NewCharacter } from '../NewCharacter/NewCharacter';
 import { Stage01 } from '../Stages/Stage01/Stage01';
 import { Stage02 } from '../Stages/Stage02/Stage02';
+import { Opening } from '../Stages/Opening/Opening';
 
 
 export const Body = () => {
@@ -22,6 +23,7 @@ export const Body = () => {
             <Route path='/loadGame' element={<LoadGame/>}/>
             <Route path='/selectGame' element={<SelectGame/>}/>
             <Route path='/newCharacter' element={<NewCharacter/>}/>
+            <Route path='/opening' element={<Opening/>}/>
             <Route path='/stage01' element={<Stage01/>}/>
             <Route path='/stage02' element={<Stage02/>}/>
         </Routes>

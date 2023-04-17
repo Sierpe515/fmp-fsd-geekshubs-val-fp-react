@@ -34,6 +34,17 @@ export const bringLoadGames = async (params, token) => {
     return await axios.get(`${root}/games/byCharacter/${params}`, config);
 }
 
+export const bringLoadGamesById = async (params, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  return await axios.get(`${root}/games/byId/${params}`, config);
+}
+
 export const bringSelectableGames = async () => {
 
   return await axios.get(`${root}/selectGames`);
