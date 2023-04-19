@@ -10,6 +10,8 @@ import { NewCharacter } from '../NewCharacter/NewCharacter';
 import { Stage01 } from '../Stages/Stage01/Stage01';
 import { Stage02 } from '../Stages/Stage02/Stage02';
 import { Opening } from '../Stages/Opening/Opening';
+import { UsersList } from '../UsersList/UsersList';
+import { UserDetail } from '../UserDetail/UserDetail';
 
 
 export const Body = () => {
@@ -20,6 +22,8 @@ export const Body = () => {
             <Route path='/' element={<Home/>}/>
             <Route path='/register' element={<Register/>}/>
             <Route path='/login' element={<Login/>}/>
+            <Route path='/usersList' element={<UsersList/>}/>
+            <Route path='/userDetail' element={<UserDetail/>}/>
             <Route path='/loadGame' element={<LoadGame/>}/>
             <Route path='/selectGame' element={<SelectGame/>}/>
             <Route path='/newCharacter' element={<NewCharacter/>}/>

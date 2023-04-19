@@ -8,9 +8,11 @@ import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 import characterSlice from '../layout/characterSlice';
 import gameSlice from '../layout/gameSlice';
+import userDetailSlice from '../layout/userDetailSlice';
 
 const reducers = combineReducers({
     user: userSlice,
+    userDetail: userDetailSlice,
     game: gameSlice,
     character: characterSlice
 })

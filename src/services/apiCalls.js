@@ -109,3 +109,8 @@ export const updateCharacterImage = async (dataImage, token) => {
 
     return await axios.put(`${root}/characters/newCharacter`, dataImage, config);
 }
+
+export const bringUsersByAdmin = async () => {
+
+  return await axios.get(`${root}/users/withCharacters`);
+}
