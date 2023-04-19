@@ -48,6 +48,12 @@ export const Home = () => {
     },500)
   }
 
+  const goRegister = () => {
+    setTimeout(()=>{
+      navigate("/register");
+    },500)
+  }
+
   return (
     <Container fluid className="homeContainerMin d-flex flex-column justify-content-center align-items-center p-0">
         <TurnPhone/>
@@ -72,7 +78,8 @@ export const Home = () => {
                     {characters.map((pj) => {
                       return (
                         <div className="pjBox" onClick={() => selected(pj)} key={pj.id}>
-                          <p>Name:<strong> {pj.name} </strong></p> 
+                          <img className='pjImage' src={pj.characters_images.image} alt={pj.characters_images.id} />
+                          <p><strong> {pj.name} </strong></p> 
                         </div>
                       );
                     })}
@@ -87,7 +94,7 @@ export const Home = () => {
         </>
       ) : (
         <Row className="appointmentBtn d-flex justify-content-center text-center">
-          <div><h1>Register</h1></div>
+          <div onClick={()=> goRegister()}><h1>Register</h1></div>
         </Row>
       )}
         

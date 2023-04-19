@@ -37,7 +37,6 @@ export const Stage01 = () => {
     updateGameStage(dataAnswer, token)
     .then(
         result => {
-          // SOLO HACE CASO DANDOLE DOS VECES
           console.log(result);
           
           let dataSavedGame = {

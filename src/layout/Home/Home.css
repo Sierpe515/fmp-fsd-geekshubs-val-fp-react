@@ -28,3 +28,12 @@
     justify-content: center;
     align-items: center;
 }
+
+.pjImage {
+    height: 20em;
+}
+
+.pjBox {
+    display: flex;
+    flex-direction: column;
+}
