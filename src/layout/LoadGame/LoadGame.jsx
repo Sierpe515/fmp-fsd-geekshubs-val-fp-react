@@ -65,8 +65,9 @@ export const LoadGame = () => {
             <Row>
                 <Col>
                     {loadGames.length > 0 ? (
-                    <>
+                        <>
                     <div className='loadGamesBox'>
+                        <div className='text-center'><h1>Load Game</h1></div>
                         {loadGames.map((load) => {
                         return (
                             <div className="loadBox text-center" key={load.id}
@@ -78,10 +79,10 @@ export const LoadGame = () => {
                         );
                         })}
                     </div>
-                    <div className='newGameBtn' onClick={() => goSelectGame()}><h1>Select Game</h1></div>
+                    <div className='newGameBtn' onClick={() => goSelectGame()}><h1>New Game</h1></div>
                     </>
                     ) : (
-                    <div className='newGameBtn' onClick={() => goSelectGame()}><h1>Select Game</h1></div>
+                    <div className='newGameBtn' onClick={() => goSelectGame()}><h1>New Game</h1></div>
                     )}
                 </Col>
             </Row>

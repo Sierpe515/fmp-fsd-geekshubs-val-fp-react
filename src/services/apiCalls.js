@@ -92,4 +92,20 @@ export const updateGameStage = async (dataAnswer, token) => {
   };
 
     return await axios.put(`${root}/games/update`, dataAnswer, config);
-} 
+}
+
+export const bringCharactersImages = async () => {
+
+  return await axios.get(`${root}/characters/images`);
+}
+
+export const updateCharacterImage = async (dataImage, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+    return await axios.put(`${root}/characters/newCharacter`, dataImage, config);
+}
