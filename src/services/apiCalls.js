@@ -114,3 +114,14 @@ export const bringUsersByAdmin = async () => {
 
   return await axios.get(`${root}/users/withCharacters`);
 }
+
+export const deleteUserByAdmin = async (params, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  return await axios.delete(`${root}/deleteUser/${params}`, config);
+}

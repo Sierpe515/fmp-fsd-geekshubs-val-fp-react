@@ -17,6 +17,7 @@ import Popover from 'react-bootstrap/Popover';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { userDetailData } from "../userDetailSlice";
+import { deleteUserByAdmin } from "../../services/apiCalls";
 
  
 export const UserDetail = () => {
@@ -27,7 +28,7 @@ export const UserDetail = () => {
 
     console.log(userDetailRedux);
 
-    // let params = (userDetailRedux.choosenObject.id);
+    let params = (userDetailRedux.choosenObject.id);
     let token = (credentialsRdx.credentials.token);
     const isAdmin = credentialsRdx.credentials.userRole?.includes("Admin");
 
