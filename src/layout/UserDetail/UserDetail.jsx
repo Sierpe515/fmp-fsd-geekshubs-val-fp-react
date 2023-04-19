@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 // import role1 from "../../image/role1.png";
 // import role2 from "../../image/role2.png";
 // import role3 from "../../image/role3.png";
-// import dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import Button from 'react-bootstrap/Button';
@@ -148,7 +148,7 @@ export const UserDetail = () => {
                 </Button>
                 </Modal.Footer>
             </Modal>
-            <Row className="d-flex justify-content-center">
+            <Row className="d-flex justify-content-center align-items-center flex-column">
                 <Col xxl={5} xl={5} sm={10} className="my-3">
                     <div className='logRegContainer d-flex flex-column justify-content-center text-center'>
                         <h1 className="text-center">User Detail Admin</h1>
@@ -156,9 +156,21 @@ export const UserDetail = () => {
                         <p><strong>Name:</strong> {userDetailRedux?.choosenObject?.name}</p>
                         <p><strong>Surname:</strong> {userDetailRedux?.choosenObject?.surname}</p>
                         <p><strong>Email:</strong> {userDetailRedux?.choosenObject?.email}</p>
-                        {/* <p><strong>Birth Date:</strong> {dayjs(userDetailRedux.choosenObject.birth_date).format('YYYY-MMMM-DD')}</p> */}
+                        <p><strong>Role:</strong> {userDetailRedux?.choosenObject?.role_id}</p>
+                        <p><strong>Birthdate:</strong> {dayjs(userDetailRedux.choosenObject.birthdate).format('YYYY-MMMM-DD')}</p>
                         {/* <p><strong>Password:</strong> {userDetailRedux?.choosenObject?.password}</p> */}
                     </div>
+                </Col>
+                <Col>
+                <div className="d-flex flex-column justify-content-center text-center">
+                    {userDetailRedux?.choosenObject?.characters.map((pj) => {
+                    return (
+                        <div className="userBox" onClick={() => selected(pj)} key={pj.id}>
+                        <strong>Character Name:</strong> {pj.name}
+                        </div>
+                    );
+                    })}
+                </div>
                 </Col>
             </Row>
             <Row className="justify-content-center flex-column align-items-center">
@@ -199,9 +211,6 @@ export const UserDetail = () => {
                     <div className="deleteButton" name="button" onClick={()=> addUserRole()}>Add role</div>
                 </Col>
                 </div>
-            </Row>
-            <Row className="justify-content-center">
-                <div className="deleteButton d-flex justify-content-center" name="button" onClick={()=> goNewAppointmentAdm()}>New Appointment</div>
             </Row>
             <Row className="justify-content-center">
                 <div className="deleteButton d-flex justify-content-center" name="button" onClick={()=> deleteUser()}>Delete User</div>
