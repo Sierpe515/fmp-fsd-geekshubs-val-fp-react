@@ -119,20 +119,40 @@ export const UserDetail = () => {
         })
     }    
 
+    useEffect(() => {
+
+        if (credentialsRdx?.credentials?.userRole?.includes('Admin')) {
+            bringCharacterGames(params)
+            .then((result) => {
+                console.log("hola", savedGames);
+                console.log("eeeeyy", result.data.data[0].id);
+                if (result.data.data[result.data.data.length -1].id !== savedGames[savedGames.length -1]?.id){
+                    console.log(result, "eo");
+                    setSavedGames(result.data.data);
+                }
+            })
+            .catch((error) => console.log(error));
+        }
+        console.log(savedGames, "ufff");
+    }, [savedGames]);
+
     function MyVerticallyCenteredModal(props) {
 
         let params = gameId
 
-        useEffect(() => {
+        // useEffect(() => {
 
-            if (credentialsRdx?.credentials?.userRole?.includes('Admin')) {
-                bringCharacterGames(params)
-                .then((result) => {
-                  setSavedGames(result.data.data);
-                  console.log(result);
-                })
-                .catch((error) => console.log(error));
-            }}, []);
+        //     if (credentialsRdx?.credentials?.userRole?.includes('Admin')) {
+        //         bringCharacterGames(params)
+        //         .then((result) => {
+        //             if (result.data.data !== savedGames){
+        //                 setSavedGames(result.data.data);
+        //                 console.log(result, "eo");
+        //             }
+        //         })
+        //         .catch((error) => console.log(error));
+        //     }}, [savedGames]);
+
 
         return (
           <Modal

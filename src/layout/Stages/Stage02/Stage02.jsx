@@ -132,7 +132,7 @@ export const Stage02 = () => {
   return (
     <Container fluid className="homeContainerMin d-flex flex-column justify-content-center">Stage02
       <Row>
-          <Col><h2>Select you skin</h2></Col>
+          <Col><h2>Select your skin</h2></Col>
           <Col xxl={12} xl={12} md={12} sm={12} className="welcomeBox pjsContainer d-flex align-items-center text-center">
               {characterImage.length > 0 ? (
                   <>
