@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import './UserDetail.css'
 // import { addRoleByAdmin, deleteUserByAdmin } from "../../services/apiCalls";
 import { userData } from "../userSlice";
@@ -17,13 +17,15 @@ import Popover from 'react-bootstrap/Popover';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { userDetailData } from "../userDetailSlice";
-import { deleteUserByAdmin } from "../../services/apiCalls";
+import { bringCharacterGames, deleteSavedGameByAdmin, deleteUserByAdmin } from "../../services/apiCalls";
+import { addCharacter } from "../characterSlice";
 
  
 export const UserDetail = () => {
 
     const userDetailRedux = useSelector(userDetailData);
     const credentialsRdx = useSelector(userData);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     console.log(userDetailRedux);
@@ -33,6 +35,8 @@ export const UserDetail = () => {
     const isAdmin = credentialsRdx.credentials.userRole?.includes("Admin");
 
     const [userRole, setUserRole] = useState("");
+    const [gameId, setGameId] = useState("");
+    const [savedGames, setSavedGames] = useState([]);
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
     const [show2, setShow2] = useState(false);
@@ -42,20 +46,26 @@ export const UserDetail = () => {
     const handleShow = () => setShow(true);
     const handleShow1 = () => setShow1(true);
     const handleShow2 = () => setShow2(true);
+    const [modalShow, setModalShow] = React.useState(false);
 
     // useEffect(() => {
     //     {credentialsRdx.credentials.userRole ? isAdmin ? ('') : (navigate('/')) : (navigate('/'))}
         
     //   }, []);
     
-      useEffect(() => {
-        {credentialsRdx.credentials.userRole?.includes("Admin") ? (""
-            // {!credentialsRdx.credentials.userRole.includes("admin") ? () : ()} 
-            
-        ) : (navigate('/'))}
-        
-      }, []);
+    useEffect(() => {
+      {credentialsRdx.credentials.userRole?.includes("Admin") ? (""
+          // {!credentialsRdx.credentials.userRole.includes("admin") ? () : ()} 
+          
+      ) : (navigate('/'))}
+      
+    }, []);
 
+    const selected = (game) => {
+      dispatch(addCharacter({ choosenCharacter: game }))
+      setGameId(game.id)
+      console.log(game.id);
+    }
 
     const deleteUser = () => {
 
@@ -68,7 +78,7 @@ export const UserDetail = () => {
             }
         )
         .catch(error => {
-          handleShow1()
+            console.log(error);
         })
     }
 
@@ -91,6 +101,82 @@ export const UserDetail = () => {
     const chooseRole = (Role) => {
         setUserRole(Role) 
     }
+
+    const deleteSavedGame = () => {
+
+        let params = gameId
+
+        deleteSavedGameByAdmin(params, token)
+        .then(
+            userDeleteByAdmin => {
+                setTimeout(() => {
+                    // navigate("/usersList");
+                  }, 500);
+            }
+        )
+        .catch(error => {
+            console.log(error);
+        })
+    }    
+
+    function MyVerticallyCenteredModal(props) {
+
+        let params = gameId
+
+        useEffect(() => {
+
+            if (credentialsRdx?.credentials?.userRole?.includes('Admin')) {
+                bringCharacterGames(params)
+                .then((result) => {
+                  setSavedGames(result.data.data);
+                  console.log(result);
+                })
+                .catch((error) => console.log(error));
+            }}, []);
+
+        return (
+          <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+          >
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-vcenter">
+                Modal heading
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <h4>Centered Modal</h4>
+                {savedGames.length > 0 ? (
+                    <>
+                    <div className='loadGamesBox'>
+                        <div className='text-center'><h1>Load Game</h1></div>
+                        {savedGames.map((load) => {
+                        return (
+                            <>
+                            <div className="loadBox text-center" key={load.id}
+                            // onClick={() => selectedSavedGame(load)} 
+                            >
+                                <p>Game:<strong> {load.select_games.name} </strong></p> 
+                                <p>Saved at:<strong> {load.updated_at} </strong></p> 
+                            </div>
+                            <div className="text-center" onClick={()=> deleteSavedGame()}>Delete game</div>
+                            </>
+                        );
+                        })}
+                    </div>
+                    </>
+                ) : (
+                    <div><h1>No saved games</h1></div>
+                )}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={props.onHide}>Close</Button>
+            </Modal.Footer>
+          </Modal>
+        );
+      }
 
     const popoverHoverFocus1 = (
         <Popover className="popoverRole" id="popover-trigger-hover-focus" title="Popover bottom">
@@ -126,12 +212,13 @@ export const UserDetail = () => {
             </Modal>
             <Modal show={show1} onHide={handleClose1}>
                 <Modal.Header closeButton>
-                <Modal.Title>It can not be deleted</Modal.Title>
+                <Modal.Title>Deleting User</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>It's not posible delete an user with upcoming appointments
-                    <br /> Please, cancel first any booked appointment to delete user.
-                </Modal.Body>
+                <Modal.Body>Are you sure to delete this user?</Modal.Body>
                 <Modal.Footer>
+                <Button variant="secondary" onClick={()=> deleteUser()}>
+                    Confirm
+                </Button>
                 <Button variant="secondary" onClick={handleClose1}>
                     Close
                 </Button>
@@ -163,15 +250,21 @@ export const UserDetail = () => {
                     </div>
                 </Col>
                 <Col>
-                <div className="d-flex flex-column justify-content-center text-center">
-                    {userDetailRedux?.choosenObject?.characters.map((pj) => {
-                    return (
-                        <div className="userBox" onClick={() => selected(pj)} key={pj.id}>
-                        <strong>Character Name:</strong> {pj.name}
-                        </div>
-                    );
-                    })}
-                </div>
+                    <div className="d-flex flex-column justify-content-center text-center">
+                        {userDetailRedux?.choosenObject?.characters.map((pj) => {
+                        return (
+                            <>
+                            <div className="userBox" onClick={() => {selected(pj), setModalShow(true)}} key={pj.id}>
+                            Character Name: <strong>{pj.name}</strong> 
+                            </div>
+                            <MyVerticallyCenteredModal
+                            show={modalShow}
+                            onHide={() => setModalShow(false)}
+                          />
+                          </>
+                        );
+                        })}
+                    </div>
                 </Col>
             </Row>
             <Row className="justify-content-center flex-column align-items-center">
@@ -214,7 +307,7 @@ export const UserDetail = () => {
                 </div>
             </Row>
             <Row className="justify-content-center">
-                <div className="deleteButton d-flex justify-content-center" name="button" onClick={()=> deleteUser()}>Delete User</div>
+                <div className="deleteButton d-flex justify-content-center" name="button" onClick={()=> handleShow1()}>Delete User</div>
             </Row>
         </Container>
      )

@@ -65,7 +65,7 @@ export const LoadGame = () => {
             <Row>
                 <Col>
                     {loadGames.length > 0 ? (
-                        <>
+                    <>
                     <div className='loadGamesBox'>
                         <div className='text-center'><h1>Load Game</h1></div>
                         {loadGames.map((load) => {

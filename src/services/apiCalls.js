@@ -123,5 +123,21 @@ export const deleteUserByAdmin = async (params, token) => {
     }
   };
 
-  return await axios.delete(`${root}/deleteUser/${params}`, config);
+  return await axios.delete(`${root}/users/${params}`, config);
+}
+
+export const bringCharacterGames = async (params) => {
+
+  return await axios.get(`${root}/games/byCharacter/${params}`);
+}
+
+export const deleteSavedGameByAdmin = async (params, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  return await axios.delete(`${root}/games/delete/${params}`, config);
 }
