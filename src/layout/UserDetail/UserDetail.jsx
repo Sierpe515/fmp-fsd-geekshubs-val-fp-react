@@ -4,12 +4,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useDispatch, useSelector } from 'react-redux';
-// import './UserDetail.css'
+import './UserDetail.css'
 // import { addRoleByAdmin, deleteUserByAdmin } from "../../services/apiCalls";
 import { userData } from "../userSlice";
 import { useNavigate } from "react-router-dom";
-// import role1 from "../../image/role1.png";
-// import role2 from "../../image/role2.png";
+import role1 from "../../image/admin.png";
+import role2 from "../../image/player.png";
 // import role3 from "../../image/role3.png";
 import dayjs from 'dayjs';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -17,7 +17,7 @@ import Popover from 'react-bootstrap/Popover';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { userDetailData } from "../userDetailSlice";
-import { bringCharacterGames, deleteSavedGameByAdmin, deleteUserByAdmin } from "../../services/apiCalls";
+import { addRoleByAdmin, bringCharacterGames, deleteSavedGameByAdmin, deleteUserByAdmin } from "../../services/apiCalls";
 import { addCharacter } from "../characterSlice";
 
  
@@ -82,16 +82,18 @@ export const UserDetail = () => {
         })
     }
 
-    const addUserRole = () => {
+    const updateUserRole = () => {
         if(userRole === ""){
             handleShow()
             return;
         }
         let body = {
-            user_id: userDetailRedux.choosenObject.id,
             role_id: userRole
         }
-        addRoleByAdmin(body, token)
+        let params = userDetailRedux.choosenObject.id
+        console.log(params);
+        console.log(body);
+        addRoleByAdmin(body, params, token)
         .then(
             handleShow2()
         )
@@ -200,21 +202,17 @@ export const UserDetail = () => {
 
     const popoverHoverFocus1 = (
         <Popover className="popoverRole" id="popover-trigger-hover-focus" title="Popover bottom">
-          Admin
+            Admin
         </Popover>
     );
 
     const popoverHoverFocus2 = (
-      <Popover className="popoverRole" id="popover-trigger-hover-focus" title="Popover bottom">
-        Doctor
-      </Popover>
+        <Popover className="popoverRole" id="popover-trigger-hover-focus" title="Popover bottom">
+            Player
+        </Popover>
     );
     
-    const popoverHoverFocus3 = (
-      <Popover className="popoverRole" id="popover-trigger-hover-focus" title="Popover bottom">
-        Patient
-      </Popover>
-    );
+
 
 
      return (
@@ -297,7 +295,7 @@ export const UserDetail = () => {
                     >                   
                         <div onClick={()=> chooseRole('1')}
                             className={userRole === "1" ? ('roleDiv roleDivChoosen d-flex justify-content-center align-items-center') : ('roleDiv d-flex justify-content-center align-items-center')}>
-                                {/* <img className='roleIcon' src={ role1 } alt="" /> */}
+                                <img className='roleIcon' src={ role1 } alt="" />
                                 </div>
                     </OverlayTrigger>
                     <OverlayTrigger
@@ -307,22 +305,12 @@ export const UserDetail = () => {
                     >       
                         <div onClick={()=> chooseRole('2')}
                             className={userRole === "2" ? ('roleDiv roleDivChoosen d-flex justify-content-center align-items-center') : ('roleDiv d-flex justify-content-center align-items-center')}>
-                                {/* <img className='roleIcon' src={ role2 } alt="" /> */}
+                                <img className='roleIcon' src={ role2 } alt="" />
                                 </div>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                        trigger={['hover', 'focus']}
-                        placement="bottom"
-                        overlay={popoverHoverFocus3}
-                    >  
-                        <div onClick={()=> chooseRole('3')} 
-                        className={userRole === "3" ? ('roleDiv roleDivChoosen d-flex justify-content-center align-items-center') : ('roleDiv d-flex justify-content-center align-items-center')}>
-                            {/* <img className='roleIcon' src={ role3 } alt="" /> */}
-                            </div>
                     </OverlayTrigger>
                 </Col>
                 <Col className="d-flex justify-content-center">
-                    <div className="deleteButton" name="button" onClick={()=> addUserRole()}>Add role</div>
+                    <div className="deleteButton" name="button" onClick={()=> updateUserRole()}>Add role</div>
                 </Col>
                 </div>
             </Row>

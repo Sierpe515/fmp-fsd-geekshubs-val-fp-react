@@ -152,3 +152,14 @@ export const updateGuide = async (dataGuide, token) => {
 
     return await axios.put(`${root}/games/updateGuide`, dataGuide, config);
 }
+
+export const addRoleByAdmin = async (body, params, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  return await axios.put(`${root}/users/updateRole/${params}`, body, config);
+}
