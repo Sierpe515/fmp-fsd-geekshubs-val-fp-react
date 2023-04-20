@@ -43,6 +43,7 @@ export const LoadGame = () => {
     }
 
     const selectedSavedGame = (selectedGame) => {
+        // dispatch(addGameInfo({}))
         dispatch(addGame({choosenGame: selectedGame}))
         const array = selectedGame.games_stages
         console.log(selectedGame);

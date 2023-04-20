@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const gameSlice = createSlice({
-    name: 'game',
+export const gameStageSlice = createSlice({
+    name: 'gameStage',
     initialState: {
-      choosenGame: {}
+      choosenGameStage: {}
     },
     reducers: {
-      addGame: (state, action) => {
+      addGameStage: (state, action) => {
         return {
           ...state,
           ...action.payload
@@ -22,8 +22,8 @@ export const gameSlice = createSlice({
     
 });
 
-export const { addGame } = gameSlice.actions;
+export const { addGameStage } = gameStageSlice.actions;
 
-export const gameDetailData = (state) => state.game;
+export const gameStageData = (state) => state.gameStage;
 
-export default gameSlice.reducer;
+export default gameStageSlice.reducer;

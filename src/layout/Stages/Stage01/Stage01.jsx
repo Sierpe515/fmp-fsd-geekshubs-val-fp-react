@@ -3,11 +3,13 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { addGame, gameDetailData } from '../../gameSlice'
 import { userData } from '../../userSlice'
-import { bringCharactersImages, bringLoadGamesById, createSavedGame, updateCharacterImage, updateGameStage } from '../../../services/apiCalls'
+import { bringLoadGamesById, createSavedGame, updateGameStage, updateGuide } from '../../../services/apiCalls'
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { characterDetailData } from '../../characterSlice'
+import { addGameStage } from '../../gameStageSlice'
+
 export const Stage01 = () => {
 
   const gameRedux = useSelector(gameDetailData);
@@ -17,30 +19,15 @@ export const Stage01 = () => {
   const dispatch = useDispatch();
 
   const [answer, setAnswer] = useState("");
-  const [characterImage, setCharacterImage] = useState([]);
-  const [imageId, setImageId] = useState("");
 
   let token = dataCredentialsRdx.credentials.token
 
-  useEffect(() => {
-    if (characterImage.length === 0) {
-      bringCharactersImages()
-        .then((result) => {
-          setCharacterImage(result?.data);
-          console.log(result.data);
-        })
-        .catch((error) => console.log(error));
-    }}, []);
+  
+  console.log(gameRedux);
 
   const chooseAnswer = (resp) => {
-    console.log(gameRedux);
     console.log(resp);
     setAnswer(resp);
-  }
-
-  const chooseImage = (resp) => {
-    console.log(resp);
-    setImageId(resp);
   }
 
   const array = gameRedux.choosenGame.games_stages
@@ -52,15 +39,31 @@ export const Stage01 = () => {
   }
   console.log(dataAnswer);
 
-  let dataImge = {
-    id : characterRdx.choosenCharacter.id,
-    image_id : imageId
-  }
-
   const saveAnswer = () => {
-    updateCharacterImage(dataImge, token)
-    .then(console.log("image updated successfully"))
-    .catch((error) => console.log(error))
+
+    if (answer == 1){
+      let dataGuide = {
+        id : gameRedux.choosenGame.id,
+        guide: "legal"
+      }
+      console.log(dataGuide);
+
+      updateGuide(dataGuide, token)
+      .then(result => console.log(result))
+      .catch((error) => console.log(error))
+    }
+
+    if (answer == 2){
+      let dataGuide = {
+        id : gameRedux.choosenGame.id,
+        guide: "chaotic"
+      }
+      console.log(dataGuide);
+
+      updateGuide(dataGuide, token)
+      .then(result => console.log(result))
+      .catch((error) => console.log(error))
+    }
 
     updateGameStage(dataAnswer, token)
     .then(
@@ -75,7 +78,9 @@ export const Stage01 = () => {
           createSavedGame(dataSavedGame, token)
             .then(
               result => {
-                console.log(result)
+                console.log(result.data.data)
+                const saveGameStage = result.data.data
+                dispatch(addGameStage({choosenGameStage: saveGameStage}))
                 let params = result.data.data.game_id
                 bringLoadGamesById(params, token)
                 .then(
@@ -125,26 +130,6 @@ export const Stage01 = () => {
 
   return (
     <Container fluid className="homeContainerMin d-flex flex-column justify-content-center">Stage01
-      <Row>
-          <Col xxl={12} xl={12} md={12} sm={12} className="welcomeBox">
-            <h2>Select you skin</h2>
-              {characterImage.length > 0 ? (
-                  <>
-                  <div className='scrollBox'>
-                    {characterImage.map((cImages) => {
-                      return (
-                        <div className="pjBox" onClick={() => chooseImage(cImages.id)} key={cImages.id}>
-                          <img className='pjImage' src={cImages.image} alt={cImages.id} />
-                        </div>
-                      );
-                    })}
-                  </div>
-                  </>
-                ) : (
-                  <div><h4>Something went wrong</h4></div>
-                )}
-          </Col>
-      </Row>
       <Row>
         <div className='d-flex'>
         <MyVerticallyCenteredModal

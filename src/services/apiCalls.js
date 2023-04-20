@@ -141,3 +141,14 @@ export const deleteSavedGameByAdmin = async (params, token) => {
 
   return await axios.delete(`${root}/games/delete/${params}`, config);
 }
+
+export const updateGuide = async (dataGuide, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+    return await axios.put(`${root}/games/updateGuide`, dataGuide, config);
+}
