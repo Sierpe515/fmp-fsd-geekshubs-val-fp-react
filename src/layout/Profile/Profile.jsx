@@ -164,9 +164,16 @@ export const Profile = () => {
                 userName : dataUserUpdate.userName
             }
             updateUserNameProfile(userNameProfile, token)
-            .then(
-                () => changeHide()
+            .then(action => {
+                console.log(action);
+                // setUsers({userName: action.data.data.userName})
+                setUsers((prevState) => ({
+                    ...prevState,
+                    userName: action.data.data.userName
+                  }));
+                changeHide()
                 // navigate("/profile")
+            }
             )
             .catch(error => console.log(error))
         }
@@ -206,109 +213,7 @@ export const Profile = () => {
             )
             .catch(error => console.log(error))
         }
-
-        // updateProfile(dataUserUpdate, token)
-        //   .then(
-        //     action => {
-        //     setTimeout(() => {
-        //       navigate("/profile");
-        //     }, 500);
-        // })
-        //   .catch(error => console.log(error))
       }    
-
-    // const [userNameUpdate, setUserNameUpdate] = useState({userName: ""})
-    // const [nameUpdate, setNameUpdate] = useState({name: ""})
-    // const [surnameUpdate, setSurnameUpdate] = useState({surname: ""})
-    // const [emailUpdate, setEmailUpdate] = useState({email: ""})
-    // const [birthdateUpdate, setBirthdateUpdate] = useState({birthdate: (dayjs("").format('YYYY-MM-DD'))})
-
-    // const [userNameUpdateValidation, setUserNameUpdateValidation] = useState({userNameValidation: false})
-    // const [nameUpdateValidation, setNameUpdateValidation] = useState({nameValidation: false})
-    // const [surnameUpdateValidation, setSurameUpdateValidation] = useState({surnameValidation: false})
-    // const [emailUpdateValidation, seEmailUpdateValidation] = useState({emailValidation: false})
-    // const [birthdateUpdateValidation, setBirthdateUpdateValidation] = useState({birthdateValidation: false})
-
-    // const [userNameUpdateError, setUserNameUpdateError] = useState({userNameError: ""})
-    // const [nameUpdateError, setNameUpdateError] = useState({nameError: ""})
-    // const [surnameUpdateError, setSurnameUpdateError] = useState({surnameError: ""})
-    // const [emailUpdateError, setEmailUpdateError] = useState({emailError: ""})
-    // const [birthdateUpdateError, setBirthdateUpdateError] = useState({birthdateError: ""})
-
-    // const newUserNameUpdate = (e) => {
-    //     console.log(nameUpdate);
-    //     setUserNameUpdate((prevState) => ({
-    //       ...prevState,
-    //       [e.target.name]: e.target.value,
-    //     }));
-    // };
-
-    // const newNameUpdate = (e) => {
-    //     console.log(userNameUpdate);
-    //     setNameUpdate((prevState) => ({
-    //       ...prevState,
-    //       [e.target.name]: e.target.value,
-    //     }));
-    // };
-
-    // useEffect(() => {
- 
-    //     for(let error in dataUserUpdateError){
-    //       if(dataUserUpdateError[error] !== ""){
-    //         setRegisterAct(false);
-    //         return;
-    //       }
-    //     }
-    
-    //     for(let vacio in dataUserUpdate){
-    //       if(dataUserUpdate[vacio] === ""){
-    //         setRegisterAct(false);
-    //         return;
-    //       }
-    //     }
-    
-    //     for(let validated in dataUserUpdateValidation){
-    //       if(dataUserUpdateValidation[validated] === false){
-    //         setRegisterAct(false);
-    //         return;
-    //       }
-    //     }
-      
-    //     setRegisterAct(true);
-    //   });
-    
-    
-    //   const checkError = (e) => {
-    //     let error = "";
-    //     let checked = validate(
-    //       e.target.name,
-    //       e.target.value,
-    //       e.target.required
-    //     );
-    
-    //     error = checked.message;
-    
-    //     setNameUpdateValidation((prevState) => ({
-    //       ...prevState,
-    //       [e.target.name + "Validation"]: checked.validated,
-    //     }));
-    //   };
-    
-    //   const checkError2 = (e) => {
-    //     let error = "";
-    //     let checked = validate(
-    //       e.target.name,
-    //       e.target.value,
-    //       e.target.required
-    //     );
-    
-    //     error = checked.message;
-    
-    //     setNameUpdateError((prevState) => ({
-    //       ...prevState,
-    //       [e.target.name + "Error"]: error,
-    //     }));
-    //   };
 
     // SHOW FIELDS
 
