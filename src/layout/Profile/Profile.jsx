@@ -1,0 +1,466 @@
+import React, { useState, useEffect } from "react";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from "react-bootstrap/Form";
+// import { ButtonNav } from '../../components/ButtonNav/ButtonNav';
+import { getProfile, updateEmailProfile, updateNameProfile, updateSurnameProfile, updateUserNameProfile } from '../../services/apiCalls';
+import { userData } from "../userSlice";
+import { useSelector } from "react-redux";
+import dayjs from 'dayjs';
+import updIcon from '../../image/update.png'
+import cancelUpdIcon from '../../image/cancel update.png'
+import './Profile.css'
+import { useNavigate } from "react-router-dom";
+import { InputBox } from "../../components/InputBox/InputBox";
+import { validate } from "../../helpers/useful";
+
+export const Profile = () => {
+
+    const ReduxCredentials = useSelector(userData);
+    const navigate = useNavigate();
+    
+    const [hide, setHide] = useState(false);
+    const [hide1, setHide1] = useState(false);
+    const [hide2, setHide2] = useState(false);
+    const [hide3, setHide3] = useState(false);
+    const [hide4, setHide4] = useState(false);
+
+    let token = ReduxCredentials.credentials.token
+    
+    const [users, setUsers] = useState({
+        userName: "",
+        name: "",
+        surname: "",
+        email: "",
+        birthdate: "",
+    }
+    
+    );
+    
+    useEffect(() => {
+        if (!ReduxCredentials.credentials.token){
+            navigate('/')
+        }
+    }, []);
+    
+    useEffect(() => {
+        if (users.name === "") {
+        getProfile(ReduxCredentials.credentials.token)
+        .then((result) => {
+                console.log(result);
+                setUsers({
+                    userName: result.data.data.userName,
+                    name: result.data.data.name,
+                    surname: result.data.data.surname,
+                    email: result.data.data.email,
+                    birthdate: result.data.data.birthdate,
+                });
+                // console.log(users);
+            })
+            .catch((error) => console.log(error));
+        }
+    }, [users]);
+
+    // UPDATE PROFILE
+
+    const [dataUserUpdate, setDataUserUpdate] = useState({
+        userName: "",
+        name: "",
+        surname: "",
+        birthdate: (dayjs("").format('YYYY-MM-DD')),
+        email: "",
+      });
+
+      const [dataUserUpdateValidation, setDataUserUpdateValidation] = useState({
+        userNameValidation: false,
+        nameValidation: false,
+        surnameValidation: false,
+        birthdateValidation: false,
+        emailValidation: false,
+      })
+
+      const [dataUserUpdateError, setDataUserUpdateError] = useState({
+        userNameError: "",
+        nameError: "",
+        surnameError: "",
+        birthdateError: "",
+        emailError: "",
+      });
+
+      const newDataUserUpdate = (e) => {
+        console.log(dataUserUpdate);
+        setDataUserUpdate((prevState) => ({
+          ...prevState,
+          [e.target.name]: e.target.value,
+        }));
+      };
+
+      const [registerAct, setRegisterAct] = useState(false);
+
+      useEffect(() => {
+ 
+        for(let error in dataUserUpdateError){
+          if(dataUserUpdateError[error] !== ""){
+            setRegisterAct(false);
+            return;
+          }
+        }
+    
+        for(let vacio in dataUserUpdate){
+          if(dataUserUpdate[vacio] === ""){
+            setRegisterAct(false);
+            return;
+          }
+        }
+    
+        for(let validated in dataUserUpdateValidation){
+          if(dataUserUpdateValidation[validated] === false){
+            setRegisterAct(false);
+            return;
+          }
+        }
+      
+        setRegisterAct(true);
+      });
+    
+    
+      const checkError = (e) => {
+        let error = "";
+        let checked = validate(
+          e.target.name,
+          e.target.value,
+          e.target.required
+        );
+    
+        error = checked.message;
+    
+        setDataUserUpdateValidation((prevState) => ({
+          ...prevState,
+          [e.target.name + "Validation"]: checked.validated,
+        }));
+      };
+    
+      const checkError2 = (e) => {
+        let error = "";
+        let checked = validate(
+          e.target.name,
+          e.target.value,
+          e.target.required
+        );
+    
+        error = checked.message;
+    
+        setDataUserUpdateError((prevState) => ({
+          ...prevState,
+          [e.target.name + "Error"]: error,
+        }));
+      };
+
+      const updateUser = () => {
+
+        if (dataUserUpdate.userName !== ""){
+            let userNameProfile = {
+                userName : dataUserUpdate.userName
+            }
+            updateUserNameProfile(userNameProfile, token)
+            .then(
+                () => changeHide()
+                // navigate("/profile")
+            )
+            .catch(error => console.log(error))
+        }
+
+        if (dataUserUpdate.name !== ""){
+            let nameProfile = {
+                name : dataUserUpdate.name
+            }
+            updateNameProfile(nameProfile, token)
+            .then(
+                () => changeHide1()
+                // + recargar pag
+            )
+            .catch(error => console.log(error))
+        }
+
+        if (dataUserUpdate.surname !== ""){
+            let surnameProfile = {
+                surname : dataUserUpdate.surname
+            }
+            updateSurnameProfile(surnameProfile, token)
+            .then(
+                () => changeHide2()
+                // + recargar pag
+            )
+            .catch(error => console.log(error))
+        }
+
+        if (dataUserUpdate.email !== ""){
+            let emailProfile = {
+                email : dataUserUpdate.email
+            }
+            updateEmailProfile(emailProfile, token)
+            .then(
+                () => changeHide3()
+                // + recargar pag
+            )
+            .catch(error => console.log(error))
+        }
+
+        // updateProfile(dataUserUpdate, token)
+        //   .then(
+        //     action => {
+        //     setTimeout(() => {
+        //       navigate("/profile");
+        //     }, 500);
+        // })
+        //   .catch(error => console.log(error))
+      }    
+
+    // const [userNameUpdate, setUserNameUpdate] = useState({userName: ""})
+    // const [nameUpdate, setNameUpdate] = useState({name: ""})
+    // const [surnameUpdate, setSurnameUpdate] = useState({surname: ""})
+    // const [emailUpdate, setEmailUpdate] = useState({email: ""})
+    // const [birthdateUpdate, setBirthdateUpdate] = useState({birthdate: (dayjs("").format('YYYY-MM-DD'))})
+
+    // const [userNameUpdateValidation, setUserNameUpdateValidation] = useState({userNameValidation: false})
+    // const [nameUpdateValidation, setNameUpdateValidation] = useState({nameValidation: false})
+    // const [surnameUpdateValidation, setSurameUpdateValidation] = useState({surnameValidation: false})
+    // const [emailUpdateValidation, seEmailUpdateValidation] = useState({emailValidation: false})
+    // const [birthdateUpdateValidation, setBirthdateUpdateValidation] = useState({birthdateValidation: false})
+
+    // const [userNameUpdateError, setUserNameUpdateError] = useState({userNameError: ""})
+    // const [nameUpdateError, setNameUpdateError] = useState({nameError: ""})
+    // const [surnameUpdateError, setSurnameUpdateError] = useState({surnameError: ""})
+    // const [emailUpdateError, setEmailUpdateError] = useState({emailError: ""})
+    // const [birthdateUpdateError, setBirthdateUpdateError] = useState({birthdateError: ""})
+
+    // const newUserNameUpdate = (e) => {
+    //     console.log(nameUpdate);
+    //     setUserNameUpdate((prevState) => ({
+    //       ...prevState,
+    //       [e.target.name]: e.target.value,
+    //     }));
+    // };
+
+    // const newNameUpdate = (e) => {
+    //     console.log(userNameUpdate);
+    //     setNameUpdate((prevState) => ({
+    //       ...prevState,
+    //       [e.target.name]: e.target.value,
+    //     }));
+    // };
+
+    // useEffect(() => {
+ 
+    //     for(let error in dataUserUpdateError){
+    //       if(dataUserUpdateError[error] !== ""){
+    //         setRegisterAct(false);
+    //         return;
+    //       }
+    //     }
+    
+    //     for(let vacio in dataUserUpdate){
+    //       if(dataUserUpdate[vacio] === ""){
+    //         setRegisterAct(false);
+    //         return;
+    //       }
+    //     }
+    
+    //     for(let validated in dataUserUpdateValidation){
+    //       if(dataUserUpdateValidation[validated] === false){
+    //         setRegisterAct(false);
+    //         return;
+    //       }
+    //     }
+      
+    //     setRegisterAct(true);
+    //   });
+    
+    
+    //   const checkError = (e) => {
+    //     let error = "";
+    //     let checked = validate(
+    //       e.target.name,
+    //       e.target.value,
+    //       e.target.required
+    //     );
+    
+    //     error = checked.message;
+    
+    //     setNameUpdateValidation((prevState) => ({
+    //       ...prevState,
+    //       [e.target.name + "Validation"]: checked.validated,
+    //     }));
+    //   };
+    
+    //   const checkError2 = (e) => {
+    //     let error = "";
+    //     let checked = validate(
+    //       e.target.name,
+    //       e.target.value,
+    //       e.target.required
+    //     );
+    
+    //     error = checked.message;
+    
+    //     setNameUpdateError((prevState) => ({
+    //       ...prevState,
+    //       [e.target.name + "Error"]: error,
+    //     }));
+    //   };
+
+    // SHOW FIELDS
+
+    const changeHide = () => {
+        if (hide === false){setHide(true)}
+        if (hide === true){setHide(false)}}
+
+    const changeHide1 = () => {
+        if (hide1 === false){setHide1(true)}
+        if (hide1 === true){setHide1(false)}}
+
+    const changeHide2 = () => {
+        if (hide2 === false){setHide2(true)}
+
+        if (hide2 === true){setHide2(false)}}
+
+    const changeHide3 = () => {
+        if (hide3 === false){setHide3(true)}
+        if (hide3 === true){setHide3(false)}}
+
+    const changeHide4 = () => {
+        if (hide4 === false){setHide4(true)}
+        if (hide4 === true){ setHide4(false)}}
+
+  return (
+    <Container
+      fluid
+      className="homeContainerMin d-flex flex-column justify-content-between"
+    >
+      <Row className="d-flex justify-content-center">
+        <Col xxl={4} xl={5} sm={7} className="my-3">
+          <div className="logRegContainer d-flex flex-column justify-content-center">
+            <h1>Profile</h1>
+            <div className="d-flex">
+                <div className="pType">Username:</div>
+                <div className={hide === false ? "pValue" : "hide"}><strong>{users.userName}</strong></div>
+                <div className={hide === false ? "hide" : "pValue"}>
+                    <Form.Group as={Col} controlId="formGridUserName">
+                    <InputBox
+                        className={
+                        dataUserUpdateError.userNameError === ""
+                            ? "inputBasicDesign"
+                            : "inputBasicDesign inputErrorDesign"
+                        }
+                        // className={"inputHeight"}
+                        type={"text"}
+                        name={"userName"}
+                        placeholder={"Enter your new username"}
+                        required={true}
+                        changeFunction={(e) => {newDataUserUpdate(e); checkError(e)}}
+                        blurFunction={(e) => {checkError2(e)}}
+                    />
+                    <Form.Text className="errorMessage">{dataUserUpdateError.nameError}</Form.Text>
+                    </Form.Group>
+                </div>
+                <div onClick={hide === false ? ()=> changeHide() : ()=> updateUser()}><img className="updIcon" src={updIcon} alt="" /></div>
+                <div onClick={()=> changeHide()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
+            </div>
+            <div className="d-flex">
+                <div className="pType">Name:</div>
+                <div className={hide1 === false ? "pValue" : "hide"}><strong>{users.name}</strong></div>
+                <div className={hide1 === false ? "hide" : "pValue"}>
+                    <Form.Group as={Col} controlId="formGridName">
+                    <InputBox
+                        className={
+                        // nameUpdateError.nameError === ""
+                        dataUserUpdateError.nameError === ""
+                            ? "inputBasicDesign"
+                            : "inputBasicDesign inputErrorDesign"
+                        }
+                        // className={"inputHeight"}
+                        type={"text"}
+                        name={"name"}
+                        placeholder={"Enter your name"}
+                        required={true}
+                        // changeFunction={(e) => {newNameUpdate(e); checkError(e)}}
+                        changeFunction={(e) => {newDataUserUpdate(e); checkError(e)}}
+                        blurFunction={(e) => {checkError2(e)}}
+                    />
+                    {/* <Form.Text className="errorMessage">{nameUpdateError.nameError}</Form.Text> */}
+                    <Form.Text className="errorMessage">{dataUserUpdateError.nameError}</Form.Text>
+                    </Form.Group>
+                </div>
+                {/* <div onClick={()=> changeHide1()}><img className="updIcon" src={updIcon} alt="" /></div> */}
+                <div onClick={hide1 === false ? ()=> changeHide1() : ()=> updateUser()}><img className="updIcon" src={updIcon} alt="" /></div>
+                <div onClick={()=> changeHide1()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
+            </div>
+            <div className="d-flex">
+                <div className="pType">Surname:</div>
+                <div className={hide2 === false ? "pValue" : "hide"}><strong>{users.surname}</strong></div>
+                <div className={hide2 === false ? "hide" : "pValue"}>
+                    <Form.Group as={Col} controlId="formGridSurname">
+                    <InputBox
+                        className={
+                        dataUserUpdateError.surnameError === ""
+                            ? "inputBasicDesign"
+                            : "inputBasicDesign inputErrorDesign"
+                        }
+                        // className={"inputHeight"}
+                        type={"text"}
+                        name={"surname"}
+                        placeholder={"Enter your surname"}
+                        required={true}
+                        changeFunction={(e) => {newDataUserUpdate(e); checkError(e)}}
+                        blurFunction={(e) => {checkError2(e)}}
+                    />
+                    <Form.Text className="errorMessage">{dataUserUpdateError.surnameError}</Form.Text>
+                    </Form.Group>
+                </div>
+                <div onClick={hide2 === false ? ()=> changeHide2() : ()=> updateUser()}><img className="updIcon" src={updIcon} alt="" /></div>
+                <div onClick={()=> changeHide2()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
+            </div>
+            <div className="d-flex">
+                <div className="pType">Email:</div>
+                <div className={hide3 === false ? "pValue" : "hide"}><strong>{users.email}</strong></div>
+                <div className={hide3 === false ? "hide" : "pValue"}>
+                    <Form.Group as={Col} controlId="formGridEmail">
+                    <InputBox
+                        className={
+                        dataUserUpdateError.emailError === ""
+                            ? "inputBasicDesign"
+                            : "inputBasicDesign inputErrorDesign"
+                        }
+                        // className={"inputHeight"}
+                        type={"text"}
+                        name={"email"}
+                        placeholder={"Enter your new email"}
+                        required={true}
+                        changeFunction={(e) => {newDataUserUpdate(e); checkError(e)}}
+                        blurFunction={(e) => {checkError2(e)}}
+                    />
+                    <Form.Text className="errorMessage">{dataUserUpdateError.emailError}</Form.Text>
+                    </Form.Group>
+                </div>
+                <div onClick={hide3 === false ? ()=> changeHide3() : ()=> updateUser()}><img className="updIcon" src={updIcon} alt="" /></div>
+                <div onClick={()=> changeHide3()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
+            </div>
+            <div className="d-flex">
+                <div className="pType">Birthdate:</div>
+                <div className={hide4 === false ? "pValue" : "hide"}><strong>{dayjs(users.birthdate).format("DD MMMM YYYY")}</strong></div>
+                <div className={hide4 === false ? "hide" : "pValue"}>
+                    Calendar
+                </div>
+                <div onClick={()=> changeHide4()}><img className="updIcon" src={updIcon} alt="" /></div>
+                <div onClick={()=> changeHide4()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
+            </div>
+          </div>
+        </Col>
+      </Row>
+      {/* <Row className="d-flex justify-content-center">
+        <ButtonNav route={"Update Profile"} destiny={"/updateProfile"} />
+      </Row> */}
+    </Container>
+  )
+}

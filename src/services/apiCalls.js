@@ -163,3 +163,57 @@ export const addRoleByAdmin = async (body, params, token) => {
 
   return await axios.put(`${root}/users/updateRole/${params}`, body, config);
 }
+
+export const getProfile = async (token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  return await axios.get(`${root}/users/byIdwithCharacters`, config);
+}
+
+export const updateNameProfile = async (nameProfile, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+    return await axios.put(`${root}/users/profile/name`, nameProfile, config);
+}
+
+export const updateUserNameProfile = async (UserNameProfile, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+    return await axios.put(`${root}/users/profile/userName`, UserNameProfile, config);
+}
+
+export const updateSurnameProfile = async (surnameProfile, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+    return await axios.put(`${root}/users/profile/surname`, surnameProfile, config);
+}
+
+export const updateEmailProfile = async (emailProfile, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+    return await axios.put(`${root}/users/profile/email`, emailProfile, config);
+}

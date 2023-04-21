@@ -74,7 +74,8 @@ export const Stage02 = () => {
           
           let dataSavedGame = {
             game_id : result.data.data.game_id,
-            stage_id : 2
+            // Meter aquí el stage al que se va a ir con respuesta
+            // stage_id : 2
           }
 
           createSavedGame(dataSavedGame, token)

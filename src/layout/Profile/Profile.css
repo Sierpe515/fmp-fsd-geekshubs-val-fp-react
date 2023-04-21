@@ -1,0 +1,29 @@
+.updIcon {
+    height: 2em;
+    margin-left: 1em;
+}
+
+.hide {
+    display: none;
+}
+
+.pType {
+    width: 5.5em;
+}
+
+.pValue {
+    width: 13em;
+}
+
+.inputHeight {
+    height: 2em;
+}
+
+.inputBasicDesign {
+    height: 2em;
+}
+
+.inputErrorDesign {
+    border: 0.2em solid red;
+    background-color: lightpink;
+}

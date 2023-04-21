@@ -107,12 +107,12 @@ export const UserDetail = () => {
     const deleteSavedGame = () => {
 
         let params = gameId
-
+        console.log(params);
         deleteSavedGameByAdmin(params, token)
         .then(
             userDeleteByAdmin => {
                 setTimeout(() => {
-                    // navigate("/usersList");
+                    navigate("/usersList");
                   }, 500);
             }
         )
