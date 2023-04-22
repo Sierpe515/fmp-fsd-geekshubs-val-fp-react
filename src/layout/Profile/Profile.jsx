@@ -89,6 +89,7 @@ export const Profile = () => {
       });
 
       const newDataUserUpdate = (e) => {
+        console.log(users);
         console.log(dataUserUpdate);
         setDataUserUpdate((prevState) => ({
           ...prevState,
@@ -159,7 +160,7 @@ export const Profile = () => {
 
       const updateUser = () => {
 
-        if (dataUserUpdate.userName !== ""){
+        if (dataUserUpdate.userName !== (users.userName && "")){
             let userNameProfile = {
                 userName : dataUserUpdate.userName
             }
@@ -172,45 +173,59 @@ export const Profile = () => {
                     userName: action.data.data.userName
                   }));
                 changeHide()
-                // navigate("/profile")
             }
             )
             .catch(error => console.log(error))
         }
 
-        if (dataUserUpdate.name !== ""){
+        if (dataUserUpdate.name !== (users.name && "")){
             let nameProfile = {
                 name : dataUserUpdate.name
             }
             updateNameProfile(nameProfile, token)
-            .then(
-                () => changeHide1()
-                // + recargar pag
-            )
+            .then(action => {
+              console.log(action);
+              setUsers((prevState) => ({
+                  ...prevState,
+                  name: action.data.data.name
+                }));
+              changeHide1()
+          }
+          )
             .catch(error => console.log(error))
         }
 
-        if (dataUserUpdate.surname !== ""){
+        if (dataUserUpdate.surname !== (users.surname && "")){
             let surnameProfile = {
                 surname : dataUserUpdate.surname
             }
             updateSurnameProfile(surnameProfile, token)
-            .then(
-                () => changeHide2()
-                // + recargar pag
-            )
+            .then(action => {
+              console.log(action);
+              setUsers((prevState) => ({
+                  ...prevState,
+                  surname: action.data.data.surname
+                }));
+              changeHide2()
+          }
+          )
             .catch(error => console.log(error))
         }
 
-        if (dataUserUpdate.email !== ""){
+        if (dataUserUpdate.email !== (users.email && "")){
             let emailProfile = {
                 email : dataUserUpdate.email
             }
             updateEmailProfile(emailProfile, token)
-            .then(
-                () => changeHide3()
-                // + recargar pag
-            )
+            .then(action => {
+              console.log(action);
+              setUsers((prevState) => ({
+                  ...prevState,
+                  email: action.data.data.email
+                }));
+              changeHide3()
+          }
+          )
             .catch(error => console.log(error))
         }
       }    
@@ -227,7 +242,6 @@ export const Profile = () => {
 
     const changeHide2 = () => {
         if (hide2 === false){setHide2(true)}
-
         if (hide2 === true){setHide2(false)}}
 
     const changeHide3 = () => {
