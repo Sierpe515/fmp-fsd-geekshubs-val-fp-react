@@ -3,6 +3,10 @@
     background-color: aqua;
 }
 
+.badgeImage {
+    height: 4em;
+}
+
 @media (min-width: 992px){
     .gameBar{
         width: 10vw;

@@ -227,3 +227,8 @@ export const createBagdeGame = async (dataBadge) => {
 
     return await axios.post(`${root}/badges/add`, dataBadge);
 }
+
+export const getBadgesByGameId = async (params) => {
+
+  return await axios.get(`${root}/badges/ByGameId/${params}`);
+}

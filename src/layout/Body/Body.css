@@ -1,5 +1,6 @@
 .homeContainerMin {
     min-height: 94vh;
+    width: 90vw;
     background-color: beige;
 }
 
