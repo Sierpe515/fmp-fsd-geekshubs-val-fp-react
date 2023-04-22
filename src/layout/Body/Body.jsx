@@ -13,7 +13,7 @@ import { Opening } from '../Stages/Opening/Opening';
 import { UsersList } from '../UsersList/UsersList';
 import { UserDetail } from '../UserDetail/UserDetail';
 import { Profile } from '../Profile/Profile';
-import { Stage0205 } from '../Stages/Stage02.5/Stage0205';
+import { Stage0205 } from '../Stages/Stage025/Stage0205';
 import { Stage0301 } from '../Stages/Stage03/Stage0301';
 import { Stage0302 } from '../Stages/Stage03/Stage0302';
 import { Stage0303 } from '../Stages/Stage03/Stage0303';

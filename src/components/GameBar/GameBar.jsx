@@ -16,13 +16,13 @@ export const GameBar = () => {
 
   const [badge, setBadge] = useState([]);
 
+  console.log(badge)
   let params = gameRdx.choosenGame.id
   useEffect(() => {
-    if (badge.length === 0) {
+    if (badge.length === []) {
       console.log(gameRdx.choosenGame.id);
       getBadgesByGameId(params)
         .then((result) => {
-          console.log(badge)
           console.log("traer badges",result);
           setBadge(result?.data?.data);
           // console.log(result.data);
@@ -40,8 +40,8 @@ export const GameBar = () => {
             <div className='scrollBox'>
               {badge.map((medal) => {
                 return (
-                  <div className="pjBox" onClick={() => useBadge(medal.id)} key={medal.id}>
-                    <img className='badgeImage' src={medal.image} alt={medal.id} />
+                  <div className="badgeBox" onClick={() => useBadge(medal.id)} key={medal.id}>
+                    <img className='badgeImage' src={medal.badge.image} alt={medal.id} />
                     <div>{medal.badge.name}</div>
                   </div>
                 );
