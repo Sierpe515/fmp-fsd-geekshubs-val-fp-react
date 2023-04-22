@@ -17,9 +17,9 @@ export const Stage02 = () => {
   const dataCredentialsRdx = useSelector(userData);
   const characterRdx = useSelector(characterDetailData);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const [answer, setAnswer] = useState("");
+  // const [answer, setAnswer] = useState("");
   const [characterImage, setCharacterImage] = useState([]);
   const [imageId, setImageId] = useState("");
 
@@ -38,69 +38,81 @@ export const Stage02 = () => {
   console.log(gameStageRedux);
   console.log(gameRdx);
 
-  const chooseAnswer = (resp) => {
-    console.log(resp);
-    setAnswer(resp);
-  }
+  // const chooseAnswer = (resp) => {
+  //   console.log(resp);
+  //   setAnswer(resp);
+  // }
 
   const chooseImage = (resp) => {
     console.log(resp);
     setImageId(resp);
   }
 
-  const array = gameRdx.choosenGame.games_stages
-  console.log(gameRdx.choosenGame.games_stages[array.length - 1].id);
-  console.log(characterRdx.choosenCharacter);
-  let dataAnswer = {
-    id : gameRdx.choosenGame.games_stages[array.length - 1].id,
-    answer_id : answer
-  }
-  console.log(dataAnswer);
+  // const array = gameRdx.choosenGame.games_stages
+  // console.log(gameRdx.choosenGame.games_stages[array.length - 1].id);
+  // console.log(characterRdx.choosenCharacter);
+  // let dataAnswer = {
+  //   id : gameRdx.choosenGame.games_stages[array.length - 1].id,
+  //   answer_id : answer
+  // }
+  // console.log(dataAnswer);
 
-  let dataImge = {
+  let dataImage = {
     id : characterRdx.choosenCharacter.id,
     image_id : imageId
   }
 
-  const saveAnswer = () => {
-    updateCharacterImage(dataImge, token)
-    .then(console.log("image updated successfully"))
-    .catch((error) => console.log(error))
-
-    updateGameStage(dataAnswer, token)
-    .then(
-        result => {
-          console.log(result);
-          
-          let dataSavedGame = {
-            game_id : result.data.data.game_id,
-            // Meter aquí el stage al que se va a ir con respuesta
-            // stage_id : 2
-          }
-
-          createSavedGame(dataSavedGame, token)
-            .then(
-              result => {
-                console.log(result)
-                let params = result.data.data.game_id
-                bringLoadGamesById(params, token)
-                .then(
-                  result => {
-                    console.log(result.data.data[0])
-                    const selectGame = result.data.data[0]
-                    dispatch(addGame({choosenGameStage: selectGame}))
-                    console.log(selectGame);
-                  })
-              }
-            )
-            .catch((error) => console.log(error))
+  const noImage = () => {
           setTimeout(() => {
             // navigate("/stage02");
-            navigate('/home')
+            navigate('/stage02.5')
           }, 500);
-        }
-    )
+  }
+
+  const saveImage = () => {
+    updateCharacterImage(dataImage, token)
+    .then((action => {
+      console.log("image updated successfully");
+      setTimeout(() => {
+        navigate('/stage02.5')
+      }, 500);
+    }))
     .catch((error) => console.log(error))
+
+    // updateGameStage(dataAnswer, token)
+    // .then(
+    //     result => {
+    //       console.log(result);
+          
+    //       let dataSavedGame = {
+    //         game_id : result.data.data.game_id,
+    //         // Meter aquí el stage al que se va a ir con respuesta
+    //         // stage_id : 2
+    //       }
+
+    //       createSavedGame(dataSavedGame, token)
+    //         .then(
+    //           result => {
+    //             console.log(result)
+    //             let params = result.data.data.game_id
+    //             bringLoadGamesById(params, token)
+    //             .then(
+    //               result => {
+    //                 console.log(result.data.data[0])
+    //                 const selectGame = result.data.data[0]
+    //                 dispatch(addGame({choosenGameStage: selectGame}))
+    //                 console.log(selectGame);
+    //               })
+    //           }
+    //         )
+    //         .catch((error) => console.log(error))
+    //       setTimeout(() => {
+    //         // navigate("/stage02");
+    //         navigate('/home')
+    //       }, 500);
+    //     }
+    // )
+    // .catch((error) => console.log(error))
   }
 
   function MyVerticallyCenteredModal(props) {
@@ -117,18 +129,45 @@ export const Stage02 = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <p>Are you sure you want to continue without choosing a skin?</p>
+        </Modal.Body>
+        <Modal.Footer>
+          {/* CONTINUAR SIN IMAGEN */}
+          <Button onClick={()=> {noImage()}}>Confirm</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  function MyVerticallyCenteredModal1(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Skin selection
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>Centered Modal</h4>
           <p>
-            Are you sure?
+          Are you sure to choose this skin? 
+          The chosen skin will be applied to your character replacing the previous one
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={()=> {saveAnswer()}}>Confirm</Button>
+          <Button onClick={()=> saveImage()}>Confirm</Button>
         </Modal.Footer>
       </Modal>
     );
   }
 
   const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow1, setModalShow1] = React.useState(false);
 
   return (
     <Container fluid className="homeContainerMin d-flex flex-column justify-content-center">Stage02
@@ -140,11 +179,18 @@ export const Stage02 = () => {
                   <div className='scrollBox'>
                     {characterImage.map((cImages) => {
                       return (
-                        <div className="pjBox" onClick={() => chooseImage(cImages.id)} key={cImages.id}>
+                        <>
+                        <div className="pjBox" onClick={() => {chooseImage(cImages.id), setModalShow1(true)}} key={cImages.id}>
                           <img className='pjImage' src={cImages.image} alt={cImages.id} />
                         </div>
+                        
+                      </>
                       );
                     })}
+                    <MyVerticallyCenteredModal1
+                        show={modalShow1}
+                        onHide={() => setModalShow1(false)}
+                        />
                   </div>
                   </>
                 ) : (
@@ -158,8 +204,7 @@ export const Stage02 = () => {
           show={modalShow}
           onHide={() => setModalShow(false)}
         />
-          <div onClick={()=> {chooseAnswer("1"), setModalShow(true)}}>RESPUESTA A</div>
-          <div onClick={()=> {chooseAnswer("2"), setModalShow(true)}}>RESPUESTA B</div>
+          <div onClick={()=> {setModalShow(true)}}>Continue without choosing skin</div>
         </div>
       </Row>
     </Container>

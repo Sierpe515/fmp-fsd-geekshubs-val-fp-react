@@ -217,3 +217,13 @@ export const updateEmailProfile = async (emailProfile, token) => {
 
     return await axios.put(`${root}/users/profile/email`, emailProfile, config);
 }
+
+export const bringAnswerById = async (params) => {
+
+  return await axios.get(`${root}/answers/${params}`);
+}
+
+export const createBagdeGame = async (dataBadge) => {
+
+    return await axios.post(`${root}/badges/add`, dataBadge);
+}
