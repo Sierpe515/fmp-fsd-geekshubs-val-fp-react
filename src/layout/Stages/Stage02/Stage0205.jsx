@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { addGame, gameDetailData } from '../../gameSlice'
 import { userData } from '../../userSlice'
-import { bringAnswerById, bringCharactersImages, bringLoadGamesById, createBagdeGame, createSavedGame, updateCharacterImage, updateGameStage } from '../../../services/apiCalls'
+import { bringAnswerById, bringCharactersImages, bringLoadGamesById, createBagdeGame, createSavedGame, updateCharacterImage, updateGameStage, updateMadness } from '../../../services/apiCalls'
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -48,14 +48,7 @@ export const Stage0205 = () => {
   //   setImageId(resp);
   // }
 
-  const array = gameRdx.choosenGame.games_stages
-  console.log(gameRdx.choosenGame.games_stages[array.length - 1].id);
-  console.log(characterRdx.choosenCharacter);
-  let dataAnswer = {
-    id : gameRdx.choosenGame.games_stages[array.length - 1].id,
-    answer_id : answer
-  }
-  console.log(dataAnswer);
+  
 
   // let dataImge = {
   //   id : characterRdx.choosenCharacter.id,
@@ -67,34 +60,64 @@ export const Stage0205 = () => {
     // .then(console.log("image updated successfully"))
     // .catch((error) => console.log(error))
 
-    let params = answer
-
-    bringAnswerById(params)
-    .then(result=> {
-      console.log('badge', result.data[0].badge_id)
-      let dataBadge = {
-        game_id: gameRdx.choosenGame.id,
-        badge_id: result.data[0].badge_id
+    if (answer == 4 || answer == 5){
+      let body = {
+        id: gameRdx.choosenGame.id,
+        madness: 1
       }
+      updateMadness(body, token)
+      .then(result=> {
+        console.log('madnes update successfully')
+        console.log(result)
+        // dispatch(addGame({choosenGame: result.data.data}))
+        let params = gameRdx.choosenGame.id
+        
+        bringLoadGamesById(params, token)
+          .then(
+            result => {
+              console.log(result.data.data[0])
+              const selectGame = result.data.data[0]
+              dispatch(addGame({choosenGame: selectGame}))
+              console.log(selectGame);
 
-      createBagdeGame(dataBadge)
-      .then(result=>  console.log('BadgeGame', result))
-      .catch((error) => console.log(error))
-    })
-    .catch((error) => console.log(error))
+              let params = answer
 
-    const stageId = answer
-    
-    updateGameStage(dataAnswer, token)
-    .then(
-        result => {
-          console.log(result);
-          
-          let dataSavedGame = {
-            game_id : result.data.data.game_id,
-            // Meter aquí el stage al que se va a ir con respuesta
-            stage_id : stageId
-          }
+              bringAnswerById(params)
+              .then(result=> {
+                console.log('badge', result.data[0].badge_id)
+                let dataBadge = {
+                  game_id: gameRdx.choosenGame.id,
+                  badge_id: result.data[0].badge_id
+                }
+
+                createBagdeGame(dataBadge)
+                .then(result=>  console.log('BadgeGame', result))
+                .catch((error) => console.log(error))
+              })
+              .catch((error) => console.log(error))
+
+              console.log(gameRdx);
+              const array = gameRdx.choosenGame.games_stages
+              console.log(gameRdx.choosenGame.games_stages[array.length - 1].id);
+              console.log(characterRdx.choosenCharacter);
+              let dataAnswer = {
+                id : gameRdx.choosenGame.games_stages[array.length - 1].id,
+                answer_id : answer
+              }
+              console.log(dataAnswer);
+
+              const stageId = answer
+              
+              updateGameStage(dataAnswer, token)
+              .then(
+                  result => {
+                    console.log(result);
+                    
+                    let dataSavedGame = {
+                      game_id : result.data.data.game_id,
+                      // Meter aquí el stage al que se va a ir con respuesta
+                      stage_id : stageId
+                    }
 
           createSavedGame(dataSavedGame, token)
             .then(
@@ -127,6 +150,12 @@ export const Stage0205 = () => {
         }
     )
     .catch((error) => console.log(error))
+
+            })
+          .catch((error) => console.log(error))
+      })
+      .catch((error) => console.log(error))
+    }
   }
 
   function MyVerticallyCenteredModal(props) {

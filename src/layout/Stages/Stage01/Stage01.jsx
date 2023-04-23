@@ -90,6 +90,7 @@ export const Stage01 = () => {
                     dispatch(addGame({choosenGame: selectGame}))
                     console.log(selectGame);
                   })
+                .catch((error) => console.log(error))
               }
             )
             .catch((error) => console.log(error))

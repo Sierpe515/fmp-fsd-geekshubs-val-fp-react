@@ -232,3 +232,14 @@ export const getBadgesByGameId = async (params) => {
 
   return await axios.get(`${root}/badges/ByGameId/${params}`);
 }
+
+export const updateMadness = async (body, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  return await axios.put(`${root}/games/updateMadness`, body, config);
+}

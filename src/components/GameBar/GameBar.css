@@ -9,8 +9,36 @@
     align-items: center;
 }
 
+.madnessBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .badgeImage {
     height: 8em;
+}
+
+.badgeImage:hover {
+    transform: scale(1.2);
+}
+
+.madnessDiv {
+    background-image: url('../../image/madness1.png');
+    background-size: cover;
+    background-position: center;
+    background-color: aquamarine;
+    width: 8em;
+    height: 5.5em;
+}
+
+.madnessDiv:hover {
+    background-image: url('../../image/madness2.png');
+}
+
+.madnessImg {
+    width: 8em;
+    background-color: aquamarine;
 }
 
 @media (min-width: 992px){

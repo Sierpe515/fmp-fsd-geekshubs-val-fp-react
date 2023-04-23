@@ -1,7 +1,10 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 export const Stage0301 = () => {
   return (
-    <div>Stage0301</div>
+    <Container fluid className="homeContainerMin d-flex flex-column justify-content-center">
+      Stage0301
+    </Container>
   )
 }
