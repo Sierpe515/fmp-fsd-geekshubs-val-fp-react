@@ -74,7 +74,7 @@ export const Stage02 = () => {
     .then((action => {
       console.log("image updated successfully");
       setTimeout(() => {
-        navigate('/stage02.5')
+        navigate('/stage0205')
       }, 500);
     }))
     .catch((error) => console.log(error))

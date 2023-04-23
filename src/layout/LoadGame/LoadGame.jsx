@@ -53,9 +53,9 @@ export const LoadGame = () => {
         const stageNavigate = {
             '1': "/stage01",
             '2': "/stage02",
-            '3': "/stage03.1",
-            '4': "/stage03.2",
-            '5': "/stage03.3",
+            '3': "/stage0301",
+            '4': "/stage0302",
+            '5': "/stage0303",
         }
 
         setTimeout(()=>{
