@@ -10,13 +10,15 @@ import characterSlice from '../layout/characterSlice';
 import gameSlice from '../layout/gameSlice';
 import userDetailSlice from '../layout/userDetailSlice';
 import gameStageSlice from '../layout/gameStageSlice';
+import badgeSlice from '../layout/badgeSlice';
 
 const reducers = combineReducers({
     user: userSlice,
     userDetail: userDetailSlice,
     game: gameSlice,
     gameStage: gameStageSlice,
-    character: characterSlice
+    character: characterSlice,
+    badge: badgeSlice
 })
 
 const persistConfig = {

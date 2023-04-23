@@ -1,18 +1,28 @@
-import React, { useEffect, useState } from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
-import { addGame, gameDetailData } from '../../gameSlice'
-import { userData } from '../../userSlice'
-import { bringAnswerById, bringCharactersImages, bringLoadGamesById, createBagdeGame, createSavedGame, updateCharacterImage, updateGameStage, updateMadness } from '../../../services/apiCalls'
-import { useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import { characterDetailData } from '../../characterSlice'
-import { addGameStage, gameStageData } from '../../gameStageSlice'
+import React, { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { addGame, gameDetailData } from "../../gameSlice";
+import { userData } from "../../userSlice";
+import {
+  bringAnswerById,
+  bringCharactersImages,
+  bringLoadGamesById,
+  createBagdeGame,
+  createSavedGame,
+  getBadgesByGameId,
+  updateCharacterImage,
+  updateGameStage,
+  updateMadness,
+} from "../../../services/apiCalls";
+import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { characterDetailData } from "../../characterSlice";
+import { addGameStage, gameStageData } from "../../gameStageSlice";
+import { addBadge } from "../../badgeSlice";
 
 export const Stage0205 = () => {
-
-  const gameRdx = useSelector(gameDetailData)
+  const gameRdx = useSelector(gameDetailData);
   const gameStageRedux = useSelector(gameStageData);
   const dataCredentialsRdx = useSelector(userData);
   const characterRdx = useSelector(characterDetailData);
@@ -23,7 +33,7 @@ export const Stage0205 = () => {
   const [characterImage, setCharacterImage] = useState([]);
   // const [imageId, setImageId] = useState("");
 
-  let token = dataCredentialsRdx.credentials.token
+  let token = dataCredentialsRdx.credentials.token;
 
   // useEffect(() => {
   //   if (characterImage.length === 0) {
@@ -41,14 +51,12 @@ export const Stage0205 = () => {
   const chooseAnswer = (resp) => {
     console.log(resp);
     setAnswer(resp);
-  }
+  };
 
   // const chooseImage = (resp) => {
   //   console.log(resp);
   //   setImageId(resp);
   // }
-
-  
 
   // let dataImge = {
   //   id : characterRdx.choosenCharacter.id,
@@ -60,103 +68,207 @@ export const Stage0205 = () => {
     // .then(console.log("image updated successfully"))
     // .catch((error) => console.log(error))
 
-    if (answer == 4 || answer == 5){
+    if (answer == 4 || answer == 5) {
       let body = {
         id: gameRdx.choosenGame.id,
-        madness: 1
-      }
+        madness: 1,
+      };
       updateMadness(body, token)
-      .then(result=> {
-        console.log('madnes update successfully')
-        console.log(result)
-        // dispatch(addGame({choosenGame: result.data.data}))
-        let params = gameRdx.choosenGame.id
-        
-        bringLoadGamesById(params, token)
-          .then(
-            result => {
-              console.log(result.data.data[0])
-              const selectGame = result.data.data[0]
-              dispatch(addGame({choosenGame: selectGame}))
+        .then((result) => {
+          console.log("madnes update successfully");
+          console.log(result);
+          // dispatch(addGame({choosenGame: result.data.data}))
+          let params = gameRdx.choosenGame.id;
+
+          bringLoadGamesById(params, token)
+            .then((result) => {
+              console.log(result.data.data[0]);
+              const selectGame = result.data.data[0];
+              dispatch(addGame({ choosenGame: selectGame }));
               console.log(selectGame);
 
-              let params = answer
+              let params = answer;
 
               bringAnswerById(params)
-              .then(result=> {
-                console.log('badge', result.data[0].badge_id)
-                let dataBadge = {
-                  game_id: gameRdx.choosenGame.id,
-                  badge_id: result.data[0].badge_id
-                }
+                .then((result) => {
+                  console.log("badge", result.data[0].badge_id);
+                  let dataBadge = {
+                    game_id: gameRdx.choosenGame.id,
+                    badge_id: result.data[0].badge_id,
+                  };
 
-                createBagdeGame(dataBadge)
-                .then(result=>  console.log('BadgeGame', result))
-                .catch((error) => console.log(error))
-              })
-              .catch((error) => console.log(error))
+                  createBagdeGame(dataBadge)
+                    .then((result) => console.log("BadgeGame", result))
+                    .catch((error) => console.log(error));
+                })
+                .catch((error) => console.log(error));
 
               console.log(gameRdx);
-              const array = gameRdx.choosenGame.games_stages
-              console.log(gameRdx.choosenGame.games_stages[array.length - 1].id);
+              const array = gameRdx.choosenGame.games_stages;
+              console.log(
+                gameRdx.choosenGame.games_stages[array.length - 1].id
+              );
               console.log(characterRdx.choosenCharacter);
+
               let dataAnswer = {
-                id : gameRdx.choosenGame.games_stages[array.length - 1].id,
-                answer_id : answer
-              }
+                id: gameRdx.choosenGame.games_stages[array.length - 1].id,
+                answer_id: answer,
+              };
               console.log(dataAnswer);
 
-              const stageId = answer
-              
+              const stageId = answer;
+
               updateGameStage(dataAnswer, token)
-              .then(
-                  result => {
-                    console.log(result);
-                    
-                    let dataSavedGame = {
-                      game_id : result.data.data.game_id,
-                      // Meter aquí el stage al que se va a ir con respuesta
-                      stage_id : stageId
-                    }
+                .then((result) => {
+                  console.log(result);
 
-          createSavedGame(dataSavedGame, token)
-            .then(
-              result => {
-                console.log(result)
-                let params = result.data.data.game_id
-                bringLoadGamesById(params, token)
-                .then(
-                  result => {
-                    console.log(result.data.data[0])
-                    const selectGame = result.data.data[0]
-                    dispatch(addGameStage({choosenGameStage: selectGame}))
-                    console.log(selectGame);
-                  })
-              }
-            )
-            .catch((error) => console.log(error))
+                  let params = gameRdx.choosenGame.id
 
-          const stageNavigate = {
-            '3': "/stage0301",
-            '4': "/stage0302",
-            '5': "/stage0303",
-          }
-          
-          setTimeout(() => {
-            // navigate("/stage02");
-            navigate(stageNavigate[stageId]);
-            console.log(stageNavigate[stageId]);
-          }, 500);
-        }
-    )
-    .catch((error) => console.log(error))
+                  getBadgesByGameId(params)
+                    .then((result) => {
+                      console.log("traer badges",result);
+                      const selectBadge = result?.data?.data
+                      dispatch(addBadge({ choosenBadge: selectBadge}))
+                      console.log(selectBadge);
+                      // setBadge(result?.data?.data);
+                      // console.log(result.data);
+                    })
+                    .catch((error) => console.log(error));
 
+                  let dataSavedGame = {
+                    game_id: result.data.data.game_id,
+                    // Meter aquí el stage al que se va a ir con respuesta
+                    stage_id: stageId,
+                  };
+
+                  createSavedGame(dataSavedGame, token)
+                    .then((result) => {
+                      console.log(result);
+                      let params = result.data.data.game_id;
+                      bringLoadGamesById(params, token).then((result) => {
+                        console.log(result.data.data[0]);
+                        const selectGame = result.data.data[0];
+                        dispatch(
+                          addGameStage({ choosenGameStage: selectGame })
+                        );
+                        console.log(selectGame);
+                      });
+                    })
+                    .catch((error) => console.log(error));
+
+                  const stageNavigate = {
+                    3: "/stage0301",
+                    4: "/stage0302",
+                    5: "/stage0303",
+                  };
+
+                  setTimeout(() => {
+                    // navigate("/stage02");
+                    navigate(stageNavigate[stageId]);
+                    console.log(stageNavigate[stageId]);
+                  }, 500);
+                })
+                .catch((error) => console.log(error));
             })
-          .catch((error) => console.log(error))
-      })
-      .catch((error) => console.log(error))
+            .catch((error) => console.log(error));
+        })
+        .catch((error) => console.log(error));
     }
-  }
+
+    let params = gameRdx.choosenGame.id;
+
+          bringLoadGamesById(params, token)
+            .then((result) => {
+              console.log(result.data.data[0]);
+              const selectGame = result.data.data[0];
+              dispatch(addGame({ choosenGame: selectGame }));
+              console.log(selectGame);
+
+              let params = answer;
+
+              bringAnswerById(params)
+                .then((result) => {
+                  console.log("badge", result.data[0].badge_id);
+                  let dataBadge = {
+                    game_id: gameRdx.choosenGame.id,
+                    badge_id: result.data[0].badge_id,
+                  };
+
+                  createBagdeGame(dataBadge)
+                    .then((result) => console.log("BadgeGame", result))
+                    .catch((error) => console.log(error));
+                })
+                .catch((error) => console.log(error));
+
+              console.log(gameRdx);
+              const array = gameRdx.choosenGame.games_stages;
+              console.log(
+                gameRdx.choosenGame.games_stages[array.length - 1].id
+              );
+              console.log(characterRdx.choosenCharacter);
+
+              let dataAnswer = {
+                id: gameRdx.choosenGame.games_stages[array.length - 1].id,
+                answer_id: answer,
+              };
+              console.log(dataAnswer);
+
+              const stageId = answer;
+
+              updateGameStage(dataAnswer, token)
+                .then((result) => {
+                  console.log(result);
+
+                  let params = gameRdx.choosenGame.id
+
+                  getBadgesByGameId(params)
+                    .then((result) => {
+                      console.log("traer badges",result);
+                      const selectBadge = result?.data?.data
+                      dispatch(addBadge({ choosenBadge: selectBadge}))
+                      console.log(selectBadge);
+                      // setBadge(result?.data?.data);
+                      // console.log(result.data);
+                    })
+                    .catch((error) => console.log(error));
+
+                  let dataSavedGame = {
+                    game_id: result.data.data.game_id,
+                    // Meter aquí el stage al que se va a ir con respuesta
+                    stage_id: stageId,
+                  };
+
+                  createSavedGame(dataSavedGame, token)
+                    .then((result) => {
+                      console.log(result);
+                      let params = result.data.data.game_id;
+                      bringLoadGamesById(params, token).then((result) => {
+                        console.log(result.data.data[0]);
+                        const selectGame = result.data.data[0];
+                        dispatch(
+                          addGameStage({ choosenGameStage: selectGame })
+                        );
+                        console.log(selectGame);
+                      });
+                    })
+                    .catch((error) => console.log(error));
+
+                  const stageNavigate = {
+                    3: "/stage0301",
+                    4: "/stage0302",
+                    5: "/stage0303",
+                  };
+
+                  setTimeout(() => {
+                    // navigate("/stage02");
+                    navigate(stageNavigate[stageId]);
+                    console.log(stageNavigate[stageId]);
+                  }, 500);
+                })
+                .catch((error) => console.log(error));
+            })
+            .catch((error) => console.log(error));
+  };
 
   function MyVerticallyCenteredModal(props) {
     return (
@@ -172,12 +284,16 @@ export const Stage0205 = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>
-            Are you sure?
-          </p>
+          <p>Are you sure?</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={()=> {saveAnswer()}}>Confirm</Button>
+          <Button
+            onClick={() => {
+              saveAnswer();
+            }}
+          >
+            Confirm
+          </Button>
         </Modal.Footer>
       </Modal>
     );
@@ -186,7 +302,11 @@ export const Stage0205 = () => {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
-    <Container fluid className="homeContainerMin d-flex flex-column justify-content-center">Stage02
+    <Container
+      fluid
+      className="homeContainerMin d-flex flex-column justify-content-center"
+    >
+      Stage02
       {/* <Row>
           <Col><h2>Select your skin</h2></Col>
           <Col xxl={12} xl={12} md={12} sm={12} className="welcomeBox pjsContainer d-flex align-items-center text-center">
@@ -208,16 +328,34 @@ export const Stage0205 = () => {
           </Col>
       </Row> */}
       <Row>
-        <div className='d-flex'>
-        <MyVerticallyCenteredModal
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-        />
-          <div onClick={()=> {chooseAnswer("3"), setModalShow(true)}}>RESPUESTA A</div>
-          <div onClick={()=> {chooseAnswer("4"), setModalShow(true)}}>RESPUESTA B</div>
-          <div onClick={()=> {chooseAnswer("5"), setModalShow(true)}}>RESPUESTA C</div>
+        <div className="d-flex">
+          <MyVerticallyCenteredModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
+          <div
+            onClick={() => {
+              chooseAnswer("3"), setModalShow(true);
+            }}
+          >
+            RESPUESTA A
+          </div>
+          <div
+            onClick={() => {
+              chooseAnswer("4"), setModalShow(true);
+            }}
+          >
+            RESPUESTA B
+          </div>
+          <div
+            onClick={() => {
+              chooseAnswer("5"), setModalShow(true);
+            }}
+          >
+            RESPUESTA C
+          </div>
         </div>
       </Row>
     </Container>
-  )
-}
+  );
+};

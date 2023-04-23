@@ -7,6 +7,7 @@ import { gameStageData } from '../../layout/gameStageSlice';
 import { userData } from '../../layout/userSlice';
 import { characterDetailData } from '../../layout/characterSlice';
 import madness1 from '../../image/madness1.png'
+import { badgeData } from '../../layout/badgeSlice';
 
 export const GameBar = () => {
 
@@ -14,13 +15,17 @@ export const GameBar = () => {
   const gameStageRedux = useSelector(gameStageData);
   const dataCredentialsRdx = useSelector(userData);
   const characterRdx = useSelector(characterDetailData);
+  const badgeRdx = useSelector(badgeData)
 
-  const [badge, setBadge] = useState([]);
+  // const [badge, setBadge] = useState([]);
 
-  console.log(badge)
   console.log(gameRdx.choosenGame.madness);
+  console.log(badgeRdx.choosenBadge);
+  
+  let badge = badgeRdx.choosenBadge
+  console.log(badge)
 
-  let params = gameRdx.choosenGame.id
+  // let params = gameRdx.choosenGame.id
   // useEffect(() => {
   //   if (badge.length === 0) {
   //     console.log(gameRdx.choosenGame.id);
