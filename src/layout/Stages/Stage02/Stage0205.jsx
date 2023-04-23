@@ -20,6 +20,7 @@ import Modal from "react-bootstrap/Modal";
 import { characterDetailData } from "../../characterSlice";
 import { addGameStage, gameStageData } from "../../gameStageSlice";
 import { addBadge } from "../../badgeSlice";
+import { addState } from "../../inGameSlice";
 
 export const Stage0205 = () => {
   const gameRdx = useSelector(gameDetailData);
@@ -28,6 +29,8 @@ export const Stage0205 = () => {
   const characterRdx = useSelector(characterDetailData);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  dispatch(addState({ choosenState: true}))
 
   const [answer, setAnswer] = useState("");
   const [characterImage, setCharacterImage] = useState([]);
@@ -245,9 +248,7 @@ export const Stage0205 = () => {
                       bringLoadGamesById(params, token).then((result) => {
                         console.log(result.data.data[0]);
                         const selectGame = result.data.data[0];
-                        dispatch(
-                          addGameStage({ choosenGameStage: selectGame })
-                        );
+                        dispatch(addGameStage({ choosenGameStage: selectGame }));
                         console.log(selectGame);
                       });
                     })

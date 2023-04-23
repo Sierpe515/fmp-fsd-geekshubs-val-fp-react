@@ -9,6 +9,7 @@ import { bringLoadGamesById, bringSelectableGames, createNewGame, createSavedGam
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { addGame } from '../gameSlice'
+import { addState } from '../inGameSlice'
 
 
 export const SelectGame = () => {
@@ -21,6 +22,8 @@ export const SelectGame = () => {
 
     const [selectedGame, setSelectedGame] = useState("");
     const [difficulty, setDifficulty] = useState("");
+
+    dispatch(addState({ choosenState: false}))
 
     let token = dataCredentialsRdx.credentials.token
 

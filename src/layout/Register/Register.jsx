@@ -10,12 +10,17 @@ import "./Register.css";
 import { ButtonSubmit } from "../../components/ButtonSubmit/ButtonSubmit";
 import { useNavigate } from "react-router-dom";
 import { RegisterMe } from "../../services/apiCalls";
+import { useDispatch } from "react-redux";
+import { addState } from "../inGameSlice";
 
 
 // HOOKS
 
 export const Register = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  dispatch(addState({ choosenState: false}))
   
   const [dataUser, setDataUser] = useState({
     userName: "",

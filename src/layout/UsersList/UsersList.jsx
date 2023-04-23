@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { addChoosen } from '../userDetailSlice';
+import { addState } from '../inGameSlice';
 // import './UserList.css'
 
 export const UsersList = () => {
@@ -17,6 +18,8 @@ export const UsersList = () => {
   const ReduxCredentials = useSelector(userData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  dispatch(addState({ choosenState: false}))
 
   const isAdmin = ReduxCredentials.credentials.userRole?.includes("Admin")
 

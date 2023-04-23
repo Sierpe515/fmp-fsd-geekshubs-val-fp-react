@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 // import { ButtonNav } from '../../components/ButtonNav/ButtonNav';
 import { getProfile, updateEmailProfile, updateNameProfile, updateSurnameProfile, updateUserNameProfile } from '../../services/apiCalls';
 import { userData } from "../userSlice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import dayjs from 'dayjs';
 import updIcon from '../../image/update.png'
 import cancelUpdIcon from '../../image/cancel update.png'
@@ -14,11 +14,15 @@ import './Profile.css'
 import { useNavigate } from "react-router-dom";
 import { InputBox } from "../../components/InputBox/InputBox";
 import { validate } from "../../helpers/useful";
+import { addState } from "../inGameSlice";
 
 export const Profile = () => {
 
     const ReduxCredentials = useSelector(userData);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    dispatch(addState({ choosenState: false}))
     
     const [hide, setHide] = useState(false);
     const [hide1, setHide1] = useState(false);

@@ -10,6 +10,7 @@ import { bringUserCharacters } from '../../services/apiCalls';
 import Spinner from 'react-bootstrap/Spinner';
 import { addCharacter } from '../characterSlice';
 import { useNavigate } from 'react-router-dom';
+import { addState } from '../inGameSlice';
 
 export const Home = () => {
 
@@ -17,6 +18,8 @@ export const Home = () => {
   const dataCredentialsRdx = useSelector(userData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  dispatch(addState({ choosenState: false}))
 
   useEffect(() => {
     if (dataCredentialsRdx.credentials.token) {

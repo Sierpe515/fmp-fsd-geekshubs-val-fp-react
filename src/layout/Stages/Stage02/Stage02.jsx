@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { characterDetailData } from '../../characterSlice'
 import { gameStageData } from '../../gameStageSlice'
+import { addState } from '../../inGameSlice'
 
 export const Stage02 = () => {
 
@@ -17,11 +18,14 @@ export const Stage02 = () => {
   const dataCredentialsRdx = useSelector(userData);
   const characterRdx = useSelector(characterDetailData);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   // const dispatch = useDispatch();
 
   // const [answer, setAnswer] = useState("");
   const [characterImage, setCharacterImage] = useState([]);
   const [imageId, setImageId] = useState("");
+
+  dispatch(addState({ choosenState: true}))
 
   let token = dataCredentialsRdx.credentials.token
 

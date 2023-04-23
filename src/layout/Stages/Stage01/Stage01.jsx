@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { characterDetailData } from '../../characterSlice'
 import { addGameStage } from '../../gameStageSlice'
+import { addState } from '../../inGameSlice'
 
 export const Stage01 = () => {
 
@@ -21,6 +22,8 @@ export const Stage01 = () => {
   const [answer, setAnswer] = useState("");
 
   let token = dataCredentialsRdx.credentials.token
+
+  dispatch(addState({ choosenState: true}))
 
   
   console.log(gameRedux);

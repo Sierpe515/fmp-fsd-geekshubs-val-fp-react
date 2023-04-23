@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { bringLoadGames } from '../../services/apiCalls'
 import './LoadGame.css'
 import { addGame } from '../gameSlice'
+import { addState } from '../inGameSlice'
 
 
 export const LoadGame = () => {
@@ -18,6 +19,8 @@ export const LoadGame = () => {
     const dispatch = useDispatch();
 
     const params = characterRedux.choosenCharacter.id
+
+    dispatch(addState({ choosenState: false}))
 
     // useEffect(() => {
     //     if (dataCredentialsRdx.credentials.token) {

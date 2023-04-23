@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { validate } from "../../helpers/useful";
 import { logMe } from "../../services/apiCalls";
 import { TurnPhone } from "../../components/TurnPhone/TurnPhone";
+import { addState } from "../inGameSlice";
 // import { decodeToken } from "react-jwt";
 // import jwt_decode from "jwt-decode";
 
@@ -19,6 +20,8 @@ export const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const credentialsRdx = useSelector(userData);
+
+  dispatch(addState({ choosenState: false}))
 
   const [credentials, setCredentials] = useState({
     email: "",

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import './GameBar.css'
-import { getBadgesByGameId } from '../../services/apiCalls';
+// import { getBadgesByGameId } from '../../services/apiCalls';
 import { useSelector } from 'react-redux';
 import { gameDetailData } from '../../layout/gameSlice';
 import { gameStageData } from '../../layout/gameStageSlice';
 import { userData } from '../../layout/userSlice';
 import { characterDetailData } from '../../layout/characterSlice';
-import madness1 from '../../image/madness1.png'
+// import madness1 from '../../image/madness1.png'
 import { badgeData } from '../../layout/badgeSlice';
+import { inGameData } from '../../layout/inGameSlice';
 
 export const GameBar = () => {
 
@@ -15,15 +16,19 @@ export const GameBar = () => {
   const gameStageRedux = useSelector(gameStageData);
   const dataCredentialsRdx = useSelector(userData);
   const characterRdx = useSelector(characterDetailData);
-  const badgeRdx = useSelector(badgeData)
+  const badgeRdx = useSelector(badgeData);
+  const inGameRdx = useSelector(inGameData)
 
   // const [badge, setBadge] = useState([]);
 
+  console.log(inGameRdx);
   console.log(gameRdx.choosenGame.madness);
   console.log(badgeRdx.choosenBadge);
   
   let badge = badgeRdx.choosenBadge
   console.log(badge)
+
+  const inGameState = inGameRdx.choosenState
 
   // let params = gameRdx.choosenGame.id
   // useEffect(() => {
@@ -41,7 +46,9 @@ export const GameBar = () => {
 
   return (
     <div className='gameBar'>
-      <div className="badgeBox">
+      {inGameState == true ? (
+        <>
+        <div className="badgeBox">
         {badge.length > 0 ? (
           <>
             <h5>Badges</h5>
@@ -67,6 +74,9 @@ export const GameBar = () => {
           </div> : ""}
         {gameRdx.choosenGame.madness == 2 ? <><div className='madnessDiv'></div><div className='madnessDiv'></div></> : ""}
       </div>
-    </div>
+      </>
+      ) : ("hola")}
+      </div>
+      
   )
 }

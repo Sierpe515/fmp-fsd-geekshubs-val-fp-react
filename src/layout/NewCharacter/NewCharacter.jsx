@@ -9,12 +9,15 @@ import { userData } from '../userSlice';
 import { TurnPhone } from '../../components/TurnPhone/TurnPhone';
 import { validate } from "../../helpers/useful";
 import { createCharacter } from '../../services/apiCalls';
+import { addState } from '../inGameSlice';
 
 export const NewCharacter = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const dataCredentialsRdx = useSelector(userData);
+
+    dispatch(addState({ choosenState: false}))
 
     let token = dataCredentialsRdx.credentials.token
 

@@ -19,6 +19,7 @@ import Modal from 'react-bootstrap/Modal';
 import { userDetailData } from "../userDetailSlice";
 import { addRoleByAdmin, bringCharacterGames, deleteSavedGameByAdmin, deleteUserByAdmin } from "../../services/apiCalls";
 import { addCharacter } from "../characterSlice";
+import { addState } from "../inGameSlice";
 
  
 export const UserDetail = () => {
@@ -27,6 +28,8 @@ export const UserDetail = () => {
     const credentialsRdx = useSelector(userData);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    dispatch(addState({ choosenState: false}))
 
     console.log(userDetailRedux);
 
