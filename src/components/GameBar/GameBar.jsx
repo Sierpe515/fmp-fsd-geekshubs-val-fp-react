@@ -11,6 +11,7 @@ import { badgeData } from '../../layout/badgeSlice';
 import { inGameData } from '../../layout/inGameSlice';
 import framework from '../../image/giphy.gif'
 import { useNavigate } from 'react-router-dom';
+import { updateFinished } from '../../services/apiCalls';
 
 export const GameBar = () => {
 
@@ -22,10 +23,12 @@ export const GameBar = () => {
   const inGameRdx = useSelector(inGameData)
   const navigate = useNavigate();
 
+  let token = dataCredentialsRdx.credentials.token;
+
   // const [badge, setBadge] = useState([]);
 
   console.log(inGameRdx);
-  console.log(gameRdx.choosenGame.madness);
+  console.log(gameRdx.choosenGame);
   console.log(badgeRdx.choosenBadge);
   
   let badge = badgeRdx.choosenBadge
@@ -47,9 +50,16 @@ export const GameBar = () => {
   //   }
   // }, [badge]);
 
+
   const gameOver = () => {
     console.log("Game Over");
-    navigate("/")
+    let dataFinished = { 
+      id: gameRdx.choosenGame.id,
+      finished: true }
+    updateFinished(dataFinished, token)
+    .then(console.log("Game Finished"))
+    .catch((error) => console.log(error));
+    navigate("/gameOver")
   }
 
   return (

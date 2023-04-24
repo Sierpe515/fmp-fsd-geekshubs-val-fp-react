@@ -243,3 +243,14 @@ export const updateMadness = async (body, token) => {
 
   return await axios.put(`${root}/games/updateMadness`, body, config);
 }
+
+export const updateFinished = async (dataFinished, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+    return await axios.put(`${root}/games/updateFinished`, dataFinished, config);
+}
