@@ -9,6 +9,8 @@ import { characterDetailData } from '../../layout/characterSlice';
 // import madness1 from '../../image/madness1.png'
 import { badgeData } from '../../layout/badgeSlice';
 import { inGameData } from '../../layout/inGameSlice';
+import framework from '../../image/giphy.gif'
+import { useNavigate } from 'react-router-dom';
 
 export const GameBar = () => {
 
@@ -18,6 +20,7 @@ export const GameBar = () => {
   const characterRdx = useSelector(characterDetailData);
   const badgeRdx = useSelector(badgeData);
   const inGameRdx = useSelector(inGameData)
+  const navigate = useNavigate();
 
   // const [badge, setBadge] = useState([]);
 
@@ -44,8 +47,14 @@ export const GameBar = () => {
   //   }
   // }, [badge]);
 
+  const gameOver = () => {
+    console.log("Game Over");
+    navigate("/")
+  }
+
   return (
     <div className='gameBar'>
+      {/* <img className='framework' src={framework} alt="" /> */}
       {inGameState == true ? (
         <>
         <div className="badgeBox">
@@ -73,6 +82,7 @@ export const GameBar = () => {
           {/* <img className='madnessImg' src={madness1} alt="" /> */}
           </div> : ""}
         {gameRdx.choosenGame.madness == 2 ? <><div className='madnessDiv'></div><div className='madnessDiv'></div></> : ""}
+        {gameRdx.choosenGame.madness == 3 ? gameOver() : ""}
       </div>
       </>
       ) : ("hola")}
