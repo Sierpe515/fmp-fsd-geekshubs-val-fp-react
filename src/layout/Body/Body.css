@@ -1,11 +1,23 @@
 .homeContainerMin {
-    min-height: 94vh;
-    width: 90vw;
+    min-height: 90vh;
+    width: 100vw;
     background-color: beige;
 }
 
 .portrait {
     display: none;
+}
+
+@media (min-height: 576px){
+    .homeContainerMin{
+        height: 93vh;
+    }
+}
+
+@media (min-height: 700px){
+    .homeContainerMin{
+        height: 94vh;
+    }
 }
 
 @media(max-width: 768px) and (orientation: portrait){

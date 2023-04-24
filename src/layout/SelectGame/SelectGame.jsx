@@ -15,6 +15,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { addGame } from "../gameSlice";
 import { addState } from "../inGameSlice";
+import { addBadge } from "../badgeSlice";
 
 export const SelectGame = () => {
   const [selectGames, setSelectGames] = useState([]);
@@ -153,10 +154,10 @@ export const SelectGame = () => {
                         key={sGames.id}
                         // onClick={() => selected(sGames)} key={sGames.id}
                       >
-                        <p>{sGames.id}</p>
-                        <p>
+                        <div>{sGames.id}</div>
+                        <div>
                           Game:<strong> {sGames.name} </strong>
-                        </p>
+                        </div>
                         {/* <p>Saved at:<strong> {load.updated_at} </strong></p>  */}
                       </div>
                       <MyVerticallyCenteredModal

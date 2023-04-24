@@ -1,6 +1,8 @@
 .gameBar {
-    width: 15vw;
-    background-color: aqua;
+    min-height: 90vh;
+    width: 10vw;
+    background-color: rgba(0, 255, 255, 0.418);
+    position: absolute;
 }
 
 /* .framework {
@@ -46,6 +48,18 @@
 .madnessImg {
     width: 8em;
     background-color: aquamarine;
+}
+
+@media (min-height: 576px){
+    .gameBar{
+        height: 93vh;
+    }
+}
+
+@media (min-height: 700px){
+    .gameBar{
+        height: 94vh;
+    }
 }
 
 @media (min-width: 992px){

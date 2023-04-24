@@ -11,6 +11,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { addCharacter } from '../characterSlice';
 import { useNavigate } from 'react-router-dom';
 import { addState } from '../inGameSlice';
+import  logo3 from '../../image/logo3.png'
 
 export const Home = () => {
 
@@ -58,23 +59,24 @@ export const Home = () => {
   }
 
   return (
-    <Container fluid className="homeContainerMin d-flex flex-column justify-content-center align-items-center p-0">
+    <Container fluid className="homeContainerMin homeBg d-flex flex-column justify-content-around align-items-center p-0">
         <TurnPhone/>
-        <Row className="title d-flex justify-content-center">
-            <Col xxl={12} xl={12} sm={12} className="my-3">
-                <div className='home1Container text-center'><h1>Title</h1></div>
+        <Row className="title d-flex justify-content-center align-items-center">
+            <Col xxl={12} xl={12} sm={12} className="my-3 titleBox">
+                {/* <div className='home1Container text-center titleText'>Oniria</div> */}
+                <img className='logo' src={logo3} alt="" />
             </Col>
         </Row>
       {dataCredentialsRdx.credentials.token ? (
         <>
         <Row>
           <Col xxl={12} xl={12} sm={12} className='text-center'>
-              <h2> Welcome to the dream, {dataCredentialsRdx.credentials.userName}! </h2>
+              <div className='welcomeText'> Welcome to the dream, {dataCredentialsRdx.credentials.userName}! </div>
+              <div className='selectPjText'>Select Character</div>
           </Col>
         </Row>
         <Row className="pjsContainer d-flex justify-content-center align-items-center text-center">
           <Col xxl={12} xl={12} md={12} sm={12} className="welcomeBox">
-            <h2>Select Character</h2>
               {characters.length > 0 ? (
                   <>
                   <div className='scrollBox'>
@@ -87,10 +89,10 @@ export const Home = () => {
                       );
                     })}
                   </div>
-                  <div onClick={()=> goNewCharacter()}><h4>New Character</h4></div>
+                  {/* <div onClick={()=> goNewCharacter()}><h4>New Character</h4></div> */}
                   </>
                 ) : (
-                  <div onClick={()=> goNewCharacter()}><h4>New Character</h4></div>
+                  <div><h4>No Characters</h4></div>
                 )}
           </Col>
         </Row>
@@ -101,8 +103,8 @@ export const Home = () => {
         </Row>
       )}
         
-        <Row className="appointmentBtn d-flex justify-content-center text-center">
-          <div><h1>Other</h1></div>
+        <Row className="appointmentBtn d-flex flex-column justify-content-center text-center">
+          <div className='homeBtn' onClick={()=> goNewCharacter()}>New Character</div>
         </Row>
     </Container>
   )

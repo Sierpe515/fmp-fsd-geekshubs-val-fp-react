@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 
 export const Opening = () => {
@@ -13,8 +13,10 @@ export const Opening = () => {
       }
 
     return (
-        <Container fluid className="homeContainerMin d-flex flex-column justify-content-between">
+        <Container fluid className="homeContainerMin d-flex flex-column justify-content-center align-items-center">
+          <Row className='d-flex align-items-center justify-content-center'>
             <div onClick={()=> goStage01()}>Start Game</div>
+          </Row>
         </Container>
     )
 }

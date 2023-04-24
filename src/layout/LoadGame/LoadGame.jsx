@@ -96,8 +96,8 @@ export const LoadGame = () => {
                             <div className="loadBox text-center" key={load.id}
                             onClick={() => selectedSavedGame(load)} 
                             >
-                            <p>Game:<strong> {load.select_games.name} </strong></p> 
-                            <p>Saved at:<strong> {load.updated_at} </strong></p> 
+                            <div>Game:<strong> {load.select_games.name} </strong></div> 
+                            <div>Saved at:<strong> {load.updated_at} </strong></div> 
                             </div>
                         );
                         })}

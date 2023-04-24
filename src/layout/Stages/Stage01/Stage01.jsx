@@ -133,7 +133,7 @@ export const Stage01 = () => {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
-    <Container fluid className="homeContainerMin d-flex flex-column justify-content-center">Stage01
+    <Container fluid className="homeContainerMin d-flex flex-column justify-content-center align-items-center">Stage01
       <Row>
         <div className='d-flex'>
         <MyVerticallyCenteredModal

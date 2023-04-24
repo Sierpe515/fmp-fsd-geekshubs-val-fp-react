@@ -10,6 +10,7 @@ import './NavBar.css'
 import { useDispatch, useSelector } from "react-redux";
 import { userData, clearRedux } from '../../layout/userSlice';
 import { useNavigate } from "react-router-dom";
+import logo2 from "../../image/logo2.png"
 
 export const NavBar = () => {
 
@@ -27,17 +28,19 @@ export const NavBar = () => {
 
   return (
     <Navbar className='navBarDesign' expand="lg">
-      <Container fluid>
-        <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
+      <Container fluid className='navBarBox'>
+        <Navbar.Brand className='nBScroll' href="#">
+          <img className='logo2' src={logo2} alt="" />
+          Oniria</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" className='nBScroll' />
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link as={Link} to='/'>Home</Nav.Link>
-            <Nav.Link href="#action2">Link</Nav.Link>
+            <Nav.Link className='navWhite' as={Link} to='/'>Home</Nav.Link>
+            {/* <Nav.Link href="#action2">Link</Nav.Link>
             <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
@@ -47,11 +50,11 @@ export const NavBar = () => {
               <NavDropdown.Item href="#action5">
                 Something else here
               </NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
             {dataCredentialsRdx.credentials.token ? (
               dataCredentialsRdx.credentials.userRole?.includes('Admin') ? (
                 <>
-                <NavDropdown title="Admin Area" id="navbarScrollingDropdown2">
+                <NavDropdown className='navWhite' title="Admin Area" id="navbarScrollingDropdown2">
                   <NavDropdown.Item eventKey="7"><Link as={Link} to='/usersList'>
                     Users List</Link>
                   </NavDropdown.Item>
@@ -78,8 +81,8 @@ export const NavBar = () => {
                 
               ) : (
                 <>
-              <Nav.Link as={Link} to='/register'>Register</Nav.Link>
-              <Nav.Link as={Link} to='/login'>Login</Nav.Link>
+              <Nav.Link className='navWhite' as={Link} to='/register'>Register</Nav.Link>
+              <Nav.Link className='navWhite' as={Link} to='/login'>Login</Nav.Link>
               </>
               )}
           </Nav>

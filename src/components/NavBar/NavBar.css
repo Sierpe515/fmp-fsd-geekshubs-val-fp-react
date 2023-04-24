@@ -1,3 +1,78 @@
 .navBarDesign {
-    background-color: aqua;
+    background: linear-gradient(rgb(15, 15, 15),rgb(46, 46, 46), rgb(15, 15, 15));
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    padding: 0 !important;
+    /* color: white !important; */
+    /* z-index: -5; */
 }
+
+.navBarBox {
+    /* background-color: aqua; */
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+.nBScroll {
+    padding: 0 !important;
+    color: white;
+    font-family: 'never';
+    font-size: 1.5rem;
+}
+
+.navWhite {
+    color: white;
+}
+
+/* .navbar-toggler-icon {
+} */
+
+/* #dropdown-menu-align-end {
+    color: white !important;
+
+} */
+
+.logo2 {
+    height: 11vh;
+    top: -10px;
+    margin-right: 0.25em;
+}
+
+@media (min-height: 500px){
+    .logo2{
+        height: 7vh;
+    }
+}
+
+@media (min-height: 576px){
+    .navBarDesign{
+        height: 7vh;
+    }
+
+    .navBarBox{
+        height: 7vh;
+    }
+}
+
+@media (min-height: 700px){
+    .navBarDesign{
+        height: 6vh;
+    }
+
+    .navBarBox{
+        height: 6vh;
+    }
+
+    .logo2{
+        height: 5vh;
+    }
+}
+
+@font-face {
+    font-family: 'never';
+    src: url(../../fonts/Neverwinter.otf) format('truetype');
+    font-style: normal;
+    font-weight: bolder;
+  }

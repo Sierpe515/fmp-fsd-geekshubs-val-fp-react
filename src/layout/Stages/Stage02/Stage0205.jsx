@@ -305,7 +305,7 @@ export const Stage0205 = () => {
   return (
     <Container
       fluid
-      className="homeContainerMin d-flex flex-column justify-content-center"
+      className="homeContainerMin d-flex flex-column justify-content-center align-items-center"
     >
       Stage02
       {/* <Row>

@@ -10,7 +10,7 @@ export const GameOver = () => {
   dispatch(addState({ choosenState: false}))
 
   return (
-    <Container fluid className="homeContainerMin d-flex flex-column justify-content-center">
+    <Container fluid className="homeContainerMin d-flex flex-column justify-content-center align-items-center">
       Game Over
     </Container>
   )
