@@ -1,0 +1,30 @@
+
+.newPjContainer {
+    background-color: rgba(41, 41, 41, 0.63);
+    border: 2px solid darkgoldenrod;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+.genderBtn {
+    background-color: rgb(61, 61, 61);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: rgb(185, 185, 185);
+    padding: 0.25em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    cursor: pointer;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.genderBtn:hover {
+    background-color: gray;
+}
+
+.newPjBtn {
+    width: 14em;
+    height: 4em;
+    margin-bottom: 0;
+}

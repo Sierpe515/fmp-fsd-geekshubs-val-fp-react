@@ -16,6 +16,7 @@ import Modal from "react-bootstrap/Modal";
 import { addGame } from "../gameSlice";
 import { addState } from "../inGameSlice";
 import { addBadge } from "../badgeSlice";
+import './SelectGame.css'
 
 export const SelectGame = () => {
   const [selectGames, setSelectGames] = useState([]);
@@ -136,47 +137,51 @@ export const SelectGame = () => {
   return (
     <Container
       fluid
-      className="homeContainerMin d-flex flex-column justify-content-center align-items-center p-0"
+      className="homeContainerMin homeBg d-flex flex-column justify-content-center align-items-center p-0"
     >
       <Row>
         <Col>
-          {selectGames.length > 0 ? (
-            <>
-              <div className="loadGamesBox">
-                {selectGames.map((sGames) => {
-                  return (
-                    <>
-                      <div
-                        className="loadBox text-center"
-                        onClick={() => {
-                          chooseGame(sGames.id), setModalShow(true);
-                        }}
-                        key={sGames.id}
-                        // onClick={() => selected(sGames)} key={sGames.id}
-                      >
-                        <div>{sGames.id}</div>
-                        <div>
-                          Game:<strong> {sGames.name} </strong>
+          <div className='newPjContainer selectContainer d-flex flex-column align-items-center'>
+            {selectGames.length > 0 ? (
+              <>
+                  <div className='text-center actionTitle'>Select Game</div>
+                <div className="selectBox">
+                  {selectGames.map((sGames) => {
+                    return (
+                      <>
+                        <div
+                          className={sGames.isActive ? "gameBox gameBox1" : "gameBox noGame"}
+                          onClick={sGames.isActive ? (
+                            () => {
+                            chooseGame(sGames.id), setModalShow(true);
+                            }
+                          ) : ("")}
+                          // onClick={() => {
+                          //   chooseGame(sGames.id), setModalShow(true);
+                          // }}
+                          key={sGames.id}
+                          // onClick={() => selected(sGames)} key={sGames.id}
+                        >
+                          {/* <div>{sGames.id}</div> */}
+                          <div>
+                            <strong> {sGames.name} </strong>
+                          </div>
+                          {/* <p>Saved at:<strong> {load.updated_at} </strong></p>  */}
                         </div>
-                        {/* <p>Saved at:<strong> {load.updated_at} </strong></p>  */}
-                      </div>
-                      <MyVerticallyCenteredModal
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                      />
-                    </>
-                  );
-                })}
-              </div>
-              <div className="newGameBtn">
-                <h1>New Game</h1>
-              </div>
-            </>
-          ) : (
-            <div className="newGameBtn">
-              <h1>New Game</h1>
-            </div>
-          )}
+                        <MyVerticallyCenteredModal
+                          show={modalShow}
+                          onHide={() => setModalShow(false)}
+                        />
+                      </>
+                    );
+                  })}
+                </div>
+                {/* <div className="logButton">New Game</div> */}
+              </>
+            ) : (
+              <div className="actionTitle">No games available</div>
+            )}
+          </div>
         </Col>
       </Row>
     </Container>

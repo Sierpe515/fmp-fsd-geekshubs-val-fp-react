@@ -191,3 +191,10 @@
     font-style: normal;
     font-weight: bolder;
 }
+
+@font-face {
+    font-family: 'seagram';
+    src: url(../../fonts/Seagram.ttf) format('truetype');
+    font-style: normal;
+    font-weight: bolder;
+}

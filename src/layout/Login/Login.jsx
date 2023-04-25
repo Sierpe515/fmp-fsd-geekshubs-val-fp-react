@@ -14,6 +14,8 @@ import { TurnPhone } from "../../components/TurnPhone/TurnPhone";
 import { addState } from "../inGameSlice";
 // import { decodeToken } from "react-jwt";
 // import jwt_decode from "jwt-decode";
+import logImg from "../../image/logImg.png";
+import wellImg from "../../image/wellImg.png";
 
 export const Login = () => {
 
@@ -82,7 +84,7 @@ export const Login = () => {
             
             dispatch(login({credentials: dateBackend}));
             
-              setWelcome(`Welcome again ${dateBackend.userName}`);
+              setWelcome(`Welcome again, ${dateBackend.userName}`);
               setTimeout(() => {
                 navigate("/");
               }, 3000);
@@ -97,14 +99,15 @@ export const Login = () => {
   return (
     <Container fluid className="homeContainerMin homeBg d-flex flex-column justify-content-center">
       <TurnPhone/>
-      <Row className="d-flex justify-content-center">
+      <Row className="d-flex flex-column align-items-center justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
           <div className="logRegContainer">
-            <h5 className="text-center">Login</h5>
+            <h5 className="text-center actionTitle">Login</h5>
             <Form className="formContainer">
               {welcome !== "" ? (
                 <div className="welcomeBox1 d-flex flex-column align-items-center justify-content-center text-center">
-                  <h3>{welcome}</h3>
+                  <div className="welcomeText">{welcome}</div>
+                  <div className="d-flex justify-content-center"><img className="regImg" src={wellImg} alt="" /></div>
                 </div>
               ) : (
                 <>
@@ -141,12 +144,16 @@ export const Login = () => {
               </Form.Group>
                 <Form.Text className="errorMessage">{credentialsError.passwordError}</Form.Text>
               <Form.Text className="errorMessage">{btnMessage}</Form.Text>
-              <div className="logButton" name="button" onClick={()=> logIn()}>Submit</div>
+              <div className="logButton" name="button" onClick={()=> logIn()}>Login</div>
+              <div className="d-flex justify-content-center"><img className="regImg" src={logImg} alt="" /></div>
               </>
               )}
             </Form>
           </div>
         </Col>
+        {/* <Col>
+          
+        </Col> */}
       </Row>
     </Container>
   );

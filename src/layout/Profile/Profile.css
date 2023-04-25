@@ -9,26 +9,48 @@
 
 .pType {
     width: 5.5em;
+    color: goldenrod;
+    font-family: 'gothical';
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+
 }
 
 .pValue {
     width: 13em;
+    color: rgb(197, 197, 197);
+    /* font-family: 'seagram'; */
+}
+
+.block {
+    display: block;
 }
 
 /* .inputHeight {
     height: 2em;
 } */
 
-.inputBasicDesign {
-    height: 1.5em;
-    background-color: rgba(2, 2, 2, 0.479);
-    border: 1.5px solid grey;
-    border-radius: 0px;
-    color: grey;
+@media (min-height: 600px){
+    .pType {
+        width: 6em;
+        font-size: x-large;
+    }
+
+    .pValue {
+        font-size: x-large;
+    }
+
+    .updIcon {
+        height: 3em;
+    }
 }
 
-.inputErrorDesign {
-    border: 0.2em solid darkred;
-    background-color: rgb(255, 3, 3);
-    color: white;
+@media (min-height: 800px){
+    .pType {
+        width: 6.5em;
+    }
+
+    .pValue {
+        width: 15em;
+    }
 }

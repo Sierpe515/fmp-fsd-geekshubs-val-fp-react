@@ -9,6 +9,8 @@ import './LoadGame.css'
 import { addGame, gameDetailData } from '../gameSlice'
 import { addState } from '../inGameSlice'
 import { addBadge } from '../badgeSlice'
+// import lgImg1 from '../../image/lgImg1.png'
+// import lgImg2 from '../../image/lgImg2.png'
 
 
 export const LoadGame = () => {
@@ -84,29 +86,36 @@ export const LoadGame = () => {
     }
 
     return (
-        <Container fluid className="homeContainerMin d-flex flex-column justify-content-center align-items-center p-0">
+        <Container fluid className="homeContainerMin homeBg d-flex flex-column justify-content-center align-items-center p-0">
             <Row>
-                <Col>
-                    {loadGames.length > 0 ? (
-                    <>
-                    <div className='loadGamesBox'>
-                        <div className='text-center'><h1>Load Game</h1></div>
-                        {loadGames.map((load) => {
-                        return (
-                            <div className="loadBox text-center" key={load.id}
-                            onClick={() => selectedSavedGame(load)} 
-                            >
-                            <div>Game:<strong> {load.select_games.name} </strong></div> 
-                            <div>Saved at:<strong> {load.updated_at} </strong></div> 
+                <Col className='d-flex'>
+                    <div className='newPjContainer loadGamesContainer'>
+                        {loadGames.length > 0 ? (
+                            <>
+                            <div className='loadGamesBox'>
+                                <div className='text-center actionTitle'>Load Game</div>
+                                {loadGames.map((load) => {
+                                return (
+                                    <div className="loadBox text-center" key={load.id}
+                                    onClick={() => selectedSavedGame(load)} 
+                                    >
+                                    <div>Game:<strong> {load.select_games.name} </strong></div> 
+                                    <div>Saved at:<strong> {load.updated_at} </strong></div> 
+                                    </div>
+                                );
+                                })}
                             </div>
-                        );
-                        })}
+                            <div className='d-flex justify-content-center'><div className='logButton' onClick={() => goSelectGame()}>New Game</div></div>
+                            </>
+                        ) : (
+                            <div className='d-flex justify-content-center'><div className='logButton' onClick={() => goSelectGame()}>New Game</div></div>
+                        )}
                     </div>
-                    <div className='newGameBtn' onClick={() => goSelectGame()}><h1>New Game</h1></div>
-                    </>
-                    ) : (
-                    <div className='newGameBtn' onClick={() => goSelectGame()}><h1>New Game</h1></div>
-                    )}
+                    <div className='lgImgBox'>
+                        <div className='lgBgImg'>
+                            <div className='lgImg'></div>
+                        </div>
+                    </div>
                 </Col>
             </Row>
         </Container>

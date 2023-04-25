@@ -259,12 +259,12 @@ export const Profile = () => {
   return (
     <Container
       fluid
-      className="homeContainerMin d-flex flex-column justify-content-between"
+      className="homeContainerMin homeBg d-flex flex-column justify-content-center"
     >
       <Row className="d-flex justify-content-center">
-        <Col xxl={4} xl={5} sm={7} className="my-3">
-          <div className="logRegContainer d-flex flex-column justify-content-center">
-            <h1>Profile</h1>
+        <Col xxl={4} xl={5} md={6} sm={9} className="my-3">
+            <div className="d-flex justify-content-center"><h5 className="actionTitle">Profile</h5></div>
+          <div className="d-flex flex-column justify-content-center">
             <div className="d-flex">
                 <div className="pType">Username:</div>
                 <div className={hide === false ? "pValue" : "hide"}><strong>{users.userName}</strong></div>
@@ -288,7 +288,7 @@ export const Profile = () => {
                     </Form.Group>
                 </div>
                 <div onClick={hide === false ? ()=> changeHide() : ()=> updateUser()}><img className="updIcon" src={updIcon} alt="" /></div>
-                <div onClick={()=> changeHide()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
+                <div className={hide === false ? "hide" : "block"} onClick={()=> changeHide()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
             </div>
             <div className="d-flex">
                 <div className="pType">Name:</div>
@@ -317,7 +317,7 @@ export const Profile = () => {
                 </div>
                 {/* <div onClick={()=> changeHide1()}><img className="updIcon" src={updIcon} alt="" /></div> */}
                 <div onClick={hide1 === false ? ()=> changeHide1() : ()=> updateUser()}><img className="updIcon" src={updIcon} alt="" /></div>
-                <div onClick={()=> changeHide1()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
+                <div className={hide1 === false ? "hide" : "block"} onClick={()=> changeHide1()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
             </div>
             <div className="d-flex">
                 <div className="pType">Surname:</div>
@@ -342,7 +342,7 @@ export const Profile = () => {
                     </Form.Group>
                 </div>
                 <div onClick={hide2 === false ? ()=> changeHide2() : ()=> updateUser()}><img className="updIcon" src={updIcon} alt="" /></div>
-                <div onClick={()=> changeHide2()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
+                <div className={hide2 === false ? "hide" : "block"} onClick={()=> changeHide2()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
             </div>
             <div className="d-flex">
                 <div className="pType">Email:</div>
@@ -367,7 +367,7 @@ export const Profile = () => {
                     </Form.Group>
                 </div>
                 <div onClick={hide3 === false ? ()=> changeHide3() : ()=> updateUser()}><img className="updIcon" src={updIcon} alt="" /></div>
-                <div onClick={()=> changeHide3()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
+                <div className={hide3 === false ? "hide" : "block"} onClick={()=> changeHide3()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
             </div>
             <div className="d-flex">
                 <div className="pType">Birthdate:</div>
@@ -376,7 +376,7 @@ export const Profile = () => {
                     Calendar
                 </div>
                 <div onClick={()=> changeHide4()}><img className="updIcon" src={updIcon} alt="" /></div>
-                <div onClick={()=> changeHide4()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
+                <div className={hide4 === false ? "hide" : "block"} onClick={()=> changeHide4()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>
             </div>
           </div>
         </Col>

@@ -10,6 +10,7 @@ import { TurnPhone } from '../../components/TurnPhone/TurnPhone';
 import { validate } from "../../helpers/useful";
 import { createCharacter } from '../../services/apiCalls';
 import { addState } from '../inGameSlice';
+import './NewCharacter.css'
 
 export const NewCharacter = () => {
 
@@ -94,15 +95,15 @@ export const NewCharacter = () => {
     }
 
     return (
-        <Container fluid className="homeContainerMin d-flex flex-column justify-content-between">
+        <Container fluid className="homeContainerMin homeBg d-flex flex-column justify-content-center">
             <TurnPhone/>
             <Row className="d-flex justify-content-center">
                 <Col xxl={4} xl={5} sm={7} className="my-3">
-                <div className="logRegContainer">
-                    <h1 className="text-center">New Character</h1>
+                <div className="logRegContainer newPjContainer">
+                    <h5 className="text-center actionTitle">New Character</h5>
                     <Form>
-                    <Form.Group className="mb-3" controlId="formBasicName">
-                        <Form.Label>Name</Form.Label>
+                    <Form.Group className="mb-3 d-flex" controlId="formBasicName">
+                        <Form.Label className='pType'>Name</Form.Label>
                         <Form.Control
                         className={
                             btnMessage === ""
@@ -111,22 +112,25 @@ export const NewCharacter = () => {
                         }
                         type="text"
                         name="name"
-                        placeholder="Enter character name"
+                        placeholder="Character name"
                         onChange={(e) => newCharacter(e)}
                         onBlur={(e) => checkError2(e)}
                         />
                         <Form.Text className="errorMessage">{characterError.nameError}</Form.Text>
                     </Form.Group>
                     <Form.Text className="errorMessage">{btnMessage}</Form.Text>
-                    <div>Gender
+                    <div>
+                        <div className='pType'>Gender</div> 
                         <div className='d-flex justify-content-around'>
-                            <div name="gender" onClick={() => chooseGender('male')}>Male</div>
-                            <div name="gender" onClick={() => chooseGender('female')}>Female</div>
-                            <div name="gender" onClick={() => chooseGender('undefined')}>Undefined</div>
+                            <div className='genderBtn' name="gender" onClick={() => chooseGender('male')}>Male</div>
+                            <div className='genderBtn' name="gender" onClick={() => chooseGender('female')}>Female</div>
+                            <div className='genderBtn' name="gender" onClick={() => chooseGender('undefined')}>Undefined</div>
                         </div>
                     </div>
-                    <div className="logButton" name="button" onClick={()=> sendCharacter()}>Create Charater</div>
                     </Form>
+                    <div className='d-flex justify-content-center'>
+                        <div className="logButton newPjBtn" name="button" onClick={()=> sendCharacter()}>Create Charater</div>
+                    </div>
                 </div>
                 </Col>
             </Row>

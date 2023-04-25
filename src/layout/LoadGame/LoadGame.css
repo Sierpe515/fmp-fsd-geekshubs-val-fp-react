@@ -1,21 +1,68 @@
+
+.loadGamesContainer {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .loadGamesBox {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .loadBox {
     border: 1px solid black;
-    background-color: azure;
+    background-color: rgba(247, 247, 247, 0.342);
     display: flex;
     flex-direction: column;
     margin: 0.5em;
+    cursor: pointer;
 }
 
-.newGameBtn {
+.loadBox:hover {
+    background-color: rgba(184, 135, 11, 0.521);
+}
+
+.lgImgBox {
+    display: none;
+}
+
+/* .newGameBtn {
     text-align: center;
     background-color: darkred;
     color: white;
     border-radius: 10px;
     margin: 0.5em;
+} */
+
+@media (min-height: 600px){
+    .lgImgBox {
+        display: block;
+        width: 20em;
+        height: 100%;
+        /* background-color: aliceblue; */
+    }
+
+    .lgBgImg {
+        /* background-color: aqua; */
+        height: 100%;
+        display: flex;
+        align-items: end;
+    }
+
+    .lgImg {
+        /* background-color: bisque; */
+        background-image: url('../../image/lgImg1.png');
+        background-position: center;
+        height: 25em;
+        width: 20em;
+        margin-bottom: 10%;
+    }
+
+    .lgImg:hover {
+        background-image: url('../../image/lgImg2.png');
+    }
 }

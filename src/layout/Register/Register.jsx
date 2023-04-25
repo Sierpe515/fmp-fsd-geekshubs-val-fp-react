@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { RegisterMe } from "../../services/apiCalls";
 import { useDispatch } from "react-redux";
 import { addState } from "../inGameSlice";
+import regImg from '../../image/regImg.png'
 
 
 // HOOKS
@@ -125,10 +126,10 @@ export const Register = () => {
   
   return (
     <Container fluid className="homeContainerMin homeBg d-flex flex-column justify-content-center">
-      <Row className="d-flex justify-content-center">
+      <Row className="d-flex flex-column align-items-center justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
           <div className="logRegContainer">
-            <h5 className="text-center">Register</h5>
+            <h5 className="text-center actionTitle">Register</h5>
             <Form className="formContainer">
                 <Form.Group as={Col} controlId="formGridUserName" className="formBox">
                   {/* <Form.Label>Username</Form.Label> */}
@@ -197,6 +198,9 @@ export const Register = () => {
               />
             </Form>
           </div>
+        </Col>
+        <Col>
+          <div className="d-flex justify-content-center"><img className="regImg" src={regImg} alt="" /></div>
         </Col>
       </Row>
     </Container>

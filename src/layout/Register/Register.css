@@ -44,6 +44,61 @@
 .formBox {
     display: flex;
     /* margin: 0.5em; */
-    margin-bottom: 0.5em;
+    margin-bottom: 0.25em;
     width: 90%;
+}
+
+.actionTitle {
+    font-family: 'gothical';
+    font-size: x-large;
+    color: black;
+    text-shadow: 1px 0 goldenrod, -1px 0 goldenrod, 0 1px goldenrod, 0 -1px goldenrod,
+             1px 1px goldenrod, -1px -1px goldenrod, 1px -1px goldenrod, -1px 1px goldenrod;
+}
+
+.inputBasicDesign {
+    height: 1.5em;
+    background-color: rgba(2, 2, 2, 0.479);
+    border: 1.5px solid grey;
+    border-radius: 0px;
+    color: grey;
+}
+
+.inputErrorDesign {
+    border: 0.2em solid darkred;
+    background-color: rgb(255, 3, 3);
+    color: white;
+}
+
+.regImg {
+    display: none;
+}
+
+@media (min-height: 600px){
+    .actionTitle {
+        font-size: xxx-large;
+        margin-bottom: 1em;
+    }
+
+    .inputBasicDesign {
+        height: 2em;
+    }
+
+    .formBox {
+        margin-bottom: 1em;
+    }
+}
+
+@media (min-height: 800px){
+    .regImg {
+        display: block;
+        height: 24em;
+    }
+}
+
+@media (min-height: 900px){
+    .regImg {
+        display: block;
+        height: 30em;
+    }
 }

@@ -14,6 +14,10 @@
     font-family: 'diablo';
 }
 
+.logButton:hover {
+    background-image: url('../../image/buttonHover.png');
+}
+
 .formContainer {
     display: flex;
     flex-direction: column;
