@@ -95,7 +95,7 @@ export const Login = () => {
   }
 
   return (
-    <Container fluid className="homeContainerMin d-flex flex-column justify-content-between">
+    <Container fluid className="homeContainerMin homeBg d-flex flex-column justify-content-between">
       <TurnPhone/>
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">

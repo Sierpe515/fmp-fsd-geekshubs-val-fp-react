@@ -6,14 +6,9 @@
     /* z-index: -4; */
 }
 .title {
-    /* background-color: bisque; */
-    height: 2em;
-    /* z-index: 10; */
-    /* position: absolute; */
-    /* top: 0; */
-    width: 30vw;
-    /* background-color: aliceblue; */
-    /* font-family: 'flesh'; */
+    /* height: 2em; */
+    /* width: 30vw; */
+    display: none;
 }
 
 /* .titleText {
@@ -26,19 +21,28 @@
 }
 
 .titleBox {
+    display: none;  
     margin: 0 !important;
 }
 
 .welcomeText {
     /* margin-top: 11vh; */
     font-weight: bold;
-    font-size: large;
-    color: white;
+    font-size: xx-large;
+    color: rgb(46, 46, 46);
+    font-family: 'gothical';
+    text-shadow: 1px 0 goldenrod, -1px 0 goldenrod, 0 1px goldenrod, 0 -1px goldenrod,
+             1px 1px goldenrod, -1px -1px goldenrod, 1px -1px goldenrod, -1px 1px goldenrod;
 }
 
 .selectPjText {
     font-weight: bold;
     color: white;
+    font-size: x-large;
+    color: rgb(46, 46, 46);
+    font-family: 'gothical';
+    text-shadow: 1px 0 goldenrod, -1px 0 goldenrod, 0 1px goldenrod, 0 -1px goldenrod,
+             1px 1px goldenrod, -1px -1px goldenrod, 1px -1px goldenrod, -1px 1px goldenrod;
 }
 
 .pjsContainer {
@@ -58,9 +62,9 @@
 }
 
 .scrollBox .pjBox {
-    /* border:1px solid black; */
+    border:1px solid goldenrod;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.24);
+    background-color: rgba(255, 255, 255, 0.192);
     margin: 0px 10px;
     /* min-width:150px;
     min-height:113px; */
@@ -68,10 +72,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+
+.pjBox:hover {
+    background-color: rgba(167, 72, 72, 0.589);
 }
 
 .pjImage {
-    height: 7em;
+    height: 5.5em;
 }
 
 .pjBox {
@@ -85,13 +94,26 @@
 
 .homeBtn {
     border-radius: 5px;
-    background-color: rgb(36, 36, 36);
+    /* background-color: rgb(36, 36, 36); */
+    background-image: url('../../image/button.png');
+    background-size: cover;
     color: white;
-    width: 8em;
+    width: 11em;
+    height: 3.2em;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1em;
+    cursor: pointer;
+    font-family: 'diablo';
+}
+
+.homeBtn:hover {
+    background-image: url('../../image/buttonHover.png');
+}
+
+.noLogImg {
+    display: none;
 }
 
 
@@ -111,7 +133,13 @@
         font-size: x-large;
         font-weight: bold;
         margin: 0;
+        margin-top: 0.25em;
         padding: 0;
+        display: block;
+    }
+
+    .titleBox {
+        display: block;
     }
 }
 
@@ -125,11 +153,41 @@
     .pjImage {
         height: 20em;
     }
+
+    .noLogImg {
+        display: block;
+        height: 25em;
+        width: 20em;
+    }
+}
+
+@media (min-height: 800px){
+    .pjImage {
+        height: 22em;
+    }
+
+    .homeBtn {
+        width: 12em;
+        height: 3.5em;
+    }
+
+    .noLogImg {
+        display: block;
+        height: 30em;
+        width: 23em;
+    }
 }
 
 @font-face {
-    font-family: 'flesh';
-    src: url(../../fonts/FleshWound.ttf) format('truetype');
+    font-family: 'gothical';
+    src: url(../../fonts/PSG.ttf) format('truetype');
     font-style: normal;
     font-weight: bolder;
-  }
+}
+
+@font-face {
+    font-family: 'diablo';
+    src: url(../../fonts/DiabloLight.ttf) format('truetype');
+    font-style: normal;
+    font-weight: bolder;
+}

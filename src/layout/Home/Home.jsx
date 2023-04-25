@@ -7,11 +7,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userData } from '../userSlice';
 import { TurnPhone } from '../../components/TurnPhone/TurnPhone';
 import { bringUserCharacters } from '../../services/apiCalls';
-import Spinner from 'react-bootstrap/Spinner';
+// import Spinner from 'react-bootstrap/Spinner';
 import { addCharacter } from '../characterSlice';
 import { useNavigate } from 'react-router-dom';
 import { addState } from '../inGameSlice';
-import  logo3 from '../../image/logo3.png'
+import  logo4 from '../../image/logo4.png'
+import  noLog from '../../image/homeImg.png'
 
 export const Home = () => {
 
@@ -64,7 +65,7 @@ export const Home = () => {
         <Row className="title d-flex justify-content-center align-items-center">
             <Col xxl={12} xl={12} sm={12} className="my-3 titleBox">
                 {/* <div className='home1Container text-center titleText'>Oniria</div> */}
-                <img className='logo' src={logo3} alt="" />
+                <img className='logo' src={logo4} alt="" />
             </Col>
         </Row>
       {dataCredentialsRdx.credentials.token ? (
@@ -72,9 +73,9 @@ export const Home = () => {
         <Row>
           <Col xxl={12} xl={12} sm={12} className='text-center'>
               <div className='welcomeText'> Welcome to the dream, {dataCredentialsRdx.credentials.userName}! </div>
-              <div className='selectPjText'>Select Character</div>
           </Col>
         </Row>
+              <div className='selectPjText'>Select Character</div>
         <Row className="pjsContainer d-flex justify-content-center align-items-center text-center">
           <Col xxl={12} xl={12} md={12} sm={12} className="welcomeBox">
               {characters.length > 0 ? (
@@ -98,12 +99,13 @@ export const Home = () => {
         </Row>
         </>
       ) : (
-        <Row className="appointmentBtn d-flex justify-content-center text-center">
-          <div onClick={()=> goRegister()}><h1>Register</h1></div>
+        <Row className="appointmentBtn d-flex flex-column align-items-center justify-content-center text-center">
+          <img className='noLogImg' src={noLog} alt="" />
+          <div className='homeBtn' onClick={()=> goRegister()}>Register</div>
         </Row>
       )}
         
-        <Row className="appointmentBtn d-flex flex-column justify-content-center text-center">
+        <Row className="d-flex flex-column justify-content-center text-center">
           <div className='homeBtn' onClick={()=> goNewCharacter()}>New Character</div>
         </Row>
     </Container>

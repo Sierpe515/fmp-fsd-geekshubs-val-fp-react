@@ -124,7 +124,7 @@ export const Register = () => {
 
   
   return (
-    <Container fluid className="homeContainerMin">
+    <Container fluid className="homeContainerMin homeBg">
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
           <div className="logRegContainer">
@@ -135,7 +135,7 @@ export const Register = () => {
                   <Form.Label>Username</Form.Label>
                   <InputBox
                     className={
-                      dataUserError.nameError === ""
+                      dataUserError.userNameError === ""
                         ? "inputBasicDesign"
                         : "inputBasicDesign inputErrorDesign"
                     }

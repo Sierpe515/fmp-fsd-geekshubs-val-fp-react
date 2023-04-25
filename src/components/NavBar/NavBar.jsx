@@ -54,7 +54,7 @@ export const NavBar = () => {
             {dataCredentialsRdx.credentials.token ? (
               dataCredentialsRdx.credentials.userRole?.includes('Admin') ? (
                 <>
-                <NavDropdown className='navWhite' title="Admin Area" id="navbarScrollingDropdown2">
+                <NavDropdown title="Admin Area" id="navbarScrollingDropdown2">
                   <NavDropdown.Item eventKey="7"><Link as={Link} to='/usersList'>
                     Users List</Link>
                   </NavDropdown.Item>
@@ -70,7 +70,7 @@ export const NavBar = () => {
             {dataCredentialsRdx.credentials.token ? (
                 <DropdownButton
                   align="end"
-                  title="User"
+                  title={dataCredentialsRdx.credentials.userName}
                   id="dropdown-menu-align-end"
                 >
                   <Dropdown.Item eventKey="4"><Link as={Link} to='/profile'>Profile</Link></Dropdown.Item>
