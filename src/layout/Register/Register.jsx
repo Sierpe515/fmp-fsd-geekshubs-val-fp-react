@@ -124,15 +124,14 @@ export const Register = () => {
 
   
   return (
-    <Container fluid className="homeContainerMin homeBg">
+    <Container fluid className="homeContainerMin homeBg d-flex flex-column justify-content-center">
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
           <div className="logRegContainer">
-            <h1 className="text-center">Register</h1>
-            <Form>
-              <Row className="mb-3">
-                <Form.Group as={Col} controlId="formGridUserName">
-                  <Form.Label>Username</Form.Label>
+            <h5 className="text-center">Register</h5>
+            <Form className="formContainer">
+                <Form.Group as={Col} controlId="formGridUserName" className="formBox">
+                  {/* <Form.Label>Username</Form.Label> */}
                   <InputBox
                     className={
                       dataUserError.userNameError === ""
@@ -141,18 +140,16 @@ export const Register = () => {
                     }
                     type={"text"}
                     name={"userName"}
-                    placeholder={"Enter your username"}
+                    placeholder={"Username"}
                     required={true}
                     changeFunction={(e) => {newDataUser(e); checkError(e)}}
                     blurFunction={(e) => {checkError2(e)}}
                   />
-                  <Form.Text className="errorMessage">{dataUserError.nameError}</Form.Text>
                 </Form.Group>
-              </Row>
+                <Form.Text className="errorMessage">{dataUserError.userNameError}</Form.Text>
 
-              <Row className="mb-3">
-                <Form.Group as={Col} controlId="formGridEmail">
-                  <Form.Label>Email</Form.Label>
+                <Form.Group as={Col} controlId="formGridEmail" className="formBox">
+                  {/* <Form.Label>Email</Form.Label> */}
                   <InputBox
                     className={
                       dataUserError.emailError === ""
@@ -161,18 +158,16 @@ export const Register = () => {
                     }
                     type={"email"}
                     name={"email"}
-                    placeholder={"Enter email"}
+                    placeholder={"Email"}
                     required={true}
                     changeFunction={(e) => {newDataUser(e); checkError(e)}}
                     blurFunction={(e) => {checkError2(e)}}
                   />
-                  <Form.Text className="errorMessage">{dataUserError.emailError}</Form.Text>
                 </Form.Group>
-              </Row>
+                  <Form.Text className="errorMessage">{dataUserError.emailError}</Form.Text>
 
-              <Row className="mb-3">
-                <Form.Group as={Col} controlId="formGridPassword">
-                  <Form.Label>Password</Form.Label>
+                <Form.Group as={Col} controlId="formGridPassword" className="formBox">
+                  {/* <Form.Label>Password</Form.Label> */}
                   <InputBox
                     className={
                       dataUserError.passwordError === ""
@@ -181,14 +176,14 @@ export const Register = () => {
                     }
                     type={"password"}
                     name={"password"}
-                    placeholder={"Enter password"}
+                    placeholder={"Password"}
                     required={true}
                     changeFunction={(e) => {newDataUser(e); checkError(e)}}
                     blurFunction={(e) => {checkError2(e)}}
                   />
-                  <Form.Text className="errorMessage">{dataUserError.passwordError}</Form.Text>
                 </Form.Group>
-              </Row>
+                  <Form.Text className="errorMessage">{dataUserError.passwordError}</Form.Text>
+
               <ButtonSubmit
                 className={registerAct ? "registerSendDeac registerSendAct" : "registerSendDeac"}
                 onClick={

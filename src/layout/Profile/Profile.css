@@ -15,15 +15,20 @@
     width: 13em;
 }
 
-.inputHeight {
+/* .inputHeight {
     height: 2em;
-}
+} */
 
 .inputBasicDesign {
-    height: 2em;
+    height: 1.5em;
+    background-color: rgba(2, 2, 2, 0.479);
+    border: 1.5px solid grey;
+    border-radius: 0px;
+    color: grey;
 }
 
 .inputErrorDesign {
-    border: 0.2em solid red;
-    background-color: lightpink;
+    border: 0.2em solid darkred;
+    background-color: rgb(255, 3, 3);
+    color: white;
 }

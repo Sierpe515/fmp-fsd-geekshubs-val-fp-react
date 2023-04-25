@@ -95,21 +95,21 @@ export const Login = () => {
   }
 
   return (
-    <Container fluid className="homeContainerMin homeBg d-flex flex-column justify-content-between">
+    <Container fluid className="homeContainerMin homeBg d-flex flex-column justify-content-center">
       <TurnPhone/>
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
           <div className="logRegContainer">
-            <h1 className="text-center">Login</h1>
-            <Form>
+            <h5 className="text-center">Login</h5>
+            <Form className="formContainer">
               {welcome !== "" ? (
                 <div className="welcomeBox1 d-flex flex-column align-items-center justify-content-center text-center">
                   <h3>{welcome}</h3>
                 </div>
               ) : (
                 <>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
+              <Form.Group className="mb-3 formBox" controlId="formBasicEmail" >
+                {/* <Form.Label>Email address</Form.Label> */}
                 <Form.Control
                   className={
                     btnMessage === ""
@@ -118,14 +118,14 @@ export const Login = () => {
                   }
                   type="email"
                   name="email"
-                  placeholder="Enter email"
+                  placeholder="Email"
                   onChange={(e) => newCredentials(e)}
                   onBlur={(e) => checkError2(e)}
                 />
-                <Form.Text className="errorMessage">{credentialsError.emailError}</Form.Text>
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
+                <Form.Text className="errorMessage">{credentialsError.emailError}</Form.Text>
+              <Form.Group className="mb-3 formBox" controlId="formBasicPassword">
+                {/* <Form.Label>Password</Form.Label> */}
                 <Form.Control
                   className={
                     btnMessage === ""
@@ -138,8 +138,8 @@ export const Login = () => {
                   onChange={(e) => newCredentials(e)}
                   onBlur={(e) => checkError2(e)}
                 />
-                <Form.Text className="errorMessage">{credentialsError.passwordError}</Form.Text>
               </Form.Group>
+                <Form.Text className="errorMessage">{credentialsError.passwordError}</Form.Text>
               <Form.Text className="errorMessage">{btnMessage}</Form.Text>
               <div className="logButton" name="button" onClick={()=> logIn()}>Submit</div>
               </>
