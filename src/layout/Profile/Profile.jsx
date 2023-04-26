@@ -16,6 +16,8 @@ import { InputBox } from "../../components/InputBox/InputBox";
 import { validate } from "../../helpers/useful";
 import { addState } from "../inGameSlice";
 import Calendar from 'react-calendar';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 export const Profile = () => {
 
@@ -259,9 +261,10 @@ export const Profile = () => {
         if (dayjs(day).isBefore(dayjs())) {
             setBDay(dayjs(day).format('YYYY-MM-DD'))
         } 
-        // else {
-        //     handleShow1();
-        // };
+        else {
+            handleShow1();
+            return
+        };
 
         let birthdateProfile = {
           birthdate : dayjs(day).format('YYYY-MM-DD')
@@ -278,6 +281,10 @@ export const Profile = () => {
         )
         .catch(error => console.log(error))
     }
+
+    const [show1, setShow1] = useState(false);
+    const handleClose1 = () => setShow1(false);
+    const handleShow1 = () => setShow1(true);
 
     // SHOW FIELDS
 
@@ -306,6 +313,17 @@ export const Profile = () => {
       fluid
       className="homeContainerMin homeBg d-flex flex-column justify-content-center"
     >
+      <Modal show={show1} onHide={handleClose1}>
+          <Modal.Header closeButton>
+          <Modal.Title>Invalid date</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Please, choose a date between today and 2024-01-01</Modal.Body>
+          <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose1}>
+              Close
+          </Button>
+          </Modal.Footer>
+      </Modal>
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} md={6} sm={9} className="my-3">
             <div className="d-flex justify-content-center"><h5 className="actionTitle">Profile</h5></div>
