@@ -1,0 +1,172 @@
+.openingBg {
+    background-image: url('../../../image/openingBg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.carouselBox {
+    /* height: 20em; */
+    width: 10em;
+    margin: 0.5em;
+}
+
+.carouselImg {
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+    height: 13.5em;
+}
+
+.openingText {
+    margin: 0.5em;
+    height: 13.5em;
+    width: 24em;
+    background-color: rgba(37, 37, 37, 0.658);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+    overflow: hidden;
+    color: white;
+}
+
+.scrollText {
+    text-align: center;
+    height: 100%;
+  
+  /* animation properties */
+    -moz-transform: translateY(100%);
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    
+    -moz-animation: my-animation 20s linear infinite;
+    -webkit-animation: my-animation 20s linear infinite;
+    animation: my-animation 20s linear infinite;
+}
+
+@-moz-keyframes my-animation {
+    from { -moz-transform: translateY(100%); }
+    to { -moz-transform: translateY(-100%); }
+}
+  
+  /* for Chrome */
+@-webkit-keyframes my-animation {
+    from { -webkit-transform: translateY(100%); }
+    to { -webkit-transform: translateY(-100%); }
+}
+  
+@keyframes my-animation {
+    from {
+      -moz-transform: translateY(100%);
+      -webkit-transform: translateY(100%);
+      transform: translateY(100%);
+    }
+    to {
+      -moz-transform: translateY(-100%);
+      -webkit-transform: translateY(-100%);
+      transform: translateY(-100%);
+    }
+}
+
+@media (min-height: 500px){
+    .carouselBox {
+        width: 13em;
+    }
+
+    .carouselImg{
+        height: 20em;
+    }
+
+    .openingText {
+        height: 20em;
+        width: 24em;
+    }
+
+    .marginBtn {
+        margin-top: 1em;
+    }
+}
+
+@media (min-height: 600px){
+    .carouselBox {
+        width: 16em;
+    }
+
+    .carouselImg{
+        height: 24em;
+    }
+
+    .openingText {
+        height: 24em;
+        width: 34em;
+    }
+
+    .marginBtn {
+        margin-top: 2em;
+    }
+}
+
+@media (min-height: 700px){
+    .carouselBox {
+        width: 22em;
+    }
+
+    .carouselImg{
+        height: 30em;
+    }
+
+    .openingText {
+        height: 30em;
+        width: 40em;
+    }
+
+}
+
+@media (min-height: 800px){
+    .carouselBox {
+        width: 30em;
+        margin: 0.5em;
+        margin-top: 1em;
+    }
+
+    .carouselImg{
+        height: 40em;
+    }
+
+    .openingText {
+        height: 40em;
+        width: 45em;
+        margin-top: 1em;
+    }
+    
+    .scrollText{
+        font-size: large;
+    }
+
+    .marginBtn {
+        margin-top: 1.5em;
+    }
+}
+
+@media (min-height: 900px){
+    .carouselBox {
+        width: 33em;
+        margin: 0.5em;
+        margin-top: 1em;
+    }
+
+    .carouselImg{
+        height: 45em;
+    }
+
+    .openingText {
+        height: 45em;
+        width: 55em;
+        margin-top: 1em;
+    }
+
+    .scrollText{
+        font-size: X-large;
+    }
+
+    .marginBtn {
+        margin-top: 1.5em;
+    }
+}

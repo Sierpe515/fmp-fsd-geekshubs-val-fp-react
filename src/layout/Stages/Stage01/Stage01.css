@@ -1,0 +1,219 @@
+.bg01 {
+    background-image: url('../../../image/s01.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.gar1 {
+    margin-top: 0.5em;
+    height: 15.5em;
+    width: 3em;
+    /* background-color: aliceblue; */
+    /* margin-left: 5em; */
+    display: flex;
+    align-items: center;
+}
+
+.garg1Img {
+    height: 10em;
+    position: absolute;
+    z-index: 1;
+    left: 0.5em;
+}
+
+.garg1Img:hover {
+    background-image: url('../../../image/selectBg.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 25px;
+    border: 2px solid darkgoldenrod;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.text01 {
+    margin-top: 0.5em;
+    height: 15.5em;
+    width: 24em;
+    background-color: rgba(37, 37, 37, 0.658);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+    overflow: hidden;
+    color: white;
+}
+
+.font01 {
+    height: 100em;
+    font-size: 0.75em;
+}
+
+.gar2 {
+    margin-top: 0.5em;
+    height: 15.5em;
+    width: 3em;
+    /* background-color: aliceblue; */
+    display: flex;
+    align-items: center;
+}
+
+.garg2Img {
+    height: 14em;
+    position: absolute;
+    z-index: 1;
+    right: 0.5em;
+}
+
+.garg2Img:hover {
+    background-image: url('../../../image/selectBg.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 25px;
+    border: 2px solid darkgoldenrod;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* .margin01 {
+    margin-top: 1em;
+} */
+
+@media (min-height: 500px){
+    .gar1 {
+        height: 24em;
+    }
+    
+    .garg1Img {
+        height: 13em;
+    }
+    
+    .text01 {
+        height: 24em;
+        width: 30em;
+    }
+    
+    .font01 {
+        font-size: 1em;
+    }
+    
+    .gar2 {
+        height: 24em;
+    }
+    
+    .garg2Img {
+        height: 18em;
+    }
+}
+
+@media (min-height: 600px){
+    .gar1 {
+        height: 30em;
+    }
+    
+    .garg1Img {
+        height: 17em;
+    }
+    
+    .text01 {
+        height: 30em;
+        width: 30em;
+    }
+    
+    .font01 {
+        font-size: 1em;
+    }
+    
+    .gar2 {
+        height: 30em;
+    }
+    
+    .garg2Img {
+        height: 25em;
+    }
+}
+
+@media (min-height: 700px){
+    .gar1 {
+        height: 35em;
+    }
+    
+    .garg1Img {
+        height: 17em;
+        left: 2em;
+    }
+    
+    .text01 {
+        height: 35em;
+        width: 40em;
+    }
+    
+    .font01 {
+        font-size: large;
+    }
+    
+    .gar2 {
+        height: 35em;
+    }
+    
+    .garg2Img {
+        height: 25em;
+        right: 2em;
+    }
+}
+
+@media (min-height: 800px){
+    .gar1 {
+        height: 40em;
+    }
+    
+    .garg1Img {
+        height: 17em;
+        left: 5em;
+    }
+    
+    .text01 {
+        height: 40em;
+        width: 48em;
+    }
+    
+    .font01 {
+        font-size: large;
+    }
+    
+    .gar2 {
+        height: 40em;
+    }
+    
+    .garg2Img {
+        height: 25em;
+        right: 5em;
+    }
+}
+
+@media (min-height: 900px){
+    .gar1 {
+        height: 47em;
+    }
+    
+    .garg1Img {
+        height: 25em;
+        left: 9em;
+    }
+    
+    .text01 {
+        height: 47em;
+        width: 55em;
+    }
+    
+    .font01 {
+        font-size: large;
+    }
+    
+    .gar2 {
+        height: 47em;
+    }
+    
+    .garg2Img {
+        height: 38em;
+        right: 7em;
+    }
+}

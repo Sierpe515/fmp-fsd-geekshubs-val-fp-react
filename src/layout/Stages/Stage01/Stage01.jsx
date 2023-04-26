@@ -10,6 +10,9 @@ import Modal from 'react-bootstrap/Modal';
 import { characterDetailData } from '../../characterSlice'
 import { addGameStage } from '../../gameStageSlice'
 import { addState } from '../../inGameSlice'
+import './Stage01.css'
+import garg01 from '../../../image/gargola1.png'
+import garg02 from '../../../image/gargola2.png'
 
 export const Stage01 = () => {
 
@@ -23,7 +26,7 @@ export const Stage01 = () => {
 
   let token = dataCredentialsRdx.credentials.token
 
-  dispatch(addState({ choosenState: true}))
+  dispatch(addState({ choosenState: false}))
 
   
   console.log(gameRedux);
@@ -133,17 +136,47 @@ export const Stage01 = () => {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
-    <Container fluid className="homeContainerMin d-flex flex-column justify-content-center align-items-center">Stage01
-      <Row>
+    <Container fluid className="homeContainerMin bg01 d-flex flex-column justify-content-center align-items-center">
+      <Row >
+        <MyVerticallyCenteredModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
+        <Col className='d-flex justify-content-center'>
+        <div className='gar1'><img className='garg1Img' onClick={()=> {chooseAnswer("2"), setModalShow(true)}} src={garg01} alt="" /></div>
+        <div className='text01'>
+          <div className='scrollText font01'>
+            <p>Shawx: ¡Bienhallado!</p>
+            <p>Skryx: ¡Bienvenido, soñador! Has llegado a las puertas de Oniria.</p>
+            <p>Shawx: El más famoso de los reino del sueño. Es un gran lugar en el 
+              que adentrarse.</p>
+            <p>Skryx: Pero es importante no quedarse demasiado tiempo, o correrás el riesgo 
+              de quedar atrapado en él para siempre.</p>
+            <p>Tú: Eso no suena muy bien. ¿Qué me impide dar media vuelta e irme?</p>
+            <p>Shawx: ¡Nada!</p>
+            <p>Skryx: Pero has caído muy hondo en el sueño, no encontrarás una salida 
+              salvo que atravieses las tierras de Oniria.</p>
+            <p>Shawx: Toda suerte de habitantes pueblan nuestro reino.</p>
+            <p>Skryx: De entre los que deberás distinguir legales, que siempre te dirán la verdad, 
+              y caóticos, que siempre mienten. Te recomiendo que elijas a una de nosotras como guía.</p>
+            <p>Shawx: Conmigo todo te resultará más fácil.</p>
+            <p>Skryx: Antes de que realices tu elección, una advertencia: <br/>
+            Al menos una de las dos es caótica.</p>
+          </div>
+        </div>
+        <div className='gar2'><img className='garg2Img' onClick={()=> {chooseAnswer("1"), setModalShow(true)}} src={garg02} alt="" /></div>
+        </Col>
+      </Row>
+      {/* <Row>
         <div className='d-flex'>
         <MyVerticallyCenteredModal
           show={modalShow}
           onHide={() => setModalShow(false)}
         />
-          <div onClick={()=> {chooseAnswer("1"), setModalShow(true)}}>RESPUESTA A</div>
-          <div onClick={()=> {chooseAnswer("2"), setModalShow(true)}}>RESPUESTA B</div>
+          <div className='homeBtn margin01' onClick={()=> {chooseAnswer("1"), setModalShow(true)}}>RESPUESTA A</div>
+          <div className='homeBtn margin01' onClick={()=> {chooseAnswer("2"), setModalShow(true)}}>RESPUESTA B</div>
         </div>
-      </Row>
+      </Row> */}
     </Container>
   )
 }
