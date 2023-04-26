@@ -1,0 +1,74 @@
+
+.bg02 {
+    background-image: url('../../../image/s02.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.s02Img {
+    height: 42vh;
+}
+
+.s02GuideBox {
+    position: absolute;
+    height: 80vh;
+    width: 90vw;
+    margin-left: 1.5em;
+    /* background-color: aliceblue; */
+    /* left: -1000em; */
+}
+
+.s02GuideImg {
+    width: 20%;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+}
+
+.s02GuideLegal {
+    height: 70%;
+    position: absolute;
+    transform: scaleX(-1);
+    z-index: 2;
+}
+
+.s02GuideChaos {
+    height: 60%;
+    position: absolute;
+    z-index: 2;
+}
+
+.s02GuideText {
+    width: 80%;
+    /* background-color: aquamarine; */
+    /* margin-top: 0.5em; */
+    height: 100%;
+    /* width: 24em; */
+    background-color: rgba(37, 37, 37, 0.658);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+    overflow: hidden;
+    color: white;
+}
+
+.closeDialogue {
+    position: absolute;
+    bottom: 0.25em;
+    right: 0.5em;
+    /* background-color: darkgoldenrod;
+    border-radius: 25px; */
+    /* background-color: aliceblue; */
+    cursor: pointer;
+    color: darkgoldenrod;
+}
+
+.closeBox {
+    left: -1000em;
+}
+
+.easyText {
+    color: goldenrod;
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+
+}

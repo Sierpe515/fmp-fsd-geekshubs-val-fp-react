@@ -60,7 +60,8 @@
     height: 14em;
     position: absolute;
     z-index: 1;
-    right: 0.5em;
+    right: 1em;
+    margin-bottom: 1.5em;
 }
 
 .garg2Img:hover {
@@ -71,6 +72,18 @@
     border: 2px solid darkgoldenrod;
     transform: scale(1.1);
     cursor: pointer;
+}
+
+.popoverName {
+    background-color: rgba(37, 37, 37, 0.658);
+    border: 2px solid darkgoldenrod;
+    font-weight: bold;
+    /* font-size: xx-large; */
+    color: rgb(46, 46, 46);
+    font-family: 'gothical';
+    text-shadow: 1px 0 goldenrod, -1px 0 goldenrod, 0 1px goldenrod, 0 -1px goldenrod,
+             1px 1px goldenrod, -1px -1px goldenrod, 1px -1px goldenrod, -1px 1px goldenrod;
+
 }
 
 /* .margin01 {
@@ -157,6 +170,10 @@
     .garg2Img {
         height: 25em;
         right: 2em;
+    }
+
+    .popoverName {
+        font-size: xx-large;
     }
 }
 

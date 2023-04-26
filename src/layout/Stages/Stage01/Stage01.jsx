@@ -13,6 +13,8 @@ import { addState } from '../../inGameSlice'
 import './Stage01.css'
 import garg01 from '../../../image/gargola1.png'
 import garg02 from '../../../image/gargola2.png'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 
 export const Stage01 = () => {
 
@@ -108,6 +110,25 @@ export const Stage01 = () => {
     .catch((error) => console.log(error))
   }
 
+  const popoverHoverFocus1 = (
+    <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
+      Shawx
+    </Popover>
+  );
+
+  const popoverHoverFocus2 = (
+    <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
+      Skryx
+    </Popover>
+  );
+
+  const type = answer
+
+  const classGuide = {
+    "1" : "Skryx",
+    "2" : "Shawx"
+  }
+
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -118,12 +139,12 @@ export const Stage01 = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Confirm chooice
+            Selection guide
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>
-            Are you sure?
+            Are you sure to choose {classGuide[type]} as a guide? 
           </p>
         </Modal.Body>
         <Modal.Footer>
@@ -143,7 +164,15 @@ export const Stage01 = () => {
             onHide={() => setModalShow(false)}
           />
         <Col className='d-flex justify-content-center'>
-        <div className='gar1'><img className='garg1Img' onClick={()=> {chooseAnswer("2"), setModalShow(true)}} src={garg01} alt="" /></div>
+        <div className='gar1'>
+          <OverlayTrigger
+              trigger={['hover', 'focus']}
+              placement="bottom"
+              overlay={popoverHoverFocus1}
+            >  
+          <img className='garg1Img' onClick={()=> {chooseAnswer("2"), setModalShow(true)}} src={garg01} alt="" />
+          </OverlayTrigger>
+          </div>
         <div className='text01'>
           <div className='scrollText font01'>
             <p>Shawx: ¡Bienhallado!</p>
@@ -164,7 +193,15 @@ export const Stage01 = () => {
             Al menos una de las dos es caótica.</p>
           </div>
         </div>
-        <div className='gar2'><img className='garg2Img' onClick={()=> {chooseAnswer("1"), setModalShow(true)}} src={garg02} alt="" /></div>
+        <div className='gar2'>
+          <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus2}
+                    >
+          <img className='garg2Img' onClick={()=> {chooseAnswer("1"), setModalShow(true)}} src={garg02} alt="" />
+          </OverlayTrigger>
+        </div>
         </Col>
       </Row>
       {/* <Row>
