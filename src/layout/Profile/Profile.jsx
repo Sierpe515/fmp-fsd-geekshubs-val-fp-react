@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from "react-bootstrap/Form";
 // import { ButtonNav } from '../../components/ButtonNav/ButtonNav';
-import { getProfile, updateEmailProfile, updateNameProfile, updateSurnameProfile, updateUserNameProfile } from '../../services/apiCalls';
+import { getProfile, updateBirthdateProfile, updateEmailProfile, updateNameProfile, updateSurnameProfile, updateUserNameProfile } from '../../services/apiCalls';
 import { userData } from "../userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import dayjs from 'dayjs';
@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { InputBox } from "../../components/InputBox/InputBox";
 import { validate } from "../../helpers/useful";
 import { addState } from "../inGameSlice";
+import Calendar from 'react-calendar';
 
 export const Profile = () => {
 
@@ -72,7 +73,7 @@ export const Profile = () => {
         userName: "",
         name: "",
         surname: "",
-        birthdate: (dayjs("").format('YYYY-MM-DD')),
+        // birthdate: (dayjs("").format('YYYY-MM-DD')),
         email: "",
       });
 
@@ -80,7 +81,7 @@ export const Profile = () => {
         userNameValidation: false,
         nameValidation: false,
         surnameValidation: false,
-        birthdateValidation: false,
+        // birthdateValidation: false,
         emailValidation: false,
       })
 
@@ -88,7 +89,7 @@ export const Profile = () => {
         userNameError: "",
         nameError: "",
         surnameError: "",
-        birthdateError: "",
+        // birthdateError: "",
         emailError: "",
       });
 
@@ -232,7 +233,51 @@ export const Profile = () => {
           )
             .catch(error => console.log(error))
         }
-      }    
+
+        // if (dataUserUpdate.birthdate !== (users.birthdate && "")){
+        //   let birthdateProfile = {
+        //       birthdate : dataUserUpdate.birthdate
+        //   }
+        //   updateBirthdateProfile(birthdateProfile, token)
+        //   .then(action => {
+        //     console.log(action);
+        //     setUsers((prevState) => ({
+        //         ...prevState,
+        //         birthdate: action.data.data.birthdate
+        //       }));
+        //     changeHide4()
+        //   }
+        //   )
+        //   .catch(error => console.log(error))
+        // }
+      }
+
+      const [bDay, setBDay] = useState(new Date());
+      
+      const chooseDay = (day) => {
+        console.log(dayjs(day).format('YYYY-MM-DD'));
+        if (dayjs(day).isBefore(dayjs())) {
+            setBDay(dayjs(day).format('YYYY-MM-DD'))
+        } 
+        // else {
+        //     handleShow1();
+        // };
+
+        let birthdateProfile = {
+          birthdate : dayjs(day).format('YYYY-MM-DD')
+        }
+        updateBirthdateProfile(birthdateProfile, token)
+        .then(action => {
+          console.log(action);
+          setUsers((prevState) => ({
+              ...prevState,
+              birthdate: action.data.data.birthdate
+            }));
+          changeHide4()
+        }
+        )
+        .catch(error => console.log(error))
+    }
 
     // SHOW FIELDS
 
@@ -373,7 +418,7 @@ export const Profile = () => {
                 <div className="pType">Birthdate:</div>
                 <div className={hide4 === false ? "pValue" : "hide"}><strong>{dayjs(users.birthdate).format("DD MMMM YYYY")}</strong></div>
                 <div className={hide4 === false ? "hide" : "pValue"}>
-                    Calendar
+                  <Calendar name={"birthdate"} onChange={chooseDay} />
                 </div>
                 <div onClick={()=> changeHide4()}><img className="updIcon" src={updIcon} alt="" /></div>
                 <div className={hide4 === false ? "hide" : "block"} onClick={()=> changeHide4()}><img className="updIcon" src={cancelUpdIcon} alt="" /></div>

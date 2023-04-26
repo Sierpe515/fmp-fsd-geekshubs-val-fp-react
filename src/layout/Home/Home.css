@@ -116,6 +116,10 @@
     display: none;
 }
 
+.marginR {
+    margin-right: 2em;
+}
+
 
 @media (min-height: 400px){
     .pjImage {

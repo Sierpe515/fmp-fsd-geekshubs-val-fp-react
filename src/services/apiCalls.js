@@ -218,6 +218,17 @@ export const updateEmailProfile = async (emailProfile, token) => {
     return await axios.put(`${root}/users/profile/email`, emailProfile, config);
 }
 
+export const updateBirthdateProfile = async (birthdateProfile, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+    return await axios.put(`${root}/users/profile/birthdate`, birthdateProfile, config);
+}
+
 export const bringAnswerById = async (params) => {
 
   return await axios.get(`${root}/answers/${params}`);

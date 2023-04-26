@@ -59,6 +59,12 @@ export const Home = () => {
     },500)
   }
 
+  const goLogin = () => {
+    setTimeout(()=>{
+      navigate("/login");
+    },500)
+  }
+
   return (
     <Container fluid className="homeContainerMin homeBg d-flex flex-column justify-content-around align-items-center p-0">
         <TurnPhone/>
@@ -97,17 +103,24 @@ export const Home = () => {
                 )}
           </Col>
         </Row>
-        </>
-      ) : (
-        <Row className="appointmentBtn d-flex flex-column align-items-center justify-content-center text-center">
-          <img className='noLogImg' src={noLog} alt="" />
-          <div className='homeBtn' onClick={()=> goRegister()}>Register</div>
-        </Row>
-      )}
-        
         <Row className="d-flex flex-column justify-content-center text-center">
           <div className='homeBtn' onClick={()=> goNewCharacter()}>New Character</div>
         </Row>
+        </>
+      ) : (
+        <>
+        <Row>
+          <div className='welcomeText'>Please, to play register or login</div>
+        </Row>
+        <Row className="appointmentBtn d-flex flex-column align-items-center justify-content-center text-center">
+          <img className='noLogImg' src={noLog} alt="" />
+          <div className='d-flex'>
+            <div className='homeBtn marginR' onClick={()=> goRegister()}>Register</div>
+            <div className='homeBtn' onClick={()=> goLogin()}>Login</div>
+          </div>
+        </Row>
+        </>
+      )}
     </Container>
   )
 }
