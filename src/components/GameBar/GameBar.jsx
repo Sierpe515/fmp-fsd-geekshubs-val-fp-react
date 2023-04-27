@@ -92,7 +92,8 @@ export const GameBar = () => {
           {/* <img className='madnessImg' src={madness1} alt="" /> */}
           </div> : ""}
         {gameRdx.choosenGame.madness == 2 ? <><div className='madnessDiv'></div><div className='madnessDiv'></div></> : ""}
-        {gameRdx.choosenGame.madness == 3 ? gameOver() : ""}
+        {gameRdx.choosenGame.difficulty == "hard" && gameRdx.choosenGame.madness >= 2 ? gameOver() : ""}
+        {gameRdx.choosenGame.madness >= 3 ? gameOver() : ""}
       </div>
       </>
       ) : ("hola")}

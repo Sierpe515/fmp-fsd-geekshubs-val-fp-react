@@ -21,6 +21,11 @@ import { characterDetailData } from "../../characterSlice";
 import { addGameStage, gameStageData } from "../../gameStageSlice";
 import { addBadge } from "../../badgeSlice";
 import { addState } from "../../inGameSlice";
+import './Stage0205.css'
+import sierpe1 from '../../../image/sierpe1.png';
+import sierpe2 from '../../../image/sierpe2.png';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 
 export const Stage0205 = () => {
   const gameRdx = useSelector(gameDetailData);
@@ -30,7 +35,7 @@ export const Stage0205 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  dispatch(addState({ choosenState: true}))
+  dispatch(addState({ choosenState: false}))
 
   const [answer, setAnswer] = useState("");
   const [characterImage, setCharacterImage] = useState([]);
@@ -55,6 +60,18 @@ export const Stage0205 = () => {
     console.log(resp);
     setAnswer(resp);
   };
+
+  const popoverHoverFocus1 = (
+    <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
+      Shasha
+    </Popover>
+  );
+
+  const popoverHoverFocus2 = (
+    <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
+      Sherboroug
+    </Popover>
+  ); 
 
   // const chooseImage = (resp) => {
   //   console.log(resp);
@@ -305,9 +322,42 @@ export const Stage0205 = () => {
   return (
     <Container
       fluid
-      className="homeContainerMin d-flex flex-column justify-content-center align-items-center"
+      className="homeContainerMin bg02 d-flex flex-column justify-content-center align-items-center"
     >
-      Stage02
+      <Row>
+        <div className="box02">
+          <div className="imgBox02">
+            <OverlayTrigger
+                trigger={['hover', 'focus']}
+                placement="bottom"
+                overlay={popoverHoverFocus1}
+              > 
+              <img className="img02" src={sierpe1} alt="" />
+            </OverlayTrigger>
+          </div>
+          <div className="textBox02">
+            <div  className='scrollText font02'>
+              <p className='easyText'>Llegas al primer enclave, un poblado de tonalidad aguamarina horadado en la montaña, el cual se intuye 
+                que antaño debió de ser magestuoso, pero que ahora apenas se mantiene en pie.</p>
+              <p className='easyText'>No tardas en dar con dos de sus habitantes a los que tienes intención de preguntar sobre tu 
+                destino, pero antes debes saber si puedes fiarte o no de ellos.</p>
+              <p className='easyText'>Sin andarte por las ramas, les preguntas si son legales o caóticos, a lo que optienes la siguiente 
+                respuesta:</p>
+              <p>Shasha: O yo soy caótica o Sherboroug es legal.</p>
+              <p className='easyText'>Debes averiguar qué es cada uno para saber si fiarte de sus indicaciones.</p>
+            </div>
+          </div>
+          <div className="imgBox02">
+            <OverlayTrigger
+              trigger={['hover', 'focus']}
+              placement="bottom"
+              overlay={popoverHoverFocus2}
+            >
+              <img className="img02 posImg02" src={sierpe2} alt="" />
+            </OverlayTrigger>
+          </div>
+        </div>
+      </Row>
       {/* <Row>
           <Col><h2>Select your skin</h2></Col>
           <Col xxl={12} xl={12} md={12} sm={12} className="welcomeBox pjsContainer d-flex align-items-center text-center">
@@ -329,31 +379,43 @@ export const Stage0205 = () => {
           </Col>
       </Row> */}
       <Row>
-        <div className="d-flex">
+        <div className="btnBox02 d-flex">
           <MyVerticallyCenteredModal
             show={modalShow}
             onHide={() => setModalShow(false)}
           />
-          <div
-            onClick={() => {
-              chooseAnswer("3"), setModalShow(true);
-            }}
-          >
-            RESPUESTA A
+          <div className="d-flex flex-column justify-content-around align-items-center">
+            <div className="answer02Box">Ambos son legales</div>
+            <div className="homeBtn btnMargin02"
+              onClick={() => {
+                chooseAnswer("3"), setModalShow(true);
+              }}
+            >
+              RESPUESTA A
+            </div>
           </div>
-          <div
-            onClick={() => {
-              chooseAnswer("4"), setModalShow(true);
-            }}
-          >
-            RESPUESTA B
+          <div className="d-flex flex-column justify-content-around align-items-center">
+            <div className="answer02Box">Ambos son caóticos</div>
+            <div className="homeBtn btnMargin02"
+              onClick={() => {
+                chooseAnswer("4"), setModalShow(true);
+              }}
+            >
+              RESPUESTA B
+            </div>
           </div>
-          <div
-            onClick={() => {
-              chooseAnswer("5"), setModalShow(true);
-            }}
-          >
-            RESPUESTA C
+          <div className="d-flex flex-column justify-content-around align-items-center">
+            <div className="answer02Box">
+              <div>Shasha es caótica</div>
+              <div>Sherboroug, legal</div>
+            </div>
+            <div className="homeBtn btnMargin02"
+              onClick={() => {
+                chooseAnswer("5"), setModalShow(true);
+              }}
+            >
+              RESPUESTA C
+            </div>
           </div>
         </div>
       </Row>

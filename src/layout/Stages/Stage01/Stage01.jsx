@@ -185,7 +185,7 @@ export const Stage01 = () => {
             <p>Shawx: ¡Nada!</p>
             <p>Skryx: Pero has caído muy hondo en el sueño, no encontrarás una salida 
               salvo que atravieses las tierras de Oniria.</p>
-            <p>Shawx: Toda suerte de habitantes pueblan nuestro reino.</p>
+            <p>Shawx: Toda suerte de habitantes pueblan nuestro reino, de incontables clases.</p>
             <p>Skryx: De entre los que deberás distinguir legales, que siempre te dirán la verdad, 
               y caóticos, que siempre mienten. Te recomiendo que elijas a una de nosotras como guía.</p>
             <p>Shawx: Conmigo todo te resultará más fácil.</p>
@@ -195,11 +195,11 @@ export const Stage01 = () => {
         </div>
         <div className='gar2'>
           <OverlayTrigger
-                        trigger={['hover', 'focus']}
-                        placement="bottom"
-                        overlay={popoverHoverFocus2}
-                    >
-          <img className='garg2Img' onClick={()=> {chooseAnswer("1"), setModalShow(true)}} src={garg02} alt="" />
+            trigger={['hover', 'focus']}
+            placement="bottom"
+            overlay={popoverHoverFocus2}
+          >
+            <img className='garg2Img' onClick={()=> {chooseAnswer("1"), setModalShow(true)}} src={garg02} alt="" />
           </OverlayTrigger>
         </div>
         </Col>

@@ -1,0 +1,81 @@
+
+.box02 {
+    height: 55vh;
+    width: 90vw;
+    /* background-color: aliceblue; */
+    display: flex;
+    z-index: 5;
+    margin: 0;
+    padding: 0;
+}
+
+.btnMargin02 {
+    margin-bottom: 0;
+}
+
+.imgBox02 {
+    width: 15%;
+    height: 100%;
+    /* background-color: beige; */
+    z-index: 6;
+}
+
+.img02 {
+    height: 60vh;
+    position: absolute;
+    z-index: 10;
+}
+
+.posImg02 {
+    right: 1em;
+}
+
+.textBox02 {
+    width: 70%;
+    height: 100%;
+    /* background-color: blue; */
+    background-color: rgba(37, 37, 37, 0.658);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+    overflow: hidden;
+    color: white;
+}
+
+.font02 {
+    font-size: small;
+}
+
+.btnBox02 {
+    height: 35vh;
+    width: 90vw;
+    /* background-color: rgba(0, 255, 255, 0.363); */
+    display: flex;
+    justify-content: space-around;
+    z-index: 1;
+}
+
+.answer02Box {
+    background-color: rgba(37, 37, 37, 0.658);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+    color: white;
+    height: 50%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+@media (min-height: 500px){
+    .font02 {
+        font-size: medium;
+    }
+}
+
+@media (min-height: 800px){
+    .font02 {
+        font-size: x-large;
+    }
+}
