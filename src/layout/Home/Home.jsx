@@ -110,7 +110,7 @@ export const Home = () => {
       ) : (
         <>
         <Row>
-          <div className='welcomeText'>Please, to play register or login</div>
+          <div className='welcomeText'>Please, register or login to play</div>
         </Row>
         <Row className="appointmentBtn d-flex flex-column align-items-center justify-content-center text-center">
           <img className='noLogImg' src={noLog} alt="" />

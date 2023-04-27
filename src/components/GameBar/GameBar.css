@@ -1,8 +1,11 @@
 .gameBar {
     min-height: 90vh;
     width: 15vw;
-    background-color: rgba(0, 255, 255, 0.418);
+    /* background-color: rgba(0, 255, 255, 0.418); */
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
 }
 
 /* .framework {
@@ -16,6 +19,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* background-color: rgba(37, 37, 37, 0.658);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+    overflow: hidden;
+    color: white; */
+}
+
+.gameBarMargin {
+    margin-top: 0.5em;
+}
+
+.gameBadge {
+    /* background-color: rgba(37, 37, 37, 0.658);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+    overflow: hidden;
+    color: white; */
+    cursor: pointer;
 }
 
 .madnessBox {
@@ -25,7 +46,11 @@
 }
 
 .badgeImage {
-    height: 8em;
+    height: 10vh;
+}
+
+.badgeName {
+    font-size: small;
 }
 
 .badgeImage:hover {
@@ -36,9 +61,9 @@
     background-image: url('../../image/madness1.png');
     background-size: cover;
     background-position: center;
-    background-color: aquamarine;
-    width: 8em;
-    height: 5.5em;
+    /* background-color: aquamarine; */
+    width: 12vw;
+    height: 16vh;
 }
 
 .madnessDiv:hover {
@@ -46,7 +71,7 @@
 }
 
 .madnessImg {
-    width: 8em;
+    /* width: 8em; */
     background-color: aquamarine;
 }
 

@@ -4,3 +4,114 @@
     background-size: cover;
     background-position: center;
 }
+
+.box03 {
+    height: 55vh;
+    width: 80vw;
+    /* background-color: aliceblue; */
+    display: flex;
+    z-index: 5;
+    margin: 0;
+    padding: 0;
+    margin-left: 20vh;
+}
+
+.img1Box03 {
+    width: 20%;
+    height: 100%;
+    /* background-color: beige; */
+    z-index: 6;
+}
+.img2Box03 {
+    width: 10%;
+    height: 100%;
+    /* background-color: beige; */
+    z-index: 6;
+}
+
+.img03 {
+    height: 50vh;
+    position: absolute;
+    z-index: 10;
+}
+
+.posImg03 {
+    right: 0.5vw;
+}
+
+.textBox03 {
+    width: 80%;
+    height: 100%;
+    /* background-color: blue; */
+    background-color: rgba(37, 37, 37, 0.658);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+    overflow: hidden;
+    color: white;
+}
+
+.font03 {
+    font-size: small;
+    height: 33em;
+}
+
+.btnBox03 {
+    height: 35vh;
+    width: 80vw;
+    margin-left: 20vw;
+    /* background-color: rgba(0, 255, 255, 0.363); */
+    display: flex;
+    justify-content: space-around;
+    z-index: 1;
+}
+
+.answer03Box {
+    background-color: rgba(37, 37, 37, 0.658);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+    color: white;
+    height: 50%;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2vh;
+}
+
+.homeBtn03 {
+    border-radius: 5px;
+    /* background-color: rgb(36, 36, 36); */
+    background-image: url('../../../image/button.png');
+    background-size: cover;
+    color: white;
+    width: 22vw;
+    height: 11vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-bottom: 1em; */
+    cursor: pointer;
+    font-family: 'diablo';
+    margin-top: 0.4vh;
+}
+
+@media (min-height: 600px){
+    .font03 {
+        font-size: large;
+        height: 20em;
+    }
+}
+
+@media (min-height: 800px){
+    .font03 {
+        font-size: x-large;
+        height: 20em;
+    }
+
+    .homeBtn03 {
+        height: 11vh;
+        width: 19vw;
+    }
+}

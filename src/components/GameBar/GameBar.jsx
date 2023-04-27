@@ -9,7 +9,7 @@ import { characterDetailData } from '../../layout/characterSlice';
 // import madness1 from '../../image/madness1.png'
 import { badgeData } from '../../layout/badgeSlice';
 import { inGameData } from '../../layout/inGameSlice';
-import framework from '../../image/giphy.gif'
+// import framework from '../../image/giphy.gif'
 import { useNavigate } from 'react-router-dom';
 import { updateFinished } from '../../services/apiCalls';
 
@@ -70,24 +70,27 @@ export const GameBar = () => {
         <div className="badgeBox">
         {badge.length > 0 ? (
           <>
-            <h5>Badges</h5>
+            <div className='selectPjText gameBarMargin'>Badges</div>
             <div className='scrollBox'>
               {badge.map((medal) => {
                 return (
-                  <div className="badgeBox" onClick={() => useBadge(medal.id)} key={medal.id}>
+                  <div className="badgeBox gameBadge" onClick={() => useBadge(medal.id)} key={medal.id}>
                     <img className='badgeImage' src={medal.badge.image} alt={medal.id} />
-                    <div>{medal.badge.name}</div>
+                    {/* <div className='badgeName'>{medal.badge.name}</div> */}
                   </div>
                 );
               })}
             </div>
             </>
           ) : (
-            <div><h4>No Badges</h4></div>
+            <div>
+              <div className='selectPjText gameBarMargin'>Badges</div>
+              <div>No Badges</div>
+            </div>
         )}
       </div>
       <div className='madnessBox'>
-        <h5>Madness</h5>
+        <div className='selectPjText gameBarMargin'>Madness</div>
         {gameRdx.choosenGame.madness == 1 ? <div className='madnessDiv'>
           {/* <img className='madnessImg' src={madness1} alt="" /> */}
           </div> : ""}
