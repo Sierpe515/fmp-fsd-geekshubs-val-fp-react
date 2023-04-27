@@ -1,19 +1,13 @@
 .gameBar {
     min-height: 90vh;
     width: 15vw;
-    /* background-color: rgba(0, 255, 255, 0.418); */
+    background-color: rgba(0, 255, 255, 0.418);
     position: absolute;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+    align-items: center;
+    /* justify-content: center; */
 }
-
-/* .framework {
-    position: absolute;
-    height: 100%;
-    width: 10vw;
-    top: 0;
-} */
 
 .badgeBox {
     display: flex;
@@ -24,6 +18,13 @@
     border: 2px solid darkgoldenrod;
     overflow: hidden;
     color: white; */
+}
+
+.gbText {
+    font-family: 'diablo';
+    color: goldenrod;
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
 }
 
 .gameBarMargin {

@@ -83,9 +83,9 @@ export const GameBar = () => {
             </div>
             </>
           ) : (
-            <div>
+            <div className='badgeBox'>
               <div className='selectPjText gameBarMargin'>Badges</div>
-              <div>No Badges</div>
+              <div className='gbText text-center'>No Badges</div>
             </div>
         )}
       </div>

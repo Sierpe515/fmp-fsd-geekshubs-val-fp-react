@@ -348,7 +348,7 @@ export const Stage0301 = () => {
             show={modalShow}
             onHide={() => setModalShow(false)}
           />
-          <div className="d-flex flex-column justify-content-around align-items-center">
+          <div className="a03Box d-flex flex-column justify-content-around align-items-center">
             <div className="answer03Box">Ambos son legales</div>
             <div className="homeBtn03 btnMargin02"
               onClick={() => {
@@ -358,7 +358,7 @@ export const Stage0301 = () => {
               RESPUESTA A
             </div>
           </div>
-          <div className="d-flex flex-column justify-content-around align-items-center">
+          <div className="a03Box d-flex flex-column justify-content-around align-items-center">
             <div className="answer03Box">Ambos son caóticos</div>
             <div className="homeBtn03 btnMargin02"
               onClick={() => {
@@ -368,7 +368,7 @@ export const Stage0301 = () => {
               RESPUESTA B
             </div>
           </div>
-          <div className="d-flex flex-column justify-content-around align-items-center">
+          <div className="a03Box d-flex flex-column justify-content-around align-items-center">
             <div className="answer03Box">
               <div>Gaara es caótico</div>
               <div>Akumato, legal</div>
