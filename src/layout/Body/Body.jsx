@@ -21,6 +21,9 @@ import { GameOver } from '../GameOver/GameOver';
 import { Stage0401 } from '../Stages/Stage04/Stage0401';
 import { Stage0402 } from '../Stages/Stage04/Stage0402';
 import { Stage0403 } from '../Stages/Stage04/Stage0403';
+import { Stage0501 } from '../Stages/Stage05/Stage0501';
+import { Stage0502 } from '../Stages/Stage05/Stage0502';
+import { Stage0503 } from '../Stages/Stage05/Stage0503';
 
 
 export const Body = () => {
@@ -48,6 +51,9 @@ export const Body = () => {
             <Route path='/stage0401' element={<Stage0401/>}/>
             <Route path='/stage0402' element={<Stage0402/>}/>
             <Route path='/stage0403' element={<Stage0403/>}/>
+            <Route path='/stage0501' element={<Stage0501/>}/>
+            <Route path='/stage0502' element={<Stage0502/>}/>
+            <Route path='/stage0503' element={<Stage0503/>}/>
         </Routes>
       </>
     );

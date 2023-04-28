@@ -113,13 +113,6 @@ export const Stage0301 = () => {
 
               //Cambiar, ya no son equivalentes
               // const stageId = answer;
-              if (answer == "6"){
-                const stageId = "7"
-              }
-
-              if (answer == "7"){
-                const stageId = "8"
-              }
 
               updateGameStage(dataAnswer, token)
                 .then((result) => {
@@ -137,14 +130,17 @@ export const Stage0301 = () => {
                       // console.log(result.data);
                     })
                     .catch((error) => console.log(error));
+                  
+                  if (answer == "6"){
+                    const stageId = "7"
 
-                  let dataSavedGame = {
-                    game_id: result.data.data.game_id,
-                    // Meter aquí el stage al que se va a ir con respuesta
-                    stage_id: stageId,
-                  };
+                    let dataSavedGame = {
+                      game_id: result.data.data.game_id,
+                      // Meter aquí el stage al que se va a ir con respuesta
+                      stage_id: stageId,
+                    };
 
-                  createSavedGame(dataSavedGame, token)
+                    createSavedGame(dataSavedGame, token)
                     .then((result) => {
                       console.log(result);
                       let params = result.data.data.game_id;
@@ -170,6 +166,77 @@ export const Stage0301 = () => {
                     navigate(stageNavigate[stageId]);
                     console.log(stageNavigate[stageId]);
                   }, 500);
+                  }
+    
+                  if (answer == "7"){
+                    const stageId = "8"
+
+                    let dataSavedGame = {
+                        game_id: result.data.data.game_id,
+                        // Meter aquí el stage al que se va a ir con respuesta
+                        stage_id: stageId,
+                      };
+
+                    createSavedGame(dataSavedGame, token)
+                    .then((result) => {
+                      console.log(result);
+                      let params = result.data.data.game_id;
+                      bringLoadGamesById(params, token).then((result) => {
+                        console.log(result.data.data[0]);
+                        const selectGame = result.data.data[0];
+                        dispatch(
+                          addGameStage({ choosenGameStage: selectGame })
+                        );
+                        console.log(selectGame);
+                      });
+                    })
+                    .catch((error) => console.log(error));
+
+                  const stageNavigate = {
+                    6: "/stage0401",
+                    7: "/stage0402",
+                    8: "/stage0403",
+                  };
+
+                  setTimeout(() => {
+                    // navigate("/stage02");
+                    navigate(stageNavigate[stageId]);
+                    console.log(stageNavigate[stageId]);
+                  }, 500);
+                  }
+
+                  // let dataSavedGame = {
+                  //   game_id: result.data.data.game_id,
+                  //   // Meter aquí el stage al que se va a ir con respuesta
+                  //   stage_id: stageId,
+                  // };
+
+                  // createSavedGame(dataSavedGame, token)
+                  //   .then((result) => {
+                  //     console.log(result);
+                  //     let params = result.data.data.game_id;
+                  //     bringLoadGamesById(params, token).then((result) => {
+                  //       console.log(result.data.data[0]);
+                  //       const selectGame = result.data.data[0];
+                  //       dispatch(
+                  //         addGameStage({ choosenGameStage: selectGame })
+                  //       );
+                  //       console.log(selectGame);
+                  //     });
+                  //   })
+                  //   .catch((error) => console.log(error));
+
+                  // const stageNavigate = {
+                  //   6: "/stage0401",
+                  //   7: "/stage0402",
+                  //   8: "/stage0403",
+                  // };
+
+                  // setTimeout(() => {
+                  //   // navigate("/stage02");
+                  //   navigate(stageNavigate[stageId]);
+                  //   console.log(stageNavigate[stageId]);
+                  // }, 500);
                 })
                 .catch((error) => console.log(error));
             })
@@ -178,7 +245,8 @@ export const Stage0301 = () => {
         .catch((error) => console.log(error));
     }
 
-              let params = answer;
+    if (answer == "8"){
+      let params = answer;
 
               bringAnswerById(params)
                 .then((result) => {
@@ -263,6 +331,7 @@ export const Stage0301 = () => {
                   }, 500);
                 })
                 .catch((error) => console.log(error));
+    }            
   };
 
   function MyVerticallyCenteredModal(props) {
