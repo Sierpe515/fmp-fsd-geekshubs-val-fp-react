@@ -19,11 +19,11 @@ import { characterDetailData } from "../../characterSlice";
 import { addGameStage, gameStageData } from "../../gameStageSlice";
 import { addBadge } from "../../badgeSlice";
 import { addState } from "../../inGameSlice";
-import './Stage0301.css'
-import diablo1 from '../../../image/diablo1.png';
-import diablo2 from '../../../image/diablo2.png';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover';
+import './Stage0302.css'
+import turtle1 from '../../../image/turtle1.png';
+// import diablo2 from '../../../image/diablo2.png';
+// import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+// import Popover from 'react-bootstrap/Popover';
 
 export const Stage0302 = () => {
   const gameRdx = useSelector(gameDetailData);
@@ -43,17 +43,17 @@ export const Stage0302 = () => {
   // console.log(gameStageRedux);
   console.log(gameRdx);
   
-  const popoverHoverFocus1 = (
-    <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
-      Gaara
-    </Popover>
-  );
+  // const popoverHoverFocus1 = (
+  //   <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
+  //     Gaara
+  //   </Popover>
+  // );
   
-  const popoverHoverFocus2 = (
-    <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
-      Akumato
-    </Popover>
-  ); 
+  // const popoverHoverFocus2 = (
+  //   <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
+  //     Akumato
+  //   </Popover>
+  // ); 
 
   const chooseAnswer = (resp) => {
     console.log(resp);
@@ -62,7 +62,7 @@ export const Stage0302 = () => {
 
   const saveAnswer = () => {
 
-    if (answer == 6 || answer == 7) {
+    if (answer == 9 || answer == 11) {
       let body = {
         id: gameRdx.choosenGame.id,
         madness: 1,
@@ -113,11 +113,11 @@ export const Stage0302 = () => {
 
               //Cambiar, ya no son equivalentes
               // const stageId = answer;
-              if (answer == "6"){
+              if (answer == "9"){
                 const stageId = "7"
               }
 
-              if (answer == "7"){
+              if (answer == "11"){
                 const stageId = "8"
               }
 
@@ -160,9 +160,9 @@ export const Stage0302 = () => {
                     .catch((error) => console.log(error));
 
                   const stageNavigate = {
-                    6: "/stage0402",
-                    7: "/stage0403",
-                    8: "/stage0401",
+                    6: "/stage0401",
+                    7: "/stage0402",
+                    8: "/stage0403",
                   };
 
                   setTimeout(() => {
@@ -189,9 +189,9 @@ export const Stage0302 = () => {
                     badge_id: result.data[0].badge_id,
                   };
 
-                  // createBagdeGame(dataBadge)
-                  //   .then((result) => console.log("BadgeGame", result))
-                  //   .catch((error) => console.log(error));
+                  createBagdeGame(dataBadge)
+                    .then((result) => console.log("BadgeGame", result))
+                    .catch((error) => console.log(error));
                 })
                 .catch((error) => console.log(error));
 
@@ -251,9 +251,9 @@ export const Stage0302 = () => {
                     .catch((error) => console.log(error));
 
                   const stageNavigate = {
-                    6: "/stage0402",
-                    7: "/stage0403",
-                    8: "/stage0401",
+                    6: "/stage0401",
+                    7: "/stage0402",
+                    8: "/stage0403",
                   };
 
                   setTimeout(() => {
@@ -299,39 +299,37 @@ export const Stage0302 = () => {
   return (
     <Container
       fluid
-      className="homeContainerMin bg0301 d-flex flex-column justify-content-center align-items-center"
+      className="homeContainerMin bg0302 d-flex flex-column justify-content-center align-items-center"
     >
       <Row>
         <div className="box03">
-          <div className="img1Box03">
-            <OverlayTrigger
+          <div className="img1Box0302">
+            {/* <OverlayTrigger
                 trigger={['hover', 'focus']}
                 placement="bottom"
                 overlay={popoverHoverFocus1}
-              > 
-              <img className="img03" src={diablo1} alt="" />
-            </OverlayTrigger>
+              >  */}
+              <img className="img03" src={turtle1} alt="" />
+            {/* </OverlayTrigger> */}
           </div>
           <div className="textBox03">
             <div  className='scrollText font03'>
-              <p className='easyText'>Tras las indicaciones recibidas por Sasha, y de esa forma que sólo acontece en los 
-              sueños, desembarcas en Izakura. Una metrópoli super poblada con ambientación oriental.</p>
-              <p className='easyText'>Deambulas por sus calles, anonadado por todo cuanto te rodea; su arquitectura, sus 
-              gentes, su cultura y sus extrañas costumbres, que observas en curiosas escenas como un padre que lleva a su 
-              retoño con correa.</p>
-              <p className='easyText'>En un momento dado, decides dejar de caminar sin rumbo y te acercas a un grupo de 
-              tres individuos -supones que debían ser onis- que discuten acaloradamente. Lo que por alguna razón te parece una idea estupenda. Y le preguntas 
-              a uno de ellos:</p>
-              <p>Tú: ¿Cuántos de vosotros tres sois legales?</p>
-              <p className='easyText'>Responde en un idioma que te resulta desconocido e inteligible. Pero uno de ellos, Gaara, 
-              te hace el favor de intervenir:</p>
-              <p>Gaara: Ha dicho que hay un legal entre nosotros.</p>
-              <p className='easyText'>Con el mismo tono bronco de antes, el otro demonio replica:</p>
-              <p>Akumato: No creas nada de lo que diga Gaara, está mintiendo.</p>
-              <p className='easyText'>¿Qué son Gaara y Akumato?</p>
+              <p className='easyText'>Tras tomar la decisión de que no podías fiarte ni de Shasha ni de Sherboroug, decidiste que debías dejarte llevar por
+              tu instinto y dejaste que tus botas hicieran camino.</p>
+              <p className='easyText'>Después de lo que te ha parecido una eternidad, por fin llegas a una tierra de islas flotantes, a una altitud 
+              tal que ni las nubes las alcanzan. Y, aunque se trate de un sueño, te impresiona ver como ríos manan de las islas y caen en cascada a cientos 
+              de metros de altura hacia el vacío.</p>
+              <p className='easyText'>En todo este tiempo desde que dejaras la ciudad turquesa no te habías cruzado con ningun habitante, ni humano ni humanoide.
+              Hasta que distingues una figura en la lejanía. Te acercas y compruebas que es una especie de hombre tortuga que simula estar perezosamente recostado
+              a la sombra de un árbol.</p>
+              <p className='easyText'>Por la naturaleza de los sueños, el personaje te resulta familiar y recuerdas vagamente su nombre, pero no aciertas a distinguir 
+              si era Tarco, Tarso o Parso. Pero sin tiempo que perder, le confiesas tu confusión, a lo que responde:
+              </p>
+              <p>???: Mi nombre es o Tarco o Parso</p>
+              <p className='easyText'>¿Cuál es el nombre del hombre tortuga?</p>
             </div>
           </div>
-          <div className="img2Box03">
+          {/* <div className="img2Box03">
             <OverlayTrigger
               trigger={['hover', 'focus']}
               placement="bottom"
@@ -339,46 +337,40 @@ export const Stage0302 = () => {
             >
               <img className="img03 posImg03" src={diablo2} alt="" />
             </OverlayTrigger>
-          </div>
+          </div> */}
         </div>
       </Row>
       <Row>
-        <div className="btnBox03 d-flex">
+        <div className="btnBox0302 d-flex">
           <MyVerticallyCenteredModal
             show={modalShow}
             onHide={() => setModalShow(false)}
           />
           <div className="a03Box d-flex flex-column justify-content-around align-items-center">
-            <div className="answer03Box">Ambos son legales</div>
-            <div className="homeBtn03 btnMargin02"
+            <div className="homeBtn03 btnMargin02 fontBtn03"
               onClick={() => {
-                chooseAnswer("6"), setModalShow(true);
+                chooseAnswer("9"), setModalShow(true);
               }}
             >
-              RESPUESTA A
+              Tarco
             </div>
           </div>
           <div className="a03Box d-flex flex-column justify-content-around align-items-center">
-            <div className="answer03Box">Ambos son caóticos</div>
-            <div className="homeBtn03 btnMargin02"
+            <div className="homeBtn03 btnMargin02 fontBtn03"
               onClick={() => {
-                chooseAnswer("7"), setModalShow(true);
+                chooseAnswer("10"), setModalShow(true);
               }}
             >
-              RESPUESTA B
+              Tarso
             </div>
           </div>
           <div className="a03Box d-flex flex-column justify-content-around align-items-center">
-            <div className="answer03Box">
-              <div>Gaara es caótico</div>
-              <div>Akumato, legal</div>
-            </div>
-            <div className="homeBtn03 btnMargin02"
+            <div className="homeBtn03 btnMargin02 fontBtn03"
               onClick={() => {
-                chooseAnswer("8"), setModalShow(true);
+                chooseAnswer("11"), setModalShow(true);
               }}
             >
-              RESPUESTA C
+              Parso
             </div>
           </div>
         </div>

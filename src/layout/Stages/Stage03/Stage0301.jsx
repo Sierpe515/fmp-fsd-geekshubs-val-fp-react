@@ -160,9 +160,9 @@ export const Stage0301 = () => {
                     .catch((error) => console.log(error));
 
                   const stageNavigate = {
-                    6: "/stage0402",
-                    7: "/stage0403",
-                    8: "/stage0401",
+                    6: "/stage0401",
+                    7: "/stage0402",
+                    8: "/stage0403",
                   };
 
                   setTimeout(() => {
@@ -189,9 +189,9 @@ export const Stage0301 = () => {
                     badge_id: result.data[0].badge_id,
                   };
 
-                  // createBagdeGame(dataBadge)
-                  //   .then((result) => console.log("BadgeGame", result))
-                  //   .catch((error) => console.log(error));
+                  createBagdeGame(dataBadge)
+                    .then((result) => console.log("BadgeGame", result))
+                    .catch((error) => console.log(error));
                 })
                 .catch((error) => console.log(error));
 
@@ -251,9 +251,9 @@ export const Stage0301 = () => {
                     .catch((error) => console.log(error));
 
                   const stageNavigate = {
-                    6: "/stage0402",
-                    7: "/stage0403",
-                    8: "/stage0401",
+                    6: "/stage0401",
+                    7: "/stage0402",
+                    8: "/stage0403",
                   };
 
                   setTimeout(() => {
@@ -350,7 +350,7 @@ export const Stage0301 = () => {
           />
           <div className="a03Box d-flex flex-column justify-content-around align-items-center">
             <div className="answer03Box">Ambos son legales</div>
-            <div className="homeBtn03 btnMargin02"
+            <div className="homeBtn03 btnMargin02 fontBtn0301"
               onClick={() => {
                 chooseAnswer("6"), setModalShow(true);
               }}
@@ -360,7 +360,7 @@ export const Stage0301 = () => {
           </div>
           <div className="a03Box d-flex flex-column justify-content-around align-items-center">
             <div className="answer03Box">Ambos son caóticos</div>
-            <div className="homeBtn03 btnMargin02"
+            <div className="homeBtn03 btnMargin02 fontBtn0301"
               onClick={() => {
                 chooseAnswer("7"), setModalShow(true);
               }}
@@ -373,7 +373,7 @@ export const Stage0301 = () => {
               <div>Gaara es caótico</div>
               <div>Akumato, legal</div>
             </div>
-            <div className="homeBtn03 btnMargin02"
+            <div className="homeBtn03 btnMargin02 fontBtn0301"
               onClick={() => {
                 chooseAnswer("8"), setModalShow(true);
               }}

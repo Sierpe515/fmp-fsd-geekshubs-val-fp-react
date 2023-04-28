@@ -22,6 +22,7 @@
     /* background-color: beige; */
     z-index: 6;
 }
+
 .img2Box03 {
     width: 10%;
     height: 100%;
@@ -90,6 +91,7 @@
     background-image: url('../../../image/button.png');
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
     color: white;
     width: 22vw;
     height: 10vh;
@@ -106,10 +108,18 @@
     background-image: url('../../../image/buttonHover.png');
 }
 
+.fontBtn0301 {
+    font-size: small;
+}
+
 @media (min-height: 600px){
     .font03 {
         font-size: large;
         height: 20em;
+    }
+
+    .fontBtn0301 {
+        font-size: x-large;
     }
 }
 
@@ -126,5 +136,9 @@
     .homeBtn03 {
         height: 11vh;
         width: 19vw;
+    }
+
+    .fontBtn0301 {
+        font-size: xx-large;
     }
 }
