@@ -71,7 +71,7 @@ export const GameBar = () => {
         {badge.length > 0 ? (
           <>
             <div className='selectPjText gameBarMargin'>Badges</div>
-            <div className='scrollBox'>
+            <div className='scrollBox scrollBadge'>
               {badge.map((medal) => {
                 return (
                   <div className="badgeBox gameBadge" onClick={() => useBadge(medal.id)} key={medal.id}>

@@ -20,6 +20,12 @@
     color: white; */
 }
 
+.scrollBadge {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
 .gbText {
     font-family: 'diablo';
     color: goldenrod;

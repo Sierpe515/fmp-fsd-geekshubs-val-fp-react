@@ -1,17 +1,383 @@
-import React from 'react'
-import { Container } from 'react-bootstrap'
-import { useDispatch } from 'react-redux';
-import { addState } from '../../inGameSlice';
+import React, { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { addGame, gameDetailData } from "../../gameSlice";
+import { userData } from "../../userSlice";
+import {
+  bringAnswerById,
+  bringLoadGamesById,
+  createBagdeGame,
+  createSavedGame,
+  getBadgesByGameId,
+  updateGameStage,
+  updateMadness,
+} from "../../../services/apiCalls";
+import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { characterDetailData } from "../../characterSlice";
+import { addGameStage, gameStageData } from "../../gameStageSlice";
+import { addBadge } from "../../badgeSlice";
+import { addState } from "../../inGameSlice";
+import './Stage0303.css'
+import dungeon1 from '../../../image/dungeon1.png';
+import dungeon2 from '../../../image/dungeon2.png';
+import dungeon3 from '../../../image/dungeon3.png';
+// import diablo2 from '../../../image/diablo2.png';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 
 export const Stage0303 = () => {
-
+  const gameRdx = useSelector(gameDetailData);
+  // const gameStageRedux = useSelector(gameStageData);
+  const dataCredentialsRdx = useSelector(userData);
+  const characterRdx = useSelector(characterDetailData);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   dispatch(addState({ choosenState: true}))
 
+  const [answer, setAnswer] = useState("");
+  const [characterImage, setCharacterImage] = useState([]);
+
+  let token = dataCredentialsRdx.credentials.token;
+
+  // console.log(gameStageRedux);
+  console.log(gameRdx);
+  
+  // const popoverHoverFocus1 = (
+  //   <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
+  //     Gaara
+  //   </Popover>
+  // );
+  
+  // const popoverHoverFocus2 = (
+  //   <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
+  //     Akumato
+  //   </Popover>
+  // ); 
+
+  const chooseAnswer = (resp) => {
+    console.log(resp);
+    setAnswer(resp);
+  };
+
+  const saveAnswer = () => {
+
+    if (answer == 13 || answer == 14) {
+      let body = {
+        id: gameRdx.choosenGame.id,
+        madness: 1,
+      };
+      updateMadness(body, token)
+        .then((result) => {
+          console.log("madness update successfully");
+          console.log(result);
+          // dispatch(addGame({choosenGame: result.data.data}))
+          let params = gameRdx.choosenGame.id;
+
+          bringLoadGamesById(params, token)
+            .then((result) => {
+              console.log(result.data.data[0]);
+              const selectGame = result.data.data[0];
+              dispatch(addGame({ choosenGame: selectGame }));
+              console.log(selectGame);
+
+              let params = answer;
+
+              bringAnswerById(params)
+                .then((result) => {
+                  console.log("badge", result.data[0].badge_id);
+
+                  let dataBadge = {
+                    game_id: gameRdx.choosenGame.id,
+                    badge_id: result.data[0].badge_id,
+                  };
+
+                  createBagdeGame(dataBadge)
+                    .then((result) => console.log("BadgeGame", result))
+                    .catch((error) => console.log(error));
+                })
+                .catch((error) => console.log(error));
+
+              console.log(gameRdx);
+              const array = gameRdx.choosenGame.games_stages;
+              console.log(
+                gameRdx.choosenGame.games_stages[array.length - 1].id
+              );
+              console.log(characterRdx.choosenCharacter);
+
+              let dataAnswer = {
+                id: gameRdx.choosenGame.games_stages[array.length - 1].id,
+                answer_id: answer,
+              };
+              console.log(dataAnswer);
+
+              //Cambiar, ya no son equivalentes
+              // const stageId = answer;
+              if (answer == "13"){
+                const stageId = "7"
+              }
+
+              if (answer == "14"){
+                const stageId = "8"
+              }
+
+              updateGameStage(dataAnswer, token)
+                .then((result) => {
+                  console.log(result);
+
+                  let params = gameRdx.choosenGame.id
+
+                  getBadgesByGameId(params)
+                    .then((result) => {
+                      console.log("traer badges",result);
+                      const selectBadge = result?.data?.data
+                      dispatch(addBadge({ choosenBadge: selectBadge}))
+                      console.log(selectBadge);
+                      // setBadge(result?.data?.data);
+                      // console.log(result.data);
+                    })
+                    .catch((error) => console.log(error));
+
+                  let dataSavedGame = {
+                    game_id: result.data.data.game_id,
+                    // Meter aquí el stage al que se va a ir con respuesta
+                    stage_id: stageId,
+                  };
+
+                  createSavedGame(dataSavedGame, token)
+                    .then((result) => {
+                      console.log(result);
+                      let params = result.data.data.game_id;
+                      bringLoadGamesById(params, token).then((result) => {
+                        console.log(result.data.data[0]);
+                        const selectGame = result.data.data[0];
+                        dispatch(
+                          addGameStage({ choosenGameStage: selectGame })
+                        );
+                        console.log(selectGame);
+                      });
+                    })
+                    .catch((error) => console.log(error));
+
+                  const stageNavigate = {
+                    6: "/stage0401",
+                    7: "/stage0402",
+                    8: "/stage0403",
+                  };
+
+                  setTimeout(() => {
+                    // navigate("/stage02");
+                    navigate(stageNavigate[stageId]);
+                    console.log(stageNavigate[stageId]);
+                  }, 500);
+                })
+                .catch((error) => console.log(error));
+            })
+            .catch((error) => console.log(error));
+        })
+        .catch((error) => console.log(error));
+    }
+
+              let params = answer;
+
+              bringAnswerById(params)
+                .then((result) => {
+                  console.log(result.data[0])
+                  console.log("badge", result.data[0].badge_id);
+                  let dataBadge = {
+                    game_id: gameRdx.choosenGame.id,
+                    badge_id: result.data[0].badge_id,
+                  };
+
+                  createBagdeGame(dataBadge)
+                    .then((result) => console.log("BadgeGame", result))
+                    .catch((error) => console.log(error));
+                })
+                .catch((error) => console.log(error));
+
+              console.log(gameRdx);
+              const array = gameRdx.choosenGame.games_stages;
+              console.log(
+                gameRdx.choosenGame.games_stages[array.length - 1].id
+              );
+              console.log(characterRdx.choosenCharacter);
+
+              let dataAnswer = {
+                id: gameRdx.choosenGame.games_stages[array.length - 1].id,
+                answer_id: answer,
+              };
+              console.log(dataAnswer);
+
+              
+              updateGameStage(dataAnswer, token)
+              .then((result) => {
+                  console.log(result);
+                  
+                  let params = gameRdx.choosenGame.id
+                  
+                  getBadgesByGameId(params)
+                  .then((result) => {
+                    console.log("traer badges",result);
+                    const selectBadge = result?.data?.data
+                    dispatch(addBadge({ choosenBadge: selectBadge}))
+                    console.log(selectBadge);
+                    // setBadge(result?.data?.data);
+                    // console.log(result.data);
+                  })
+                  .catch((error) => console.log(error));
+
+                  //Cambiar cada vez, ya no coinciden
+                  const stageId = "6";
+
+                  let dataSavedGame = {
+                    game_id: result.data.data.game_id,
+                    // Meter aquí el stage al que se va a ir con respuesta
+                    stage_id: stageId,
+                  };
+
+                  console.log(dataSavedGame);
+
+                  createSavedGame(dataSavedGame, token)
+                    .then((result) => {
+                      console.log(result);
+                      let params = result.data.data.game_id;
+                      bringLoadGamesById(params, token).then((result) => {
+                        console.log(result.data.data[0]);
+                        const selectGame = result.data.data[0];
+                        dispatch(addGame({ choosenGame: selectGame }));
+                        console.log(selectGame);
+                      });
+                    })
+                    .catch((error) => console.log(error));
+
+                  const stageNavigate = {
+                    6: "/stage0401",
+                    7: "/stage0402",
+                    8: "/stage0403",
+                  };
+
+                  setTimeout(() => {
+                    // navigate("/stage02");
+                    navigate(stageNavigate[stageId]);
+                    console.log(stageNavigate[stageId]);
+                  }, 500);
+                })
+                .catch((error) => console.log(error));
+  };
+
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Confirm chooice
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Are you sure?</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            onClick={() => {
+              saveAnswer();
+            }}
+          >
+            Confirm
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  const [modalShow, setModalShow] = React.useState(false);
+
   return (
-    <Container fluid className="homeContainerMin d-flex flex-column justify-content-center">
-      Stage0303
+    <Container
+      fluid
+      className="homeContainerMin bg0303 d-flex flex-column justify-content-center align-items-center"
+    >
+      <Row>
+        <div className="box0303">
+          {/* <div className="img1Box0302">
+            <OverlayTrigger
+                trigger={['hover', 'focus']}
+                placement="bottom"
+                overlay={popoverHoverFocus1}
+              > 
+              <img className="img03" src={turtle1} alt="" />
+            </OverlayTrigger>
+          </div> */}
+          <div className="textBox0303">
+            <div  className='scrollText font0303'>
+              <p className='easyText'>Comienzas a pensar que tal vez no tomaste la decisión correcta al desconfiar de Shasha. Hacer lo contrario de lo 
+              que te recomendó, ha acabado con tus huesos dentro de una mazmorra considerablemente tenebrosa.</p>
+              <p className='easyText'>Por si fuera poco, lo que identificas como tres esbirros infernales, te salen al paso. 
+              Van fuertemente armados y si esto fuera uno de tus juegos de rol, ya les estarías intentando sacar las tripas 
+              con tu espada o con tu hacha.</p>
+              <p className='easyText'>Por suerte para ti, esto no es uno de tus juegos de rol. Y, contra toda convicción, tampoco parecen tener intención de 
+              matarte. Al menos por el momento.</p>
+              <p>Hambruno: ¿Qué haces aquí? Nos encantan las visitas.</p>
+              <p className='easyText'>Les explicas tu situación y ocurre lo último que hubieras esperado; se ofrecen a ayudarte. Pero antes debes de 
+              deducir si son de fiar, así que les preguntas de qué tipo son.</p>
+              <p>Gulates: ¡Por supuesto que todos somos caóticos!</p>
+              <p>Pestilencio: Uno de nosotros, y sólo uno, es legal.</p>
+              <p className='easyText'>¿En cuál de ellos confiarias?</p>
+            </div>
+          </div>
+          
+        </div>
+      </Row>
+      <Row>
+        <div className="btnBox0303 d-flex">
+          <MyVerticallyCenteredModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
+          <div className="a03Box d-flex flex-column justify-content-around align-items-center">
+            <div className="imgBox0303"
+            onClick={() => {
+              chooseAnswer("12"), setModalShow(true);
+            }}>
+              <img className="img0303" src={dungeon1} alt="" />
+            </div>
+            <div className="homeBtn03 btnMargin02 fontBtn03"
+            >
+              Pestilencio
+            </div>
+          </div>
+          <div className="a03Box d-flex flex-column justify-content-around align-items-center">
+            <div className="imgBox0303"
+            onClick={() => {
+              chooseAnswer("13"), setModalShow(true);
+            }}>
+              <img className="img0303" src={dungeon2} alt="" />
+            </div>
+            <div className="homeBtn03 btnMargin02 fontBtn03"
+            >
+              Gulates
+            </div>
+          </div>
+          <div className="a03Box d-flex flex-column justify-content-around align-items-center">
+            <div className="imgBox0303"
+            onClick={() => {
+              chooseAnswer("14"), setModalShow(true);
+            }}>
+              <img className="img0303" src={dungeon3} alt="" />
+            </div>
+            <div className="homeBtn03 btnMargin02 fontBtn03"
+            >
+              Hambruno
+            </div>
+          </div>
+        </div>
+      </Row>
     </Container>
-  )
-}
+  );
+};
