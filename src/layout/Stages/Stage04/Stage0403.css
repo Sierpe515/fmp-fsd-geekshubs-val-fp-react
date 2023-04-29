@@ -1,0 +1,37 @@
+.pos0403 {
+    right: 0;
+}
+
+.box0403 {
+    height: 55vh;
+    width: 80vw;
+    /* background-color: aliceblue; */
+    display: flex;
+    z-index: 5;
+    margin: 0;
+    padding: 0;
+    margin-left: 20vh;
+}
+
+.img1Box0403 {
+    width: 23%;
+    height: 100%;
+    /* background-color: beige; */
+    z-index: 6;
+}
+
+.textBox0403 {
+    width: 61.5%;
+}
+
+.font0403 {
+    font-size: 2.5vh;
+    /* height: 55em; */
+    height: 100vh;
+}
+
+/* @media (min-height: 600px){
+    .font0403 {
+        height: 40em;
+    }
+} */

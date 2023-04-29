@@ -396,10 +396,10 @@ export const Stage0401 = () => {
           </div>
           <div className="textBox03">
             <div  className='scrollText font0401'>
-              <p className='easyText'>Los onis te informaron de que para encontrar la salida de Oniria, tendrías que atravesar 
+              <p className='easyText'>Durante tu viaje, te informaron de que para encontrar la salida de Oniria, tendrías que atravesar 
               Transilsueño. Siguiendo las instrucciones de Akumato, atravesando un lúgubre y tenebroso camino bañado de una oscuridad incesante y 
               envuelto entre árboles desnudos y zarzas, no tardaste en llegar</p>
-              <p className='easyText'>Una de las peculiaridades de esta tierra es que la habitan no sólo caóticos y legales, sino 
+              <p className='easyText'>Una de las peculiaridades de esta tierra es que la habitan, no sólo caóticos y legales, sino 
               tambien neutrales, que a veces dicen la verdad y otras mienten.</p>
               <p className='easyText'>No tardas en toparte con una variopinta escena; un envejecido cazador de vampiros tratando de 
               dar caza a una vampiresa reina, que lleva en su vientre una aberración, y su escolta. Ambas se burlan entre carcajadas 

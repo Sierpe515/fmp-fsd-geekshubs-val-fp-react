@@ -392,7 +392,7 @@ export const Stage0301 = () => {
               tres individuos -supones que debían ser onis- que discuten acaloradamente. Lo que por alguna razón te parece una idea estupenda. Y le preguntas 
               a uno de ellos:</p>
               <p>Tú: ¿Cuántos de vosotros tres sois legales?</p>
-              <p className='easyText'>Responde en un idioma que te resulta desconocido e inteligible. Pero uno de ellos, Gaara, 
+              <p className='easyText'>El primero de ellos, de nombre Kuyroo, responde en un idioma que te resulta desconocido e inteligible. Pero uno de ellos, Gaara, 
               te hace el favor de intervenir:</p>
               <p>Gaara: Ha dicho que hay un legal entre nosotros.</p>
               <p className='easyText'>Con el mismo tono bronco de antes, el otro demonio replica:</p>
