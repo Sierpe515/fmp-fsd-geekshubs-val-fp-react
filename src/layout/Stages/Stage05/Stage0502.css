@@ -1,0 +1,14 @@
+
+.bg0502 {
+    background-image: url('../../../image/s0502.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.img0502 {
+    height: 50vh;
+    position: absolute;
+    z-index: 10;
+    /* left: 8vw; */
+    top: 18vh;
+}

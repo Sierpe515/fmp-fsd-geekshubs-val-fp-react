@@ -19,7 +19,7 @@ import { characterDetailData } from "../../characterSlice";
 import { addGameStage, gameStageData } from "../../gameStageSlice";
 import { addBadge } from "../../badgeSlice";
 import { addState } from "../../inGameSlice";
-import './Stage0501.css'
+import './Stage0502.css'
 // import vamp1 from '../../../image/vamp1.png';
 import ghost1 from '../../../image/ghost1.png';
 import chest1 from '../../../image/chest1.png';
@@ -387,7 +387,7 @@ export const Stage0501 = () => {
           />
           <div className="a03Box d-flex flex-column justify-content-around align-items-center">
             <div className="answer0501Box answerFont0401">
-              <div>El oro está aquí</div>
+              <div>El oro no está en el último cofre</div>
             </div>
             <div className="homeBtn0501 btnMargin02 fontBtn0301"
               onClick={() => {
@@ -399,7 +399,7 @@ export const Stage0501 = () => {
           </div>
           <div className="a03Box d-flex flex-column justify-content-around align-items-center">
             <div className="answer0501Box answerFont0401">
-              <div>El oro está en el primer cofre</div>
+              <div>El oro está en este cofre</div>
             </div>
             <div className="homeBtn0501 btnMargin02 fontBtn0301"
               onClick={() => {
@@ -411,7 +411,7 @@ export const Stage0501 = () => {
           </div>
           <div className="a03Box d-flex flex-column justify-content-around align-items-center">
             <div className="answer0501Box answerFont0401">
-              <div>El oro no está aquí</div>
+              <div>El oro no está en este cofre</div>
             </div>
             <div className="homeBtn0501 btnMargin02 fontBtn0301"
               onClick={() => {
