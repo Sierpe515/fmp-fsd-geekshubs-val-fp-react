@@ -334,7 +334,7 @@ export const Stage0403 = () => {
   return (
     <Container
       fluid
-      className="homeContainerMin bg0402 d-flex flex-column justify-content-center align-items-center"
+      className="homeContainerMin bg0403 d-flex flex-column justify-content-center align-items-center"
     >
       <Row>
         <div className="box0403">

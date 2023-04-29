@@ -21,8 +21,8 @@ import { addBadge } from "../../badgeSlice";
 import { addState } from "../../inGameSlice";
 import './Stage0402.css'
 // import vamp1 from '../../../image/vamp1.png';
-import mage1 from '../../../image/mage1.png';
-import mage2 from '../../../image/mage2.png';
+import hell1 from '../../../image/hell1.png';
+import hell2 from '../../../image/hell2.png';
 // import vamp12 from '../../../image/vamp12.png';
 // import vamp3 from '../../../image/vamp3.png';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -338,41 +338,40 @@ export const Stage0402 = () => {
     >
       <Row>
         <div className="box03">
-          <div className="img1Box03">
+          <div className="img1Box0402">
             <OverlayTrigger
                 trigger={['hover', 'focus']}
                 placement="bottom"
                 overlay={popoverHoverFocus1}
               > 
-              <img className="img0402" src={mage1} alt="" />
+              <img className="img0402" src={hell1} alt="" />
             </OverlayTrigger>
           </div>
-          <div className="textBox03">
+          <div className="textBox0402">
             <div  className='scrollText font0401'>
-              <p className='easyText'>La ciudad de Bahava era un lugar singular. Un enorme oasis en una tierra desertica, donde la mayoría 
-              de sus habitantes disponían de grandes dotes para la magia. Pero lo que más la caracterizaba eran dos peculiaridades bastante 
-              éxtravagantes: </p>
+              <p className='easyText'>Recorriendo el que se conocía como camino del pesar, no podías deshacerte de una marcada sensación de 
+              incertidumbre y desconfianza. Finalmente, llegaste a las tierras abisales. Un lugar extremádamente similar al infierno, pero 
+              que no era el infierno, aunque estaba poblado por seres infernales. Pero lo que más las caracterizaba eran dos peculiaridades: </p>
               <p className='easyText'>Una era que esta tierra la habitan, no sólo caóticos y legales, sino 
               tambien neutrales, que a veces dicen la verdad y otras mienten.</p>
-              <p className='easyText'> La otra era un antiguo decreto, dictado por la emperatriz Vania, por el cual sus habitantes sólo podían 
-              casarse entre sí si uno era caótico y el otro legal, o bien si ambos eran neutrales.</p>
-              <p className='easyText'>Tus pasos te llevan al majestuoso palacio de la Zahiria, donde te reciben Magnus y Kadala, dos cortesanos 
-              de la actual emperatriz regente.</p>
-              <p className='easyText'>Sabes que son un influyente matrimonio y te invidan a ser un huésped en la corte el tiempo que desees. En 
-              cualquier caso, te interesa conocer la dirección de tu próximo destino, pero todavía necesitas saber si puedes fiarte de alguno de 
-              ellos. Les preguntas sobre su condición y te responden lo siguiente:</p>
-              <p>Magnus: Mi mujer no es neutral.</p>
-              <p>Kadala: Mi marido no es neutral.</p>
-              <p className='easyText'>¿De qué clase son Magnus y Kadala?</p>
+              <p className='easyText'> La otra era que habían copiado e implantado un antiguo decreto, dictado por la emperatriz de Bahava, por el 
+              cual sus habitantes sólo podían casarse entre sí &#40;sí, en los sueños, los demonios también se casan&#41; si uno era caótico y el otro legal, o bien si ambos eran neutrales.</p>
+              <p className='easyText'>Dos de guardias, Astartea y Belfegor, que además estaban casados, te salen al paso. </p>
+              <p className='easyText'>Te informan de que esa tierra, no se puede deambular libremente. Te ofrecen un trato, si aciertas de qué tipo son, te 
+              acompañan a la frontera de las tierras abisales, pero si fallas, te convertiran en un torturado, condenado a vagar por el abismo por toda la eternidad. 
+              Para ello te dan la siguiente información:</p>
+              <p>Belfegor: Mi mujer no es neutral.</p>
+              <p>Astartea: Mi marido no es neutral.</p>
+              <p className='easyText'>¿De qué clase son Astartea y Belfegor?</p>
             </div>
           </div>
-          <div className="img2Box03">
+          <div className="img2Box0402">
             <OverlayTrigger
               trigger={['hover', 'focus']}
               placement="bottom"
               overlay={popoverHoverFocus2}
             >
-              <img className="img03 posImg03" src={mage2} alt="" />
+              <img className="img03 posImg03" src={hell2} alt="" />
             </OverlayTrigger>
           </div>
         </div>
@@ -385,8 +384,8 @@ export const Stage0402 = () => {
           />
           <div className="a03Box d-flex flex-column justify-content-around align-items-center">
             <div className="answer03Box answerFont0401">
-              <div>Magnus: Legal</div>
-              <div>Kadala: Caótica</div>
+              <div>Belfegor: Legal</div>
+              <div>Astartea: Caótica</div>
             </div>
             <div className="homeBtn03 btnMargin02 fontBtn0301"
               onClick={() => {
@@ -410,8 +409,8 @@ export const Stage0402 = () => {
           </div>
           <div className="a03Box d-flex flex-column justify-content-around align-items-center">
             <div className="answer03Box answerFont0401">
-              <div>Magnus: Caótico</div>
-              <div>Kadala: Legal</div>
+              <div>Belfegor: Caótico</div>
+              <div>Astartea: Legal</div>
             </div>
             <div className="homeBtn03 btnMargin02 fontBtn0301"
               onClick={() => {

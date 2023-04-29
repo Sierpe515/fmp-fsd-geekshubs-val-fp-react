@@ -62,6 +62,7 @@ export const Opening = () => {
         </div>
         <div className='openingText'>
           <div className='scrollText'>
+            <p className='easyText'>MENSAJE DEL JUEGO: Para pausar el texto, desliza el cursor sobre él.</p>
             <p>Se trataba de una noche de esas, en las que ves pasar una tras otra las horas en el reloj.
               Sentías la necesidad acuciante de conciliar el sueño pronto, ya que por la mañana tenías
               un evento importante. Pero tu cabeza no estaba por la labor.

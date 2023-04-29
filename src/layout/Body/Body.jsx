@@ -24,6 +24,9 @@ import { Stage0403 } from '../Stages/Stage04/Stage0403';
 import { Stage0501 } from '../Stages/Stage05/Stage0501';
 import { Stage0502 } from '../Stages/Stage05/Stage0502';
 import { Stage0503 } from '../Stages/Stage05/Stage0503';
+import { Stage0601 } from '../Stages/Stage06/Stage0601';
+import { Stage0602 } from '../Stages/Stage06/Stage0602';
+import { Stage0603 } from '../Stages/Stage06/Stage0603';
 
 
 export const Body = () => {
@@ -54,6 +57,9 @@ export const Body = () => {
             <Route path='/stage0501' element={<Stage0501/>}/>
             <Route path='/stage0502' element={<Stage0502/>}/>
             <Route path='/stage0503' element={<Stage0503/>}/>
+            <Route path='/stage0601' element={<Stage0601/>}/>
+            <Route path='/stage0602' element={<Stage0602/>}/>
+            <Route path='/stage0603' element={<Stage0603/>}/>
         </Routes>
       </>
     );

@@ -1,3 +1,10 @@
+
+.bg0403 {
+    background-image: url('../../../image/s0403.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 .pos0403 {
     right: 0;
 }

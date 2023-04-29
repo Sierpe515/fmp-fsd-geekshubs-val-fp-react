@@ -1,0 +1,51 @@
+
+.bg0501 {
+    background-image: url('../../../image/s0501.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.textBox0501 {
+    width: 80%;
+}
+
+.a03Box {
+    width: 30%;
+}
+
+.answer0501Box {
+    background-color: rgba(37, 37, 37, 0.658);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+    color: white;
+    height: 50%;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2vh;
+}
+
+.homeBtn0501 {
+    width: 22vw;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 0.4vh;
+}
+
+.chestImg {
+    height: 20vh;
+    position: absolute;
+    bottom: 1vh;
+}
+
+.chestImg:hover {
+    transform: scale(1.1);
+    /* position: absolute;
+    bottom: 1vh; */
+}

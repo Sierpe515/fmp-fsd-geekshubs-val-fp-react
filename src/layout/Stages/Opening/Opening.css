@@ -41,6 +41,11 @@
     animation: my-animation 40s linear infinite;
 }
 
+.scrollText:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+}
+
 @-moz-keyframes my-animation {
     from { -moz-transform: translateY(100%); }
     to { -moz-transform: translateY(-100%); }
