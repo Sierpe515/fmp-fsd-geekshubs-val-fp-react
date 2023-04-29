@@ -1,16 +1,430 @@
-import React from 'react'
-import { Container } from 'react-bootstrap'
-import { useDispatch } from 'react-redux';
-import { addState } from '../../inGameSlice';
+import React, { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { addGame, gameDetailData } from "../../gameSlice";
+import { userData } from "../../userSlice";
+import {
+  bringAnswerById,
+  bringLoadGamesById,
+  createBagdeGame,
+  createSavedGame,
+  getBadgesByGameId,
+  updateGameStage,
+  updateMadness,
+} from "../../../services/apiCalls";
+import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { characterDetailData } from "../../characterSlice";
+import { addGameStage, gameStageData } from "../../gameStageSlice";
+import { addBadge } from "../../badgeSlice";
+import { addState } from "../../inGameSlice";
+import './Stage0503.css'
+// import vamp1 from '../../../image/vamp1.png';
+import robot1 from '../../../image/robot1.png';
+import robot2 from '../../../image/robot2.png';
+import chest1 from '../../../image/chest1.png';
+import chest2 from '../../../image/chest2.png';
+import chest3 from '../../../image/chest3.png';
+// import vamp12 from '../../../image/vamp12.png';
+// import vamp3 from '../../../image/vamp3.png';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 
 export const Stage0503 = () => {
-
+  const gameRdx = useSelector(gameDetailData);
+  // const gameStageRedux = useSelector(gameStageData);
+  const dataCredentialsRdx = useSelector(userData);
+  const characterRdx = useSelector(characterDetailData);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   dispatch(addState({ choosenState: true}))
+
+  const [answer, setAnswer] = useState("");
+  const [characterImage, setCharacterImage] = useState([]);
+
+  let token = dataCredentialsRdx.credentials.token;
+
+  // console.log(gameStageRedux);
+  console.log(gameRdx);
+  console.log(answer);
+  
+  const popoverHoverFocus1 = (
+    <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
+      Cerbero
+    </Popover>
+  );
+  
+  const popoverHoverFocus2 = (
+    <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
+      Margareth / Eloste
+    </Popover>
+  ); 
+
+  const chooseAnswer = (resp) => {
+    console.log(resp);
+    setAnswer(resp);
+  };
+
+  const saveAnswer = () => {
+
+    if (answer == 30 || answer == 31) {
+      let body = {
+        id: gameRdx.choosenGame.id,
+        madness: 1,
+      };
+      updateMadness(body, token)
+        .then((result) => {
+          console.log("madness update successfully");
+          console.log(result);
+          // dispatch(addGame({choosenGame: result.data.data}))
+          let params = gameRdx.choosenGame.id;
+
+          bringLoadGamesById(params, token)
+            .then((result) => {
+              console.log(result.data.data[0]);
+              const selectGame = result.data.data[0];
+              dispatch(addGame({ choosenGame: selectGame }));
+              console.log(selectGame);
+
+              let params = answer;
+
+              bringAnswerById(params)
+                .then((result) => {
+                  console.log("badge", result.data[0].badge_id);
+
+                  let dataBadge = {
+                    game_id: gameRdx.choosenGame.id,
+                    badge_id: result.data[0].badge_id,
+                  };
+
+                  createBagdeGame(dataBadge)
+                    .then((result) => console.log("BadgeGame", result))
+                    .catch((error) => console.log(error));
+                })
+                .catch((error) => console.log(error));
+
+              console.log(gameRdx);
+              const array = gameRdx.choosenGame.games_stages;
+              console.log(
+                gameRdx.choosenGame.games_stages[array.length - 1].id
+              );
+              console.log(characterRdx.choosenCharacter);
+
+              let dataAnswer = {
+                id: gameRdx.choosenGame.games_stages[array.length - 1].id,
+                answer_id: answer,
+              };
+              console.log(dataAnswer);              
+
+              updateGameStage(dataAnswer, token)
+                .then((result) => {
+                  console.log(result);
+
+                  let params = gameRdx.choosenGame.id
+
+                  getBadgesByGameId(params)
+                    .then((result) => {
+                      console.log("traer badges",result);
+                      const selectBadge = result?.data?.data
+                      dispatch(addBadge({ choosenBadge: selectBadge}))
+                      console.log(selectBadge);
+                    })
+                    .catch((error) => console.log(error));
+
+                  if (answer == "30"){
+                    const stageId = "13";
+
+                    let dataSavedGame = {
+                      game_id: result.data.data.game_id,
+                      // Meter aquí el stage al que se va a ir con respuesta
+                      stage_id: stageId,
+                    };
+  
+                    createSavedGame(dataSavedGame, token)
+                      .then((result) => {
+                        console.log(result);
+                        let params = result.data.data.game_id;
+                        bringLoadGamesById(params, token).then((result) => {
+                          console.log(result.data.data[0]);
+                          const selectGame = result.data.data[0];
+                          dispatch(
+                            addGameStage({ choosenGameStage: selectGame })
+                          );
+                          console.log(selectGame);
+                        });
+                      })
+                      .catch((error) => console.log(error));
+  
+                    const stageNavigate = {
+                      12: "/stage0601",
+                      13: "/stage0602",
+                      14: "/stage0603",
+                    };
+  
+                    setTimeout(() => {
+                      navigate(stageNavigate[stageId]);
+                      console.log(stageNavigate[stageId]);
+                    }, 500);
+                  }
+
+                  if (answer == "31"){
+                    const stageId = "14";
+
+                    let dataSavedGame = {
+                      game_id: result.data.data.game_id,
+                      // Meter aquí el stage al que se va a ir con respuesta
+                      stage_id: stageId,
+                    };
+  
+                    createSavedGame(dataSavedGame, token)
+                      .then((result) => {
+                        console.log(result);
+                        let params = result.data.data.game_id;
+                        bringLoadGamesById(params, token).then((result) => {
+                          console.log(result.data.data[0]);
+                          const selectGame = result.data.data[0];
+                          dispatch(
+                            addGameStage({ choosenGameStage: selectGame })
+                          );
+                          console.log(selectGame);
+                        });
+                      })
+                      .catch((error) => console.log(error));
+  
+                    const stageNavigate = {
+                      12: "/stage0601",
+                      13: "/stage0602",
+                      14: "/stage0603",
+                    };
+  
+                    setTimeout(() => {
+                      navigate(stageNavigate[stageId]);
+                      console.log(stageNavigate[stageId]);
+                    }, 500);
+                  }
+
+                })
+                .catch((error) => console.log(error));
+            })
+            .catch((error) => console.log(error));
+        })
+        .catch((error) => console.log(error));
+    }
+
+    if (answer == 32){
+      let params = answer;
+
+              bringAnswerById(params)
+                .then((result) => {
+                  console.log(result.data[0])
+                  console.log("badge", result.data[0].badge_id);
+                  let dataBadge = {
+                    game_id: gameRdx.choosenGame.id,
+                    badge_id: result.data[0].badge_id,
+                  };
+
+                  createBagdeGame(dataBadge)
+                    .then((result) => console.log("BadgeGame", result))
+                    .catch((error) => console.log(error));
+                })
+                .catch((error) => console.log(error));
+
+              console.log(gameRdx);
+              const array = gameRdx.choosenGame.games_stages;
+              console.log(
+                gameRdx.choosenGame.games_stages[array.length - 1].id
+              );
+              console.log(characterRdx.choosenCharacter);
+
+              let dataAnswer = {
+                id: gameRdx.choosenGame.games_stages[array.length - 1].id,
+                answer_id: answer,
+              };
+              console.log(dataAnswer);
+
+              
+              updateGameStage(dataAnswer, token)
+              .then((result) => {
+                  console.log(result);
+                  
+                  let params = gameRdx.choosenGame.id
+                  
+                  getBadgesByGameId(params)
+                  .then((result) => {
+                    console.log("traer badges",result);
+                    const selectBadge = result?.data?.data
+                    dispatch(addBadge({ choosenBadge: selectBadge}))
+                    console.log(selectBadge);
+                    // setBadge(result?.data?.data);
+                    // console.log(result.data);
+                  })
+                  .catch((error) => console.log(error));
+
+                  //Cambiar cada vez, ya no coinciden
+                  const stageId = "12";
+
+                  let dataSavedGame = {
+                    game_id: result.data.data.game_id,
+                    // Meter aquí el stage al que se va a ir con respuesta
+                    stage_id: stageId,
+                  };
+
+                  console.log(dataSavedGame);
+
+                  createSavedGame(dataSavedGame, token)
+                    .then((result) => {
+                      console.log(result);
+                      let params = result.data.data.game_id;
+                      bringLoadGamesById(params, token).then((result) => {
+                        console.log(result.data.data[0]);
+                        const selectGame = result.data.data[0];
+                        dispatch(addGame({ choosenGame: selectGame }));
+                        console.log(selectGame);
+                      });
+                    })
+                    .catch((error) => console.log(error));
+
+                  const stageNavigate = {
+                      12: "/stage0601",
+                      13: "/stage0602",
+                      14: "/stage0603",
+                  };
+
+                  setTimeout(() => {
+                    // navigate("/stage02");
+                    navigate(stageNavigate[stageId]);
+                    console.log(stageNavigate[stageId]);
+                  }, 500);
+                })
+                .catch((error) => console.log(error));
+    }
+              
+  };
+
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Confirm chooice
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Are you sure?</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            onClick={() => {
+              saveAnswer();
+            }}
+          >
+            Confirm
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  const [modalShow, setModalShow] = React.useState(false);
+
   return (
-    <Container fluid className="homeContainerMin d-flex flex-column justify-content-center">
-      Stage0503
+    <Container
+      fluid
+      className="homeContainerMin bg0503 d-flex flex-column justify-content-center align-items-center"
+    >
+      <Row>
+        <div className="box0403">
+          <div className="img1Box0403 img1Box0503">
+            <OverlayTrigger
+                trigger={['hover', 'focus']}
+                placement="bottom"
+                overlay={popoverHoverFocus1}
+              > 
+              <img className="img0402" src={robot1} alt="" />
+            </OverlayTrigger>
+          </div>
+          <div className="textBox03 textBox0503 textBox0403">
+            <div  className='scrollText font0403'>
+              <p className='easyText'>Después de lo que te ha parecido una eternidad de recorrer caminos y atravesar montañas, bosques y ríos, vislumbras una 
+              edificación a lo lejos. Parecía un castillo, pero conforme te vas acercando, descubres que dista mucho de ser un castillo. Son una serie de 
+              construcciones destartaladas, levantadas unas sobre otras en una colosal e informe masa de edificios.</p>
+              <p className='easyText'>Observas que sale humo de una suerte de chimeneas y decides acercarte para ver si encuentras a alquien que te oriente.</p>
+              <p className='easyText'>De repente, algo impacta a escasos centimetros de tus botas. Ha sido un disparo. Te detienes en seco. El ruido hace que una 
+              bandada de pájaros se alce al vuelo desde los árboles cercanos. Miras al rededor en busca del pistolero, pero no ves a nadie. Sigues buscando con más 
+              atención, hasta que ves a un ser bastante pequeño.</p>
+              <p>Mussie: No des ni un paso más o a partir de ahora tendrás que caminar con nueve dedos.</p>
+              <p className='easyText'>Sopesas si con ese rifle diminuto podría hacerte realmente daño, pero por el disparo de antes das un voto de credibilidad a la 
+              potencia del arma.</p>
+              <p>Mussie: Yo he visto antes esos cofres y por mi madre que me los voy a quedar yo.</p>
+              <p className='easyText'>No mentía, no tenías ni idea de qué cofres hablaba, hasta que ves en un pequeño islote en medio del lago tres cofres puestos en 
+              línea.</p>
+              <p>Pareces más perdido que avispado, pero estoy desesperado. Dos de los cofres contienen explosivos que detonarán si se abren y los tres tienen una 
+                inscripción cada uno, de las cuales sólo una es cierta.</p>
+              <p>Ayúdame a averiguar qué cofre contiene el oro y lo compartiré contigo.</p>
+            </div>
+          </div>
+          <div className="img2Box03">
+            <OverlayTrigger
+              trigger={['hover', 'focus']}
+              placement="bottom"
+              overlay={popoverHoverFocus2}
+            >
+              <img className="img03 pos0403" src={robot2} alt="" />
+            </OverlayTrigger>
+          </div>
+        </div>
+      </Row>
+      <Row>
+        <div className="btnBox03 d-flex">
+          <MyVerticallyCenteredModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
+          <div className="a03Box d-flex flex-column justify-content-around align-items-center">
+            <div className="answer0501Box answerFont0401">
+              <div>El oro está en este cofre</div>
+            </div>
+            <div className="homeBtn0501 btnMargin02 fontBtn0301"
+              onClick={() => {
+                chooseAnswer("30"), setModalShow(true);
+              }}
+            >
+              <img className="chestImg" src={chest3} alt="" />
+            </div>
+          </div>
+          <div className="a03Box d-flex flex-column justify-content-around align-items-center">
+            <div className="answer0501Box answerFont0401">
+              <div>En el primer cofre hay una bomba</div>
+            </div>
+            <div className="homeBtn0501 btnMargin02 fontBtn0301"
+              onClick={() => {
+                chooseAnswer("31"), setModalShow(true);
+              }}
+            >
+              <img className="chestImg" src={chest2} alt="" />
+            </div>
+          </div>
+          <div className="a03Box d-flex flex-column justify-content-around align-items-center">
+            <div className="answer0501Box answerFont0401">
+              <div>En este cofre hay una bomba</div>
+            </div>
+            <div className="homeBtn0501 btnMargin02 fontBtn0301"
+              onClick={() => {
+                chooseAnswer("32"), setModalShow(true);
+              }}
+            >
+              <img className="chestImg" src={chest1} alt="" />
+            </div>
+          </div>
+        </div>
+      </Row>
     </Container>
-  )
-}
+  );
+};

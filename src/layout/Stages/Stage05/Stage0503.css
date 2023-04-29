@@ -1,0 +1,14 @@
+
+.bg0503 {
+    background-image: url('../../../image/s0503.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.img1Box0503 {
+    width: 18%;
+}
+
+.textBox0503 {
+    width: 75%;
+}
