@@ -50,13 +50,13 @@ export const Stage0601 = () => {
   
   const popoverHoverFocus1 = (
     <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
-      Magnus / Kadala
+      Harcat Cabello Hermoso
     </Popover>
   );
   
   const popoverHoverFocus2 = (
     <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
-      Margareth / Eloste
+      Bjorn Pelaje de Hierro
     </Popover>
   ); 
 
@@ -408,23 +408,22 @@ export const Stage0601 = () => {
           </div>
           <div className="textBox03 textBox0403">
             <div  className='scrollText font0403'>
-              <p className='easyText'>La ciudad de Bahava era un lugar singular. Un enorme oasis en una tierra desertica, donde la mayoría 
-              de sus habitantes disponían de grandes dotes para la magia. Pero lo que más la caracterizaba eran dos peculiaridades bastante 
-              éxtravagantes: </p>
-              <p className='easyText'>Una era que esta tierra la habitan, no sólo caóticos y legales, sino 
-              tambien neutrales, que a veces dicen la verdad y otras mienten.</p>
-              <p className='easyText'> La otra era un antiguo decreto, dictado por la emperatriz Vania, por el cual sus habitantes sólo podían 
-              casarse entre sí si uno era caótico y el otro legal, o bien si ambos eran neutrales.</p>
-              <p className='easyText'>Tus pasos te llevan al majestuoso palacio de la Zahiria, donde te reciben Magnus y Kadala, dos cortesanos 
-              de la actual emperatriz regente. Sabes que son un influyente matrimonio y te invidan a ser un huésped en la corte el tiempo que desees.</p>
-              <p className='easyText'>Mientras recorréis los jardines del palacio, se unen a vosotros otro matrimonio de huéspedes extrajeros, Margareth 
-              y Eloste, pero casados en Bahava, por lo que también está compuesto por dos neutrales o un caótico y un legal o viceversa.</p>
-              <p className='easyText'>En cualquier caso, te interesa conocer la dirección de tu próximo destino, pero todavía necesitas saber si puedes fiarte de alguno de 
-              ellos. Les preguntas sobre su condición y te responden lo siguiente:</p>
-              <p>Magnus: Eloste es legal.</p>
-              <p>Kadala: Mi marido tiene toda la razón.</p>
-              <p>Margareth: Totalmente de acuerdo con ellos. Eloste es legal.</p>
-              <p className='easyText'>¿De qué clase es realmente Eloste?</p>
+              <p className='easyText'> MENSAJE DEL JUEGO: Este es un nivel de muerte súbita, errar aquí finaliza el juego, independientemente de la locura 
+              acumulada o la falta de ella.</p>
+              <p className='easyText'>Por fin se alzan ante tus ojos las Estatuas Cattegat. Enormes y majestuosas, imponentes a los sentidos. El mar del 
+              fin del sueño baña sus pies y has conseguido embarcar en un drakkar que navega sus aguas.</p>
+              <p className='easyText'>Según se cuenta, cada puerta tiene una salida. Pero sólo una conduce fuera del sueño. Es un punto de inflexión para 
+              tu viaje, porque un acierto más y podrás volver a tu mundo, pero un error conduce irremediablemente a una muerte segura.</p>
+              <p className='easyText'>Has conseguido convencer a un grupo de vikingos, que quiere hacer una incursión en el mundo despierto, de tus dotes 
+              lógicas. Cada estatua tiene una inscripción. Únicamente la de la estatua de la salida decía la verdad. Después había otros dos tipos de estatua; 
+              las que llevaban a un muerte rápida por trampas, cuyas inscripciones siempre mentían, y las que no tenían salida, y por tanto llevaban a la muerte 
+              igualmente, ya que no se podía regresar, y cuyas inscripciones bien podían decir la verdad, o bien mentir.</p>
+              <p className='easyText'>Únicamente con los datos de las inscripciones era imposible deducir cuál era la estatua que llevaba a la salida, pero tú, a lo 
+              largo de tu viaje habías recogido una valiosísima información, la pieza que falta del rompecabezas, que te permitía saber con certeza en qué estatua estaba
+              la salida: si la estatua VIII tenía salida o no.</p>
+              <p className='easyText'>Navegando por el mar del fin del sueño te acercas a cada una de las estatuas y observas todo lo que dicen las inscripciones. Estás a 
+              una elección de poder despertar y volver a tu mundo. Elige con cabeza y recuerda que no hay lugar para fallos.</p>
+              <p className='easyText'>¿En qué estatua está la salida?</p>
             </div>
           </div>
           <div className="img2Box03">
