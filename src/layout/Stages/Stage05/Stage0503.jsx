@@ -100,7 +100,22 @@ export const Stage0503 = () => {
                   };
 
                   createBagdeGame(dataBadge)
-                    .then((result) => console.log("BadgeGame", result))
+                  .then((result) => {
+                    console.log("BadgeGame", result)
+                    
+                  let params = gameRdx.choosenGame.id;
+    
+                  getBadgesByGameId(params)
+                    .then((result) => {
+                      console.log("traer badges", result);
+                      const selectBadge = result?.data?.data;
+                      dispatch(addBadge({ choosenBadge: selectBadge }));
+                      console.log(selectBadge);
+                      // setBadge(result?.data?.data);
+                      // console.log(result.data);
+                    })
+                    .catch((error) => console.log(error));
+                  })
                     .catch((error) => console.log(error));
                 })
                 .catch((error) => console.log(error));
@@ -122,16 +137,16 @@ export const Stage0503 = () => {
                 .then((result) => {
                   console.log(result);
 
-                  let params = gameRdx.choosenGame.id
+                  // let params = gameRdx.choosenGame.id
 
-                  getBadgesByGameId(params)
-                    .then((result) => {
-                      console.log("traer badges",result);
-                      const selectBadge = result?.data?.data
-                      dispatch(addBadge({ choosenBadge: selectBadge}))
-                      console.log(selectBadge);
-                    })
-                    .catch((error) => console.log(error));
+                  // getBadgesByGameId(params)
+                  //   .then((result) => {
+                  //     console.log("traer badges",result);
+                  //     const selectBadge = result?.data?.data
+                  //     dispatch(addBadge({ choosenBadge: selectBadge}))
+                  //     console.log(selectBadge);
+                  //   })
+                  //   .catch((error) => console.log(error));
 
                   if (answer == "30"){
                     const stageId = "13";
@@ -226,7 +241,22 @@ export const Stage0503 = () => {
                   };
 
                   createBagdeGame(dataBadge)
-                    .then((result) => console.log("BadgeGame", result))
+                  .then((result) => {
+                    console.log("BadgeGame", result)
+                    
+                  let params = gameRdx.choosenGame.id;
+    
+                  getBadgesByGameId(params)
+                    .then((result) => {
+                      console.log("traer badges", result);
+                      const selectBadge = result?.data?.data;
+                      dispatch(addBadge({ choosenBadge: selectBadge }));
+                      console.log(selectBadge);
+                      // setBadge(result?.data?.data);
+                      // console.log(result.data);
+                    })
+                    .catch((error) => console.log(error));
+                  })
                     .catch((error) => console.log(error));
                 })
                 .catch((error) => console.log(error));
@@ -249,18 +279,18 @@ export const Stage0503 = () => {
               .then((result) => {
                   console.log(result);
                   
-                  let params = gameRdx.choosenGame.id
+                  // let params = gameRdx.choosenGame.id
                   
-                  getBadgesByGameId(params)
-                  .then((result) => {
-                    console.log("traer badges",result);
-                    const selectBadge = result?.data?.data
-                    dispatch(addBadge({ choosenBadge: selectBadge}))
-                    console.log(selectBadge);
-                    // setBadge(result?.data?.data);
-                    // console.log(result.data);
-                  })
-                  .catch((error) => console.log(error));
+                  // getBadgesByGameId(params)
+                  // .then((result) => {
+                  //   console.log("traer badges",result);
+                  //   const selectBadge = result?.data?.data
+                  //   dispatch(addBadge({ choosenBadge: selectBadge}))
+                  //   console.log(selectBadge);
+                  //   // setBadge(result?.data?.data);
+                  //   // console.log(result.data);
+                  // })
+                  // .catch((error) => console.log(error));
 
                   //Cambiar cada vez, ya no coinciden
                   const stageId = "12";
