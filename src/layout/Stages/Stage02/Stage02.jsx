@@ -201,9 +201,9 @@ export const Stage02 = () => {
               decisiones correctas y hallarás la salida. Por el contrario, haz caso a los caóticos y no despertarás jamás.</p>
               {gameRdx.choosenGame.difficulty == "easy" ? (
                 <>
-                <p className='easyText'>MENSAJE DEL JUEGO: &#40;Cada respuesta errónea te otorgará un punto de locura, en el momento en el que acumules tres, 
+                <p className='gameText'>MENSAJE DEL JUEGO: &#40;Cada respuesta errónea te otorgará un punto de locura, en el momento en el que acumules tres, 
                   el juego habrá terminado.</p>
-                <p className='easyText'>Algunas decisiones te otorgarán insignias, que podrás utilizar más adelante como ayuda ante una decisión difícil.&#41;</p>
+                <p className='gameText'>Algunas decisiones te otorgarán insignias, que podrás utilizar más adelante como ayuda ante una decisión difícil.&#41;</p>
                 </>
               ) : ("")}
             <p>Por último, me veo en la obligación de decirte que ese aspecto tuyo es demasiado mundano y no pasarás muy 
@@ -219,9 +219,9 @@ export const Stage02 = () => {
               experiencia. No sabes como me gustaría estar en tu lugar.</p>
               {gameRdx.choosenGame.difficulty == "easy" ? (
                 <>
-                <p className='easyText'>MENSAJE DEL JUEGO: &#40;Cada respuesta errónea te otorgará un punto de locura, en el momento en el que acumules tres, 
+                <p className='gameText'>MENSAJE DEL JUEGO: &#40;Cada respuesta errónea te otorgará un punto de locura, en el momento en el que acumules tres, 
                   el juego habrá terminado.</p>
-                <p className='easyText'>Algunas decisiones te otorgarán insignias, que podrás utilizar más adelante como ayuda ante una decisión difícil.&#41;</p>
+                <p className='gameText'>Algunas decisiones te otorgarán insignias, que podrás utilizar más adelante como ayuda ante una decisión difícil.&#41;</p>
                 </>
               ) : ("")}
             <p>Por último, no puedo dejar pasar la oportunidad de decirte que ese aspecto tuyo del mundo despierto es genial. Despertará la simpatía de los lugareños. 

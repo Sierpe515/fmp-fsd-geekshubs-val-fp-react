@@ -37,3 +37,17 @@
     /* background-color: beige; */
     z-index: 6;
 }
+
+.belText {
+    color: rgb(231, 161, 31);
+    font-weight: bold;
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
+
+.astText {
+    color: rgb(243, 39, 12);
+    font-weight: bold;
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}

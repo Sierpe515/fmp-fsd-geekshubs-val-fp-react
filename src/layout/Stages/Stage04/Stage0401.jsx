@@ -439,9 +439,9 @@ export const Stage0401 = () => {
               del, torpe y ya lento de reflejos, cazador.</p>
               <p className='easyText'>De una forma casi surrealista, detienen la escena para centrarse en ti y, que sin necesidad siquiera de 
               preguntarles, te dicen:</p>
-              <p>Malenia: Yo soy neutral.</p>
-              <p>Rennala: Eso es cierto.</p>
-              <p>Cazador: Yo no soy neutral</p>
+              <p><span className='maleniaText'>Malenia:</span> Yo soy neutral.</p>
+              <p><span className='rennalaText'>Rennala:</span> Eso es cierto.</p>
+              <p><span className='hunterText'>Hunter:</span> Yo no soy neutral</p>
               <p className='easyText'>De algún modo, tienes la certeza de que entre ellos cada uno es de una clase diferente. ¿Pero qué es cada 
               uno? Deberías intentar averiguarlo para poder preguntar al legal por la ruta que debes seguir a continuación.</p>
             </div>

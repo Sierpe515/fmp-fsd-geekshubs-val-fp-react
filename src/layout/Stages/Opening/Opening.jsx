@@ -69,23 +69,23 @@ export const Opening = () => {
         </div>
         <div className='openingText'>
           <div className='scrollText'>
-            <p className='easyText'>MENSAJE DEL JUEGO: Para pausar el texto, desliza el cursor sobre él.</p>
-            <p>Se trataba de una noche de esas, en las que ves pasar una tras otra las horas en el reloj.
+            <p className='gameText'>MENSAJE DEL JUEGO: Para pausar el texto, desliza el cursor sobre él.</p>
+            <p className='easyText'>Se trataba de una noche de esas, en las que ves pasar una tras otra las horas en el reloj.
               Sentías la necesidad acuciante de conciliar el sueño pronto, ya que por la mañana tenías
               un evento importante. Pero tu cabeza no estaba por la labor.
             </p>
-            <p>Te notabas cansado y las bolsas de los ojos parecían pesar veinte kilos. Pero tu mente 
+            <p className='easyText'>Te notabas cansado y las bolsas de los ojos parecían pesar veinte kilos. Pero tu mente 
               iba a cien. Tenía otros planes e ideas entre los que no se encontraba dormir.
             </p>
-            <p>Finalmente desististe. Ya era absurdo intentar dormirse. Aunque lo hubieras conseguido, ya 
+            <p className='easyText'>Finalmente desististe. Ya era absurdo intentar dormirse. Aunque lo hubieras conseguido, ya 
               no ibas a poder dormir apenas. Así que al menos te conformabas con descansar. Cerraste los ojos 
               y te premitiste relajarte por primera vez aquella noche.
             </p>
-            <p>No fuiste tú quien encontró el sueño, más bien fue él quien te atrapó a ti y de forma despiadada.
+            <p className='easyText'>No fuiste tú quien encontró el sueño, más bien fue él quien te atrapó a ti y de forma despiadada.
               Por lo general, uno se duerme paulatinamente, sin apenas darse cuenta. Pero, en esta ocasión, tú 
               caíste de golpe, como tras un salto al vacío.
             </p>
-            <p>De alguna forma, llegaste a un estado del sueño profundo que no sabías ni que existía y que, por 
+            <p className='easyText'>De alguna forma, llegaste a un estado del sueño profundo que no sabías ni que existía y que, por 
               supuesto ni eras consciente. La caída no te mató, pero te hizo abrir los ojos -metafóricamente, claro-.
             </p>
           </div>

@@ -112,6 +112,20 @@
     font-size: small;
 }
 
+.gaaraText {
+    color: rgb(245, 26, 55);
+    font-weight: bold;
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
+
+.akumatoText {
+    color: rgb(184, 118, 127);
+    font-weight: bold;
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
+
 @media (min-height: 600px){
     .font03 {
         font-size: large;

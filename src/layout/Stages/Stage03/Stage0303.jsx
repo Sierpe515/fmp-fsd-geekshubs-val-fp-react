@@ -437,11 +437,11 @@ export const Stage0303 = () => {
               con tu espada o con tu hacha.</p>
               <p className='easyText'>Por suerte para ti, esto no es uno de tus juegos de rol. Y, contra toda convicción, tampoco parecen tener intención de 
               matarte. Al menos por el momento.</p>
-              <p>Hambruno: ¿Qué haces aquí? Nos encantan las visitas.</p>
+              <p><span className='hambrunoText'>Hambruno:</span> ¿Qué haces aquí? Nos encantan las visitas.</p>
               <p className='easyText'>Les explicas tu situación y ocurre lo último que hubieras esperado; se ofrecen a ayudarte. Pero antes debes de 
               deducir si son de fiar, así que les preguntas de qué tipo son.</p>
-              <p>Gulates: ¡Por supuesto que todos somos caóticos!</p>
-              <p>Pestilencio: Uno de nosotros, y sólo uno, es legal.</p>
+              <p><span className='gulatesText'>Gulates:</span> ¡Por supuesto que todos somos caóticos!</p>
+              <p><span className='pestiText'>Pestilencio:</span> Uno de nosotros, y sólo uno, es legal.</p>
               <p className='easyText'>¿En cuál de ellos confiarias?</p>
             </div>
           </div>

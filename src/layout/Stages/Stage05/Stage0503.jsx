@@ -385,22 +385,20 @@ export const Stage0503 = () => {
           </div>
           <div className="textBox03 textBox0503 textBox0403">
             <div  className='scrollText font0403'>
-              <p className='easyText'>Después de lo que te ha parecido una eternidad de recorrer caminos y atravesar montañas, bosques y ríos, vislumbras una 
-              edificación a lo lejos. Parecía un castillo, pero conforme te vas acercando, descubres que dista mucho de ser un castillo. Son una serie de 
-              construcciones destartaladas, levantadas unas sobre otras en una colosal e informe masa de edificios.</p>
-              <p className='easyText'>Observas que sale humo de una suerte de chimeneas y decides acercarte para ver si encuentras a alquien que te oriente.</p>
-              <p className='easyText'>De repente, algo impacta a escasos centimetros de tus botas. Ha sido un disparo. Te detienes en seco. El ruido hace que una 
-              bandada de pájaros se alce al vuelo desde los árboles cercanos. Miras al rededor en busca del pistolero, pero no ves a nadie. Sigues buscando con más 
-              atención, hasta que ves a un ser bastante pequeño.</p>
-              <p>Mussie: No des ni un paso más o a partir de ahora tendrás que caminar con nueve dedos.</p>
-              <p className='easyText'>Sopesas si con ese rifle diminuto podría hacerte realmente daño, pero por el disparo de antes das un voto de credibilidad a la 
-              potencia del arma.</p>
-              <p>Mussie: Yo he visto antes esos cofres y por mi madre que me los voy a quedar yo.</p>
-              <p className='easyText'>No mentía, no tenías ni idea de qué cofres hablaba, hasta que ves en un pequeño islote en medio del lago tres cofres puestos en 
-              línea.</p>
-              <p>Pareces más perdido que avispado, pero estoy desesperado. Dos de los cofres contienen explosivos que detonarán si se abren y los tres tienen una 
-                inscripción cada uno, de las cuales sólo una es cierta.</p>
-              <p>Ayúdame a averiguar qué cofre contiene el oro y lo compartiré contigo.</p>
+              <p className='easyText'>Después de lo que te ha parecido una eternidad de recorrer caminos y atravesar montañas, bosques y ríos, llegas a una presa 
+              abandonada. Sorprende que todavía se tenga en pie, pero algún día fue una construcción colosal. En su paramento y al costado de la presa se alza otra 
+              edificación no menos imponente de tipo industrial. Debe ser el edificio del cuarto de máquinas, tan abandonado como la misma presa, hasta el punto de 
+              que una curiosa vegetación se ha apoderado de él.</p>
+              <p className='easyText'>Intentas acceder a él, ya que para continuar tu camino debes subir a lo alto de su coronación. No te resulta difícil encontrar 
+              una apertura entre sus agrietados muros y sus inexistentes puertas.</p>
+              <p className='easyText'>Mientras recorres los pasillos y habitaciones del edificio, te llama poderosamente la atención una estancia en particular. No 
+              tiene mucho que ver con el resto, casi parece como si alguien la hubiera puesto ahí por error.</p>
+              <p className='easyText'>En el centro de la estancia hay tres cofres, custodiados por dos robots de seguridad que a todas luces no están en funcionamiento.</p>
+              <p className='easyText'>Te acercas a los cofres y una inscripción central reza que cada cofre tiene una inscripción, pero que de las inscripciones de los tres 
+              cofres, sólo una dice la verdad.</p>
+              <p className='easyText'>En ese momento, sabes con certeza que para continuar tu camino debes abrir el cofre correcto, ya que algo en su interior te 
+              desvelará el camino a seguir. Pero has de elegir con presteza, ya que tal y como dictan las inscripciones, los cofres incorrectos contienen bombas que 
+              seguramente detonarán al abrirlos.</p>
             </div>
           </div>
           <div className="img2Box03">

@@ -452,15 +452,15 @@ export const Stage0603 = () => {
               <p className='easyText'>Del mismo modo, también se conoce que si la haconera no es la culpable, entonces lo es el verdugo o el halcón</p>
               <p className='easyText'>Por último, también se sabía que el culpable no era caótico.</p>
               <p className='easyText'>Y los tres dijeron lo siguiente:</p>
-              <p>Halconera: Yo soy inocente.</p>
-              <p>Halcón: Es cierto, mi señora es inocente.</p>
-              <p>Verdugo: No es verdad, la halconera es culpable.</p>
+              <p><span className='halconeraText'>Halconera:</span> Yo soy inocente.</p>
+              <p><span className='halconText'>Halcón:</span> Es cierto, mi señora es inocente.</p>
+              <p><span className='verdugoText'>Verdugo:</span> No es verdad, la halconera es culpable.</p>
               <p className='easyText'>Las pronunciaciones de los acusados, resultaban bastante naturales, pero insuficientes para que pudieras sacar una conclusión válida. 
               De modo que te acercaste a los acusados con intención de hacer las preguntas necesarias para cumplir tu proposito.</p>
               <p className='easyText'>En primer lugar te acercaste al verdugo y le preguntaste:</p>
-              <p>Tú: ¿Por casualidad, no será usted el culpable?</p>
+              <p><span className='youText'>Tú:</span> ¿Por casualidad, no será usted el culpable?</p>
               <p className='easyText'>El verdugo te respondió y te viste con la necesidad de realizar otra pregunta. Te acercaste, esta vez, a la halconera y le preguntaste:</p>
-              <p>Tú: ¿Es culpable el verdugo?</p>
+              <p><span className='youText'>Tú:</span> ¿Es culpable el verdugo?</p>
               <p className='easyText'>Cuando te respondió, pudiste esclarecer el caso. ¿Quién era el culpable y quién era legal, caótico o neutral?</p>
             </div>
           </div>

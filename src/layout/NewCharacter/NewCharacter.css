@@ -7,16 +7,22 @@
 }
 
 .genderBtn {
-    background-color: rgb(61, 61, 61);
-    border: 1px solid black;
+    background-color: rgb(88, 88, 88);
+    border: 2px solid darkgoldenrod;
+    color: black;
+    font-weight: bold;
     border-radius: 5px;
-    color: rgb(185, 185, 185);
+    /* color: rgb(185, 185, 185); */
     padding: 0.25em;
     padding-left: 0.5em;
     padding-right: 0.5em;
     cursor: pointer;
     margin-top: 0.5em;
     margin-bottom: 1em;
+}
+
+.selectedGender {
+    background-color: rgb(87, 8, 8);
 }
 
 .genderBtn:hover {

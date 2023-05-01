@@ -424,12 +424,12 @@ export const Stage0301 = () => {
               <p className='easyText'>En un momento dado, decides dejar de caminar sin rumbo y te acercas a un grupo de 
               tres individuos -supones que debían ser onis- que discuten acaloradamente. Lo que por alguna razón te parece una idea estupenda. Y le preguntas 
               a uno de ellos:</p>
-              <p>Tú: ¿Cuántos de vosotros tres sois legales?</p>
+              <p><span className='youText'>Tú: </span> ¿Cuántos de vosotros tres sois legales?</p>
               <p className='easyText'>El primero de ellos, de nombre Kuyroo, responde en un idioma que te resulta desconocido e inteligible. Pero uno de ellos, Gaara, 
               te hace el favor de intervenir:</p>
-              <p>Gaara: Ha dicho que hay un legal entre nosotros.</p>
+              <p><span className='gaaraText'>Gaara:</span> Ha dicho que hay un legal entre nosotros.</p>
               <p className='easyText'>Con el mismo tono bronco de antes, el otro demonio replica:</p>
-              <p>Akumato: No creas nada de lo que diga Gaara, está mintiendo.</p>
+              <p><span className='akumatoText'>Akumato:</span> No creas nada de lo que diga Gaara, está mintiendo.</p>
               <p className='easyText'>¿Qué son Gaara y Akumato?</p>
             </div>
           </div>

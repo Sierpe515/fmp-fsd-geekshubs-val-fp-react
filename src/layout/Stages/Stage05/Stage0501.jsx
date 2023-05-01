@@ -392,7 +392,7 @@ export const Stage0501 = () => {
               no estaba pegado al suelo. Excepto tres cofres.</p>
               <p className='easyText'>Te internas en el barco y exploras sus derruidas estancias hasta localizar los famosos cofres, que pese a lo que cabría 
               esperar no son sólo una leyenda. Pero en cuanto te acercas a ellos, un fantasma se materializa entre tú y los cofres:</p>
-              <p>Cerbero: ¡Alto ahí forastero! Antes de que te dispongas a robar estos cofres, sepas que perdí mi vida defendiéndolos. De poco sirvió, advertí 
+              <p><span className='cerberoText'>Cerbero:</span> ¡Alto ahí forastero! Antes de que te dispongas a robar estos cofres, sepas que perdí mi vida defendiéndolos. De poco sirvió, advertí 
               a los piratas de que una maldición pesa sobre dos de ellos. No se atrevieron a abrirlos, pero aún así diéronme muerte.</p>
               <p>Si confías lo sufiente en tu ingenio como para arriesgarte a entregar tu vida por codicia, te diré que cada uno tiene una inscripción y, sólo 
               una de ellas, es cierta.</p>

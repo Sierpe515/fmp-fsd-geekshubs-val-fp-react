@@ -429,7 +429,7 @@ export const Stage0302 = () => {
               <p className='easyText'>Por la naturaleza de los sueños, el personaje te resulta familiar y recuerdas vagamente su nombre, pero no aciertas a distinguir 
               si era Tarco, Tarso o Parso. Pero sin tiempo que perder, le confiesas tu confusión, a lo que responde:
               </p>
-              <p>???: Mi nombre es o Tarco o Parso</p>
+              <p><span className='tarcoText'>???:</span> Mi nombre es o Tarco o Parso</p>
               <p className='easyText'>¿Cuál es el nombre del hombre tortuga?</p>
             </div>
           </div>

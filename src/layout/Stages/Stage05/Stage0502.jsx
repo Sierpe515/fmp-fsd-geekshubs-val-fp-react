@@ -391,13 +391,13 @@ export const Stage0502 = () => {
               <p className='easyText'>De repente, algo impacta a escasos centimetros de tus botas. Ha sido un disparo. Te detienes en seco. El ruido hace que una 
               bandada de pájaros se alce al vuelo desde los árboles cercanos. Miras al rededor en busca del pistolero, pero no ves a nadie. Sigues buscando con más 
               atención, hasta que ves a un ser bastante pequeño.</p>
-              <p>Mussie: No des ni un paso más o a partir de ahora tendrás que caminar con nueve dedos.</p>
+              <p><span className='mussieText'>Mussie:</span> No des ni un paso más o a partir de ahora tendrás que caminar con nueve dedos.</p>
               <p className='easyText'>Sopesas si con ese rifle diminuto podría hacerte realmente daño, pero por el disparo de antes das un voto de credibilidad a la 
               potencia del arma.</p>
-              <p>Mussie: Yo he visto antes esos cofres y por mi madre que me los voy a quedar yo.</p>
+              <p><span className='mussieText'>Mussie:</span> Yo he visto antes esos cofres y por mi madre que me los voy a quedar yo.</p>
               <p className='easyText'>No mentía, no tenías ni idea de qué cofres hablaba, hasta que ves en un pequeño islote en medio del lago tres cofres puestos en 
               línea.</p>
-              <p>Pareces más perdido que avispado, pero estoy desesperado. Dos de los cofres contienen explosivos que detonarán si se abren y los tres tienen una 
+              <p><span className='mussieText'>Mussie:</span> Pareces más perdido que avispado, pero estoy desesperado. Dos de los cofres contienen explosivos que detonarán si se abren y los tres tienen una 
                 inscripción cada uno, de las cuales sólo una es cierta.</p>
               <p>Ayúdame a averiguar qué cofre contiene el oro y lo compartiré contigo.</p>
             </div>

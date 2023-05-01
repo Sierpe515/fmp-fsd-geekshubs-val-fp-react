@@ -32,7 +32,7 @@ export const NewCharacter = () => {
     });
 
     // const [characterGender, setCharacterGender] = useState("")
-
+    console.log(character.gender);
 
     const [btnMessage, setBtnMessage] = useState("")
 
@@ -122,9 +122,9 @@ export const NewCharacter = () => {
                     <div>
                         <div className='pType'>Gender</div> 
                         <div className='d-flex justify-content-around'>
-                            <div className='genderBtn' name="gender" onClick={() => chooseGender('male')}>Male</div>
-                            <div className='genderBtn' name="gender" onClick={() => chooseGender('female')}>Female</div>
-                            <div className='genderBtn' name="gender" onClick={() => chooseGender('undefined')}>Undefined</div>
+                            <div className={character.gender == "male" ? ("genderBtn selectedGender") : ("genderBtn")} name="gender" onClick={() => chooseGender('male')}>Male</div>
+                            <div className={character.gender == "female" ? ("genderBtn selectedGender") : ("genderBtn")} name="gender" onClick={() => chooseGender('female')}>Female</div>
+                            <div className={character.gender == "undefined" ? ("genderBtn selectedGender") : ("genderBtn")} name="gender" onClick={() => chooseGender('undefined')}>Undefined</div>
                         </div>
                     </div>
                     </Form>

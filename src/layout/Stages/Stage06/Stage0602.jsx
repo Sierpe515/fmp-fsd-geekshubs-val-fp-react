@@ -377,14 +377,14 @@ export const Stage0602 = () => {
               de las puertas. Pero su cometido no es evitar que tú puedas entrar en alguna de ellas, sino que cualquier cosa pueda entrar desde alguna de ellas a su mundo. 
               Eso te hace ser consciente del peligro que entraña la elección que tienes que hacer. Pero has llegado tan lejos...</p>
               <p className='easyText'>Los guardianes te dicen lo siguiente para que puedas elegir con inteligencia:</p>
-              <p>Guardián I: La puerta correcta es la I.</p>
-              <p>Guardián II: Al menos una de las puertas II y III es la correcta.</p>
-              <p>Guardián III: A y B son legales.</p>
-              <p>Guardián IV: Las puertas I y II son correctas.</p>
-              <p>Guardián V: Las puertas I y III son correctas.</p>
-              <p>Guardián VI: O el guardián IV o el guardían V son legales.</p>
-              <p>Guardián VII: Si el guardián III es legal, entonces el guardián VI también lo es.</p>
-              <p>Guardián VIII: Si el guardián VII y yo somos legales, entonces el guardián I también lo es.</p>
+              <p><span className='guardText'>Guardián I:</span> La puerta correcta es la I.</p>
+              <p><span className='guardText'>Guardián II:</span> Al menos una de las puertas II y III es la correcta.</p>
+              <p><span className='guardText'>Guardián III:</span> A y B son legales.</p>
+              <p><span className='guardText'>Guardián IV:</span> Las puertas I y II son correctas.</p>
+              <p><span className='guardText'>Guardián V:</span> Las puertas I y III son correctas.</p>
+              <p><span className='guardText'>Guardián VI:</span> O el guardián IV o el guardían V son legales.</p>
+              <p><span className='guardText'>Guardián VII:</span> Si el guardián III es legal, entonces el guardián VI también lo es.</p>
+              <p><span className='guardText'>Guardián VIII:</span> Si el guardián VII y yo somos legales, entonces el guardián I también lo es.</p>
               <p className='easyText'>¿En qué puerta está la salida?</p>
             </div>
           </div>

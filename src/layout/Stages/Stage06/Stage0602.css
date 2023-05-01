@@ -82,6 +82,13 @@
     background-image: url('../../../image/buttonHover.png');
 }
 
+.guardText {
+    color: rgb(136, 93, 80);
+    font-weight: bold;
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
+
 @media (min-height: 600px){
     .font0602 {
         height: 130vh;

@@ -178,21 +178,21 @@ export const Stage01 = () => {
           </div>
         <div className='text01'>
           <div className='scrollText font01'>
-            <p>Shawx: ¡Bienhallado!</p>
-            <p>Skryx: ¡Bienvenido, soñador! Has llegado a las puertas de Oniria.</p>
-            <p>Shawx: El más famoso de los reino del sueño. Es un gran lugar en el 
+            <p><span className='shawxText'>Shawx:</span> ¡Bienhallado!</p>
+            <p><span className='skryxText'>Skryx:</span> ¡Bienvenido, soñador! Has llegado a las puertas de Oniria.</p>
+            <p><span className='shawxText'>Shawx:</span> El más famoso de los reino del sueño. Es un gran lugar en el 
               que adentrarse.</p>
-            <p>Skryx: Pero es importante no quedarse demasiado tiempo, o correrás el riesgo 
+            <p><span className='skryxText'>Skryx:</span> Pero es importante no quedarse demasiado tiempo, o correrás el riesgo 
               de quedar atrapado en él para siempre.</p>
-            <p>Tú: Eso no suena muy bien. ¿Qué me impide dar media vuelta e irme?</p>
-            <p>Shawx: ¡Nada!</p>
-            <p>Skryx: Pero has caído muy hondo en el sueño, no encontrarás una salida 
+            <p><span className='youText'>Tú:</span> Eso no suena muy bien. ¿Qué me impide dar media vuelta e irme?</p>
+            <p><span className='shawxText'>Shawx:</span> ¡Nada!</p>
+            <p><span className='skryxText'>Skryx:</span> Pero has caído muy hondo en el sueño, no encontrarás una salida 
               salvo que atravieses las tierras de Oniria.</p>
-            <p>Shawx: Toda suerte de habitantes pueblan nuestro reino, de incontables clases.</p>
-            <p>Skryx: De entre los que deberás distinguir legales, que siempre te dirán la verdad, 
+            <p><span className='shawxText'>Shawx:</span> Toda suerte de habitantes pueblan nuestro reino, de incontables clases.</p>
+            <p><span className='skryxText'>Skryx:</span> De entre los que deberás distinguir legales, que siempre te dirán la verdad, 
               y caóticos, que siempre mienten. Te recomiendo que elijas a una de nosotras como guía.</p>
-            <p>Shawx: Conmigo todo te resultará más fácil.</p>
-            <p>Skryx: Antes de que realices tu elección, una advertencia: <br/>
+            <p><span className='shawxText'>Shawx:</span> Conmigo todo te resultará más fácil.</p>
+            <p><span className='skryxText'>Skryx:</span> Antes de que realices tu elección, una advertencia: <br/>
             Al menos una de las dos es caótica.</p>
           </div>
         </div>

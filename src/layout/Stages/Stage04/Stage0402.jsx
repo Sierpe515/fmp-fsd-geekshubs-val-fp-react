@@ -50,13 +50,13 @@ export const Stage0402 = () => {
   
   const popoverHoverFocus1 = (
     <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
-      Magnus
+      Astartea
     </Popover>
   );
   
   const popoverHoverFocus2 = (
     <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
-      Kadala
+      Belfegor
     </Popover>
   ); 
 
@@ -393,8 +393,8 @@ export const Stage0402 = () => {
               <p className='easyText'>Te informan de que esa tierra, no se puede deambular libremente. Te ofrecen un trato, si aciertas de qué tipo son, te 
               acompañan a la frontera de las tierras abisales, pero si fallas, te convertiran en un torturado, condenado a vagar por el abismo por toda la eternidad. 
               Para ello te dan la siguiente información:</p>
-              <p>Belfegor: Mi mujer no es neutral.</p>
-              <p>Astartea: Mi marido no es neutral.</p>
+              <p><span className='belText'>Belfegor:</span> Mi mujer no es neutral.</p>
+              <p><span className='astText'>Astartea:</span> Mi marido no es neutral.</p>
               <p className='easyText'>¿De qué clase son Astartea y Belfegor?</p>
             </div>
           </div>

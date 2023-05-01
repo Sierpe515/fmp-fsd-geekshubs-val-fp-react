@@ -337,7 +337,7 @@ export const Stage0205 = () => {
                 Sin andarte por las ramas, les preguntas si son legales o
                 caóticos, a lo que optienes la siguiente respuesta:
               </p>
-              <p>Shasha: O yo soy caótica o Sherboroug es legal.</p>
+              <p><span className='shashaText'>Shasha:</span> O yo soy caótica o Sherboroug es legal.</p>
               <p className="easyText">
                 Debes averiguar qué es cada uno para saber si fiarte de sus
                 indicaciones.

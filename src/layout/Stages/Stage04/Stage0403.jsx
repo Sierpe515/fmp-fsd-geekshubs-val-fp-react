@@ -395,9 +395,9 @@ export const Stage0403 = () => {
               y Eloste, pero casados en Bahava, por lo que también está compuesto por dos neutrales o un caótico y un legal o viceversa.</p>
               <p className='easyText'>En cualquier caso, te interesa conocer la dirección de tu próximo destino, pero todavía necesitas saber si puedes fiarte de alguno de 
               ellos. Les preguntas sobre su condición y te responden lo siguiente:</p>
-              <p>Magnus: Eloste es legal.</p>
-              <p>Kadala: Mi marido tiene toda la razón.</p>
-              <p>Margareth: Totalmente de acuerdo con ellos. Eloste es legal.</p>
+              <p><span className='magnusText'>Magnus:</span> Eloste es legal.</p>
+              <p><span className='kadalaText'>Kadala:</span> Mi marido tiene toda la razón.</p>
+              <p><span className='margaText'>Margareth:</span> Totalmente de acuerdo con ellos. Eloste es legal.</p>
               <p className='easyText'>¿De qué clase es realmente Eloste?</p>
             </div>
           </div>

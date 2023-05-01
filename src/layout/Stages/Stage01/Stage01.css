@@ -44,7 +44,7 @@
 
 .font01 {
     height: 100em;
-    font-size: 0.75em;
+    font-size: 3vh;
 }
 
 .gar2 {
@@ -94,9 +94,27 @@
     font-weight: bold;
 }
 
-/* .margin01 {
-    margin-top: 1em;
-} */
+.shawxText {
+    color: greenyellow;
+    font-weight: bold;
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
+
+.skryxText {
+    color: orange;
+    font-weight: bold;
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
+
+.youText {
+    color: rgb(14, 163, 250);
+    font-weight: bold;
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+
+}
 
 @media (min-height: 500px){
     .gar1 {
