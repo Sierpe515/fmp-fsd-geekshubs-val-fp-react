@@ -64,66 +64,66 @@ export const Stage0603 = () => {
 
   const popoverHoverFocus1e = (
     <Popover className="popoverBtn popFont" id="popover-trigger-hover-focus" title="Popover bottom">
-      <div>Acusado: Caballero/inocente</div>
-      <div>Abogado: Normal/culpable</div>
-      <div>Fical: Escudero/inocente</div>
+      <div>Halconera: Legal/inocente</div>
+      <div>Halcón: Neutral/culpable</div>
+      <div>Verdugo: Caótico/inocente</div>
     </Popover>
   ); 
   
   const popoverHoverFocus2e = (
     <Popover className="popoverBtn popFont" id="popover-trigger-hover-focus" title="Popover bottom">
-      <div>Acusado: Caballero/inocente</div>
-      <div>Abogado: Escudero/inocente</div>
-      <div>Fical: Caballero/Culpable</div>
+      <div>Halconera: Legal/inocente</div>
+      <div>Halcón: Caótico/inocente</div>
+      <div>Verdugo: Neutral/Culpable</div>
     </Popover>
   ); 
   const popoverHoverFocus3e = (
     <Popover className="popoverBtn popFont" id="popover-trigger-hover-focus" title="Popover bottom">
-      <div>Acusado: Caballero/inocente</div>
-      <div>Abogado: Escudero/culpable</div>
-      <div>Fical: Caballero/inocente</div>
+      <div>Halconera: Legal/inocente</div>
+      <div>Halcón: Neutral/culpable</div>
+      <div>Verdugo: Caótico/inocente</div>
     </Popover>
   ); 
   const popoverHoverFocus4e = (
     <Popover className="popoverBtn popFont" id="popover-trigger-hover-focus" title="Popover bottom">
-      <div>Acusado: Escudero/inocente</div>
-      <div>Abogado: Caballero/culpable</div>
-      <div>Fical: Normal/inocente</div>
+      <div>Halconera: Caótico/inocente</div>
+      <div>Halcón: Legal/culpable</div>
+      <div>Verdugo: Neutral/inocente</div>
     </Popover>
   ); 
   const popoverHoverFocus5e = (
     <Popover className="popoverBtn popFont" id="popover-trigger-hover-focus" title="Popover bottom">
-      <div>Acusado: Escudero/inocente</div>
-      <div>Abogado: Normal/culpable</div>
-      <div>Fical: Caballero/inocente</div>
+      <div>Halconera: Caótico/inocente</div>
+      <div>Halcón: Neutral/culpable</div>
+      <div>Verdugo: Legal/inocente</div>
     </Popover>
   ); 
   const popoverHoverFocus6e = (
     <Popover className="popoverBtn popFont" id="popover-trigger-hover-focus" title="Popover bottom">
-      <div>Acusado: Escudero/inocente</div>
-      <div>Abogado: Normal/inocente</div>
-      <div>Fical: Caballero/culpable</div>
+      <div>Halconera: Caótico/inocente</div>
+      <div>Halcón: Neutral/inocente</div>
+      <div>Verdugo: Legal/culpable</div>
     </Popover>
   ); 
   const popoverHoverFocus7e = (
     <Popover className="popoverBtn popFont" id="popover-trigger-hover-focus" title="Popover bottom">
-      <div>Acusado: Normal/culpable</div>
-      <div>Abogado: Caballero/inocente</div>
-      <div>Fical: Escudero/inocente</div>
+      <div>Halconera: Neutral/culpable</div>
+      <div>Halcón: Legal/inocente</div>
+      <div>Verdugo: Caótico/inocente</div>
     </Popover>
   ); 
   const popoverHoverFocus8e = (
     <Popover className="popoverBtn popFont" id="popover-trigger-hover-focus" title="Popover bottom">
-      <div>Acusado: Normal/inocente</div>
-      <div>Abogado: Caballero/culpable</div>
-      <div>Fical: Escudero/inocente</div>
+      <div>Halconera: Neutral/inocente</div>
+      <div>Halcón: Legal/culpable</div>
+      <div>Verdugo: Caótico/inocente</div>
     </Popover>
   ); 
   const popoverHoverFocus9e = (
     <Popover className="popoverBtn popFont" id="popover-trigger-hover-focus" title="Popover bottom">
-      <div>Acusado: Normal/culpable</div>
-      <div>Abogado: Escudero/inocente</div>
-      <div>Fical: Caballero/inocente</div>
+      <div>Halconera: Neutral/culpable</div>
+      <div>Halcón: Caótico/inocente</div>
+      <div>Verdugo: Legal/inocente</div>
     </Popover>
   ); 
 
@@ -435,24 +435,30 @@ export const Stage0603 = () => {
               <img className="img0603" src={death2} alt="" />
             </OverlayTrigger>
           </div>
-          <div className="textBox03 textBox0602">
-            <div  className='scrollText font0403'>
+          <div className="textBox03 textBox0603">
+            <div  className='scrollText font0603'>
               <p className='easyText'> MENSAJE DEL JUEGO: Este es un nivel de muerte súbita, errar aquí finaliza el juego, independientemente de la locura 
               acumulada o la falta de ella.</p>
-              <p className='easyText'>Por fin se alzan ante tus ojos las Estatuas Cattegat. Enormes y majestuosas, imponentes a los sentidos. El mar del 
-              fin del sueño baña sus pies y has conseguido embarcar en un drakkar que navega sus aguas.</p>
-              <p className='easyText'>Según se cuenta, cada puerta tiene una salida. Pero sólo una conduce fuera del sueño. Es un punto de inflexión para 
-              tu viaje, porque un acierto más y podrás volver a tu mundo, pero un error conduce irremediablemente a una muerte segura.</p>
-              <p className='easyText'>Has conseguido convencer a un grupo de vikingos, que quiere hacer una incursión en el mundo despierto, de tus dotes 
-              lógicas. Cada estatua tiene una inscripción. Únicamente la de la estatua de la salida decía la verdad. Después había otros dos tipos de estatua; 
-              las que llevaban a un muerte rápida por trampas, cuyas inscripciones siempre mentían, y las que no tenían salida, y por tanto llevaban a la muerte 
-              igualmente, ya que no se podía regresar, y cuyas inscripciones bien podían decir la verdad, o bien mentir.</p>
-              <p className='easyText'>Únicamente con los datos de las inscripciones era imposible deducir cuál era la estatua que llevaba a la salida, pero tú, a lo 
-              largo de tu viaje habías recogido una valiosísima información, la pieza que falta del rompecabezas, que te permitía saber con certeza en qué estatua estaba
-              la salida: si la estatua VIII tenía salida o no.</p>
-              <p className='easyText'>Navegando por el mar del fin del sueño te acercas a cada una de las estatuas y observas todo lo que dicen las inscripciones. Estás a 
-              una elección de poder despertar y volver a tu mundo. Elige con cabeza y recuerda que no hay lugar para fallos.</p>
-              <p className='easyText'>¿En qué estatua está la salida?</p>
+              <p className='easyText'>Abres los ojos dentro del sueño, no recuerdas nada desde que abriste ese cofre. Pero ahora estás en un juicio y eres el asistente 
+              del juez. Para más inri, el juez es la mismísima muerte, y al tratarse de tu sueño es tal y como la imaginabas; un ser cadaverico envuelto en 
+              una arapienta túnica que antaño debió de ser negra, pero que ahora apenas conserva algo de color.</p>
+              <p className='easyText'>La muerte conoce tu situación y está dispuesta a enviarte de vuelta a tu mundo si le ayudas a esclarecer el caso. Pero se toma la 
+              justicia muy en serio y si fallas te dejará vagando por estos mundos a tu suerte. Y sientes que ya no te queda tiempo.</p>
+              <p className='easyText'>Hay tres acusados, el verdugo, la halconera y, por extraño que parezca, el halcón, que ha resultado ser un ser con consciencia y habla.
+              Se sabe que uno de ellos ha cometido el delito, pero no cuál. También se conoce que entre los acusados, uno es legal, otro caótico y otro neutral.</p>
+              <p className='easyText'>Del mismo modo, también se conoce que si la haconera no es la culpable, entonces lo es el verdugo o el halcón</p>
+              <p className='easyText'>Por último, también se sabía que el culpable no era caótico.</p>
+              <p className='easyText'>Y los tres dijeron lo siguiente:</p>
+              <p>Halconera: Yo soy inocente.</p>
+              <p>Halcón: Es cierto, mi señora es inocente.</p>
+              <p>Verdugo: No es verdad, la halconera es culpable.</p>
+              <p className='easyText'>Las pronunciaciones de los acusados, resultaban bastante naturales, pero insuficientes para que pudieras sacar una conclusión válida. 
+              De modo que te acercaste a los acusados con intención de hacer las preguntas necesarias para cumplir tu proposito.</p>
+              <p className='easyText'>En primer lugar te acercaste al verdugo y le preguntaste:</p>
+              <p>Tú: ¿Por casualidad, no será usted el culpable?</p>
+              <p className='easyText'>El verdugo te respondió y te viste con la necesidad de realizar otra pregunta. Te acercaste, esta vez, a la halconera y le preguntaste:</p>
+              <p>Tú: ¿Es culpable el verdugo?</p>
+              <p className='easyText'>Cuando te respondió, pudiste esclarecer el caso. ¿Quién era el culpable y quién era legal, caótico o neutral?</p>
             </div>
           </div>
           <div className="img2Box0603">
@@ -480,10 +486,10 @@ export const Stage0603 = () => {
               >
               <div className="homeBtn03 btnMargin02 fontBtn0301"
                   onClick={() => {
-                    chooseAnswer("34"), setModalShow(true);
+                    chooseAnswer("38"), setModalShow(true);
                   }}
                 >
-                  ESTATUA I
+                  Answer I
               </div>
             </OverlayTrigger>
             <OverlayTrigger
@@ -493,10 +499,10 @@ export const Stage0603 = () => {
               >
               <div className="homeBtn03 btnMargin02 fontBtn0301"
                   onClick={() => {
-                    chooseAnswer("34"), setModalShow(true);
+                    chooseAnswer("38"), setModalShow(true);
                   }}
                 >
-                  ESTATUA IV
+                  Answer IV
               </div>
             </OverlayTrigger>
             <OverlayTrigger
@@ -506,10 +512,10 @@ export const Stage0603 = () => {
               >
               <div className="homeBtn03 btnMargin02 fontBtn0301"
                   onClick={() => {
-                    chooseAnswer("33"), setModalShow(true);
+                    chooseAnswer("38"), setModalShow(true);
                   }}
                 >
-                  ESTATUA VII
+                  Answer VII
               </div>
             </OverlayTrigger>
           </div>
@@ -521,10 +527,10 @@ export const Stage0603 = () => {
               >
               <div className="homeBtn03 btnMargin02 fontBtn0301"
                   onClick={() => {
-                    chooseAnswer("34"), setModalShow(true);
+                    chooseAnswer("38"), setModalShow(true);
                   }}
                 >
-                  ESTATUA II
+                  Answer II
               </div>
             </OverlayTrigger>
             <OverlayTrigger
@@ -534,10 +540,10 @@ export const Stage0603 = () => {
               >
               <div className="homeBtn03 btnMargin02 fontBtn0301"
                   onClick={() => {
-                    chooseAnswer("34"), setModalShow(true);
+                    chooseAnswer("38"), setModalShow(true);
                   }}
                 >
-                  ESTATUA V
+                  Answer V
               </div>
             </OverlayTrigger>
             <OverlayTrigger
@@ -547,10 +553,10 @@ export const Stage0603 = () => {
               >
               <div className="homeBtn03 btnMargin02 fontBtn0301"
                   onClick={() => {
-                    chooseAnswer("34"), setModalShow(true);
+                    chooseAnswer("37"), setModalShow(true);
                   }}
                 >
-                  ESTATUA VIII
+                  Answer VIII
               </div>
             </OverlayTrigger>
           </div>
@@ -562,10 +568,10 @@ export const Stage0603 = () => {
               >
               <div className="homeBtn03 btnMargin02 fontBtn0301"
                   onClick={() => {
-                    chooseAnswer("34"), setModalShow(true);
+                    chooseAnswer("38"), setModalShow(true);
                   }}
                 >
-                  ESTATUA III
+                  Answer III
               </div>
             </OverlayTrigger>
             <OverlayTrigger
@@ -575,10 +581,10 @@ export const Stage0603 = () => {
               >
               <div className="homeBtn03 btnMargin02 fontBtn0301"
                   onClick={() => {
-                    chooseAnswer("34"), setModalShow(true);
+                    chooseAnswer("38"), setModalShow(true);
                   }}
                 >
-                  ESTATUA VI
+                  Answer VI
               </div>
             </OverlayTrigger>
             <OverlayTrigger
@@ -588,10 +594,10 @@ export const Stage0603 = () => {
               >
               <div className="homeBtn03 btnMargin02 fontBtn0301"
                   onClick={() => {
-                    chooseAnswer("34"), setModalShow(true);
+                    chooseAnswer("38"), setModalShow(true);
                   }}
                 >
-                  ESTATUA IX
+                  Answer IX
               </div>
             </OverlayTrigger>
           </div>

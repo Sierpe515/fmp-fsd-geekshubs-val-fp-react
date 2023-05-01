@@ -38,6 +38,12 @@
     z-index: 6;
 }
 
+.font0602 {
+    font-size: 2.5vh;
+    /* height: 55em; */
+    height: 150vh;
+}
+
 .btnBox0602 {
     height: 35vh;
     width: 80vw;
@@ -74,4 +80,22 @@
 
 .homeBtn0602:hover {
     background-image: url('../../../image/buttonHover.png');
+}
+
+@media (min-height: 600px){
+    .font0602 {
+        height: 130vh;
+    }
+}
+
+@media (min-height: 800px){
+    .font0602 {
+        height: 115vh;
+    }
+}
+
+@media (min-height: 900px){
+    .font0602 {
+        height: 100vh;
+    }
 }

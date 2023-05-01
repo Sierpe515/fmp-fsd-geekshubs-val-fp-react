@@ -407,23 +407,30 @@ export const Stage0602 = () => {
             </OverlayTrigger>
           </div>
           <div className="textBox03 textBox0501">
-            <div  className='scrollText font0403'>
+            <div  className='scrollText font0602'>
               <p className='easyText'> MENSAJE DEL JUEGO: Este es un nivel de muerte súbita, errar aquí finaliza el juego, independientemente de la locura 
               acumulada o la falta de ella.</p>
-              <p className='easyText'>Por fin se alzan ante tus ojos las Estatuas Cattegat. Enormes y majestuosas, imponentes a los sentidos. El mar del 
-              fin del sueño baña sus pies y has conseguido embarcar en un drakkar que navega sus aguas.</p>
-              <p className='easyText'>Según se cuenta, cada puerta tiene una salida. Pero sólo una conduce fuera del sueño. Es un punto de inflexión para 
-              tu viaje, porque un acierto más y podrás volver a tu mundo, pero un error conduce irremediablemente a una muerte segura.</p>
-              <p className='easyText'>Has conseguido convencer a un grupo de vikingos, que quiere hacer una incursión en el mundo despierto, de tus dotes 
-              lógicas. Cada estatua tiene una inscripción. Únicamente la de la estatua de la salida decía la verdad. Después había otros dos tipos de estatua; 
-              las que llevaban a un muerte rápida por trampas, cuyas inscripciones siempre mentían, y las que no tenían salida, y por tanto llevaban a la muerte 
-              igualmente, ya que no se podía regresar, y cuyas inscripciones bien podían decir la verdad, o bien mentir.</p>
-              <p className='easyText'>Únicamente con los datos de las inscripciones era imposible deducir cuál era la estatua que llevaba a la salida, pero tú, a lo 
-              largo de tu viaje habías recogido una valiosísima información, la pieza que falta del rompecabezas, que te permitía saber con certeza en qué estatua estaba
-              la salida: si la estatua VIII tenía salida o no.</p>
-              <p className='easyText'>Navegando por el mar del fin del sueño te acercas a cada una de las estatuas y observas todo lo que dicen las inscripciones. Estás a 
-              una elección de poder despertar y volver a tu mundo. Elige con cabeza y recuerda que no hay lugar para fallos.</p>
-              <p className='easyText'>¿En qué estatua está la salida?</p>
+              <p className='easyText'>Lo que te prometieron que sería una salida sencilla, se traduce con corazón a punto de salirse del pecho en una mazmorra 
+              subterranea repleta de humanoides abominables con muchas ganas de atacar a cualquier cosa que se mueva. Por desgracia, tú cumples todos los requisitos.</p>
+              <p className='easyText'>Una parte de ti, puede sentir un extraño aura de lo que crees que es la salida del mundo del sueño. Puede que este no sea el 
+              mejor camino, pero es un camino. Lo recorres y exploras casi la totalidad de las dependencias de la mazmorra, que ahora ya puedes confirmar que es 
+              una catacumba. Y finalmente la alcanzas; la puerta al mundo despierto. Discreta y vulgar, nada en ella resalta su importancia. De no ser porque llevas 
+              tanto tiempo tratando de alcanzarla, estarías decepcionado.</p>
+              <p className='easyText'>Pero no va a ser tan fácil. Nunca lo es. Tu puerta no está sola, se camufla entre otras tres puertas más, que conducen a una 
+              muerte segura. Un error en esta elección acabará tus esperanzas de despertar</p>
+              <p className='easyText'>También se encuentran en la estancia ocho carneros de aspecto amenazador, cada uno de ellos legal o caótico. Son los guardianes 
+              de las puertas. Pero su cometido no es evitar que tú puedas entrar en alguna de ellas, sino que cualquier cosa pueda entrar desde alguna de ellas a su mundo. 
+              Eso te hace ser consciente del peligro que entraña la elección que tienes que hacer. Pero has llegado tan lejos...</p>
+              <p className='easyText'>Los guardianes te dicen lo siguiente para que puedas elegir con inteligencia:</p>
+              <p>Guardián I: La puerta correcta es la I.</p>
+              <p>Guardián II: Al menos una de las puertas II y III es la correcta.</p>
+              <p>Guardián III: A y B son legales.</p>
+              <p>Guardián IV: Las puertas I y II son correctas.</p>
+              <p>Guardián V: Las puertas I y III son correctas.</p>
+              <p>Guardián VI: O el guardián IV o el guardían V son legales.</p>
+              <p>Guardián VII: Si el guardián III es legal, entonces el guardián VI también lo es.</p>
+              <p>Guardián VIII: Si el guardián VII y yo somos legales, entonces el guardián I también lo es.</p>
+              <p className='easyText'>¿En qué puerta está la salida?</p>
             </div>
           </div>
           <div className="img2Box0602">
@@ -451,10 +458,10 @@ export const Stage0602 = () => {
               >
               <div className="homeBtn0602 btnMargin02 fontBtn0301"
                   onClick={() => {
-                    chooseAnswer("34"), setModalShow(true);
+                    chooseAnswer("35"), setModalShow(true);
                   }}
                 >
-                  ESTATUA I
+                  Puerta I
               </div>
             </OverlayTrigger>
             <OverlayTrigger
@@ -464,10 +471,10 @@ export const Stage0602 = () => {
               >
               <div className="homeBtn0602 btnMargin02 fontBtn0301"
                   onClick={() => {
-                    chooseAnswer("34"), setModalShow(true);
+                    chooseAnswer("36"), setModalShow(true);
                   }}
                 >
-                  ESTATUA IV
+                  Puerta III
               </div>
             </OverlayTrigger>
           </div>
@@ -480,10 +487,10 @@ export const Stage0602 = () => {
               >
               <div className="homeBtn0602 btnMargin02 fontBtn0301"
                   onClick={() => {
-                    chooseAnswer("34"), setModalShow(true);
+                    chooseAnswer("36"), setModalShow(true);
                   }}
                 >
-                  ESTATUA III
+                  Puerta II
               </div>
             </OverlayTrigger>
             <OverlayTrigger
@@ -493,10 +500,10 @@ export const Stage0602 = () => {
               >
               <div className="homeBtn0602 btnMargin02 fontBtn0301"
                   onClick={() => {
-                    chooseAnswer("34"), setModalShow(true);
+                    chooseAnswer("36"), setModalShow(true);
                   }}
                 >
-                  ESTATUA VI
+                  Puerta IV
               </div>
             </OverlayTrigger>
           </div>

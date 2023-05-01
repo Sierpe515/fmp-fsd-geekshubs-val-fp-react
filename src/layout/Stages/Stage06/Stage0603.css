@@ -7,7 +7,7 @@
 
 .box0603 {
     height: 55vh;
-    width: 90vw;
+    width: 85vw;
     /* background-color: aliceblue; */
     display: flex;
     justify-content: center;
@@ -26,7 +26,7 @@
     align-items: center;
 }
 
-.textBox0602 {
+.textBox0603 {
     width: 55%;
 }
 
@@ -55,4 +55,28 @@
 
 .popFont {
     font-size: 2.4vh;
+}
+
+.font0603 {
+    font-size: 2.5vh;
+    /* height: 55em; */
+    height: 170vh;
+}
+
+@media (min-height: 600px){
+    .font0603 {
+        height: 160vh;
+    }
+}
+
+@media (min-height: 800px){
+    .font0603 {
+        height: 155vh;
+    }
+}
+
+@media (min-height: 900px){
+    .font0603 {
+        height: 130vh;
+    }
 }
