@@ -40,16 +40,41 @@
     margin-bottom: 0.5em;
 }
 
-/* .modalOniria {
+
+.my-modal .modal-content {
     background-color: rgba(41, 41, 41, 0.63);
     border: 2px solid darkgoldenrod;
-    border-radius: 25px;
-} */
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+    color: darkgoldenrod;
+}
 
+.sGameBtn {
+    background-color: rgb(138, 138, 138);
+    border-radius: 5px;
+    height: 10vh;
+    width: 20vw;
+    font-size: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 
-@media (min-height: 700px){
+.selectedDif {
+    background-color: rgb(56, 2, 2);
+}
+
+@media (min-height: 500px){
     .gameBox {
         height: 25vh;
         width: 18vw;
     }
+
+    .sGameBtn {
+        height: 7vh;
+        width: 12vw;
+        font-size: 3vh;
+    }
 }
+

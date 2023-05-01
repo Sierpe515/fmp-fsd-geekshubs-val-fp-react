@@ -27,6 +27,7 @@ export const SelectGame = () => {
 
   const [selectedGame, setSelectedGame] = useState("");
   const [difficulty, setDifficulty] = useState("");
+  const [errorDiff, setErrorDiff] = useState("");
 
   dispatch(addState({ choosenState: false }));
 
@@ -62,6 +63,12 @@ export const SelectGame = () => {
   };
 
   const newGame = () => {
+
+    if (difficulty == "") {
+      setErrorDiff("Please, select a difficulty level and press start")
+      return
+    }
+
     let dataGame = {
       character_id: characterRedux.choosenCharacter.id,
       select_game_id: selectedGame,
@@ -114,22 +121,26 @@ export const SelectGame = () => {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        // dialogClassName="modalOniria"
+        className="my-modal"
       >
-        {/* <div className="modalOniria"> */}
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
             Chosse difficulty and press start button
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="d-flex justify-content-around">
-          <div onClick={() => chooseDifficulty("easy")}>Easy</div>
-          <div onClick={() => chooseDifficulty("medium")}>Medium</div>
-          <div onClick={() => chooseDifficulty("hard")}>Hard</div>
+          <div className={difficulty == "easy" ? ("sGameBtn selectedDif text-center") : ("sGameBtn text-center")} onClick={() => chooseDifficulty("easy")}>Easy</div>
+          <div className={difficulty == "medium" ? ("sGameBtn selectedDif text-center") : ("sGameBtn text-center")} onClick={() => chooseDifficulty("medium")}>Medium</div>
+          <div className={difficulty == "hard" ? ("sGameBtn selectedDif text-center") : ("sGameBtn text-center")} onClick={() => chooseDifficulty("hard")}>Hard</div>
         </Modal.Body>
-        <Modal.Footer>
-          <div onClick={() => newGame()}>Start Game</div>
+          <div className="text-center">{errorDiff == "" ? ("") : (errorDiff)}</div>
+        <Modal.Footer className="d-flex justify-content-around">
+          <div className="homeBtn" onClick={() => newGame()}>Start Game</div>
         </Modal.Footer>
-        {/* </div> */}
+        {/* <div className="modalOniria">
+        
+        </div> */}
       </Modal>
     );
   }
