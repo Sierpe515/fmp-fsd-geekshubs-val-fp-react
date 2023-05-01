@@ -30,6 +30,9 @@ import { Stage0603 } from '../Stages/Stage06/Stage0603';
 import { Stage0701 } from '../Stages/Stage07/Stage0701';
 import { Stage0702 } from '../Stages/Stage07/Stage0702';
 import { Stage0703 } from '../Stages/Stage07/Stage0703';
+import { GameOver1 } from '../GameOver/GameOver1';
+import { GameOver2 } from '../GameOver/GameOver2';
+import { GameOver3 } from '../GameOver/GameOver3';
 
 
 export const Body = () => {
@@ -47,6 +50,9 @@ export const Body = () => {
             <Route path='/selectGame' element={<SelectGame/>}/>
             <Route path='/newCharacter' element={<NewCharacter/>}/>
             <Route path='/gameOver' element={<GameOver/>}/>
+            <Route path='/gameOver1' element={<GameOver1/>}/>
+            <Route path='/gameOver2' element={<GameOver2/>}/>
+            <Route path='/gameOver3' element={<GameOver3/>}/>
             <Route path='/opening' element={<Opening/>}/>
             <Route path='/stage01' element={<Stage01/>}/>
             <Route path='/stage02' element={<Stage02/>}/>
