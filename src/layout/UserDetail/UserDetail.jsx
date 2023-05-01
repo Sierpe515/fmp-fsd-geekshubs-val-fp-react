@@ -20,6 +20,7 @@ import { userDetailData } from "../userDetailSlice";
 import { addRoleByAdmin, bringCharacterGames, deleteSavedGameByAdmin, deleteUserByAdmin } from "../../services/apiCalls";
 import { addCharacter } from "../characterSlice";
 import { addState } from "../inGameSlice";
+import { TurnPhone } from "../../components/TurnPhone/TurnPhone";
 
  
 export const UserDetail = () => {
@@ -220,6 +221,7 @@ export const UserDetail = () => {
 
      return (
         <Container fluid className="homeContainerMin d-flex flex-column justify-content-between">
+            <TurnPhone/>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                 <Modal.Title>Add role</Modal.Title>

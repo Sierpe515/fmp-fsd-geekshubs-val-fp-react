@@ -7,6 +7,7 @@ import { gameDetailData } from '../../gameSlice';
 import { userData } from '../../userSlice';
 import { characterDetailData } from '../../characterSlice';
 import { useNavigate } from 'react-router-dom';
+import { TurnPhone } from '../../../components/TurnPhone/TurnPhone';
 
 export const Stage0701 = () => {
 
@@ -30,6 +31,7 @@ export const Stage0701 = () => {
 
   return (
     <Container fluid className="homeContainerMin bg0701 d-flex flex-column justify-content-center align-items-center">
+      <TurnPhone/>
       <div className='winnerText text-center'>
         <p>¡Enhorabuena, {characterRdx.choosenCharacter.name}!</p>
         <p>Tras adentrarte en esa estatua con tu tripulación, elegiste sabiamente y has demostrado unas dotes para la 

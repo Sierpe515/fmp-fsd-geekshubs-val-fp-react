@@ -17,6 +17,7 @@ import { addGame } from "../gameSlice";
 import { addState } from "../inGameSlice";
 import { addBadge } from "../badgeSlice";
 import './SelectGame.css'
+import { TurnPhone } from "../../components/TurnPhone/TurnPhone";
 
 export const SelectGame = () => {
   const [selectGames, setSelectGames] = useState([]);
@@ -152,6 +153,7 @@ export const SelectGame = () => {
       fluid
       className="homeContainerMin homeBg d-flex flex-column justify-content-center align-items-center p-0"
     >
+      <TurnPhone/>
       <Row>
         <Col>
           <div className='newPjContainer selectContainer d-flex flex-column align-items-center'>

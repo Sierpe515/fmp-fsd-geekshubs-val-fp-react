@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addState } from '../inGameSlice';
 import './GameOver2.css'
 import { useNavigate } from 'react-router-dom';
+import { TurnPhone } from '../../components/TurnPhone/TurnPhone';
 
 export const GameOver2 = () => {
 
@@ -20,6 +21,7 @@ export const GameOver2 = () => {
 
   return (
     <Container fluid className="homeContainerMin gOverBg2 d-flex flex-column justify-content-center align-items-center">
+      <TurnPhone/>
       <div className='gOverText2 text-center'>
         <p>Game Over</p>
         <p>Cruzas una de las puertas y te das cuenta de tu error. Te encuentras de frente con el leviatán dormido, que 

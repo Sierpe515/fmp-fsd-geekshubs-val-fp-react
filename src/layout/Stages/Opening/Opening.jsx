@@ -7,11 +7,17 @@ import op1 from '../../../image/op1.png'
 import op2 from '../../../image/op2.png'
 import op3 from '../../../image/op3.png'
 import op4 from '../../../image/op4.png'
+import { TurnPhone } from '../../../components/TurnPhone/TurnPhone';
+import { useDispatch } from 'react-redux';
+import { addState } from '../../inGameSlice';
 
 
 export const Opening = () => {
   
   const [index, setIndex] = useState(0);
+  const dispatch = useDispatch();
+
+  dispatch(addState({ choosenState: false}))
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -27,6 +33,7 @@ export const Opening = () => {
 
   return (
     <Container fluid className="homeContainerMin openingBg d-flex flex-column justify-content-center align-items-center">
+      <TurnPhone/>
       <Row>
         <div className='carouselBox'>
           <Carousel activeIndex={index} onSelect={handleSelect}>

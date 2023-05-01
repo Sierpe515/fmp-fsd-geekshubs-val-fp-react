@@ -6,20 +6,20 @@
 
 .carouselBox {
     /* height: 20em; */
-    width: 10em;
+    width: 25vw;
     margin: 0.5em;
 }
 
 .carouselImg {
     border-radius: 10px;
     border: 2px solid darkgoldenrod;
-    height: 13.5em;
+    height: 65vh;
 }
 
 .openingText {
     margin: 0.5em;
     height: 13.5em;
-    width: 24em;
+    width: 67%;
     background-color: rgba(37, 37, 37, 0.658);
     border-radius: 10px;
     border: 2px solid darkgoldenrod;

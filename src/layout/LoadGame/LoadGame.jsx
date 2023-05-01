@@ -9,6 +9,7 @@ import './LoadGame.css'
 import { addGame, gameDetailData } from '../gameSlice'
 import { addState } from '../inGameSlice'
 import { addBadge } from '../badgeSlice'
+import { TurnPhone } from '../../components/TurnPhone/TurnPhone'
 // import lgImg1 from '../../image/lgImg1.png'
 // import lgImg2 from '../../image/lgImg2.png'
 
@@ -93,6 +94,7 @@ export const LoadGame = () => {
 
     return (
         <Container fluid className="homeContainerMin homeBg d-flex flex-column justify-content-center align-items-center p-0">
+            <TurnPhone/>
             <Row>
                 <Col className='d-flex'>
                     <div className='newPjContainer loadGamesContainer'>

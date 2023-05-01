@@ -6,6 +6,7 @@ import { gameDetailData } from '../../gameSlice';
 import { userData } from '../../userSlice';
 import { characterDetailData } from '../../characterSlice';
 import { useNavigate } from 'react-router-dom';
+import { TurnPhone } from '../../../components/TurnPhone/TurnPhone';
 
 export const Stage0703 = () => {
 
@@ -26,6 +27,7 @@ export const Stage0703 = () => {
 
   return (
     <Container fluid className="homeContainerMin bg0703 d-flex flex-column justify-content-center align-items-center">
+      <TurnPhone/>
       <div className='winnerText text-center'>
         <p>¡Enhorabuena, {characterRdx.choosenCharacter.name}!</p>
         <p>Tras señalar al culpable, elegiste sabiamente y has demostrado unas dotes para la lógica nada desdeñables. 

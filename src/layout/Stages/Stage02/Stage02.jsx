@@ -13,6 +13,7 @@ import { addState } from '../../inGameSlice'
 import './Stage02.css'
 import garg01 from '../../../image/gargola1.png'
 import garg02 from '../../../image/gargola2.png'
+import { TurnPhone } from '../../../components/TurnPhone/TurnPhone'
 
 export const Stage02 = () => {
 
@@ -184,6 +185,7 @@ export const Stage02 = () => {
 
   return (
     <Container fluid className="homeContainerMin bg02 d-flex flex-column justify-content-center">
+      <TurnPhone/>
       <div className='s02GuideBox d-flex' id='s02GuideBox'>
         <div className='s02GuideImg'>{gameRdx.choosenGame.guide == "legal" ? ( <img className='s02GuideLegal' src={garg02} alt="" /> ) : (<img className='s02GuideChaos' src={garg01} alt="" />)}</div>
         <div className='s02GuideText'>

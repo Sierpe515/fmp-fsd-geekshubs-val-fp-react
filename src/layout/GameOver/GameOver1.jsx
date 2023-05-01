@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addState } from '../inGameSlice';
 import './GameOver1.css'
 import { useNavigate } from 'react-router-dom';
+import { TurnPhone } from '../../components/TurnPhone/TurnPhone';
 
 export const GameOver1 = () => {
 
@@ -20,6 +21,7 @@ export const GameOver1 = () => {
 
   return (
     <Container fluid className="homeContainerMin gOverBg1 d-flex flex-column justify-content-center align-items-center">
+      <TurnPhone/>
       <div className='gOverText1 text-center'>
         <p>Game Over</p>
         <p>No es la locura lo que ha acabado contigo, sino el no haber sido capaz de escoger la estatua correcta. Llevaste 

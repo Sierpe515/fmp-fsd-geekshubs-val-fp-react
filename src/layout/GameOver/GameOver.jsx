@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addState } from '../inGameSlice';
 import './GameOver.css'
 import { useNavigate } from 'react-router-dom';
+import { TurnPhone } from '../../components/TurnPhone/TurnPhone';
 
 export const GameOver = () => {
 
@@ -20,6 +21,7 @@ export const GameOver = () => {
 
   return (
     <Container fluid className="homeContainerMin gOverBg d-flex flex-column justify-content-center align-items-center">
+      <TurnPhone/>
       <div className='gOverText text-center'>
         <p>Game Over</p>
         <p>La locura ha podido contigo y ha desviado tu rumbo de la ruta correcta. Has quedado condenado a vagar por Oniria 

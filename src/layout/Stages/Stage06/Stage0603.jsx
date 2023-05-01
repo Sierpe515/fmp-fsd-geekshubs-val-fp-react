@@ -30,6 +30,7 @@ import death3 from '../../../image/death3.png';
 // import vamp3 from '../../../image/vamp3.png';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import { TurnPhone } from "../../../components/TurnPhone/TurnPhone";
 
 export const Stage0603 = () => {
   const gameRdx = useSelector(gameDetailData);
@@ -415,6 +416,7 @@ export const Stage0603 = () => {
       fluid
       className="homeContainerMin bg0603 d-flex flex-column justify-content-center align-items-center"
     >
+      <TurnPhone/>
       <Row>
         <div className="box0603">
           {/* <div className="img1Box0603">

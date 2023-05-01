@@ -27,6 +27,7 @@ import hell2 from '../../../image/hell2.png';
 // import vamp3 from '../../../image/vamp3.png';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import { TurnPhone } from "../../../components/TurnPhone/TurnPhone";
 
 export const Stage0402 = () => {
   const gameRdx = useSelector(gameDetailData);
@@ -366,6 +367,7 @@ export const Stage0402 = () => {
       fluid
       className="homeContainerMin bg0402 d-flex flex-column justify-content-center align-items-center"
     >
+      <TurnPhone/>
       <Row>
         <div className="box03">
           <div className="img1Box0402">

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addState } from '../inGameSlice';
 import './GameOver3.css'
 import { useNavigate } from 'react-router-dom';
+import { TurnPhone } from '../../components/TurnPhone/TurnPhone';
 
 export const GameOver3 = () => {
 
@@ -20,6 +21,7 @@ export const GameOver3 = () => {
 
   return (
     <Container fluid className="homeContainerMin gOverBg3 d-flex flex-column justify-content-center align-items-center">
+      <TurnPhone/>
       <div className='gOverText3 text-center'>
         <p>Game Over</p>
         <p>No has sido capaz de encontrar al culpable y la muerte ha quedado muy decepcionada contigo. Podría haberte dejado a tu suerte, 

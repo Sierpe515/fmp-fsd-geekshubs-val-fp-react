@@ -24,6 +24,7 @@ import sierpe1 from "../../../image/sierpe1.png";
 import sierpe2 from "../../../image/sierpe2.png";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
+import { TurnPhone } from "../../../components/TurnPhone/TurnPhone";
 
 export const Stage0205 = () => {
   const gameRdx = useSelector(gameDetailData);
@@ -307,6 +308,7 @@ export const Stage0205 = () => {
       fluid
       className="homeContainerMin bg02 d-flex flex-column justify-content-center align-items-center"
     >
+      <TurnPhone/>
       <Row>
         <div className="box02">
           <div className="imgBox02">

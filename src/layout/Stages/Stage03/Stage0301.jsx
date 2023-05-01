@@ -24,6 +24,7 @@ import diablo1 from '../../../image/diablo1.png';
 import diablo2 from '../../../image/diablo2.png';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import { TurnPhone } from "../../../components/TurnPhone/TurnPhone";
 
 export const Stage0301 = () => {
   const gameRdx = useSelector(gameDetailData);
@@ -400,6 +401,7 @@ export const Stage0301 = () => {
       fluid
       className="homeContainerMin bg0301 d-flex flex-column justify-content-center align-items-center"
     >
+      <TurnPhone/>
       <Row>
         <div className="box03">
           <div className="img1Box03">

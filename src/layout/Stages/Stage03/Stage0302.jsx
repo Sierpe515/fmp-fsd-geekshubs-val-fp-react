@@ -21,6 +21,7 @@ import { addBadge } from "../../badgeSlice";
 import { addState } from "../../inGameSlice";
 import './Stage0302.css'
 import turtle1 from '../../../image/turtle1.png';
+import { TurnPhone } from "../../../components/TurnPhone/TurnPhone";
 // import diablo2 from '../../../image/diablo2.png';
 // import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 // import Popover from 'react-bootstrap/Popover';
@@ -402,6 +403,7 @@ export const Stage0302 = () => {
       fluid
       className="homeContainerMin bg0302 d-flex flex-column justify-content-center align-items-center"
     >
+      <TurnPhone/>
       <Row>
         <div className="box03">
           <div className="img1Box0302">

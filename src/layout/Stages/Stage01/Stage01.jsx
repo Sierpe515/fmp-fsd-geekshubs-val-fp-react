@@ -15,6 +15,7 @@ import garg01 from '../../../image/gargola1.png'
 import garg02 from '../../../image/gargola2.png'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import { TurnPhone } from '../../../components/TurnPhone/TurnPhone'
 
 export const Stage01 = () => {
 
@@ -158,6 +159,7 @@ export const Stage01 = () => {
 
   return (
     <Container fluid className="homeContainerMin bg01 d-flex flex-column justify-content-center align-items-center">
+      <TurnPhone/>
       <Row >
         <MyVerticallyCenteredModal
             show={modalShow}

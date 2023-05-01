@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { addChoosen } from '../userDetailSlice';
 import { addState } from '../inGameSlice';
+import { TurnPhone } from '../../components/TurnPhone/TurnPhone';
 // import './UserList.css'
 
 export const UsersList = () => {
@@ -54,6 +55,7 @@ export const UsersList = () => {
       fluid
       className="homeContainerMin d-flex flex-column justify-content-between"
     >
+      <TurnPhone/>
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
           <div className="logRegContainer d-flex flex-column justify-content-center align-items-center text-center">
