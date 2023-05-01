@@ -1,0 +1,77 @@
+
+.bg0602 {
+    background-image: url('../../../image/s0602.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.box0602 {
+    height: 55vh;
+    width: 85vw;
+    /* background-color: aliceblue; */
+    display: flex;
+    justify-content: center;
+    z-index: 5;
+    margin: 0;
+    padding: 0;
+    margin-left: 25vh;
+}
+
+.img1Box0602 {
+    width: 17%;
+    height: 100%;
+    /* background-color: beige; */
+    z-index: 6;
+}
+
+.img0602 {
+    height: 50vh;
+    position: absolute;
+    z-index: 10;
+    right: 5vh;
+}
+
+.img2Box0602 {
+    width: 15%;
+    height: 100%;
+    /* background-color: beige; */
+    z-index: 6;
+}
+
+.btnBox0602 {
+    height: 35vh;
+    width: 80vw;
+    margin-left: 20vw;
+    /* background-color: rgba(0, 255, 255, 0.363); */
+    display: flex;
+    justify-content: space-around;
+    z-index: 1;
+}
+
+.a0602Box {
+    width: 50%;
+    /* background-color: aliceblue; */
+}
+
+.homeBtn0602 {
+    border-radius: 5px;
+    /* background-color: rgb(36, 36, 36); */
+    background-image: url('../../../image/button.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    width: 23vw;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-bottom: 1em; */
+    cursor: pointer;
+    font-family: 'diablo';
+    margin-top: 0.4vh;
+}
+
+.homeBtn0602:hover {
+    background-image: url('../../../image/buttonHover.png');
+}

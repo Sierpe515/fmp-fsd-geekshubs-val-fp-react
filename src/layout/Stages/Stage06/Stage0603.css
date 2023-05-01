@@ -1,0 +1,58 @@
+
+.bg0603 {
+    background-image: url('../../../image/s0603.jpg');
+    background-size: cover;
+    background-position: bottom;
+}
+
+.box0603 {
+    height: 55vh;
+    width: 90vw;
+    /* background-color: aliceblue; */
+    display: flex;
+    justify-content: center;
+    z-index: 5;
+    margin: 0;
+    padding: 0;
+    margin-left: 20vh;
+}
+
+.img1Box0603 {
+    width: 20%;
+    height: 100%;
+    /* background-color: beige; */
+    z-index: 6;
+    display: flex;
+    align-items: center;
+}
+
+.textBox0602 {
+    width: 55%;
+}
+
+.img2Box0603 {
+    width: 20%;
+    height: 100%;
+    /* background-color: beige; */
+    z-index: 6;
+    display: flex;
+    align-items: center;
+}
+
+.img0603 {
+    height: 40vh;
+    position: absolute;
+    z-index: 10;
+    left: 8vw;
+}
+
+.img0603b {
+    height: 40vh;
+    position: absolute;
+    z-index: 10;
+    right: 0;
+}
+
+.popFont {
+    font-size: 2.4vh;
+}

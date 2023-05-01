@@ -310,28 +310,28 @@ export const Stage0601 = () => {
                   // .catch((error) => console.log(error));
 
                   //Cambiar cada vez, ya no coinciden
-                  const stageId = "15";
+                  // const stageId = "15";
 
-                  let dataSavedGame = {
-                    game_id: result.data.data.game_id,
-                    // Meter aquí el stage al que se va a ir con respuesta
-                    stage_id: stageId,
-                  };
+                  // let dataSavedGame = {
+                  //   game_id: result.data.data.game_id,
+                  //   // Meter aquí el stage al que se va a ir con respuesta
+                  //   stage_id: stageId,
+                  // };
 
-                  console.log(dataSavedGame);
+                  // console.log(dataSavedGame);
 
-                  createSavedGame(dataSavedGame, token)
-                    .then((result) => {
-                      console.log(result);
-                      let params = result.data.data.game_id;
-                      bringLoadGamesById(params, token).then((result) => {
-                        console.log(result.data.data[0]);
-                        const selectGame = result.data.data[0];
-                        dispatch(addGame({ choosenGame: selectGame }));
-                        console.log(selectGame);
-                      });
-                    })
-                    .catch((error) => console.log(error));
+                  // createSavedGame(dataSavedGame, token)
+                  //   .then((result) => {
+                  //     console.log(result);
+                  //     let params = result.data.data.game_id;
+                  //     bringLoadGamesById(params, token).then((result) => {
+                  //       console.log(result.data.data[0]);
+                  //       const selectGame = result.data.data[0];
+                  //       dispatch(addGame({ choosenGame: selectGame }));
+                  //       console.log(selectGame);
+                  //     });
+                  //   })
+                  //   .catch((error) => console.log(error));
 
                   // const stageNavigate = {
                   //   9: "/stage0501",
