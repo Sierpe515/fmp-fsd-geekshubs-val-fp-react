@@ -313,7 +313,7 @@ export const Profile = () => {
       fluid
       className="homeContainerMin homeBg d-flex flex-column justify-content-center"
     >
-      <Modal show={show1} onHide={handleClose1}>
+      <Modal show={show1} onHide={handleClose1} className="my-modal">
           <Modal.Header closeButton>
           <Modal.Title>Invalid date</Modal.Title>
           </Modal.Header>

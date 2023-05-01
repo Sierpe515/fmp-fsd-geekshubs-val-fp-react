@@ -53,13 +53,13 @@ export const Stage0603 = () => {
   
   const popoverHoverFocus1 = (
     <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
-      Harcat Cabello Hermoso
+      Muerte
     </Popover>
   );
   
   const popoverHoverFocus2 = (
     <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
-      Bjorn Pelaje de Hierro
+      Halconera / Halcón / Verdugo
     </Popover>
   ); 
 
@@ -387,6 +387,7 @@ export const Stage0603 = () => {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        className="my-modal"
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
@@ -397,7 +398,7 @@ export const Stage0603 = () => {
           <p>Are you sure?</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button
+          <Button className='confirmBtn'
             onClick={() => {
               saveAnswer();
             }}

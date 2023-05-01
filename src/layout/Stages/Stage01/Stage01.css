@@ -83,7 +83,15 @@
     font-family: 'gothical';
     text-shadow: 1px 0 goldenrod, -1px 0 goldenrod, 0 1px goldenrod, 0 -1px goldenrod,
              1px 1px goldenrod, -1px -1px goldenrod, 1px -1px goldenrod, -1px 1px goldenrod;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
 
+.confirmBtn {
+    background-color: darkgoldenrod;
+    border: 2px solid black;
+    color: black;
+    font-weight: bold;
 }
 
 /* .margin01 {

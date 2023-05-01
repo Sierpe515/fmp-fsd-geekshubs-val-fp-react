@@ -35,9 +35,9 @@
              1px 1px goldenrod, -1px -1px goldenrod, 1px -1px goldenrod, -1px 1px goldenrod;
 }
 
-.noCharMargin {
+/* .noCharMargin {
     margin-left: -9vw;
-}
+} */
 
 .selectPjText {
     font-weight: bold;
@@ -92,9 +92,9 @@
     flex-direction: column;
 }
 
-.welcomeBox {
+/* .welcomeBox {
     padding-left: 10vw;
-}
+} */
 
 .homeBtn {
     border-radius: 5px;

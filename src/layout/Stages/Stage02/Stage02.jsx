@@ -136,6 +136,7 @@ export const Stage02 = () => {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        className="my-modal"
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
@@ -147,7 +148,7 @@ export const Stage02 = () => {
         </Modal.Body>
         <Modal.Footer>
           {/* CONTINUAR SIN IMAGEN */}
-          <Button onClick={()=> {noImage()}}>Confirm</Button>
+          <Button className='confirmBtn' onClick={()=> {noImage()}}>Confirm</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -160,6 +161,7 @@ export const Stage02 = () => {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        className="my-modal"
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
@@ -174,7 +176,7 @@ export const Stage02 = () => {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={()=> saveImage()}>Confirm</Button>
+          <Button className='confirmBtn' onClick={()=> saveImage()}>Confirm</Button>
         </Modal.Footer>
       </Modal>
     );

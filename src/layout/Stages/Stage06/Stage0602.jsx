@@ -51,63 +51,15 @@ export const Stage0602 = () => {
   
   const popoverHoverFocus1 = (
     <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
-      Harcat Cabello Hermoso
+      Guardián Renardo
     </Popover>
   );
   
   const popoverHoverFocus2 = (
     <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
-      Bjorn Pelaje de Hierro
+      Guardián Estrido
     </Popover>
   ); 
-
-  const popoverHoverFocus1e = (
-    <Popover className="popoverBtn" id="popover-trigger-hover-focus" title="Popover bottom">
-      La salida está en una estatua impar
-    </Popover>
-  ); 
-  
-  const popoverHoverFocus2e = (
-    <Popover className="popoverBtn" id="popover-trigger-hover-focus" title="Popover bottom">
-      Por aquí no hay salida
-    </Popover>
-  ); 
-  const popoverHoverFocus3e = (
-    <Popover className="popoverBtn" id="popover-trigger-hover-focus" title="Popover bottom">
-      O la inscripción V es correcta, o la inscripción VII es incorrecta
-    </Popover>
-  ); 
-  const popoverHoverFocus4e = (
-    <Popover className="popoverBtn" id="popover-trigger-hover-focus" title="Popover bottom">
-      La inscripción I es incorrecta
-    </Popover>
-  ); 
-  const popoverHoverFocus5e = (
-    <Popover className="popoverBtn" id="popover-trigger-hover-focus" title="Popover bottom">
-      O la inscripción II o la IV es correcta
-    </Popover>
-  ); 
-  const popoverHoverFocus6e = (
-    <Popover className="popoverBtn" id="popover-trigger-hover-focus" title="Popover bottom">
-      La inscripción III es incorrecta
-    </Popover>
-  ); 
-  const popoverHoverFocus7e = (
-    <Popover className="popoverBtn" id="popover-trigger-hover-focus" title="Popover bottom">
-      La salida no está en la estatua I
-    </Popover>
-  ); 
-  const popoverHoverFocus8e = (
-    <Popover className="popoverBtn" id="popover-trigger-hover-focus" title="Popover bottom">
-      Por aquí te espera la muerte y por la estatua IX no hay salida
-    </Popover>
-  ); 
-  const popoverHoverFocus9e = (
-    <Popover className="popoverBtn" id="popover-trigger-hover-focus" title="Popover bottom">
-      Por aquí te espera la muerte y la inscripción VI es incorrecta
-    </Popover>
-  ); 
-
 
   const chooseAnswer = (resp) => {
     console.log(resp);
@@ -367,6 +319,7 @@ export const Stage0602 = () => {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        className="my-modal"
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
@@ -377,7 +330,7 @@ export const Stage0602 = () => {
           <p>Are you sure?</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button
+          <Button className='confirmBtn'
             onClick={() => {
               saveAnswer();
             }}
@@ -453,11 +406,6 @@ export const Stage0602 = () => {
             onHide={() => setModalShow(false)}
           />
           <div className="a0602Box d-flex flex-column justify-content-around align-items-center">
-            <OverlayTrigger
-                trigger={['hover', 'focus']}
-                placement="top"
-                overlay={popoverHoverFocus1e}
-              >
               <div className="homeBtn0602 btnMargin02 fontBtn0301"
                   onClick={() => {
                     chooseAnswer("35"), setModalShow(true);
@@ -465,12 +413,6 @@ export const Stage0602 = () => {
                 >
                   Puerta I
               </div>
-            </OverlayTrigger>
-            <OverlayTrigger
-                trigger={['hover', 'focus']}
-                placement="top"
-                overlay={popoverHoverFocus4e}
-              >
               <div className="homeBtn0602 btnMargin02 fontBtn0301"
                   onClick={() => {
                     chooseAnswer("36"), setModalShow(true);
@@ -478,15 +420,9 @@ export const Stage0602 = () => {
                 >
                   Puerta III
               </div>
-            </OverlayTrigger>
           </div>
           
           <div className="a0602Box d-flex flex-column justify-content-around align-items-center">
-            <OverlayTrigger
-                trigger={['hover', 'focus']}
-                placement="top"
-                overlay={popoverHoverFocus3e}
-              >
               <div className="homeBtn0602 btnMargin02 fontBtn0301"
                   onClick={() => {
                     chooseAnswer("36"), setModalShow(true);
@@ -494,12 +430,6 @@ export const Stage0602 = () => {
                 >
                   Puerta II
               </div>
-            </OverlayTrigger>
-            <OverlayTrigger
-                trigger={['hover', 'focus']}
-                placement="top"
-                overlay={popoverHoverFocus6e}
-              >
               <div className="homeBtn0602 btnMargin02 fontBtn0301"
                   onClick={() => {
                     chooseAnswer("36"), setModalShow(true);
@@ -507,7 +437,6 @@ export const Stage0602 = () => {
                 >
                   Puerta IV
               </div>
-            </OverlayTrigger>
           </div>
         </div>
       </Row>

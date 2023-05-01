@@ -137,6 +137,7 @@ export const Stage01 = () => {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        className="my-modal"
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
@@ -149,7 +150,7 @@ export const Stage01 = () => {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={()=> {saveAnswer()}}>Confirm</Button>
+          <Button className='confirmBtn' onClick={()=> {saveAnswer()}}>Confirm</Button>
         </Modal.Footer>
       </Modal>
     );
