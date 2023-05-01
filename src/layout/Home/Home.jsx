@@ -99,7 +99,7 @@ export const Home = () => {
                   {/* <div onClick={()=> goNewCharacter()}><h4>New Character</h4></div> */}
                   </>
                 ) : (
-                  <div><h4>No Characters</h4></div>
+                  <div className='welcomeText noCharMargin'>No Characters</div>
                 )}
           </Col>
         </Row>

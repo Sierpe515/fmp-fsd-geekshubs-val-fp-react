@@ -1,0 +1,38 @@
+
+.bg0701 {
+    background-image: url('../../../image/s0701.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.bg0702 {
+    background-image: url('../../../image/s0702.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.bg0703 {
+    background-image: url('../../../image/s0702.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.winnerText {
+    margin-top: 5vh;
+    height: 45vh;
+    width: 80vw;
+    padding: 5vh;
+    background-color: rgba(37, 37, 37, 0.658);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+    color: darkgoldenrod;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.3vh;
+}
+
+.btnMargin07 {
+    margin-top: 2vh;
+}

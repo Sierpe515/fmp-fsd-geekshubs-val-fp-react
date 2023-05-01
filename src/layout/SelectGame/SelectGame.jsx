@@ -115,6 +115,7 @@ export const SelectGame = () => {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
+        {/* <div className="modalOniria"> */}
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
             Chosse difficulty and press start button
@@ -128,6 +129,7 @@ export const SelectGame = () => {
         <Modal.Footer>
           <div onClick={() => newGame()}>Start Game</div>
         </Modal.Footer>
+        {/* </div> */}
       </Modal>
     );
   }

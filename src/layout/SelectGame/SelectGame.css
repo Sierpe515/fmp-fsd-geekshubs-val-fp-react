@@ -40,6 +40,13 @@
     margin-bottom: 0.5em;
 }
 
+/* .modalOniria {
+    background-color: rgba(41, 41, 41, 0.63);
+    border: 2px solid darkgoldenrod;
+    border-radius: 25px;
+} */
+
+
 @media (min-height: 700px){
     .gameBox {
         height: 25vh;

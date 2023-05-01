@@ -35,6 +35,10 @@
              1px 1px goldenrod, -1px -1px goldenrod, 1px -1px goldenrod, -1px 1px goldenrod;
 }
 
+.noCharMargin {
+    margin-left: -9vw;
+}
+
 .selectPjText {
     font-weight: bold;
     color: white;

@@ -5,3 +5,19 @@
     background-position: center;
 }
 
+.gOverText3 {
+    /* margin-bottom: 20vh; */
+    height: 50vh;
+    width: 80vw;
+    padding: 5vh;
+    background-color: rgba(37, 37, 37, 0.658);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+    color: darkgoldenrod;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+}
+

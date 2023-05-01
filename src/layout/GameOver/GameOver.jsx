@@ -3,12 +3,20 @@ import { Container } from 'react-bootstrap'
 import { useDispatch } from 'react-redux';
 import { addState } from '../inGameSlice';
 import './GameOver.css'
+import { useNavigate } from 'react-router-dom';
 
 export const GameOver = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   dispatch(addState({ choosenState: false}))
+
+  const goHome = () => {
+    setTimeout(()=>{
+      navigate("/");
+    },500)
+  }
 
   return (
     <Container fluid className="homeContainerMin gOverBg d-flex flex-column justify-content-center align-items-center">
@@ -20,6 +28,7 @@ export const GameOver = () => {
           más de tu parte al intentar dar solución a las pruebas que se te plantearon.
         </p>
       </div>
+      <div className='homeBtn btnMarginGO' onClick={()=> goHome()}>Home</div>
     </Container>
   )
 }

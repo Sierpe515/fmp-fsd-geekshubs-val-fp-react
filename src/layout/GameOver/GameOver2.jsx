@@ -3,12 +3,20 @@ import { Container } from 'react-bootstrap'
 import { useDispatch } from 'react-redux';
 import { addState } from '../inGameSlice';
 import './GameOver2.css'
+import { useNavigate } from 'react-router-dom';
 
 export const GameOver2 = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   dispatch(addState({ choosenState: false}))
+
+  const goHome = () => {
+    setTimeout(()=>{
+      navigate("/");
+    },500)
+  }
 
   return (
     <Container fluid className="homeContainerMin gOverBg2 d-flex flex-column justify-content-center align-items-center">
@@ -20,6 +28,7 @@ export const GameOver2 = () => {
         <p>No sólo no vas a poder volver al mundo despierto, si no que tampoco sigue viva tu conciencia dentro de Oniria, que 
         si pudiera se preguntarías si podrías haberte esforzado más.</p>
       </div>
+      <div className='homeBtn btnMargin07' onClick={()=> goHome()}>Home</div>
     </Container>
   )
 }
