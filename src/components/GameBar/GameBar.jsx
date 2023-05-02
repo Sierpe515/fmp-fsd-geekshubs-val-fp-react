@@ -93,7 +93,7 @@ export const GameBar = () => {
           ) : (
             <div className='badgeBox'>
               <div className='selectPjText gameBarMargin'>Badges</div>
-              <div className='gbText text-center'>No Badges</div>
+              <div className='noMadness text-center'>No Badges</div>
             </div>
         )}
       </div>

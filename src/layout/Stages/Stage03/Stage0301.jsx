@@ -354,10 +354,9 @@ export const Stage0301 = () => {
         <div className="solutionBox" id="solutionBox">
           <div className="solutionText text-center">
             <p>¡Lo has hecho bien! Pero vamos a revisar la respuesta.</p>
-            <p>Lo primero que hay que observar es que Gaara y Akumato son de tipos opuestos, puesto que Akumato contradice a Gaara. Así pues, de entre los dos, uno es legal y el otro, caótico. Pero si Kyuroo fuera legal, entonces habría dos legales, y por tanto Kyuroo no hubiese mentido diciendo que había solamente uno. 
-              Por otra parte, si Kuyroo fuera caótico, entonces sería cierto que sólo había un legal; pero entonces Kuyroo, siendo caótico, no podría haber dicho una verdad. 
-              Por lo tanto, Kuyroo no pudo haber dicho que sólo había un caballero. Así Gaara mintió al decir lo que había dicho Kyuroo, y de este modo Gaara es caótico y Akumato legal.
-            </p>
+            <p>Este problema es una buena introducción a la lógica disyuntiva. Puesto que dados dos enunciados, significa que al menos un enunciado es cierto. Si el enunciado fuera falso, entonces ambos enunciados lo serían. En el caso del problema que has superado con éxito, supongase que Shasha es caótica, entonces su enunciado tiene que ser falso. Eso querría decir que ni es cierto que ella sea caótica, ni que B sea Legal. Por lo tanto se diría que Shasha no es caótica, lo que sería una contradicción. Por lo que tiene que ser legal.</p>
+            <p>Habiendo establecido que Shasha es legal, su enunciado tiene que ser cierto. De las dos posibilidades del enunciado, sólo puede ser cierta la segunda. Por tanto, Sherboroug es caótico.</p>
+            <p>De este modo, A y B son ambs legales.</p>
           </div>
           <div className='closeDialogue' onClick={()=> {closeSolution()}}>Close 
             <svg className='closeIcon' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
