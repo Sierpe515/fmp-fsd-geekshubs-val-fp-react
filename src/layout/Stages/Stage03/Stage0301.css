@@ -126,6 +126,46 @@
              1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
 }
 
+.solution {
+    position: absolute;
+    color: darkgoldenrod;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 300;
+}
+
+.solution:hover {
+    color: gold
+}
+
+.solutionBox {
+    position: absolute;
+    height: 60vh;
+    width: 80vw;
+    z-index: 200;
+    left: -1000em;
+    background-color: rgba(37, 37, 37, 0.918);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+}
+
+.showSolBox {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.solutionText {
+    padding: 1vh;
+    color: white;
+    font-size: 3.5vh;
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
+
 @media (min-height: 600px){
     .font03 {
         font-size: large;

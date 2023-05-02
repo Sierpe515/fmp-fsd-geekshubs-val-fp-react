@@ -17,3 +17,10 @@
 /* .closeBox {
     left: -1000em;
 } */
+
+.clueText {
+    padding: 1vh;
+    color: rgb(235, 15, 15);
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
