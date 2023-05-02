@@ -25,6 +25,7 @@
     flex-direction: column;
     margin: 0.5em;
     cursor: pointer;
+    width: 90%;
 }
 
 .loadBox:hover {
