@@ -13,6 +13,11 @@
     /* border: 1px solid black; */
 }
 
+.loadDiv {
+    display: flex;
+    align-items: center;
+}
+
 .loadBox {
     border: 1px solid black;
     background-color: rgba(247, 247, 247, 0.342);

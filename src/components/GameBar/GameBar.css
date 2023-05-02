@@ -57,7 +57,21 @@
 }
 
 .badgeName {
-    font-size: small;
+    margin-top: 1vh;
+    font-size: 2vh;
+    font-family: 'diablo';
+    color: black;
+    text-shadow: 1px 0 darkcyan, -1px 0 darkcyan, 0 1px darkcyan, 0 -1px darkcyan,
+             1px 1px darkcyan, -1px -1px darkcyan, 1px -1px darkcyan, -1px 1px darkcyan;
+}
+
+.noMadness {
+    margin-top: 1vh;
+    font-size: 2.3vh;
+    font-family: 'diablo';
+    color: black;
+    text-shadow: 1px 0 darkcyan, -1px 0 darkcyan, 0 1px darkcyan, 0 -1px darkcyan,
+             1px 1px darkcyan, -1px -1px darkcyan, 1px -1px darkcyan, -1px 1px darkcyan;
 }
 
 .badgeImage:hover {
@@ -69,18 +83,15 @@
     background-size: cover;
     background-position: center;
     /* background-color: aquamarine; */
-    width: 12vw;
-    height: 16vh;
+    width: 10vw;
+    height: 15.5vh;
+    /* margin-bottom: 0.5vh; */
 }
 
 .madnessDiv:hover {
     background-image: url('../../image/madness2.png');
 }
 
-.madnessImg {
-    /* width: 8em; */
-    background-color: aquamarine;
-}
 
 @media (min-height: 576px){
     .gameBar{

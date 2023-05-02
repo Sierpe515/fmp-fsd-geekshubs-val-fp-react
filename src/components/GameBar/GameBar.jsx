@@ -76,7 +76,7 @@ export const GameBar = () => {
                 return (
                   <div className="badgeBox gameBadge" onClick={() => useBadge(medal.id)} key={medal.id}>
                     <img className='badgeImage' src={medal.badge.image} alt={medal.id} />
-                    {/* <div className='badgeName'>{medal.badge.name}</div> */}
+                    <div className='badgeName'>{medal.badge.name}</div>
                   </div>
                 );
               })}
@@ -91,9 +91,10 @@ export const GameBar = () => {
       </div>
       <div className='madnessBox'>
         <div className='selectPjText gameBarMargin'>Madness</div>
+        {gameRdx.choosenGame.madness <= 0 ? <div className='noMadness'>No madness</div> : ""}
         {gameRdx.choosenGame.madness == 1 ? <div className='madnessDiv'>
           {/* <img className='madnessImg' src={madness1} alt="" /> */}
-          </div> : ""}
+          </div> : "" }
         {gameRdx.choosenGame.madness == 2 ? <><div className='madnessDiv'></div><div className='madnessDiv'></div></> : ""}
         {gameRdx.choosenGame.difficulty == "hard" && gameRdx.choosenGame.madness >= 2 ? gameOver() : ""}
         {gameRdx.choosenGame.madness >= 3 ? gameOver() : ""}

@@ -84,12 +84,25 @@
 }
 
 .pjImage {
-    height: 5.5em;
+    height: 24vh;
+}
+
+.pjName {
+    margin-bottom: 1vh;
 }
 
 .pjBox {
     display: flex;
     flex-direction: column;
+}
+
+.deleteIcon {
+    color: darkred;
+    cursor: pointer;
+}
+
+.deleteIcon:hover {
+    color: red;
 }
 
 /* .welcomeBox {
@@ -148,6 +161,10 @@
 
     .titleBox {
         display: block;
+    }
+
+    .delIcon {
+        height: 3vh;
     }
 }
 
