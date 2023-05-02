@@ -374,8 +374,7 @@ export const Stage0401 = () => {
                   }, 500);
                 })
                 .catch((error) => console.log(error));
-    }
-              
+    }              
   };
 
   const showSolution = () => {
@@ -428,14 +427,36 @@ export const Stage0401 = () => {
     >
       <TurnPhone/>
       <Row>
-      <div className="solution" onClick={() => {showSolution()}}>
+        <div className="solution" onClick={() => {showSolution()}}>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
           </svg>
         </div>
         <div className="solutionBox" id="solutionBox">
           <div className="solutionText text-center">
-            {gameRdx.choosenGame.games_stages[array.length - 2].stage_id == 3 ? ("hola") : ("")}
+            {gameRdx.choosenGame.games_stages[array.length - 2].stage_id == 3 ? (
+              <div>
+                <p>¡Lo has hecho bien! Pero vamos a revisar la respuesta.</p>
+                <p>Lo primero que hay que observar es que Gaara y Akumato son de tipos opuestos, puesto que Akumato contradice a Gaara. Así pues, de entre los dos, uno es legal y el otro, caótico. Pero si Kyuroo fuera legal, entonces habría dos legales, y por tanto Kyuroo no hubiese mentido diciendo que había solamente uno. 
+                  Por otra parte, si Kuyroo fuera caótico, entonces sería cierto que sólo había un legal; pero entonces Kuyroo, siendo caótico, no podría haber dicho una verdad. 
+                  Por lo tanto, Kuyroo no pudo haber dicho que sólo había un caballero. Así Gaara mintió al decir lo que había dicho Kyuroo, y de este modo Gaara es caótico y Akumato legal.
+                </p>
+              </div>
+            ) : ("")}
+            {gameRdx.choosenGame.games_stages[array.length - 2].stage_id == 4 ? (
+              <div>
+                <p>¡Lo has hecho bien! Pero vamos a revisar la respuesta.</p>
+                <p>Este problema tenía una pequeña trampa en el enunciado. La clave estaba cuando se mencionó que el Hombre tortuga simulaba estar perezosamente recostado. De ahí que simular es algo que haría un caótico, no un legal. Por lo tanto, ambas afirmaciones disyuntivas deben de ser falsas, por lo que su nombre es Tarso.</p>
+              </div>
+            ) : ("")}
+            {gameRdx.choosenGame.games_stages[array.length - 2].stage_id == 5 ? (
+              <div>
+                <p>¡Lo has hecho bien! Pero vamos a revisar la respuesta.</p>
+                <p>Para empezar, Gulates tiene que ser caótico, porque un legal jamás haría esa afirmación. De ahí que al menos hay un legal entre los tres. Ahora, supogamos que Pestilencio es caótico. Entonces Gulates y Pestilencio serían ambos caóticos, y Hamburno legal, lo que significaría que el enunciado de Pestilencio era cierto. 
+                  Pero eso no podría ser si Pestilencio fuera caótico. Por tanto, Pestilencio tiene que ser legal.</p>
+                <p>Ahora sabemos que Gulates es caótico y Pestilencio es legal, por lo que siguiendo el enunciado de Pestilencio, que es cierto, Hambruno ha de ser caótico. Por lo tanto, sólo se puede confiar en Pestilencio.</p>
+              </div>
+            ) : ("")}
           </div>
           <div className='closeDialogue' onClick={()=> {closeSolution()}}>Close 
             <svg className='closeIcon' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">

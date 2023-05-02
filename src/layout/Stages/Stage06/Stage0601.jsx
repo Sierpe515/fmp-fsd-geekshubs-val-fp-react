@@ -360,6 +360,16 @@ export const Stage0601 = () => {
               
   };
 
+  const showSolution = () => {
+    let solution = document.getElementById('solutionBox');
+    solution.classList.add('showSolBox')
+  }
+
+  const closeSolution = () => {
+    let solution = document.getElementById('solutionBox');
+    solution.classList.remove('showSolBox')
+  }
+
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -391,6 +401,7 @@ export const Stage0601 = () => {
   }
 
   const [modalShow, setModalShow] = React.useState(false);
+  const array = gameRdx.choosenGame.games_stages;
 
   return (
     <Container
@@ -399,6 +410,38 @@ export const Stage0601 = () => {
     >
       <TurnPhone/>
       <Row>
+        <div className="solution" onClick={() => {showSolution()}}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+          </svg>
+        </div>
+        <div className="solutionBox" id="solutionBox">
+          <div className="solutionText text-center">
+            {gameRdx.choosenGame.games_stages[array.length - 2].stage_id == 9 ? (
+              <div>
+                <p>¡Lo has hecho bien! Pero vamos a revisar la respuesta.</p>
+                <p>Si el oro esuviera en el cofre del medio, las tres inscripciones serían ciertas. Si el oro estuviera en el primer cofre, las tres inscripciones serían falsas. Así pues el oro está en el último cofre, de modo que las inscripciones primera y última son ciertas y el del medio es falso.</p>
+              </div>
+            ) : ("")}
+            {gameRdx.choosenGame.games_stages[array.length - 2].stage_id == 10 ? (
+              <div>
+                <p>¡Lo has hecho bien! Pero vamos a revisar la respuesta.</p>
+                <p>El enunciado del primer cofre y el del segundo dice lo contrario, luego uno es cierto. Si a lo sumo uno una de las tres inscripciones es verdadera, la del último cofre es falsa y por lo tanto este es el que contiene el oro.</p>
+              </div>
+            ) : ("")}
+            {gameRdx.choosenGame.games_stages[array.length - 2].stage_id == 11 ? (
+              <div>
+                <p>¡Lo has hecho bien! Pero vamos a revisar la respuesta.</p>
+                <p>El enunciado del primer cofre y el del segundo dice lo contrario, luego uno es cierto. Si a lo sumo uno una de las tres inscripciones es verdadera, la del último cofre es falsa y por lo tanto este es el que contiene el oro.</p>
+              </div>
+            ) : ("")}
+          </div>
+          <div className='closeDialogue' onClick={()=> {closeSolution()}}>Close 
+            <svg className='closeIcon' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+            </svg>
+          </div>
+        </div>
         <div className="box0403">
           <div className="img1Box0403">
             <OverlayTrigger
@@ -418,12 +461,12 @@ export const Stage0601 = () => {
               <p className='easyText'>Según se cuenta, cada puerta tiene una salida. Pero sólo una conduce fuera del sueño. Es un punto de inflexión para 
               tu viaje, porque un acierto más y podrás volver a tu mundo, pero un error conduce irremediablemente a una muerte segura.</p>
               <p className='easyText'>Has conseguido convencer a un grupo de vikingos, que quiere hacer una incursión en el mundo despierto, de tus dotes 
-              lógicas. Cada estatua tiene una inscripción. Únicamente la de la estatua de la salida decía la verdad. Después había otros dos tipos de estatua; 
-              las que llevaban a un muerte rápida por trampas, cuyas inscripciones siempre mentían, y las que no tenían salida, y por tanto llevaban a la muerte 
-              igualmente, ya que no se podía regresar, y cuyas inscripciones bien podían decir la verdad, o bien mentir.</p>
+              lógicas. Cada estatua tiene una inscripción. Únicamente la de la estatua de la salida dice siempre la verdad. Después hay otros dos tipos de estatua; 
+              las que llevan a un muerte rápida por trampas, cuyas inscripciones siempre mienten, y las que no tienen salida, y por tanto llevan a la muerte 
+              igualmente, ya que no se puede regresar, y cuyas inscripciones bien pueden decir la verdad, o bien mentir.</p>
               <p className='easyText'>Únicamente con los datos de las inscripciones era imposible deducir cuál era la estatua que llevaba a la salida, pero tú, a lo 
-              largo de tu viaje habías recogido una valiosísima información, la pieza que falta del rompecabezas, que te permitía saber con certeza en qué estatua estaba
-              la salida: si la estatua VIII tenía salida o no.</p>
+              largo de tu viaje habías recogido una valiosísima información, la pieza que falta del rompecabezas, que te permite saber con certeza en qué estatua estaba
+              la salida: si la estatua VIII tiene salida o no.</p>
               <p className='easyText'>Navegando por el mar del fin del sueño te acercas a cada una de las estatuas y observas todo lo que dicen las inscripciones. Estás a 
               una elección de poder despertar y volver a tu mundo. Elige con cabeza y recuerda que no hay lugar para fallos.</p>
               <p className='easyText'>¿En qué estatua está la salida?</p>
