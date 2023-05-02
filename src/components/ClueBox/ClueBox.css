@@ -1,0 +1,19 @@
+
+.clueBox {
+    position: absolute;
+    height: 40vh;
+    width: 80vw;
+    z-index: 200;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(37, 37, 37, 0.658);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+}
+
+/* .closeBox {
+    left: -1000em;
+} */

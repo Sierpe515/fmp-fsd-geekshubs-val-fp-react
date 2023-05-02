@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import './GameBar.css'
 // import { getBadgesByGameId } from '../../services/apiCalls';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { gameDetailData } from '../../layout/gameSlice';
 import { gameStageData } from '../../layout/gameStageSlice';
 import { userData } from '../../layout/userSlice';
 import { characterDetailData } from '../../layout/characterSlice';
 // import madness1 from '../../image/madness1.png'
-import { badgeData } from '../../layout/badgeSlice';
+import { badgeData, selectBadge } from '../../layout/badgeSlice';
 import { inGameData } from '../../layout/inGameSlice';
 // import framework from '../../image/giphy.gif'
 import { useNavigate } from 'react-router-dom';
 import { updateFinished } from '../../services/apiCalls';
+import { changeState } from '../../layout/clueSlice';
 
 export const GameBar = () => {
 
@@ -22,6 +23,7 @@ export const GameBar = () => {
   const badgeRdx = useSelector(badgeData);
   const inGameRdx = useSelector(inGameData)
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   let token = dataCredentialsRdx.credentials.token;
 
@@ -60,6 +62,12 @@ export const GameBar = () => {
     .then(console.log("Game Finished"))
     .catch((error) => console.log(error));
     navigate("/gameOver")
+  }
+
+  const useBadge = (sBadge) => {
+    dispatch(changeState({ clueState: true}))
+    dispatch(selectBadge({ selectedBadge: sBadge}))
+    console.log(sBadge);
   }
 
   return (

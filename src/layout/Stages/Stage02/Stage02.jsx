@@ -14,6 +14,7 @@ import './Stage02.css'
 import garg01 from '../../../image/gargola1.png'
 import garg02 from '../../../image/gargola2.png'
 import { TurnPhone } from '../../../components/TurnPhone/TurnPhone'
+import { changeState } from '../../clueSlice'
 
 export const Stage02 = () => {
 

@@ -255,6 +255,11 @@ export const getBadgesByGameId = async (params) => {
   return await axios.get(`${root}/badges/ByGameId/${params}`);
 }
 
+export const consumeBadgesByGameBadgeId = async (body) => {
+
+  return await axios.put(`${root}/badges/consume/`, body);
+}
+
 export const updateMadness = async (body, token) => {
 
   let config = {
