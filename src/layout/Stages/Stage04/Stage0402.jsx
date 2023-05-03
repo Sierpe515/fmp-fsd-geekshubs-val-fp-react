@@ -28,6 +28,8 @@ import hell2 from '../../../image/hell2.png';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { TurnPhone } from "../../../components/TurnPhone/TurnPhone";
+import { ClueBox } from "../../../components/ClueBox/ClueBox";
+import { changeState } from "../../clueSlice";
 
 export const Stage0402 = () => {
   const gameRdx = useSelector(gameDetailData);
@@ -38,6 +40,7 @@ export const Stage0402 = () => {
   const dispatch = useDispatch();
 
   dispatch(addState({ choosenState: true}))
+  dispatch(changeState({ clueState: false }))
 
   const [answer, setAnswer] = useState("");
   const [characterImage, setCharacterImage] = useState([]);
@@ -370,6 +373,7 @@ export const Stage0402 = () => {
     >
       <TurnPhone/>
       <Row>
+        <ClueBox/>
         <div className="box03">
           <div className="img1Box0402">
             <OverlayTrigger

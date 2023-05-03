@@ -25,6 +25,7 @@ import sierpe2 from "../../../image/sierpe2.png";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
 import { TurnPhone } from "../../../components/TurnPhone/TurnPhone";
+import { changeState } from "../../clueSlice";
 
 export const Stage0205 = () => {
   const gameRdx = useSelector(gameDetailData);
@@ -35,6 +36,7 @@ export const Stage0205 = () => {
   const dispatch = useDispatch();
 
   dispatch(addState({ choosenState: false }));
+  dispatch(changeState({ clueState: false }))
 
   const [answer, setAnswer] = useState("");
   const [characterImage, setCharacterImage] = useState([]);

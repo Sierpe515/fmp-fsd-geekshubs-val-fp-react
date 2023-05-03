@@ -31,6 +31,8 @@ import death3 from '../../../image/death3.png';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { TurnPhone } from "../../../components/TurnPhone/TurnPhone";
+import { ClueBox } from "../../../components/ClueBox/ClueBox";
+import { changeState } from "../../clueSlice";
 
 export const Stage0603 = () => {
   const gameRdx = useSelector(gameDetailData);
@@ -40,7 +42,8 @@ export const Stage0603 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  dispatch(addState({ choosenState: true}))
+  dispatch(addState({ choosenState: true }))
+  dispatch(changeState({ clueState: false }))
 
   const [answer, setAnswer] = useState("");
   // const [characterImage, setCharacterImage] = useState([]);
@@ -419,6 +422,7 @@ export const Stage0603 = () => {
     >
       <TurnPhone/>
       <Row>
+        <ClueBox/>
         <div className="box0603">
           {/* <div className="img1Box0603">
             <OverlayTrigger

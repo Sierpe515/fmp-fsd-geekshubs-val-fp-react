@@ -46,6 +46,14 @@ export const ClueBox = () => {
                 <div className='clueBox'>
                     <div className='clueText text-center'>
                         {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 3 ? ("hola") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 4 ? ("No se puede llegar aquí con badges") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 5 ? ("No se puede llegar aquí con badges") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 6 ? ("hola.6") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 7 ? ("hola.7") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 8 ? ("hola.8") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 9 ? ("hola.9") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 10 ? ("hola.10") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 11 ? ("hola.11") : ("")}
                     </div>
                     <div className='closeDialogue' onClick={()=> {closeClue()}}>Close 
                         <svg className='closeIcon' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">

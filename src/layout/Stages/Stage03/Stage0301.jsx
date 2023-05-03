@@ -35,8 +35,8 @@ export const Stage0301 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  dispatch(addState({ choosenState: true}))
-  dispatch(changeState({ clueState: false}))
+  dispatch(addState({ choosenState: true }))
+  dispatch(changeState({ clueState: false }))
 
   const [answer, setAnswer] = useState("");
   let token = dataCredentialsRdx.credentials.token;
@@ -69,7 +69,6 @@ export const Stage0301 = () => {
         .then((result) => {
           console.log("madness update successfully");
           console.log(result);
-          // dispatch(addGame({choosenGame: result.data.data}))
           let params = gameRdx.choosenGame.id;
 
           bringLoadGamesById(params, token)
@@ -334,9 +333,6 @@ export const Stage0301 = () => {
   }
 
   const [modalShow, setModalShow] = React.useState(false);
-
-  // const array = gameRdx.choosenGame.games_stages;
-  // En esta no hace falta, pero en las siguientes sí.
 
   return (
     <Container
