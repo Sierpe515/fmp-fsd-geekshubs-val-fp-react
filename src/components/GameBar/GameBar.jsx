@@ -7,12 +7,14 @@ import { gameStageData } from '../../layout/gameStageSlice';
 import { userData } from '../../layout/userSlice';
 import { characterDetailData } from '../../layout/characterSlice';
 // import madness1 from '../../image/madness1.png'
-import { badgeData, selectBadge } from '../../layout/badgeSlice';
+import { addBadge, badgeData, selectBadge } from '../../layout/badgeSlice';
 import { inGameData } from '../../layout/inGameSlice';
 // import framework from '../../image/giphy.gif'
 import { useNavigate } from 'react-router-dom';
-import { updateFinished } from '../../services/apiCalls';
+import { consumeBadgesByGameBadgeId, getBadgesByGameId, updateFinished } from '../../services/apiCalls';
 import { changeState } from '../../layout/clueSlice';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export const GameBar = () => {
 
@@ -64,11 +66,56 @@ export const GameBar = () => {
     navigate("/gameOver")
   }
 
-  const useBadge = (sBadge) => {
-    dispatch(changeState({ clueState: true}))
+  const selectionBadge = (sBadge) => {
     dispatch(selectBadge({ selectedBadge: sBadge}))
     console.log(sBadge);
   }
+
+  const useBadge = () => {
+    dispatch(changeState({ clueState: true}))
+    let body = {id: badgeRdx.selectedBadge}
+        consumeBadgesByGameBadgeId(body)
+        .then((result) => {
+            let params = gameRdx.choosenGame.id;
+    
+                  getBadgesByGameId(params)
+                    .then((result) => {
+                      console.log("traer badges", result);
+                      const selectBadge = result?.data?.data;
+                      dispatch(addBadge({ choosenBadge: selectBadge }));
+                      console.log(selectBadge);
+                    })
+                    .catch((error) => console.log(error))
+                })
+        .catch((error) => console.log(error));
+  }
+
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        className="my-modal"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Consume badge
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Are you sure you want to use this badge? This will cause the badge to be consumed.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          {/* CONTINUAR SIN IMAGEN */}
+          <Button className='confirmBtn' onClick={()=> {useBadge(), setModalShow(false)}}>Confirm</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  const [modalShow, setModalShow] = React.useState(false);
 
   return (
     <div className='gameBar'>
@@ -82,10 +129,16 @@ export const GameBar = () => {
             <div className='scrollBox scrollBadge'>
               {badge.map((medal) => {
                 return (
-                  <div className="badgeBox gameBadge" onClick={() => useBadge(medal.id)} key={medal.id}>
+                  <>
+                  <MyVerticallyCenteredModal
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                  />
+                  <div className="badgeBox gameBadge" onClick={() => {selectionBadge(medal.id), setModalShow(true)}} key={medal.id}>
                     <img className='badgeImage' src={medal.badge.image} alt={medal.id} />
                     <div className='badgeName'>{medal.badge.name}</div>
                   </div>
+                  </>
                 );
               })}
             </div>

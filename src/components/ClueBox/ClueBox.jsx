@@ -20,24 +20,23 @@ export const ClueBox = () => {
     const array = gameRdx.choosenGame.games_stages;
 
     const closeClue = () => {
-        // let guideDialogue = document.getElementById('clueBox');
-        // guideDialogue.classList.add('closeBox')
+
         dispatch(changeState({ clueState: false}))
-        let body = {id: badgeRdx.selectedBadge}
-        consumeBadgesByGameBadgeId(body)
-        .then((result) => {
-            let params = gameRdx.choosenGame.id;
+        // let body = {id: badgeRdx.selectedBadge}
+        // consumeBadgesByGameBadgeId(body)
+        // .then((result) => {
+        //     let params = gameRdx.choosenGame.id;
     
-                  getBadgesByGameId(params)
-                    .then((result) => {
-                      console.log("traer badges", result);
-                      const selectBadge = result?.data?.data;
-                      dispatch(addBadge({ choosenBadge: selectBadge }));
-                      console.log(selectBadge);
-                    })
-                    .catch((error) => console.log(error))
-                })
-        .catch((error) => console.log(error));
+        //           getBadgesByGameId(params)
+        //             .then((result) => {
+        //               console.log("traer badges", result);
+        //               const selectBadge = result?.data?.data;
+        //               dispatch(addBadge({ choosenBadge: selectBadge }));
+        //               console.log(selectBadge);
+        //             })
+        //             .catch((error) => console.log(error))
+        // })
+        // .catch((error) => console.log(error));
     }
 
     return (
@@ -45,7 +44,7 @@ export const ClueBox = () => {
             {clueRdx.clueState == true ? (
                 <div className='clueBox'>
                     <div className='clueText text-center'>
-                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 3 ? ("hola") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 3 ? ("Akumato es legal") : ("")}
                         {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 4 ? ("No se puede llegar aquí con badges") : ("")}
                         {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 5 ? ("No se puede llegar aquí con badges") : ("")}
                         {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 6 ? ("hola.6") : ("")}
@@ -54,6 +53,9 @@ export const ClueBox = () => {
                         {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 9 ? ("hola.9") : ("")}
                         {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 10 ? ("hola.10") : ("")}
                         {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 11 ? ("hola.11") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 12 ? ("hola.12") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 13 ? ("hola.13") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 14 ? ("hola.14") : ("")}
                     </div>
                     <div className='closeDialogue' onClick={()=> {closeClue()}}>Close 
                         <svg className='closeIcon' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
