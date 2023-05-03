@@ -56,7 +56,7 @@ export const Stage0501 = () => {
     bringLoadGamesById(params, token)
     .then(result => {
       const array2 = result.data.data[0].games_stages
-      if (!dataCredentialsRdx?.credentials?.token || (result.data.data[0].games_stages[array2.length - 1]?.stage_id != 2)) {
+      if (!dataCredentialsRdx?.credentials?.token || (result.data.data[0].games_stages[array2.length - 1]?.stage_id != 9)) {
         const stageNavigate = {null: "/",1: "/stage01",2: "/stage02",3: "/stage0301",4: "/stage0302",5: "/stage0303",6: "/stage0401",7: "/stage0402",8: "/stage0403",9: "/stage0501",10: "/stage0502",11: "/stage0503",12: "/stage0601",13: "/stage0602",14: "/stage0603",};
         navigate(stageNavigate[stageID]);
       }})
@@ -71,13 +71,7 @@ export const Stage0501 = () => {
     <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
       Cerbero
     </Popover>
-  );
-  
-  // const popoverHoverFocus2 = (
-  //   <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
-  //     Margareth / Eloste
-  //   </Popover>
-  // ); 
+  ); 
 
   const chooseAnswer = (resp) => {
     console.log(resp);
@@ -95,7 +89,6 @@ export const Stage0501 = () => {
         .then((result) => {
           console.log("madness update successfully");
           console.log(result);
-          // dispatch(addGame({choosenGame: result.data.data}))
           let params = gameRdx.choosenGame.id;
 
           bringLoadGamesById(params, token)
@@ -128,8 +121,6 @@ export const Stage0501 = () => {
                       const selectBadge = result?.data?.data;
                       dispatch(addBadge({ choosenBadge: selectBadge }));
                       console.log(selectBadge);
-                      // setBadge(result?.data?.data);
-                      // console.log(result.data);
                     })
                     .catch((error) => console.log(error));
                   })
@@ -154,17 +145,6 @@ export const Stage0501 = () => {
                 .then((result) => {
                   console.log(result);
 
-                  // let params = gameRdx.choosenGame.id
-
-                  // getBadgesByGameId(params)
-                  //   .then((result) => {
-                  //     console.log("traer badges",result);
-                  //     const selectBadge = result?.data?.data
-                  //     dispatch(addBadge({ choosenBadge: selectBadge}))
-                  //     console.log(selectBadge);
-                  //   })
-                  //   .catch((error) => console.log(error));
-
                   if (answer == "24"){
                     const stageId = "13";
 
@@ -176,16 +156,6 @@ export const Stage0501 = () => {
   
                     createSavedGame(dataSavedGame, token)
                       .then((result) => {
-                        console.log(result);
-                        let params = result.data.data.game_id;
-                        bringLoadGamesById(params, token).then((result) => {
-                          console.log(result.data.data[0]);
-                          const selectGame = result.data.data[0];
-                          dispatch(
-                            addGameStage({ choosenGameStage: selectGame })
-                          );
-                          console.log(selectGame);
-                        });
                       })
                       .catch((error) => console.log(error));
   
@@ -206,22 +176,11 @@ export const Stage0501 = () => {
 
                     let dataSavedGame = {
                       game_id: result.data.data.game_id,
-                      // Meter aquí el stage al que se va a ir con respuesta
                       stage_id: stageId,
                     };
   
                     createSavedGame(dataSavedGame, token)
                       .then((result) => {
-                        console.log(result);
-                        let params = result.data.data.game_id;
-                        bringLoadGamesById(params, token).then((result) => {
-                          console.log(result.data.data[0]);
-                          const selectGame = result.data.data[0];
-                          dispatch(
-                            addGameStage({ choosenGameStage: selectGame })
-                          );
-                          console.log(selectGame);
-                        });
                       })
                       .catch((error) => console.log(error));
   
@@ -269,8 +228,6 @@ export const Stage0501 = () => {
                       const selectBadge = result?.data?.data;
                       dispatch(addBadge({ choosenBadge: selectBadge }));
                       console.log(selectBadge);
-                      // setBadge(result?.data?.data);
-                      // console.log(result.data);
                     })
                     .catch((error) => console.log(error));
                   })
@@ -294,27 +251,10 @@ export const Stage0501 = () => {
               
               updateGameStage(dataAnswer, token)
               .then((result) => {
-                  console.log(result);
-                  
-                  // let params = gameRdx.choosenGame.id
-                  
-                  // getBadgesByGameId(params)
-                  // .then((result) => {
-                  //   console.log("traer badges",result);
-                  //   const selectBadge = result?.data?.data
-                  //   dispatch(addBadge({ choosenBadge: selectBadge}))
-                  //   console.log(selectBadge);
-                  //   // setBadge(result?.data?.data);
-                  //   // console.log(result.data);
-                  // })
-                  // .catch((error) => console.log(error));
-
-                  //Cambiar cada vez, ya no coinciden
                   const stageId = "12";
 
                   let dataSavedGame = {
                     game_id: result.data.data.game_id,
-                    // Meter aquí el stage al que se va a ir con respuesta
                     stage_id: stageId,
                   };
 
@@ -322,14 +262,6 @@ export const Stage0501 = () => {
 
                   createSavedGame(dataSavedGame, token)
                     .then((result) => {
-                      console.log(result);
-                      let params = result.data.data.game_id;
-                      bringLoadGamesById(params, token).then((result) => {
-                        console.log(result.data.data[0]);
-                        const selectGame = result.data.data[0];
-                        dispatch(addGame({ choosenGame: selectGame }));
-                        console.log(selectGame);
-                      });
                     })
                     .catch((error) => console.log(error));
 
@@ -340,10 +272,9 @@ export const Stage0501 = () => {
                   };
 
                   setTimeout(() => {
-                    // navigate("/stage02");
                     navigate(stageNavigate[stageId]);
                     console.log(stageNavigate[stageId]);
-                  }, 1500);
+                  }, 500);
                 })
                 .catch((error) => console.log(error));
     }             

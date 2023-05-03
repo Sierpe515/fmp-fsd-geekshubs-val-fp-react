@@ -219,8 +219,6 @@ export const Stage0205 = () => {
                   const selectBadge = result?.data?.data;
                   dispatch(addBadge({ choosenBadge: selectBadge }));
                   console.log(selectBadge);
-                  // setBadge(result?.data?.data);
-                  // console.log(result.data);
                 })
                 .catch((error) => console.log(error));
               })
@@ -249,20 +247,11 @@ export const Stage0205 = () => {
 
             let dataSavedGame = {
               game_id: result.data.data.game_id,
-              // Meter aquí el stage al que se va a ir con respuesta
               stage_id: stageId,
             };
 
             createSavedGame(dataSavedGame, token)
               .then((result) => {
-                console.log(result);
-                let params = result.data.data.game_id;
-                bringLoadGamesById(params, token).then((result) => {
-                  console.log(result.data.data[0]);
-                  const selectGame = result.data.data[0];
-                  dispatch(addGame({ choosenGame: selectGame }));
-                  console.log("guardo Game en redux", selectGame);
-                });
               })
               .catch((error) => console.log(error));
 
@@ -276,7 +265,7 @@ export const Stage0205 = () => {
               // navigate("/stage02");
               navigate(stageNavigate[stageId]);
               console.log(stageNavigate[stageId]);
-            }, 2000);
+            }, 500);
           })
           .catch((error) => console.log(error));
       })

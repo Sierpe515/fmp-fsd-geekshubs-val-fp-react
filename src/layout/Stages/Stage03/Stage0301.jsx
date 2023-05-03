@@ -165,7 +165,7 @@ export const Stage0301 = () => {
                   setTimeout(() => {
                     navigate(stageNavigate[stageId]);
                     console.log(stageNavigate[stageId]);
-                  }, 2000);
+                  }, 500);
                   }
     
                   if (answer == "7"){
@@ -190,7 +190,7 @@ export const Stage0301 = () => {
                   setTimeout(() => {
                     navigate(stageNavigate[stageId]);
                     console.log(stageNavigate[stageId]);
-                  }, 2000);
+                  }, 500);
                   }
                 })
                 .catch((error) => console.log(error));
@@ -274,7 +274,7 @@ export const Stage0301 = () => {
                   setTimeout(() => {
                     navigate(stageNavigate[stageId]);
                     console.log(stageNavigate[stageId]);
-                  }, 2000);
+                  }, 500);
                 })
                 .catch((error) => console.log(error));
     }            

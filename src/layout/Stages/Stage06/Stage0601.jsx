@@ -21,11 +21,8 @@ import { addGameStage, gameStageData } from "../../gameStageSlice";
 import { addBadge } from "../../badgeSlice";
 import { addState } from "../../inGameSlice";
 import './Stage0601.css'
-// import vamp1 from '../../../image/vamp1.png';
 import cat1 from '../../../image/cat1.png';
 import cat2 from '../../../image/cat2.png';
-// import vamp12 from '../../../image/vamp12.png';
-// import vamp3 from '../../../image/vamp3.png';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { TurnPhone } from "../../../components/TurnPhone/TurnPhone";
@@ -44,7 +41,6 @@ export const Stage0601 = () => {
   dispatch(changeState({ clueState: false }))
 
   const [answer, setAnswer] = useState("");
-  // const [characterImage, setCharacterImage] = useState([]);
 
   let token = dataCredentialsRdx.credentials.token;
   const array = gameRdx.choosenGame.games_stages
@@ -55,7 +51,7 @@ export const Stage0601 = () => {
     bringLoadGamesById(params, token)
     .then(result => {
       const array2 = result.data.data[0].games_stages
-      if (!dataCredentialsRdx?.credentials?.token || (result.data.data[0].games_stages[array2.length - 1]?.stage_id != 2)) {
+      if (!dataCredentialsRdx?.credentials?.token || (result.data.data[0].games_stages[array2.length - 1]?.stage_id != 12)) {
         const stageNavigate = {null: "/",1: "/stage01",2: "/stage02",3: "/stage0301",4: "/stage0302",5: "/stage0303",6: "/stage0401",7: "/stage0402",8: "/stage0403",9: "/stage0501",10: "/stage0502",11: "/stage0503",12: "/stage0601",13: "/stage0602",14: "/stage0603",};
         navigate(stageNavigate[stageID]);
       }})
@@ -142,7 +138,6 @@ export const Stage0601 = () => {
         .then((result) => {
           console.log("madness update successfully");
           console.log(result);
-          // dispatch(addGame({choosenGame: result.data.data}))
           let params = gameRdx.choosenGame.id;
 
           bringLoadGamesById(params, token)
@@ -175,8 +170,6 @@ export const Stage0601 = () => {
                       const selectBadge = result?.data?.data;
                       dispatch(addBadge({ choosenBadge: selectBadge }));
                       console.log(selectBadge);
-                      // setBadge(result?.data?.data);
-                      // console.log(result.data);
                     })
                     .catch((error) => console.log(error));
                   })
@@ -209,52 +202,6 @@ export const Stage0601 = () => {
                   .then(console.log("Game Finished"))
                   .catch((error) => console.log(error));
                   navigate("/gameOver1")
-
-                  // let params = gameRdx.choosenGame.id
-
-                  // getBadgesByGameId(params)
-                  //   .then((result) => {
-                  //     console.log("traer badges",result);
-                  //     const selectBadge = result?.data?.data
-                  //     dispatch(addBadge({ choosenBadge: selectBadge}))
-                  //     console.log(selectBadge);
-                  //   })
-                  //   .catch((error) => console.log(error));
-
-                  //   const stageId = "10";
-
-                  //   let dataSavedGame = {
-                  //     game_id: result.data.data.game_id,
-                  //     // Meter aquí el stage al que se va a ir con respuesta
-                  //     stage_id: stageId,
-                  //   };
-  
-                  //   createSavedGame(dataSavedGame, token)
-                  //     .then((result) => {
-                  //       console.log(result);
-                  //       let params = result.data.data.game_id;
-                  //       bringLoadGamesById(params, token).then((result) => {
-                  //         console.log(result.data.data[0]);
-                  //         const selectGame = result.data.data[0];
-                  //         dispatch(
-                  //           addGameStage({ choosenGameStage: selectGame })
-                  //         );
-                  //         console.log(selectGame);
-                  //       });
-                  //     })
-                  //     .catch((error) => console.log(error));
-  
-                    // const stageNavigate = {
-                    //   9: "/stage0501",
-                    //   10: "/stage0502",
-                    //   11: "/stage0503",
-                    // };
-  
-                    // setTimeout(() => {
-                    //   navigate(stageNavigate[stageId]);
-                    //   console.log(stageNavigate[stageId]);
-                    // }, 500);
-                  
                 })
                 .catch((error) => console.log(error));
             })
@@ -287,8 +234,6 @@ export const Stage0601 = () => {
                       const selectBadge = result?.data?.data;
                       dispatch(addBadge({ choosenBadge: selectBadge }));
                       console.log(selectBadge);
-                      // setBadge(result?.data?.data);
-                      // console.log(result.data);
                     })
                     .catch((error) => console.log(error));
                   })
@@ -314,49 +259,6 @@ export const Stage0601 = () => {
               .then((result) => {
                   console.log(result);
                   
-                  // let params = gameRdx.choosenGame.id
-                  
-                  // getBadgesByGameId(params)
-                  // .then((result) => {
-                  //   console.log("traer badges",result);
-                  //   const selectBadge = result?.data?.data
-                  //   dispatch(addBadge({ choosenBadge: selectBadge}))
-                  //   console.log(selectBadge);
-                  //   // setBadge(result?.data?.data);
-                  //   // console.log(result.data);
-                  // })
-                  // .catch((error) => console.log(error));
-
-                  //Cambiar cada vez, ya no coinciden
-                  // const stageId = "15";
-
-                  // let dataSavedGame = {
-                  //   game_id: result.data.data.game_id,
-                  //   // Meter aquí el stage al que se va a ir con respuesta
-                  //   stage_id: stageId,
-                  // };
-
-                  // console.log(dataSavedGame);
-
-                  // createSavedGame(dataSavedGame, token)
-                  //   .then((result) => {
-                  //     console.log(result);
-                  //     let params = result.data.data.game_id;
-                  //     bringLoadGamesById(params, token).then((result) => {
-                  //       console.log(result.data.data[0]);
-                  //       const selectGame = result.data.data[0];
-                  //       dispatch(addGame({ choosenGame: selectGame }));
-                  //       console.log(selectGame);
-                  //     });
-                  //   })
-                  //   .catch((error) => console.log(error));
-
-                  // const stageNavigate = {
-                  //   9: "/stage0501",
-                  //   10: "/stage0502",
-                  //   11: "/stage0503",
-                  // };
-
                   let dataFinished = { 
                     id: gameRdx.choosenGame.id,
                     finished: true }
@@ -366,9 +268,6 @@ export const Stage0601 = () => {
                   .catch((error) => console.log(error));
 
                   setTimeout(() => {
-                    // navigate("/stage02");
-                    // navigate(stageNavigate[stageId]);
-                    // console.log(stageNavigate[stageId]);
                     navigate('/stage0701')
                   }, 500);
                 })
@@ -418,7 +317,6 @@ export const Stage0601 = () => {
   }
 
   const [modalShow, setModalShow] = React.useState(false);
-  // const array = gameRdx.choosenGame.games_stages;
 
   return (
     <Container
