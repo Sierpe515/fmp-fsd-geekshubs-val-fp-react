@@ -34,6 +34,12 @@ export const Profile = () => {
     const [hide4, setHide4] = useState(false);
 
     let token = ReduxCredentials.credentials.token
+
+    useEffect(() => {
+      if (!ReduxCredentials.credentials.token) {
+        navigate("/");
+      }
+    }, []);
     
     const [users, setUsers] = useState({
         userName: "",

@@ -10,19 +10,27 @@ import "./Register.css";
 import { ButtonSubmit } from "../../components/ButtonSubmit/ButtonSubmit";
 import { useNavigate } from "react-router-dom";
 import { RegisterMe } from "../../services/apiCalls";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addState } from "../inGameSlice";
 import regImg from '../../image/regImg.png'
 import { TurnPhone } from "../../components/TurnPhone/TurnPhone";
+import { userData } from "../userSlice";
 
 
 // HOOKS
 
 export const Register = () => {
+  const dataCredentialsRdx = useSelector(userData);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   dispatch(addState({ choosenState: false}))
+
+  useEffect(() => {
+    if (dataCredentialsRdx.credentials.token) {
+      navigate("/");
+    }
+  }, []);
   
   const [dataUser, setDataUser] = useState({
     userName: "",

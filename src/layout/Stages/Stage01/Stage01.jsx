@@ -16,6 +16,7 @@ import garg02 from '../../../image/gargola2.png'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { TurnPhone } from '../../../components/TurnPhone/TurnPhone'
+// import { redirection } from '../../../services/useful'
 
 export const Stage01 = () => {
 
@@ -26,20 +27,28 @@ export const Stage01 = () => {
   const dispatch = useDispatch();
 
   const [answer, setAnswer] = useState("");
-
+  
   let token = dataCredentialsRdx.credentials.token
+  const array = gameRedux.choosenGame.games_stages
+  const stageID = gameRedux?.choosenGame.games_stages[array?.length - 1]?.stage_id
+  console.log(gameRedux?.choosenGame.games_stages[array?.length - 1]?.stage_id);
+
+  useEffect(() => {
+    if (!dataCredentialsRdx?.credentials?.token || (gameRedux?.choosenGame.games_stages[array?.length - 1]?.stage_id != 1)) {
+      const stageNavigate = {null: "/",1: "/stage01",2: "/stage02",3: "/stage0301",4: "/stage0302",5: "/stage0303",6: "/stage0401",7: "/stage0402",8: "/stage0403",9: "/stage0501",10: "/stage0502",11: "/stage0503",12: "/stage0601",13: "/stage0602",14: "/stage0603",};
+      navigate(stageNavigate[stageID]);
+    }
+  }, [gameRedux]);
 
   dispatch(addState({ choosenState: false}))
 
   
-  console.log(gameRedux);
 
   const chooseAnswer = (resp) => {
     console.log(resp);
     setAnswer(resp);
   }
 
-  const array = gameRedux.choosenGame.games_stages
   console.log(gameRedux.choosenGame.games_stages[array.length - 1].id);
   console.log(characterRdx.choosenCharacter);
   let dataAnswer = {
@@ -97,7 +106,7 @@ export const Stage01 = () => {
                     console.log(result.data.data[0])
                     const selectGame = result.data.data[0]
                     dispatch(addGame({choosenGame: selectGame}))
-                    console.log(selectGame);
+                    console.log("Guardo en Redux ahora 1", selectGame);
                   })
                 .catch((error) => console.log(error))
               }
@@ -105,6 +114,7 @@ export const Stage01 = () => {
             .catch((error) => console.log(error))
           setTimeout(() => {
             navigate("/stage02");
+            console.log("te mando a la page 2");
           }, 500);
         }
     )

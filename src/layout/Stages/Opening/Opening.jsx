@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import './Opening.css'
@@ -8,14 +8,26 @@ import op2 from '../../../image/op2.png'
 import op3 from '../../../image/op3.png'
 import op4 from '../../../image/op4.png'
 import { TurnPhone } from '../../../components/TurnPhone/TurnPhone';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addState } from '../../inGameSlice';
+import { userData } from '../../userSlice';
+import { gameDetailData } from '../../gameSlice';
 
 
 export const Opening = () => {
+
+  const dataCredentialsRdx = useSelector(userData);
+  const gameRdx = useSelector(gameDetailData)
   
   const [index, setIndex] = useState(0);
   const dispatch = useDispatch();
+  const array = gameRdx.choosenGame.games_stages;
+
+  useEffect(() => {
+    if (!dataCredentialsRdx.credentials.token && (gameRdx.choosenGame.games_stages[array.length - 1].stage_id != 1)) {
+      navigate("/");
+    }
+  }, []);
 
   dispatch(addState({ choosenState: false}))
 

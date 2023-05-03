@@ -34,11 +34,11 @@ export const SelectGame = () => {
 
   let token = dataCredentialsRdx.credentials.token;
 
-  // useEffect(() => {
-  //     if (dataCredentialsRdx.credentials.token) {
-  //       navigate("/");
-  //     }
-  //   }, []);
+  useEffect(() => {
+      if (!dataCredentialsRdx.credentials.token) {
+        navigate("/");
+      }
+    }, []);
 
   useEffect(() => {
     if (dataCredentialsRdx?.credentials?.token && selectGames?.length === 0) {

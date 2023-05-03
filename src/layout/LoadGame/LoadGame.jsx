@@ -32,11 +32,11 @@ export const LoadGame = () => {
 
     dispatch(addState({ choosenState: false}))
 
-    // useEffect(() => {
-    //     if (dataCredentialsRdx.credentials.token) {
-    //       navigate("/");
-    //     }
-    //   }, []);
+    useEffect(() => {
+        if (!dataCredentialsRdx.credentials.token) {
+          navigate("/");
+        }
+      }, []);
 
     useEffect(() => {
         if (dataCredentialsRdx?.credentials?.token && loadGames.length === 0) {

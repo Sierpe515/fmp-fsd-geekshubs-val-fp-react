@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -21,6 +21,12 @@ export const NewCharacter = () => {
     dispatch(addState({ choosenState: false}))
 
     let token = dataCredentialsRdx.credentials.token
+
+    useEffect(() => {
+        if (!dataCredentialsRdx.credentials.token) {
+          navigate("/");
+        }
+      }, []);
 
     const [character, setCharacter] = useState({
         name: "",

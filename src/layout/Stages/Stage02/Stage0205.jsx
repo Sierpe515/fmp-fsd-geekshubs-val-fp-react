@@ -42,6 +42,15 @@ export const Stage0205 = () => {
   const [characterImage, setCharacterImage] = useState([]);
 
   let token = dataCredentialsRdx.credentials.token;
+  const array = gameRdx.choosenGame.games_stages
+  const stageID = gameRdx?.choosenGame.games_stages[array?.length - 1]?.stage_id
+
+  useEffect(() => {
+    if (!dataCredentialsRdx?.credentials?.token || (gameRdx?.choosenGame.games_stages[array?.length - 1]?.stage_id != 2)) {
+      const stageNavigate = {null: "/",1: "/stage01",2: "/stage02",3: "/stage0301",4: "/stage0302",5: "/stage0303",6: "/stage0401",7: "/stage0402",8: "/stage0403",9: "/stage0501",10: "/stage0502",11: "/stage0503",12: "/stage0601",13: "/stage0602",14: "/stage0603",};
+        navigate(stageNavigate[stageID]);
+    }
+  }, []);
 
   console.log(gameStageRedux);
   console.log(gameRdx);
@@ -148,15 +157,15 @@ export const Stage0205 = () => {
                   createSavedGame(dataSavedGame, token)
                     .then((result) => {
                       console.log(result);
-                      let params = result.data.data.game_id;
-                      bringLoadGamesById(params, token).then((result) => {
-                        console.log(result.data.data[0]);
-                        const selectGame = result.data.data[0];
-                        dispatch(
-                          addGameStage({ choosenGameStage: selectGame })
-                        );
-                        console.log(selectGame);
-                      });
+                      // let params = result.data.data.game_id;
+                      // bringLoadGamesById(params, token).then((result) => {
+                      //   console.log(result.data.data[0]);
+                      //   const selectGame = result.data.data[0];
+                      //   dispatch(
+                      //     addGameStage({ choosenGameStage: selectGame })
+                      //   );
+                      //   console.log(selectGame);
+                      // });
                     })
                     .catch((error) => console.log(error));
 
@@ -252,7 +261,7 @@ export const Stage0205 = () => {
                   console.log(result.data.data[0]);
                   const selectGame = result.data.data[0];
                   dispatch(addGame({ choosenGame: selectGame }));
-                  console.log(selectGame);
+                  console.log("guardo Game en redux", selectGame);
                 });
               })
               .catch((error) => console.log(error));
@@ -267,7 +276,7 @@ export const Stage0205 = () => {
               // navigate("/stage02");
               navigate(stageNavigate[stageId]);
               console.log(stageNavigate[stageId]);
-            }, 500);
+            }, 2000);
           })
           .catch((error) => console.log(error));
       })

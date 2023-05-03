@@ -28,11 +28,11 @@ export const Home = () => {
 
   let token = dataCredentialsRdx.credentials.token;
 
-  useEffect(() => {
-    if (dataCredentialsRdx.credentials.token) {
-      navigate("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (dataCredentialsRdx.credentials.token) {
+  //     navigate("/");
+  //   }
+  // }, []);
 
   useEffect(() => {
   if (dataCredentialsRdx?.credentials?.token && characters.length === 0) {
