@@ -444,7 +444,7 @@ export const Stage0603 = () => {
           </div>
           <div className="textBox03 textBox0603">
             <div  className='scrollText font0603'>
-              <p className='easyText'> MENSAJE DEL JUEGO: Este es un nivel de muerte súbita, errar aquí finaliza el juego, independientemente de la locura 
+              <p className='gameText'> MENSAJE DEL JUEGO: Este es un nivel de muerte súbita, errar aquí finaliza el juego, independientemente de la locura 
               acumulada o la falta de ella.</p>
               <p className='easyText'>Abres los ojos dentro del sueño, no recuerdas nada desde que abriste ese cofre. Pero ahora estás en un juicio y eres el asistente 
               del juez. Para más inri, el juez es la mismísima muerte, y al tratarse de tu sueño es tal y como la imaginabas; un ser cadaverico envuelto en 

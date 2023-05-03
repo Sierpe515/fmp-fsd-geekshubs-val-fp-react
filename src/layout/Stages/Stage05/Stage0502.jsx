@@ -437,7 +437,7 @@ export const Stage0502 = () => {
           </div>
           <div className="a03Box d-flex flex-column justify-content-around align-items-center">
             <div className="answer0501Box answerFont0401">
-              <div>El oro está en el primer cofre</div>
+              <div>El oro no está en el primer cofre</div>
             </div>
             <div className="homeBtn0501 btnMargin02 fontBtn0301"
               onClick={() => {

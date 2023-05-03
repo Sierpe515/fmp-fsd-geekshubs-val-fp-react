@@ -47,15 +47,15 @@ export const ClueBox = () => {
                         {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 3 ? ("Akumato es legal") : ("")}
                         {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 4 ? ("No se puede llegar aquí con badges") : ("")}
                         {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 5 ? ("No se puede llegar aquí con badges") : ("")}
-                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 6 ? ("hola.6") : ("")}
-                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 7 ? ("hola.7") : ("")}
-                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 8 ? ("hola.8") : ("")}
-                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 9 ? ("hola.9") : ("")}
-                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 10 ? ("hola.10") : ("")}
-                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 11 ? ("hola.11") : ("")}
-                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 12 ? ("hola.12") : ("")}
-                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 13 ? ("hola.13") : ("")}
-                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 14 ? ("hola.14") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 6 ? ("Malenia no puede ser legal") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 7 ? ("Belfegor no es caótico") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 8 ? ("Kadala y Magnus mienten") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 9 ? ("Si el oro estuviera en el cofre del medio, todas las inscripciones seían ciertas.") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 10 ? ("Si la incripción del primer y el segundo cofre dicen lo contrario, una debe ser cierta") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 11 ? ("Si la incripción del primer y el segundo cofre dicen lo contrario, una debe ser cierta") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 12 ? ("La información recogida en tu viaje dice que en la estatua VIII te espera la muerte") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 13 ? ("El guardián VII es legal") : ("")}
+                        {gameRdx.choosenGame.games_stages[array.length -1].stage_id == 14 ? ("El verdugo respondió que SÍ y la halconera respondió SÍ") : ("")}
                     </div>
                     <div className='closeDialogue' onClick={()=> {closeClue()}}>Close 
                         <svg className='closeIcon' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">

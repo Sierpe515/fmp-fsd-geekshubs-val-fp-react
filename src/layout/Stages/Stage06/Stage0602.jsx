@@ -367,7 +367,7 @@ export const Stage0602 = () => {
           </div>
           <div className="textBox03 textBox0501">
             <div  className='scrollText font0602'>
-              <p className='easyText'> MENSAJE DEL JUEGO: Este es un nivel de muerte súbita, errar aquí finaliza el juego, independientemente de la locura 
+              <p className='gameText'> MENSAJE DEL JUEGO: Este es un nivel de muerte súbita, errar aquí finaliza el juego, independientemente de la locura 
               acumulada o la falta de ella.</p>
               <p className='easyText'>Lo que te prometieron que sería una salida sencilla, se traduce con corazón a punto de salirse del pecho en una mazmorra 
               subterranea repleta de humanoides abominables con muchas ganas de atacar a cualquier cosa que se mueva. Por desgracia, tú cumples todos los requisitos.</p>

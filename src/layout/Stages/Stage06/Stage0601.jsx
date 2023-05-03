@@ -458,7 +458,7 @@ export const Stage0601 = () => {
           </div>
           <div className="textBox03 textBox0403">
             <div  className='scrollText font0403'>
-              <p className='easyText'> MENSAJE DEL JUEGO: Este es un nivel de muerte súbita, errar aquí finaliza el juego, independientemente de la locura 
+              <p className='gameText'> MENSAJE DEL JUEGO: Este es un nivel de muerte súbita, errar aquí finaliza el juego, independientemente de la locura 
               acumulada o la falta de ella.</p>
               <p className='easyText'>Por fin se alzan ante tus ojos las Estatuas Cattegat. Enormes y majestuosas, imponentes a los sentidos. El mar del 
               fin del sueño baña sus pies y has conseguido embarcar en un drakkar que navega sus aguas.</p>
@@ -466,8 +466,7 @@ export const Stage0601 = () => {
               tu viaje, porque un acierto más y podrás volver a tu mundo, pero un error conduce irremediablemente a una muerte segura.</p>
               <p className='easyText'>Has conseguido convencer a un grupo de vikingos, que quiere hacer una incursión en el mundo despierto, de tus dotes 
               lógicas. Cada estatua tiene una inscripción. Únicamente la de la estatua de la salida dice siempre la verdad. Después hay otros dos tipos de estatua; 
-              las que llevan a un muerte rápida por trampas, cuyas inscripciones siempre mienten, y las que no tienen salida, y por tanto llevan a la muerte 
-              igualmente, ya que no se puede regresar, y cuyas inscripciones bien pueden decir la verdad, o bien mentir.</p>
+              las que llevan a un muerte rápida por trampas, cuyas inscripciones siempre mienten, y las que no tienen salida, y cuyas inscripciones bien pueden decir la verdad, o bien mentir.</p>
               <p className='easyText'>Únicamente con los datos de las inscripciones era imposible deducir cuál era la estatua que llevaba a la salida, pero tú, a lo 
               largo de tu viaje habías recogido una valiosísima información, la pieza que falta del rompecabezas, que te permite saber con certeza en qué estatua estaba
               la salida: si la estatua VIII tiene salida o no.</p>
