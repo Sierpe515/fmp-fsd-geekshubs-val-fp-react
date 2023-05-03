@@ -43,12 +43,15 @@ export const Stage0703 = () => {
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
           </svg>
         </div>
-        <div className="solutionBox" id="solutionBox">
-          <div className="solutionText text-center">
+        <div className="solutionBox solFinal" id="solutionBox">
+          <div className="solutionText solText text-center">
             <p>¡Lo has hecho bien! Pero vamos a revisar la respuesta.</p>
-            <p>Este problema es una buena introducción a la lógica disyuntiva. Puesto que dados dos enunciados, significa que al menos un enunciado es cierto. Si el enunciado fuera falso, entonces ambos enunciados lo serían. En el caso del problema que has superado con éxito, supongase que Shasha es caótica, entonces su enunciado tiene que ser falso. Eso querría decir que ni es cierto que ella sea caótica, ni que B sea Legal. Por lo tanto se diría que Shasha no es caótica, lo que sería una contradicción. Por lo que tiene que ser legal.</p>
-            <p>Habiendo establecido que Shasha es legal, su enunciado tiene que ser cierto. De las dos posibilidades del enunciado, sólo puede ser cierta la segunda. Por tanto, Sherboroug es caótico.</p>
-            <p>De este modo, A y B son ambs legales.</p>
+            <p>Hasta que no hiciste las preguntas, no había forma de saber de qué tipo era cada uno. La Halconera no puede ser caótica, pues sí lo fuera, su enunciado sería falso. De ahí que sea culpable, pero siendo legal o neutral. Hasta entonces tenemos estas tres posibilidades:</p>
+            <p>1: La halconera es legal, su enunciado es cierto y por lo tanto es inocente. El enunciado del halcón sería verdadero y por tanto neutral. Esto deja al verdugo como caótico. Como se sabe que el caótico no es culpable, el halcón es culpable.</p>
+            <p>2: La halconera es neutral e inocente. El enunciado del halcón sería cierto y él por tanto legal. El verdugo sería caótico e inocente y el halcón sería culpable.</p>
+            <p>3: La halconera es neutral y culpable. El enunciado del verdugo sería cierto y él legal. El halcón sería caótico.</p>
+            <p>Cuando preguntas al verdugo si es culpable, ya sabías que era inocente. Lo que querías saber es si era legal o caótico. Si hubiera respondido con la verdad, NO, sólo sería viable la opción 3 y no huberas tenido que hacer más preguntas.</p>
+            <p>Pero tuviste que hacer una pregunta más. Con la posibilidad 3 descartada, ya sabemos que el halcón es culpable, por lo que, al hacerle la última pregunta, si hubiera respondido NO, no habrías podido saber si era neutral o legal, pero respondió SÍ por lo que es caótico.</p>
           </div>
           <div className='closeDialogue' onClick={()=> {closeSolution()}}>Close 
             <svg className='closeIcon' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">

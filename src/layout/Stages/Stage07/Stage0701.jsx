@@ -48,7 +48,7 @@ export const Stage0701 = () => {
           </svg>
         </div>
         <div className="solutionBox solFinal" id="solutionBox">
-          <div className="solutionText solText text-center">
+          <div className="solutionText text-center">
             <p>¡Lo has hecho bien! Pero vamos a revisar la respuesta.</p>
             <p>Con la información de las estatuas únicamente, era imposible hayar la salida, pero como con la información obtenida en tu viaje podías saberlo, esa información decía que la estatua VIII no estaba vacía.</p>
             <p>Así pues has debido razonar de esta manera: es imposible que la salida estuviera en la estatua VIII, porque si lo estuviera, su inscripción diría la verdad, pero esta dice que te espera la muerte, lo que sería una contradicción. Como esta estatua ni está vacia ni tiene la salida, debe esperarte la muerte. De modo que miente.</p>
