@@ -47,9 +47,9 @@ export const Profile = () => {
         surname: "",
         email: "",
         birthdate: "",
-    }
-    
-    );
+    });
+
+    console.log('users', users);
     
     useEffect(() => {
         if (!ReduxCredentials.credentials.token){
@@ -171,9 +171,32 @@ export const Profile = () => {
         }));
       };
 
+      // SHOW FIELDS
+
+    const changeHide = () => {
+      if (hide === false){setHide(true)}
+      if (hide === true){setHide(false)}}
+      
+      const changeHide1 = () => {
+      console.log('abro aqui');
+        if (hide1 === false){setHide1(true)}
+        if (hide1 === true){setHide1(false)}}
+
+    const changeHide2 = () => {
+        if (hide2 === false){setHide2(true)}
+        if (hide2 === true){setHide2(false)}}
+
+    const changeHide3 = () => {
+        if (hide3 === false){setHide3(true)}
+        if (hide3 === true){setHide3(false)}}
+
+    const changeHide4 = () => {
+        if (hide4 === false){setHide4(true)}
+        if (hide4 === true){ setHide4(false)}}
+
       const updateUser = () => {
 
-        if (dataUserUpdate.userName !== (users.userName && "")){
+        if (dataUserUpdate.userName !== (users.userName && "" && null)){
             let userNameProfile = {
                 userName : dataUserUpdate.userName
             }
@@ -191,7 +214,7 @@ export const Profile = () => {
             .catch(error => console.log(error))
         }
 
-        if (dataUserUpdate.name !== (users.name && "")){
+        if (dataUserUpdate.name !== (users.name && "" && null)){
             let nameProfile = {
                 name : dataUserUpdate.name
             }
@@ -208,7 +231,7 @@ export const Profile = () => {
             .catch(error => console.log(error))
         }
 
-        if (dataUserUpdate.surname !== (users.surname && "")){
+        if (dataUserUpdate.surname !== (users.surname && "" && null)){
             let surnameProfile = {
                 surname : dataUserUpdate.surname
             }
@@ -225,7 +248,7 @@ export const Profile = () => {
             .catch(error => console.log(error))
         }
 
-        if (dataUserUpdate.email !== (users.email && "")){
+        if (dataUserUpdate.email !== (users.email && "" && null)){
             let emailProfile = {
                 email : dataUserUpdate.email
             }
@@ -241,23 +264,6 @@ export const Profile = () => {
           )
             .catch(error => console.log(error))
         }
-
-        // if (dataUserUpdate.birthdate !== (users.birthdate && "")){
-        //   let birthdateProfile = {
-        //       birthdate : dataUserUpdate.birthdate
-        //   }
-        //   updateBirthdateProfile(birthdateProfile, token)
-        //   .then(action => {
-        //     console.log(action);
-        //     setUsers((prevState) => ({
-        //         ...prevState,
-        //         birthdate: action.data.data.birthdate
-        //       }));
-        //     changeHide4()
-        //   }
-        //   )
-        //   .catch(error => console.log(error))
-        // }
       }
 
       const [bDay, setBDay] = useState(new Date());
@@ -292,27 +298,6 @@ export const Profile = () => {
     const handleClose1 = () => setShow1(false);
     const handleShow1 = () => setShow1(true);
 
-    // SHOW FIELDS
-
-    const changeHide = () => {
-        if (hide === false){setHide(true)}
-        if (hide === true){setHide(false)}}
-
-    const changeHide1 = () => {
-        if (hide1 === false){setHide1(true)}
-        if (hide1 === true){setHide1(false)}}
-
-    const changeHide2 = () => {
-        if (hide2 === false){setHide2(true)}
-        if (hide2 === true){setHide2(false)}}
-
-    const changeHide3 = () => {
-        if (hide3 === false){setHide3(true)}
-        if (hide3 === true){setHide3(false)}}
-
-    const changeHide4 = () => {
-        if (hide4 === false){setHide4(true)}
-        if (hide4 === true){ setHide4(false)}}
 
   return (
     <Container

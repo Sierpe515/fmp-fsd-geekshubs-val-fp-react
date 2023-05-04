@@ -20,7 +20,6 @@ import { addGameStage, gameStageData } from "../../gameStageSlice";
 import { addBadge } from "../../badgeSlice";
 import { addState } from "../../inGameSlice";
 import './Stage0401.css'
-import vamp1 from '../../../image/vamp1.png';
 import vamp12 from '../../../image/vamp12.png';
 import vamp3 from '../../../image/vamp3.png';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
