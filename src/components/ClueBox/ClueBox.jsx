@@ -22,21 +22,6 @@ export const ClueBox = () => {
     const closeClue = () => {
 
         dispatch(changeState({ clueState: false}))
-        // let body = {id: badgeRdx.selectedBadge}
-        // consumeBadgesByGameBadgeId(body)
-        // .then((result) => {
-        //     let params = gameRdx.choosenGame.id;
-    
-        //           getBadgesByGameId(params)
-        //             .then((result) => {
-        //               console.log("traer badges", result);
-        //               const selectBadge = result?.data?.data;
-        //               dispatch(addBadge({ choosenBadge: selectBadge }));
-        //               console.log(selectBadge);
-        //             })
-        //             .catch((error) => console.log(error))
-        // })
-        // .catch((error) => console.log(error));
     }
 
     return (

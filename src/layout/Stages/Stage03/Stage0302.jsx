@@ -46,7 +46,7 @@ export const Stage0302 = () => {
     .then(result => {
       const array2 = result.data.data[0].games_stages
       const selectGame = result.data.data[0];
-      dispatch(addGame({ choosenGameStage: selectGame }));
+      dispatch(addGame({ choosenGame: selectGame }));
       const stageID = selectGame.games_stages[array2.length - 1]?.stage_id
       if (!dataCredentialsRdx?.credentials?.token || (selectGame.games_stages[array2.length - 1]?.stage_id != 4)) {
         const stageNavigate = {null: "/",1: "/stage01",2: "/stage02",3: "/stage0301",4: "/stage0302",5: "/stage0303",6: "/stage0401",7: "/stage0402",8: "/stage0403",9: "/stage0501",10: "/stage0502",11: "/stage0503",12: "/stage0601",13: "/stage0602",14: "/stage0603",};
