@@ -83,6 +83,17 @@ export const deletePjByUser = async (params, token) => {
   return await axios.delete(`${root}/characters/delete/${params}`, config);
 }
 
+export const deleteSavedGameByUser = async (params, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  return await axios.delete(`${root}/games/delete/${params}`, config);
+}
+
 export const createSavedGame = async (dataSavedGame, token) => {
 
   let config = {

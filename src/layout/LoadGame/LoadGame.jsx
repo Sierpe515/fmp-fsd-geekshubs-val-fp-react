@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { characterDetailData } from '../characterSlice'
 import { userData } from '../userSlice'
 import { useNavigate } from 'react-router-dom'
-import { bringLoadGames, deletePjByUser, getBadgesByGameId } from '../../services/apiCalls'
+import { bringLoadGames, deleteSavedGameByUser, getBadgesByGameId } from '../../services/apiCalls'
 import './LoadGame.css'
 import { addGame, gameDetailData } from '../gameSlice'
 import { addState } from '../inGameSlice'
@@ -47,7 +47,7 @@ export const LoadGame = () => {
                 console.log(loadGames);
             })
             .catch((error) => console.log(error));
-        }}, []);
+        }}, [loadGames]);
 
     const goSelectGame = () => {
         setTimeout(()=>{
@@ -100,15 +100,17 @@ export const LoadGame = () => {
     const deleteLoadGame = () => {
         console.log(selectedLoadGame);
         let params = selectedLoadGame.id
-        deletePjByUser(params, token)
-        .then(
+        deleteSavedGameByUser(params, token)
+        .then(action => {
+            console.log("borro juego", action)
             bringLoadGames(params, dataCredentialsRdx?.credentials.token)
             .then((result) => {
                 setLoadGames(result?.data?.data);
                 console.log(result?.data?.data);
                 console.log(loadGames);
             })
-            .catch((error) => console.log(error)))
+            .catch((error) => console.log(error))
+          })
         .catch((error) => console.log(error));
     }
 
