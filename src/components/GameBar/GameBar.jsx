@@ -161,7 +161,7 @@ export const GameBar = () => {
         {gameRdx.choosenGame.madness >= 3 ? gameOver() : ""}
       </div>
       </>
-      ) : ("hola")}
+      ) : ("")}
       </div>
       
   )

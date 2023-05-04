@@ -31,7 +31,7 @@ export const Stage02 = () => {
   const [imageId, setImageId] = useState("");
 
   const array = gameRdx.choosenGame.games_stages
-  const stageID = gameRdx?.choosenGame.games_stages[array?.length - 1]?.stage_id
+  // const stageID = gameRdx?.choosenGame.games_stages[array?.length - 1]?.stage_id
   let token = dataCredentialsRdx.credentials.token
 
   useEffect(() => {
@@ -39,7 +39,10 @@ export const Stage02 = () => {
     bringLoadGamesById(params, token)
     .then(result => {
       const array2 = result.data.data[0].games_stages
-      if (!dataCredentialsRdx?.credentials?.token || (result.data.data[0].games_stages[array2.length - 1]?.stage_id != 2)) {
+      const selectGame = result.data.data[0];
+      dispatch(addGame({ choosenGameStage: selectGame }));
+      const stageID = selectGame.games_stages[array2.length - 1]?.stage_id
+      if (!dataCredentialsRdx?.credentials?.token || (selectGame.games_stages[array2.length - 1]?.stage_id != 2)) {
         const stageNavigate = {null: "/",1: "/stage01",2: "/stage02",3: "/stage0301",4: "/stage0302",5: "/stage0303",6: "/stage0401",7: "/stage0402",8: "/stage0403",9: "/stage0501",10: "/stage0502",11: "/stage0503",12: "/stage0601",13: "/stage0602",14: "/stage0603",};
         navigate(stageNavigate[stageID]);
       }})
