@@ -10,7 +10,6 @@ export const MainApp = () => {
     <Container fluid className='mainBox p-0'>
       <div>
       <NavBar/>
-      {/* <NavBarSpace/> */}
       </div>
       <div className='d-flex'>
       <GameBar/>

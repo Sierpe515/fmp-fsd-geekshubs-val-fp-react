@@ -60,7 +60,6 @@ export const LoadGame = () => {
     const selectedSavedGame = (selectedGame) => {
 
         dispatch(addGame({choosenGame: selectedGame}))
-
         const array = selectedGame.games_stages
         const stageId = selectedGame.games_stages[array.length - 1].stage_id
         let params = selectedGame.id
@@ -84,6 +83,9 @@ export const LoadGame = () => {
             '9': "/stage0501",
             '10': "/stage0502",
             '11': "/stage0503",
+            '12' : "/stage0601",
+            '13' : "/stage0602",
+            '14' : "/stage0603",
         }
         
         setTimeout(()=>{

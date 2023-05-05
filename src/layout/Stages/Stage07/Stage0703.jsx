@@ -12,15 +12,16 @@ import { bringLoadGamesById } from '../../../services/apiCalls';
 export const Stage0703 = () => {
 
   const gameRdx = useSelector(gameDetailData);
-  // const gameStageRedux = useSelector(gameStageData);
   const dataCredentialsRdx = useSelector(userData);
   const characterRdx = useSelector(characterDetailData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let token = dataCredentialsRdx.credentials.token
 
+  // SAVE AT REDUX INGAME STATE
   dispatch(addState({ choosenState: false}))
 
+  // USEEFFECT TO CHECK IF USER IS LOGGED IN AND THE CORRECT STAGE
   useEffect(() => {
     let params = gameRdx.choosenGame.id
     bringLoadGamesById(params, token)
@@ -35,12 +36,14 @@ export const Stage0703 = () => {
     .catch((error) => console.log(error))
   }, []);
 
+  // GO HOME BUTTON
   const goHome = () => {
     setTimeout(()=>{
       navigate("/");
     },500)
   }
 
+  // SHOWING AND CLOSING SOLUTIONS DIV
   const showSolution = () => {
     let solution = document.getElementById('solutionBox');
     solution.classList.add('showSolBox')

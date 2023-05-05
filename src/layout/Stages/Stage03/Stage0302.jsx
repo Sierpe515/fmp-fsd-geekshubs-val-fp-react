@@ -101,7 +101,6 @@ export const Stage0302 = () => {
                 id: gameRdx.choosenGame.games_stages[array.length - 1].id,
                 answer_id: answer,
               };
-
               updateGameStage(dataAnswer, token)
                 .then((result) => {
                   

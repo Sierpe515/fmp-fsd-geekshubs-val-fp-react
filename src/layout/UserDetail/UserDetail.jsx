@@ -29,14 +29,12 @@ export const UserDetail = () => {
     const credentialsRdx = useSelector(userData);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    dispatch(addState({ choosenState: false}))
-
-    console.log(userDetailRedux);
-
     let params = (userDetailRedux.choosenObject.id);
     let token = (credentialsRdx.credentials.token);
-    const isAdmin = credentialsRdx.credentials.userRole?.includes("Admin");
+
+    // SAVE AT REDUX INGAME STATE
+    dispatch(addState({ choosenState: false}))
+
 
     const [userRole, setUserRole] = useState("");
     const [gameId, setGameId] = useState("");
@@ -52,27 +50,19 @@ export const UserDetail = () => {
     const handleShow2 = () => setShow2(true);
     const [modalShow, setModalShow] = React.useState(false);
 
-    // useEffect(() => {
-    //     {credentialsRdx.credentials.userRole ? isAdmin ? ('') : (navigate('/')) : (navigate('/'))}
-        
-    //   }, []);
-    
+    // USEEFFECT TO CHECK ADMIN ROLE
     useEffect(() => {
-      {credentialsRdx.credentials.userRole?.includes("Admin") ? (""
-          // {!credentialsRdx.credentials.userRole.includes("admin") ? () : ()} 
-          
-      ) : (navigate('/'))}
-      
+      {credentialsRdx.credentials.userRole?.includes("Admin") ? ("") : (navigate('/'))}      
     }, []);
 
+    // FUNCTION TO SELECT AND SAVE GAME AT REDUX AND AT HOOK
     const selected = (game) => {
       dispatch(addCharacter({ choosenCharacter: game }))
       setGameId(game.id)
-      console.log(game.id);
     }
 
+    // DELETE USER FUNCTION
     const deleteUser = () => {
-
         deleteUserByAdmin(params, token)
         .then(
             userDeleteByAdmin => {
@@ -86,6 +76,7 @@ export const UserDetail = () => {
         })
     }
 
+    // UPDATE ROLE USER FUNCTIONS
     const updateUserRole = () => {
         if(userRole === ""){
             handleShow()
@@ -95,8 +86,6 @@ export const UserDetail = () => {
             role_id: userRole
         }
         let params = userDetailRedux.choosenObject.id
-        console.log(params);
-        console.log(body);
         addRoleByAdmin(body, params, token)
         .then(
             handleShow2()
@@ -108,10 +97,9 @@ export const UserDetail = () => {
         setUserRole(Role) 
     }
 
+    // DELETE SAVED GAME FOR CHARACTER
     const deleteSavedGame = () => {
-
         let params = gameId
-        console.log(params);
         deleteSavedGameByAdmin(params, token)
         .then(
             userDeleteByAdmin => {
@@ -125,41 +113,21 @@ export const UserDetail = () => {
         })
     }    
 
+    // USEEFFECT TO BRING SAVED GAMES FOR CHARACTER
     useEffect(() => {
-
         if (credentialsRdx?.credentials?.userRole?.includes('Admin')) {
             bringCharacterGames(params)
             .then((result) => {
-                console.log("hola", savedGames);
-                console.log("eeeeyy", result.data.data[0].id);
                 if (result.data.data[result.data.data.length -1].id !== savedGames[savedGames.length -1]?.id){
-                    console.log(result, "eo");
                     setSavedGames(result.data.data);
                 }
             })
             .catch((error) => console.log(error));
         }
-        console.log(savedGames, "ufff");
     }, [savedGames]);
 
+    // MODAL TO VIEW SAVED GAMES FOR CHARACTER
     function MyVerticallyCenteredModal(props) {
-
-        let params = gameId
-
-        // useEffect(() => {
-
-        //     if (credentialsRdx?.credentials?.userRole?.includes('Admin')) {
-        //         bringCharacterGames(params)
-        //         .then((result) => {
-        //             if (result.data.data !== savedGames){
-        //                 setSavedGames(result.data.data);
-        //                 console.log(result, "eo");
-        //             }
-        //         })
-        //         .catch((error) => console.log(error));
-        //     }}, [savedGames]);
-
-
         return (
           <Modal
             {...props}
@@ -169,41 +137,38 @@ export const UserDetail = () => {
           >
             <Modal.Header closeButton>
               <Modal.Title id="contained-modal-title-vcenter">
-                Modal heading
+                Juegos guardados del personaje
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>Centered Modal</h4>
                 {savedGames.length > 0 ? (
                     <>
                     <div className='loadGamesBox'>
-                        <div className='text-center'><h1>Load Game</h1></div>
                         {savedGames.map((load) => {
                         return (
                             <>
-                            <div className="loadBox text-center" key={load.id}
-                            // onClick={() => selectedSavedGame(load)} 
-                            >
+                            <div className="loadBox text-center" key={load.id}>
                                 <p>Game:<strong> {load.select_games.name} </strong></p> 
                                 <p>Saved at:<strong> {load.updated_at} </strong></p> 
                             </div>
-                            <div className="text-center" onClick={()=> deleteSavedGame()}>Delete game</div>
+                            <div className="text-center" onClick={()=> deleteSavedGame()}>Eliminar partida</div>
                             </>
                         );
                         })}
                     </div>
                     </>
                 ) : (
-                    <div><h1>No saved games</h1></div>
+                    <div><h1>No hay juegos guardados con este personaje</h1></div>
                 )}
             </Modal.Body>
             <Modal.Footer>
-              <Button onClick={props.onHide}>Close</Button>
+              <Button onClick={props.onHide}>Cerrar</Button>
             </Modal.Footer>
           </Modal>
         );
       }
 
+    // POPOVERS
     const popoverHoverFocus1 = (
         <Popover className="popoverRole" id="popover-trigger-hover-focus" title="Popover bottom">
             Admin
@@ -215,8 +180,6 @@ export const UserDetail = () => {
             Player
         </Popover>
     );
-    
-
 
 
      return (
@@ -224,38 +187,38 @@ export const UserDetail = () => {
             <TurnPhone/>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                <Modal.Title>Add role</Modal.Title>
+                <Modal.Title>Agregar rol</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Please, choose a role before pressing the button</Modal.Body>
+                <Modal.Body>Por favor, selecciona un rol antes de pulsar el botón</Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
-                    Close
+                    Cerrar
                 </Button>
                 </Modal.Footer>
             </Modal>
             <Modal show={show1} onHide={handleClose1}>
                 <Modal.Header closeButton>
-                <Modal.Title>Deleting User</Modal.Title>
+                <Modal.Title>Eliminar usuario</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Are you sure to delete this user?</Modal.Body>
+                <Modal.Body>¿Estás seguro de querer eliminar a este usuario?</Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={()=> deleteUser()}>
-                    Confirm
+                    Confirmar
                 </Button>
                 <Button variant="secondary" onClick={handleClose1}>
-                    Close
+                    Cerrar
                 </Button>
                 </Modal.Footer>
             </Modal>
             <Modal show={show2} onHide={handleClose2}>
                 <Modal.Header closeButton>
-                <Modal.Title>Role assignment</Modal.Title>
+                <Modal.Title>Rol asignado</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>User role added
+                <Modal.Body>El rol ha sido asignado al usuario
                 </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose2}>
-                    Close
+                    Cerrar
                 </Button>
                 </Modal.Footer>
             </Modal>
@@ -264,12 +227,11 @@ export const UserDetail = () => {
                     <div className='logRegContainer d-flex flex-column justify-content-center text-center'>
                         <h1 className="text-center">User Detail Admin</h1>
                         <p><strong>Username:</strong> {userDetailRedux?.choosenObject?.userName}</p>
-                        <p><strong>Name:</strong> {userDetailRedux?.choosenObject?.name}</p>
-                        <p><strong>Surname:</strong> {userDetailRedux?.choosenObject?.surname}</p>
+                        <p><strong>Nombre:</strong> {userDetailRedux?.choosenObject?.name}</p>
+                        <p><strong>Apellido:</strong> {userDetailRedux?.choosenObject?.surname}</p>
                         <p><strong>Email:</strong> {userDetailRedux?.choosenObject?.email}</p>
-                        <p><strong>Role:</strong> {userDetailRedux?.choosenObject?.role_id}</p>
-                        <p><strong>Birthdate:</strong> {dayjs(userDetailRedux.choosenObject.birthdate).format('YYYY-MMMM-DD')}</p>
-                        {/* <p><strong>Password:</strong> {userDetailRedux?.choosenObject?.password}</p> */}
+                        <p><strong>Rol:</strong> {userDetailRedux?.choosenObject?.role_id}</p>
+                        <p><strong>Fecha de Nacimiento:</strong> {dayjs(userDetailRedux.choosenObject.birthdate).format('YYYY-MMMM-DD')}</p>
                     </div>
                 </Col>
                 <Col>
@@ -278,7 +240,7 @@ export const UserDetail = () => {
                         return (
                             <>
                             <div className="userBox" onClick={() => {selected(pj), setModalShow(true)}} key={pj.id}>
-                            Character Name: <strong>{pj.name}</strong> 
+                            Nombre de personaje: <strong>{pj.name}</strong> 
                             </div>
                             <MyVerticallyCenteredModal
                             show={modalShow}

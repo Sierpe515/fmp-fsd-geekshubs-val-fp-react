@@ -16,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { characterDetailData } from "../../characterSlice";
-import { addGameStage, gameStageData } from "../../gameStageSlice";
 import { addBadge } from "../../badgeSlice";
 import { addState } from "../../inGameSlice";
 import './Stage0301.css'
@@ -31,7 +30,6 @@ import { changeState } from "../../clueSlice";
 export const Stage0301 = () => {
   const gameRdx = useSelector(gameDetailData);
   const dataCredentialsRdx = useSelector(userData);
-  const characterRdx = useSelector(characterDetailData);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   let token = dataCredentialsRdx.credentials.token;
