@@ -87,7 +87,7 @@ export const Stage0205 = () => {
     </Popover>
   );
 
-  // ANSWER FUNCTION
+  // SAVE ANSWER FUNCTION
   const saveAnswer = () => {
     if (answer == 4 || answer == 5) {
       let body = {
@@ -110,7 +110,6 @@ export const Stage0205 = () => {
                     badge_id: result.data[0].badge_id,
                   };
                   createBagdeGame(dataBadge)
-                    .then((result) => console.log("BadgeGame", result))
                     .catch((error) => console.log(error));
                 })
                 .catch((error) => console.log(error));
@@ -129,7 +128,6 @@ export const Stage0205 = () => {
                     .then((result) => {
                       const selectBadge = result?.data?.data;
                       dispatch(addBadge({ choosenBadge: selectBadge }));
-                      console.log(selectBadge);
                     })
                     .catch((error) => console.log(error));
 
@@ -220,7 +218,7 @@ export const Stage0205 = () => {
       .catch((error) => console.log(error));
   };
 
-  // CONFIRM ANSWER MODAL
+  // CONFIRMATION ANSWER MODAL
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal

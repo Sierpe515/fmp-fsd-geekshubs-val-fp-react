@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addGame, gameDetailData } from "../../gameSlice";
 import { userData } from "../../userSlice";
@@ -16,17 +16,13 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { characterDetailData } from "../../characterSlice";
-import { addGameStage, gameStageData } from "../../gameStageSlice";
 import { addBadge } from "../../badgeSlice";
 import { addState } from "../../inGameSlice";
 import './Stage0502.css'
-// import vamp1 from '../../../image/vamp1.png';
 import ghost1 from '../../../image/ghost1.png';
 import chest1 from '../../../image/chest1.png';
 import chest2 from '../../../image/chest2.png';
 import chest3 from '../../../image/chest3.png';
-// import vamp12 from '../../../image/vamp12.png';
-// import vamp3 from '../../../image/vamp3.png';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { TurnPhone } from "../../../components/TurnPhone/TurnPhone";
@@ -35,21 +31,20 @@ import { ClueBox } from "../../../components/ClueBox/ClueBox";
 
 export const Stage0501 = () => {
   const gameRdx = useSelector(gameDetailData);
-  // const gameStageRedux = useSelector(gameStageData);
   const dataCredentialsRdx = useSelector(userData);
   const characterRdx = useSelector(characterDetailData);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  dispatch(addState({ choosenState: true }))
-  dispatch(changeState({ clueState: false }))
-
-  const [answer, setAnswer] = useState("");
-  const [characterImage, setCharacterImage] = useState([]);
-
   let token = dataCredentialsRdx.credentials.token;
   const array = gameRdx.choosenGame.games_stages
 
+  // SAVE AT REDUX INGAME STATE
+  dispatch(addState({ choosenState: true }))
+
+  // SAVE AT REDUX SHOWING CLUE STATE
+  dispatch(changeState({ clueState: false }))
+
+  // USEEFFECT TO CHECK IF USER IS LOGGED IN AND THE CORRECT STAGE
   useEffect(() => {
     let params = gameRdx.choosenGame.id
     bringLoadGamesById(params, token)
@@ -65,23 +60,23 @@ export const Stage0501 = () => {
     .catch((error) => console.log(error))
   }, []);
 
-  // console.log(gameStageRedux);
-  console.log(gameRdx);
-  console.log(answer);
+  // ANSWER HOOK
+  const [answer, setAnswer] = useState("");
   
+  const chooseAnswer = (resp) => {
+    console.log(resp);
+    setAnswer(resp);
+  };
+
+  // POPOVER
   const popoverHoverFocus1 = (
     <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
       Cerbero
     </Popover>
   ); 
 
-  const chooseAnswer = (resp) => {
-    console.log(resp);
-    setAnswer(resp);
-  };
-
+    // SAVE ANSWER FUNCTION
   const saveAnswer = () => {
-
     if (answer == 24 || answer == 25) {
       let body = {
         id: gameRdx.choosenGame.id,
@@ -89,73 +84,45 @@ export const Stage0501 = () => {
       };
       updateMadness(body, token)
         .then((result) => {
-          console.log("madness update successfully");
-          console.log(result);
           let params = gameRdx.choosenGame.id;
-
           bringLoadGamesById(params, token)
             .then((result) => {
-              console.log(result.data.data[0]);
               const selectGame = result.data.data[0];
               dispatch(addGame({ choosenGame: selectGame }));
-              console.log(selectGame);
-
               let params = answer;
-
               bringAnswerById(params)
                 .then((result) => {
-                  console.log("badge", result.data[0].badge_id);
-
                   let dataBadge = {
                     game_id: gameRdx.choosenGame.id,
                     badge_id: result.data[0].badge_id,
                   };
-
                   createBagdeGame(dataBadge)
-                  .then((result) => {
-                    console.log("BadgeGame", result)
-                    
-                  let params = gameRdx.choosenGame.id;
-    
-                  getBadgesByGameId(params)
-                    .then((result) => {
-                      console.log("traer badges", result);
-                      const selectBadge = result?.data?.data;
-                      dispatch(addBadge({ choosenBadge: selectBadge }));
-                      console.log(selectBadge);
-                    })
-                    .catch((error) => console.log(error));
+                  .then((result) => {                   
+                    let params = gameRdx.choosenGame.id;    
+                    getBadgesByGameId(params)
+                      .then((result) => {
+                        const selectBadge = result?.data?.data;
+                        dispatch(addBadge({ choosenBadge: selectBadge }));
+                      })
+                      .catch((error) => console.log(error));
                   })
                     .catch((error) => console.log(error));
                 })
                 .catch((error) => console.log(error));
 
-              console.log(gameRdx);
               const array = gameRdx.choosenGame.games_stages;
-              console.log(
-                gameRdx.choosenGame.games_stages[array.length - 1].id
-              );
-              console.log(characterRdx.choosenCharacter);
-
               let dataAnswer = {
                 id: gameRdx.choosenGame.games_stages[array.length - 1].id,
                 answer_id: answer,
-              };
-              console.log(dataAnswer);              
-
+              };            
               updateGameStage(dataAnswer, token)
                 .then((result) => {
-                  console.log(result);
-
                   if (answer == "24"){
                     const stageId = "13";
-
                     let dataSavedGame = {
                       game_id: result.data.data.game_id,
-                      // Meter aquí el stage al que se va a ir con respuesta
                       stage_id: stageId,
-                    };
-  
+                    };  
                     createSavedGame(dataSavedGame, token)
                       .then((result) => {
                       })
@@ -169,13 +136,11 @@ export const Stage0501 = () => {
   
                     setTimeout(() => {
                       navigate(stageNavigate[stageId]);
-                      console.log(stageNavigate[stageId]);
                     }, 500);
                   }
 
                   if (answer == "25"){
                     const stageId = "14";
-
                     let dataSavedGame = {
                       game_id: result.data.data.game_id,
                       stage_id: stageId,
@@ -194,7 +159,6 @@ export const Stage0501 = () => {
   
                     setTimeout(() => {
                       navigate(stageNavigate[stageId]);
-                      console.log(stageNavigate[stageId]);
                     }, 500);
                   }
 
@@ -208,60 +172,38 @@ export const Stage0501 = () => {
 
     if (answer == 26){
       let params = answer;
-
               bringAnswerById(params)
                 .then((result) => {
-                  console.log(result.data[0])
-                  console.log("badge", result.data[0].badge_id);
                   let dataBadge = {
                     game_id: gameRdx.choosenGame.id,
                     badge_id: result.data[0].badge_id,
                   };
-
                   createBagdeGame(dataBadge)
-                  .then((result) => {
-                    console.log("BadgeGame", result)
-                    
-                  let params = gameRdx.choosenGame.id;
-    
-                  getBadgesByGameId(params)
-                    .then((result) => {
-                      console.log("traer badges", result);
-                      const selectBadge = result?.data?.data;
-                      dispatch(addBadge({ choosenBadge: selectBadge }));
-                      console.log(selectBadge);
-                    })
-                    .catch((error) => console.log(error));
+                  .then((result) => {                    
+                    let params = gameRdx.choosenGame.id;    
+                    getBadgesByGameId(params)
+                      .then((result) => {
+                        const selectBadge = result?.data?.data;
+                        dispatch(addBadge({ choosenBadge: selectBadge }));
+                      })
+                      .catch((error) => console.log(error));
                   })
                     .catch((error) => console.log(error));
                 })
                 .catch((error) => console.log(error));
 
-              console.log(gameRdx);
               const array = gameRdx.choosenGame.games_stages;
-              console.log(
-                gameRdx.choosenGame.games_stages[array.length - 1].id
-              );
-              console.log(characterRdx.choosenCharacter);
-
               let dataAnswer = {
                 id: gameRdx.choosenGame.games_stages[array.length - 1].id,
                 answer_id: answer,
-              };
-              console.log(dataAnswer);
-
-              
+              };              
               updateGameStage(dataAnswer, token)
               .then((result) => {
                   const stageId = "12";
-
                   let dataSavedGame = {
                     game_id: result.data.data.game_id,
                     stage_id: stageId,
                   };
-
-                  console.log(dataSavedGame);
-
                   createSavedGame(dataSavedGame, token)
                     .then((result) => {
                     })
@@ -275,13 +217,13 @@ export const Stage0501 = () => {
 
                   setTimeout(() => {
                     navigate(stageNavigate[stageId]);
-                    console.log(stageNavigate[stageId]);
                   }, 500);
                 })
                 .catch((error) => console.log(error));
     }             
   };
 
+  // SHOWING AND CLOSING SOLUTIONS DIV
   const showSolution = () => {
     let solution = document.getElementById('solutionBox');
     solution.classList.add('showSolBox')
@@ -292,6 +234,7 @@ export const Stage0501 = () => {
     solution.classList.remove('showSolBox')
   }
 
+  // CONFIRMATION ANSWER MODAL
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -303,11 +246,11 @@ export const Stage0501 = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Confirm chooice
+            Confirmación de respuesta
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Are you sure?</p>
+          <p>¿Estás de seguro de continuar con tu respuesta?</p>
         </Modal.Body>
         <Modal.Footer>
           <Button className='confirmBtn'
@@ -315,7 +258,7 @@ export const Stage0501 = () => {
               saveAnswer();
             }}
           >
-            Confirm
+            Confirmar
           </Button>
         </Modal.Footer>
       </Modal>
@@ -323,7 +266,6 @@ export const Stage0501 = () => {
   }
 
   const [modalShow, setModalShow] = React.useState(false);
-  // const array = gameRdx.choosenGame.games_stages;
 
   return (
     <Container
@@ -357,7 +299,7 @@ export const Stage0501 = () => {
             {gameRdx.choosenGame.games_stages[array.length - 2].stage_id == 8 ? (
               <div>
                 <p>¡Lo has hecho bien! Pero vamos a revisar la respuesta.</p>
-                <p>Resulta que los cuantro son normales y que los tres enunciados son mentira.</p>
+                <p>Resulta que los cuatro son normales y que los tres enunciados son mentira.</p>
                 <p>Ante todo, Margareth tiene que ser neutral, porque si fuera legal su marido sería caótico y ella no habría mentido diciendo que él es legal. Teniendo esto en cuenta, Magnus y Kadala están mintiendo ambos, por lo que ninguno es legal ni son 
                   los dos caóticos. De modo que son también normales.</p>
               </div>
@@ -398,15 +340,6 @@ export const Stage0501 = () => {
               </p>
             </div>
           </div>
-          {/* <div className="img2Box03">
-            <OverlayTrigger
-              trigger={['hover', 'focus']}
-              placement="bottom"
-              overlay={popoverHoverFocus2}
-            >
-              <img className="img03 pos0403" src={mat2} alt="" />
-            </OverlayTrigger>
-          </div> */}
         </div>
       </Row>
       <Row>

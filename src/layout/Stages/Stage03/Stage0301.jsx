@@ -34,13 +34,15 @@ export const Stage0301 = () => {
   const characterRdx = useSelector(characterDetailData);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  dispatch(addState({ choosenState: true }))
-  dispatch(changeState({ clueState: false }))
-
-  const [answer, setAnswer] = useState("");
   let token = dataCredentialsRdx.credentials.token;
 
+  // SAVE AT REDUX INGAME STATE
+  dispatch(addState({ choosenState: true }))
+
+  // SAVE AT REDUX CLUE SHOW STATE
+  dispatch(changeState({ clueState: false }))
+
+  // USEEFFECT TO CHECK IF USER IS LOGGED IN AND THE CORRECT STAGE
   useEffect(() => {
     let params = gameRdx.choosenGame.id
     bringLoadGamesById(params, token)
@@ -53,11 +55,10 @@ export const Stage0301 = () => {
         const stageNavigate = {null: "/",1: "/stage01",2: "/stage02",3: "/stage0301",4: "/stage0302",5: "/stage0303",6: "/stage0401",7: "/stage0402",8: "/stage0403",9: "/stage0501",10: "/stage0502",11: "/stage0503",12: "/stage0601",13: "/stage0602",14: "/stage0603",};
         navigate(stageNavigate[stageID]);
       }})
-    .catch((error) => console.log(error))
+      .catch((error) => console.log(error))
   }, []);
 
-  console.log(gameRdx);
-  
+  //POPOVERS
   const popoverHoverFocus1 = (
     <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
       Gaara
@@ -68,12 +69,15 @@ export const Stage0301 = () => {
       Akumato
     </Popover>
   ); 
-
+  
+  // ANSWER HOOK
+  const [answer, setAnswer] = useState("");
+  
   const chooseAnswer = (resp) => {
-    console.log(resp);
     setAnswer(resp);
   };
 
+  // SEND ANSWER FUNCTIONS
   const saveAnswer = () => {
     if (answer == 6 || answer == 7) {
       let body = {
@@ -82,74 +86,51 @@ export const Stage0301 = () => {
       };
       updateMadness(body, token)
         .then((result) => {
-          console.log("madness update successfully");
-          console.log(result);
           let params = gameRdx.choosenGame.id;
 
           bringLoadGamesById(params, token)
             .then((result) => {
-              console.log(result.data.data[0]);
               const selectGame = result.data.data[0];
               dispatch(addGame({ choosenGame: selectGame }));
-              console.log(selectGame);
 
               let params = answer;
-
               bringAnswerById(params)
                 .then((result) => {
-                  console.log("badge", result.data[0].badge_id);
-
                   let dataBadge = {
                     game_id: gameRdx.choosenGame.id,
                     badge_id: result.data[0].badge_id,
                   };
 
                   createBagdeGame(dataBadge)
-                  .then((result) => {
-                    console.log("BadgeGame", result)
-                    
-                  let params = gameRdx.choosenGame.id;
-    
-                  getBadgesByGameId(params)
-                    .then((result) => {
-                      console.log("traer badges", result);
-                      const selectBadge = result?.data?.data;
-                      dispatch(addBadge({ choosenBadge: selectBadge }));
-                      console.log(selectBadge);
-                    })
-                    .catch((error) => console.log(error));
+                  .then((result) => {                    
+                    let params = gameRdx.choosenGame.id;      
+                    getBadgesByGameId(params)
+                      .then((result) => {
+                        const selectBadge = result?.data?.data;
+                        dispatch(addBadge({ choosenBadge: selectBadge }));
+                      })
+                      .catch((error) => console.log(error));
                   })
                     .catch((error) => console.log(error));
                 })
                 .catch((error) => console.log(error));
 
-              console.log(gameRdx);
               const array = gameRdx.choosenGame.games_stages;
-              console.log(
-                gameRdx.choosenGame.games_stages[array.length - 1].id
-              );
-              console.log(characterRdx.choosenCharacter);
 
               let dataAnswer = {
                 id: gameRdx.choosenGame.games_stages[array.length - 1].id,
                 answer_id: answer,
               };
-              console.log(dataAnswer);
-
               updateGameStage(dataAnswer, token)
                 .then((result) => {
-                  console.log(result);
-
                   let params = gameRdx.choosenGame.id
                   
                   if (answer == "6"){
                     const stageId = "7"
-
                     let dataSavedGame = {
                       game_id: result.data.data.game_id,
                       stage_id: stageId,
                     };
-
                     createSavedGame(dataSavedGame, token)
                     .then((result) => {
                     })
@@ -163,18 +144,15 @@ export const Stage0301 = () => {
 
                   setTimeout(() => {
                     navigate(stageNavigate[stageId]);
-                    console.log(stageNavigate[stageId]);
                   }, 500);
                   }
     
                   if (answer == "7"){
                     const stageId = "8"
-
                     let dataSavedGame = {
                         game_id: result.data.data.game_id,
                         stage_id: stageId,
                       };
-
                     createSavedGame(dataSavedGame, token)
                     .then((result) => {
                     })
@@ -188,7 +166,6 @@ export const Stage0301 = () => {
 
                   setTimeout(() => {
                     navigate(stageNavigate[stageId]);
-                    console.log(stageNavigate[stageId]);
                   }, 500);
                   }
                 })
@@ -204,60 +181,39 @@ export const Stage0301 = () => {
 
               bringAnswerById(params)
                 .then((result) => {
-                  console.log(result.data[0])
-                  console.log("badge", result.data[0].badge_id);
                   let dataBadge = {
                     game_id: gameRdx.choosenGame.id,
                     badge_id: result.data[0].badge_id,
                   };
 
                   createBagdeGame(dataBadge)
-                  .then((result) => {
-                    console.log("BadgeGame", result)
-                    
-                  let params = gameRdx.choosenGame.id;
-    
-                  getBadgesByGameId(params)
+                  .then((result) => {                    
+                    let params = gameRdx.choosenGame.id;                    
+                    getBadgesByGameId(params)
                     .then((result) => {
-                      console.log("traer badges", result);
                       const selectBadge = result?.data?.data;
                       dispatch(addBadge({ choosenBadge: selectBadge }));
-                      console.log(selectBadge);
                     })
                     .catch((error) => console.log(error));
                   })
-                    .catch((error) => console.log(error));
+                  .catch((error) => console.log(error));
                 })
                 .catch((error) => console.log(error));
 
-              console.log(gameRdx);
               const array = gameRdx.choosenGame.games_stages;
-              console.log(
-                gameRdx.choosenGame.games_stages[array.length - 1].id
-              );
-              console.log(characterRdx.choosenCharacter);
-
               let dataAnswer = {
                 id: gameRdx.choosenGame.games_stages[array.length - 1].id,
                 answer_id: answer,
               };
-              console.log(dataAnswer);
-
               
               updateGameStage(dataAnswer, token)
-              .then((result) => {
-                  console.log(result);
-                  
-                  let params = gameRdx.choosenGame.id
-
+              .then((result) => {                  
                   const stageId = "6";
 
                   let dataSavedGame = {
                     game_id: result.data.data.game_id,
                     stage_id: stageId,
                   };
-
-                  console.log(dataSavedGame);
 
                   createSavedGame(dataSavedGame, token)
                     .then((result) => {
@@ -272,12 +228,13 @@ export const Stage0301 = () => {
 
                   setTimeout(() => {
                     navigate(stageNavigate[stageId]);
-                    console.log(stageNavigate[stageId]);
                   }, 500);
                 })
                 .catch((error) => console.log(error));
     }            
   };
+
+  // SHOWING AND CLOSING SOLUTIONS DIV
 
   const showSolution = () => {
     let solution = document.getElementById('solutionBox');
@@ -289,6 +246,7 @@ export const Stage0301 = () => {
     solution.classList.remove('showSolBox')
   }
 
+  // CONFIRMATION ANSWER MODAL
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -300,11 +258,11 @@ export const Stage0301 = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Confirm chooice
+            Confirmación de respuesta
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Are you sure?</p>
+          <p>¿Estás de seguro de continuar con tu respuesta?</p>
         </Modal.Body>
         <Modal.Footer>
           <Button className='confirmBtn'
@@ -312,7 +270,7 @@ export const Stage0301 = () => {
               saveAnswer();
             }}
           >
-            Confirm
+            Confirmar
           </Button>
         </Modal.Footer>
       </Modal>
@@ -339,7 +297,7 @@ export const Stage0301 = () => {
             <p>¡Lo has hecho bien! Pero vamos a revisar la respuesta.</p>
             <p>Este problema es una buena introducción a la lógica disyuntiva. Puesto que dados dos enunciados, significa que al menos un enunciado es cierto. Si el enunciado fuera falso, entonces ambos enunciados lo serían. En el caso del problema que has superado con éxito, supongase que Shasha es caótica, entonces su enunciado tiene que ser falso. Eso querría decir que ni es cierto que ella sea caótica, ni que B sea Legal. Por lo tanto se diría que Shasha no es caótica, lo que sería una contradicción. Por lo que tiene que ser legal.</p>
             <p>Habiendo establecido que Shasha es legal, su enunciado tiene que ser cierto. De las dos posibilidades del enunciado, sólo puede ser cierta la segunda. Por tanto, Sherboroug es caótico.</p>
-            <p>De este modo, A y B son amboCon s legales.</p>
+            <p>De este modo, Shasha y Sherboroug son ambos legales.</p>
           </div>
           <div className='closeDialogue' onClick={()=> {closeSolution()}}>Close 
             <svg className='closeIcon' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
