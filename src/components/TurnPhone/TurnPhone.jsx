@@ -2,6 +2,7 @@ import React from 'react'
 import GirarMovil from '../../image/gira el movil.png'
 
 export const TurnPhone = () => {
+  // COMPONENT TO NOT SHOW GAME IN VERTICAL
   return (
     <div className='portrait text-center'>
         <img src={GirarMovil} alt="GirarMovil" />

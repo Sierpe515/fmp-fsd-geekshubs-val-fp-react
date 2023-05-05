@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const root = "http://localhost:8000/api"
-// const root = "https://planetexpressdentalclinic.up.railway.app"
+// const root = "http://localhost:8000/api"
+const root = "https://laravel-proof-production.up.railway.app/api"
 
 export const RegisterMe = async (body) => {
 

@@ -11,7 +11,6 @@ import {
   createSavedGame,
   getBadgesByGameId,
 } from "../../services/apiCalls";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { addGame } from "../gameSlice";
 import { addState } from "../inGameSlice";
@@ -20,51 +19,50 @@ import './SelectGame.css'
 import { TurnPhone } from "../../components/TurnPhone/TurnPhone";
 
 export const SelectGame = () => {
-  const [selectGames, setSelectGames] = useState([]);
   const characterRedux = useSelector(characterDetailData);
   const dataCredentialsRdx = useSelector(userData);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const [selectedGame, setSelectedGame] = useState("");
-  const [difficulty, setDifficulty] = useState("");
-  const [errorDiff, setErrorDiff] = useState("");
-
-  dispatch(addState({ choosenState: false }));
-
   let token = dataCredentialsRdx.credentials.token;
-
+  
+  // USEEFFECT TO CHECK IF USER IS LOGGED IN
   useEffect(() => {
       if (!dataCredentialsRdx.credentials.token) {
         navigate("/");
       }
-    }, []);
+  }, []);
 
+  // SAVE AT REDUX INGAME STATE
+  dispatch(addState({ choosenState: false }));
+  
+  // HOOKS
+  const [selectGames, setSelectGames] = useState([]);
+  const [selectedGame, setSelectedGame] = useState("");
+  const [difficulty, setDifficulty] = useState("");
+  const [errorDiff, setErrorDiff] = useState("");
+
+  // USEEFFECT TO BRING SELECT GAMES IF USER ARE LOGGED IN
   useEffect(() => {
     if (dataCredentialsRdx?.credentials?.token && selectGames?.length === 0) {
       bringSelectableGames()
         .then((result) => {
           setSelectGames(result?.data);
-          console.log(result);
-          console.log(selectGames);
-          console.log(characterRedux.choosenCharacter.id);
         })
         .catch((error) => console.log(error));
     }
   }, [selectGames]);
 
+  // CHOOICES FUNCTIONS
   const chooseGame = (game) => {
-    console.log(game);
     setSelectedGame(game);
   };
 
   const chooseDifficulty = (diff) => {
-    console.log(diff);
     setDifficulty(diff);
   };
 
+  // CREATE NEW GAME
   const newGame = () => {
-
     if (difficulty == "") {
       setErrorDiff("Please, select a difficulty level and press start")
       return
@@ -78,31 +76,22 @@ export const SelectGame = () => {
 
     createNewGame(dataGame, token)
       .then((action) => {
-        console.log(action);
         let dataSavedGame = {
           game_id: action.data.data.id,
           stage_id: 1,
         };
-        console.log(dataSavedGame);
         createSavedGame(dataSavedGame, token)
           .then((result) => {
-            console.log(result);
             let params = result.data.data.game_id;
             bringLoadGamesById(params, token).then((result) => {
-              console.log(result.data.data[0]);
               const selectGame = result.data.data[0];
               dispatch(addGame({ choosenGame: selectGame }));
 
               let params = selectGame.id;
-
               getBadgesByGameId(params)
                 .then((result) => {
-                  console.log("traer badges", result);
                   const selectBadge = result?.data?.data;
                   dispatch(addBadge({ choosenBadge: selectBadge }));
-                  //   console.log(selectBadge);
-                  // setBadge(result?.data?.data);
-                  // console.log(result.data);
                 })
                 .catch((error) => console.log(error));
             });
@@ -115,6 +104,7 @@ export const SelectGame = () => {
       .catch((error) => console.log(error));
   };
 
+  // SELECTION DIFFICULTY LEVEL MODAL
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -122,12 +112,11 @@ export const SelectGame = () => {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-        // dialogClassName="modalOniria"
         className="my-modal"
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Chosse difficulty and press start button
+            Elige el nivel de dificultad y pulsa Start
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="d-flex justify-content-around">
@@ -139,9 +128,6 @@ export const SelectGame = () => {
         <Modal.Footer className="d-flex justify-content-around">
           <div className="homeBtn" onClick={() => newGame()}>Start Game</div>
         </Modal.Footer>
-        {/* <div className="modalOniria">
-        
-        </div> */}
       </Modal>
     );
   }
@@ -159,7 +145,7 @@ export const SelectGame = () => {
           <div className='newPjContainer selectContainer d-flex flex-column align-items-center'>
             {selectGames.length > 0 ? (
               <>
-                  <div className='text-center actionTitle'>Select Game</div>
+                  <div className='text-center actionTitle'>Selecciona un juego</div>
                 <div className="selectBox">
                   {selectGames.map((sGames) => {
                     return (
@@ -171,17 +157,11 @@ export const SelectGame = () => {
                             chooseGame(sGames.id), setModalShow(true);
                             }
                           ) : ("")}
-                          // onClick={() => {
-                          //   chooseGame(sGames.id), setModalShow(true);
-                          // }}
                           key={sGames.id}
-                          // onClick={() => selected(sGames)} key={sGames.id}
                         >
-                          {/* <div>{sGames.id}</div> */}
                           <div>
                             <strong> {sGames.name} </strong>
                           </div>
-                          {/* <p>Saved at:<strong> {load.updated_at} </strong></p>  */}
                         </div>
                         <MyVerticallyCenteredModal
                           show={modalShow}
@@ -191,10 +171,9 @@ export const SelectGame = () => {
                     );
                   })}
                 </div>
-                {/* <div className="logButton">New Game</div> */}
               </>
             ) : (
-              <div className="actionTitle">No games available</div>
+              <div className="actionTitle">No hay juegos displonibles</div>
             )}
           </div>
         </Col>

@@ -17,17 +17,19 @@ export const NewCharacter = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const dataCredentialsRdx = useSelector(userData);
-
-    dispatch(addState({ choosenState: false}))
-
     let token = dataCredentialsRdx.credentials.token
 
+    // SAVE AT REDUX INGAME STATE
+    dispatch(addState({ choosenState: false}))
+
+    // USEEFFECT TO CHECK IF USER IS LOGGED IN
     useEffect(() => {
         if (!dataCredentialsRdx.credentials.token) {
           navigate("/");
         }
-      }, []);
+    }, []);
 
+    // HOOKS
     const [character, setCharacter] = useState({
         name: "",
         gender: ""
@@ -37,11 +39,9 @@ export const NewCharacter = () => {
         nameError: "",
     });
 
-    // const [characterGender, setCharacterGender] = useState("")
-    console.log(character.gender);
-
     const [btnMessage, setBtnMessage] = useState("")
 
+    // SAVE VALUE AT NAME HOOK
     const newCharacter = (e) => {
         console.log(character);
         setCharacter((prevState) => ({
@@ -50,6 +50,7 @@ export const NewCharacter = () => {
         }));
     };
 
+    // FUNCTION TO CHECK ERROR AT VALIDATION
     const checkError2 = (e) => {
         let error = "";
         let checked = validate(
@@ -66,11 +67,7 @@ export const NewCharacter = () => {
         }));
     };
 
-    // const chooseGender = (gender) => {
-    //     console.log(gender);
-    //     setCharacterGender(gender)
-    // }
-
+    // SAVE VALUE AT GENDER HOOK
     const chooseGender = (gender) => {
         setCharacter((prevState) => ({
             ...prevState,
@@ -78,17 +75,11 @@ export const NewCharacter = () => {
           }));
     }
 
+    // FUNCTION TO CREATE CHARACTER
     const sendCharacter = () => {
-        // let dataCharacter = {
-        //     name : character,
-        //     gender : characterGender
-        // }
-        console.log(character);
-
         createCharacter(character, token)
           .then(
               respuesta => {
-
                   setTimeout(() => {
                     navigate("/");
                   }, 500);

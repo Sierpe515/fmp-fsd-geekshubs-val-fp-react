@@ -18,8 +18,8 @@ export const NavBar = () => {
   const dispatch = useDispatch();
   const dataCredentialsRdx = useSelector(userData);
 
+  // FUNCTION TO CLEAR REDUX AT LOGOUT
   const logOut = () => {
-    // dispatch(logout(dataCredentialsRdx = ""));
     dispatch(clearRedux());
     setTimeout(() => {
       navigate("/");
@@ -40,26 +40,13 @@ export const NavBar = () => {
             navbarScroll
           >
             <Nav.Link className='navWhite' as={Link} to='/'>Home</Nav.Link>
-            {/* <Nav.Link href="#action2">Link</Nav.Link>
-            <NavDropdown title="Link" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item>
-            </NavDropdown> */}
+            {/* TERNARY TO DETECT ADMIN AND GIVE ACCESS TO ADMIN AREA */}
             {dataCredentialsRdx.credentials.token ? (
               dataCredentialsRdx.credentials.userRole?.includes('Admin') ? (
                 <>
                 <NavDropdown title="Admin Area" id="navbarScrollingDropdown2">
-                  <NavDropdown.Item eventKey="7"><Link as={Link} to='/usersList'>
+                  <NavDropdown.Item eventKey="1"><Link as={Link} to='/usersList'>
                     Users List</Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item eventKey="9"><Link as={Link} to='/appointments'>
-                    Appointments</Link>
                   </NavDropdown.Item>
                 </NavDropdown>
                 </>
@@ -67,16 +54,16 @@ export const NavBar = () => {
             ) : ("")}
           </Nav>
           <Nav>
+            {/* TERNARY TO DETECT LOGGED USER */}
             {dataCredentialsRdx.credentials.token ? (
                 <DropdownButton
                   align="end"
                   title={dataCredentialsRdx.credentials.userName}
                   id="dropdown-menu-align-end"
                 >
-                  <Dropdown.Item eventKey="4"><Link as={Link} to='/profile'>Profile</Link></Dropdown.Item>
-                  {/* <Dropdown.Item eventKey="5"><Link as={Link} to='/appointmentsUser'>Appointments</Link></Dropdown.Item> */}
+                  <Dropdown.Item eventKey="2"><Link as={Link} to='/profile'>Profile</Link></Dropdown.Item>
                   <Dropdown.Divider />
-                  <Dropdown.Item eventKey="6" onClick={() => {logOut()}}>Log Out</Dropdown.Item>
+                  <Dropdown.Item eventKey="3" onClick={() => {logOut()}}>Log Out</Dropdown.Item>
                 </DropdownButton>
                 
               ) : (

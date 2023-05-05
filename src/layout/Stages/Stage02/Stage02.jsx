@@ -3,37 +3,31 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { addGame, gameDetailData } from '../../gameSlice'
 import { userData } from '../../userSlice'
-import { bringCharactersImages, bringLoadGamesById, createSavedGame, updateCharacterImage, updateGameStage } from '../../../services/apiCalls'
+import { bringCharactersImages, bringLoadGamesById, updateCharacterImage } from '../../../services/apiCalls'
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { characterDetailData } from '../../characterSlice'
-import { gameStageData } from '../../gameStageSlice'
 import { addState } from '../../inGameSlice'
 import './Stage02.css'
 import garg01 from '../../../image/gargola1.png'
 import garg02 from '../../../image/gargola2.png'
 import { TurnPhone } from '../../../components/TurnPhone/TurnPhone'
-import { changeState } from '../../clueSlice'
+
 
 export const Stage02 = () => {
 
   const gameRdx = useSelector(gameDetailData)
-  const gameStageRedux = useSelector(gameStageData);
   const dataCredentialsRdx = useSelector(userData);
   const characterRdx = useSelector(characterDetailData);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const dispatch = useDispatch();
-
-  // const [answer, setAnswer] = useState("");
-  const [characterImage, setCharacterImage] = useState([]);
-  const [imageId, setImageId] = useState("");
-
-  const array = gameRdx.choosenGame.games_stages
-  // const stageID = gameRdx?.choosenGame.games_stages[array?.length - 1]?.stage_id
   let token = dataCredentialsRdx.credentials.token
-
+  
+  // SAVE AT REDUX INGAME STATE
+  dispatch(addState({ choosenState: false}))
+  
+  // USEEFFECT TO CHECK IF USER IS LOGGED IN AND THE CORRECT STAGE
   useEffect(() => {
     let params = gameRdx.choosenGame.id
     bringLoadGamesById(params, token)
@@ -46,61 +40,43 @@ export const Stage02 = () => {
         const stageNavigate = {null: "/",1: "/stage01",2: "/stage02",3: "/stage0301",4: "/stage0302",5: "/stage0303",6: "/stage0401",7: "/stage0402",8: "/stage0403",9: "/stage0501",10: "/stage0502",11: "/stage0503",12: "/stage0601",13: "/stage0602",14: "/stage0603",};
         navigate(stageNavigate[stageID]);
       }})
-    .catch((error) => console.log(error))
-  }, []);
+      .catch((error) => console.log(error))
+    }, []);
+    
+    // IMAGE HOOKS
+    const [characterImage, setCharacterImage] = useState([]);
+    const [imageId, setImageId] = useState("");
 
-  dispatch(addState({ choosenState: false}))
-
-
+  // USEEFFECT TO BRING IMAGES CHARACTER
   useEffect(() => {
     if (characterImage.length === 0) {
       bringCharactersImages()
         .then((result) => {
           setCharacterImage(result?.data);
-          console.log(result.data);
         })
         .catch((error) => console.log(error));
   }}, []);
 
-  console.log(gameStageRedux);
-  console.log(gameRdx);
-  console.log(characterRdx);
-
-  // const chooseAnswer = (resp) => {
-  //   console.log(resp);
-  //   setAnswer(resp);
-  // }
-
+  // CHOOSE IMAGE AND SAVE IN HOOK
   const chooseImage = (resp) => {
-    console.log(resp);
     setImageId(resp);
   }
 
-  // const array = gameRdx.choosenGame.games_stages
-  // console.log(gameRdx.choosenGame.games_stages[array.length - 1].id);
-  // console.log(characterRdx.choosenCharacter);
-  // let dataAnswer = {
-  //   id : gameRdx.choosenGame.games_stages[array.length - 1].id,
-  //   answer_id : answer
-  // }
-  // console.log(dataAnswer);
-
+  // NO IMAGE SELECTED
+  const noImage = () => {
+    setTimeout(() => {
+      navigate('/stage0205')
+    }, 1500);
+  }
+  
+  // SELECTION IMAGE FUNCTION
   let dataImage = {
     id : characterRdx.choosenCharacter.id,
     image_id : imageId
   }
-
-  const noImage = () => {
-          setTimeout(() => {
-            // navigate("/stage02");
-            navigate('/stage0205')
-          }, 1500);
-  }
-
   const saveImage = () => {
     updateCharacterImage(dataImage, token)
     .then((action => {
-      console.log("image updated successfully");
       setTimeout(() => {
         navigate('/stage0205')
       }, 1500);
@@ -108,11 +84,13 @@ export const Stage02 = () => {
     .catch((error) => console.log(error))
   }
 
+  // CLOSE GUIDE DIALOGUE
   const closeGuide = () => {
     let guideDialogue = document.getElementById('s02GuideBox');
     guideDialogue.classList.add('closeBox')
   }
 
+  // NO SELECTION IMAGE CONFIRMATION MODAL
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -124,20 +102,21 @@ export const Stage02 = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Confirm chooice
+            Confirma tu elección
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Are you sure you want to continue without choosing a skin?</p>
+          <p>¿Estás seguro de querer continuar sin elegir una apariencia?</p>
         </Modal.Body>
         <Modal.Footer>
           {/* CONTINUAR SIN IMAGEN */}
-          <Button className='confirmBtn' onClick={()=> {noImage()}}>Confirm</Button>
+          <Button className='confirmBtn' onClick={()=> {noImage()}}>Confirmar</Button>
         </Modal.Footer>
       </Modal>
     );
   }
 
+  // SELECTION IMAGE CONFIRMATION MODAL
   function MyVerticallyCenteredModal1(props) {
     return (
       <Modal
@@ -149,18 +128,18 @@ export const Stage02 = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Skin selection
+            Confirma tu elección
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {/* <h4>Centered Modal</h4> */}
           <p>
-          Are you sure to choose this skin? 
-          The chosen skin will be applied to your character replacing the previous one
+          ¿Estás seguro de querer elegir esta apariencia? 
+          La apariencia seleccionada reemplazará a cualquier otra seleccionada anteriormente.
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button className='confirmBtn' onClick={()=> saveImage()}>Confirm</Button>
+          <Button className='confirmBtn' onClick={()=> saveImage()}>Confirmar</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -224,7 +203,7 @@ export const Stage02 = () => {
       </div>
       <div>
       <Row>
-          <Col><div className='selectPjText text-center'>Select your skin</div ></Col>
+          <Col><div className='selectPjText text-center'>Selecciona tu apariencia</div ></Col>
           <Col xxl={12} xl={12} md={12} sm={12} className="welcomeBox pjsContainer d-flex align-items-center text-center">
               {characterImage.length > 0 ? (
                   <>
@@ -246,13 +225,13 @@ export const Stage02 = () => {
                   </div>
                   </>
                 ) : (
-                  <div><h4>Something went wrong</h4></div>
+                  <div><h4>Algo ha ido mal</h4></div>
                 )}
           </Col>
       </Row>
       <Row>
         <div className='d-flex flex-column align-items-center'>
-          <div className='selectPjText'>Continue without choosing skin</div>
+          <div className='selectPjText'>Continuar sin seleccionar apariencia</div>
         <MyVerticallyCenteredModal
           show={modalShow}
           onHide={() => setModalShow(false)}

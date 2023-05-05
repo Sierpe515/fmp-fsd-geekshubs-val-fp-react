@@ -6,7 +6,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import "./Register.css";
-// import { RegisterMe } from "../../services/apiCalls";
 import { ButtonSubmit } from "../../components/ButtonSubmit/ButtonSubmit";
 import { useNavigate } from "react-router-dom";
 import { RegisterMe } from "../../services/apiCalls";
@@ -17,21 +16,24 @@ import { TurnPhone } from "../../components/TurnPhone/TurnPhone";
 import { userData } from "../userSlice";
 
 
-// HOOKS
-
 export const Register = () => {
+
   const dataCredentialsRdx = useSelector(userData);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  
+  // SAVE AT REDUX INGAME STATE
   dispatch(addState({ choosenState: false}))
-
+  
+  // USEEFFECT TO CHECK IF USER IS LOGGED IN
   useEffect(() => {
     if (dataCredentialsRdx.credentials.token) {
       navigate("/");
     }
   }, []);
   
+  // HOOKS
+
   const [dataUser, setDataUser] = useState({
     userName: "",
     email: "",
@@ -52,7 +54,7 @@ export const Register = () => {
 
   const [registerAct, setRegisterAct] = useState(false);
 
-  // HANDLERS
+  // HANDLER TO SAVE VALUE AT HOOK
 
   const newDataUser = (e) => {
     setDataUser((prevState) => ({
@@ -61,7 +63,7 @@ export const Register = () => {
     }));
   };
 
-  //USEEFFECT
+  // USEEFFECT TO VALITADE VALUES AND SHOW ERRORS
 
   useEffect(() => {
  
@@ -89,7 +91,7 @@ export const Register = () => {
     setRegisterAct(true);
   });
 
-
+  // FUNCTIONS TO CHECK ERROR
   const checkError = (e) => {
     let error = "";
     let checked = validate(
@@ -122,6 +124,7 @@ export const Register = () => {
     }));
   };
 
+  // REGISTER FUNCTION
   const Register = () => {
     RegisterMe(dataUser)
       .then(
@@ -142,7 +145,6 @@ export const Register = () => {
             <h5 className="text-center actionTitle">Register</h5>
             <Form className="formContainer">
                 <Form.Group as={Col} controlId="formGridUserName" className="formBox">
-                  {/* <Form.Label>Username</Form.Label> */}
                   <InputBox
                     className={
                       dataUserError.userNameError === ""
@@ -160,7 +162,6 @@ export const Register = () => {
                 <Form.Text className="errorMessage">{dataUserError.userNameError}</Form.Text>
 
                 <Form.Group as={Col} controlId="formGridEmail" className="formBox">
-                  {/* <Form.Label>Email</Form.Label> */}
                   <InputBox
                     className={
                       dataUserError.emailError === ""
@@ -178,7 +179,6 @@ export const Register = () => {
                   <Form.Text className="errorMessage">{dataUserError.emailError}</Form.Text>
 
                 <Form.Group as={Col} controlId="formGridPassword" className="formBox">
-                  {/* <Form.Label>Password</Form.Label> */}
                   <InputBox
                     className={
                       dataUserError.passwordError === ""

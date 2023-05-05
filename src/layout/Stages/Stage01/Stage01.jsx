@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { characterDetailData } from '../../characterSlice'
-import { addGameStage } from '../../gameStageSlice'
 import { addState } from '../../inGameSlice'
 import './Stage01.css'
 import garg01 from '../../../image/gargola1.png'
@@ -16,7 +15,6 @@ import garg02 from '../../../image/gargola2.png'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { TurnPhone } from '../../../components/TurnPhone/TurnPhone'
-// import { redirection } from '../../../services/useful'
 
 export const Stage01 = () => {
 
@@ -25,12 +23,13 @@ export const Stage01 = () => {
   const characterRdx = useSelector(characterDetailData);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const [answer, setAnswer] = useState("");
-  
   let token = dataCredentialsRdx.credentials.token
   const array = gameRedux.choosenGame.games_stages
 
+  // SAVE AT REDUX INGAME STATE
+  dispatch(addState({ choosenState: false}))
+
+  // USEEFFECT TO CHECK IF USER IS LOGGED IN AND THE CORRECT STAGE
   useEffect(() => {
     let params = gameRedux.choosenGame.id
     bringLoadGamesById(params, token)
@@ -46,23 +45,20 @@ export const Stage01 = () => {
     .catch((error) => console.log(error))
   }, []);
 
-  dispatch(addState({ choosenState: false}))
+  // ANSWER HOOK
+  const [answer, setAnswer] = useState("");  
 
-  
-
+  // CHOOSE ANSWER AND SAVE IN HOOK
   const chooseAnswer = (resp) => {
-    console.log(resp);
     setAnswer(resp);
   }
 
-  console.log(gameRedux.choosenGame.games_stages[array.length - 1].id);
-  console.log(characterRdx.choosenCharacter);
   let dataAnswer = {
     id : gameRedux.choosenGame.games_stages[array.length - 1].id,
     answer_id : answer
   }
-  console.log(dataAnswer);
 
+  // SEND ANSWER FUNCTION
   const saveAnswer = () => {
 
     if (answer == 1){
@@ -70,10 +66,8 @@ export const Stage01 = () => {
         id : gameRedux.choosenGame.id,
         guide: "legal"
       }
-      console.log(dataGuide);
-
       updateGuide(dataGuide, token)
-      .then(result => console.log(result))
+      .then()
       .catch((error) => console.log(error))
     }
 
@@ -82,18 +76,14 @@ export const Stage01 = () => {
         id : gameRedux.choosenGame.id,
         guide: "chaotic"
       }
-      console.log(dataGuide);
-
       updateGuide(dataGuide, token)
-      .then(result => console.log(result))
+      .then()
       .catch((error) => console.log(error))
     }
 
     updateGameStage(dataAnswer, token)
     .then(
-        result => {
-          console.log(result);
-          
+        result => {          
           let dataSavedGame = {
             game_id : result.data.data.game_id,
             stage_id : 2
@@ -107,13 +97,13 @@ export const Stage01 = () => {
             .catch((error) => console.log(error))
           setTimeout(() => {
             navigate("/stage02");
-            console.log("te mando a la page 2");
           }, 500);
         }
     )
     .catch((error) => console.log(error))
   }
 
+  // POPOVERS
   const popoverHoverFocus1 = (
     <Popover className="popoverName" id="popover-trigger-hover-focus" title="Popover bottom">
       Shawx
@@ -126,13 +116,14 @@ export const Stage01 = () => {
     </Popover>
   );
 
+  // DICTIONARY
   const type = answer
-
   const classGuide = {
     "1" : "Skryx",
     "2" : "Shawx"
   }
 
+  // SELECTION GUIDE CONFIRMATION MODAL
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -144,16 +135,16 @@ export const Stage01 = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Selection guide
+            Selección de guía
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>
-            Are you sure to choose {classGuide[type]} as a guide? 
+            ¿Estás seguro de que quieres elegir a {classGuide[type]} como guía? 
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button className='confirmBtn' onClick={()=> {saveAnswer()}}>Confirm</Button>
+          <Button className='confirmBtn' onClick={()=> {saveAnswer()}}>Confirmar</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -210,16 +201,6 @@ export const Stage01 = () => {
         </div>
         </Col>
       </Row>
-      {/* <Row>
-        <div className='d-flex'>
-        <MyVerticallyCenteredModal
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-        />
-          <div className='homeBtn margin01' onClick={()=> {chooseAnswer("1"), setModalShow(true)}}>RESPUESTA A</div>
-          <div className='homeBtn margin01' onClick={()=> {chooseAnswer("2"), setModalShow(true)}}>RESPUESTA B</div>
-        </div>
-      </Row> */}
     </Container>
   )
 }

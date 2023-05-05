@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userData } from '../userSlice';
 import { TurnPhone } from '../../components/TurnPhone/TurnPhone';
 import { bringUserCharacters, deletePjByUser } from '../../services/apiCalls';
-// import Spinner from 'react-bootstrap/Spinner';
 import { addCharacter } from '../characterSlice';
 import { useNavigate } from 'react-router-dom';
 import { addState } from '../inGameSlice';
@@ -23,35 +22,32 @@ export const Home = () => {
   const dataCredentialsRdx = useSelector(userData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  dispatch(addState({ choosenState: false}));
-
   let token = dataCredentialsRdx.credentials.token;
 
-  // useEffect(() => {
-  //   if (dataCredentialsRdx.credentials.token) {
-  //     navigate("/");
-  //   }
-  // }, []);
+  // SAVE AT REDUX INGAME STATE
+  dispatch(addState({ choosenState: false}));
 
+  // USEEFFECT TO BRING CHARACTERS IF USER ARE LOGGED IN
   useEffect(() => {
   if (dataCredentialsRdx?.credentials?.token && characters.length === 0) {
     bringUserCharacters(dataCredentialsRdx?.credentials.token)
       .then((result) => {
-        setCharacters(result.data.data);
-        console.log(result);
+        if (result.data.data.length != 0){
+          setCharacters(result.data.data);
+        }
       })
       .catch((error) => console.log(error));
   }}, [characters]);
 
+  // FUNCTION TO SELECT CHARACTER AND GO TO LOADGAME PAGE
   const selected = (pj) => {
     dispatch(addCharacter({ choosenCharacter: pj }))
-
       setTimeout(()=>{
           navigate("/loadGame");
       },500)
   }
 
+  // FUNCTION TO DELETE CHARACTER BY USER
   const deletePj = () => {
     console.log(pjSelected.id);
     let params = pjSelected.id
@@ -60,13 +56,13 @@ export const Home = () => {
       bringUserCharacters(dataCredentialsRdx?.credentials.token)
       .then((result) => {
         setCharacters(result.data.data);
-        console.log(result);
       })
       .catch((error) => console.log(error))
     )
     .catch((error) => console.log(error));
   }
 
+  // FUNCTIONS TO GO TO ANOTHER PAGES
   const goNewCharacter = () => {
     setTimeout(()=>{
       navigate("/newCharacter");
@@ -85,6 +81,7 @@ export const Home = () => {
     },500)
   }
 
+  // DELETE CHARACTER CONFIRMATION MODAL
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -96,16 +93,16 @@ export const Home = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Deletion character
+            Eliminar personaje
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>
-            Are you sure to delete this character? 
+            ¿Estás seguro de que quieres eliminar este personaje?
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button className='confirmBtn' onClick={()=> {deletePj(), setModalShow(false)}}>Confirm</Button>
+          <Button className='confirmBtn' onClick={()=> {deletePj(), setModalShow(false)}}>Confirmar</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -118,10 +115,10 @@ export const Home = () => {
         <TurnPhone/>
         <Row className="title d-flex justify-content-center align-items-center">
             <Col xxl={12} xl={12} sm={12} className="my-3 titleBox">
-                {/* <div className='home1Container text-center titleText'>Oniria</div> */}
                 <img className='logo' src={logo4} alt="" />
             </Col>
         </Row>
+      {/* TERNARY TO SHOW DIFFERENTS ELEMENTS IF USER ARE LOGGED IN OR NOT */}
       {dataCredentialsRdx.credentials.token ? (
         <>
         <Row>
@@ -130,12 +127,13 @@ export const Home = () => {
             onHide={() => setModalShow(false)}
           />
           <Col xxl={12} xl={12} sm={12} className='text-center'>
-              <div className='welcomeText'> Welcome to the dream, {dataCredentialsRdx.credentials.userName}! </div>
+              <div className='welcomeText'> Bienvenido al sueño, {dataCredentialsRdx.credentials.userName}! </div>
           </Col>
         </Row>
-              <div className='selectPjText'>Select Character</div>
+              <div className='selectPjText'>Selecciona Personaje</div>
         <Row className="pjsContainer d-flex justify-content-center align-items-center text-center">
           <Col xxl={12} xl={12} md={12} sm={12} className="welcomeBox">
+              {/* TERNARY TO MAP CHARACTERS */}
               {characters.length > 0 ? (
                   <>
                   <div className='scrollBox'>
@@ -155,10 +153,9 @@ export const Home = () => {
                       );
                     })}
                   </div>
-                  {/* <div onClick={()=> goNewCharacter()}><h4>New Character</h4></div> */}
                   </>
                 ) : (
-                  <div className='welcomeText noCharMargin'>No Characters</div>
+                  <div className='welcomeText noCharMargin'>No hay personajes guardados</div>
                 )}
           </Col>
         </Row>
@@ -169,7 +166,7 @@ export const Home = () => {
       ) : (
         <>
         <Row>
-          <div className='welcomeText'>Please, register or login to play</div>
+          <div className='welcomeText'>Por favor, regístrate o logeate para jugar</div>
         </Row>
         <Row className="appointmentBtn d-flex flex-column align-items-center justify-content-center text-center">
           <img className='noLogImg' src={noLog} alt="" />

@@ -13,8 +13,6 @@ import { TurnPhone } from '../../components/TurnPhone/TurnPhone'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import dayjs from 'dayjs'
-// import lgImg1 from '../../image/lgImg1.png'
-// import lgImg2 from '../../image/lgImg2.png'
 
 
 export const LoadGame = () => {
@@ -23,57 +21,54 @@ export const LoadGame = () => {
     const [selectedLoadGame, setSelectedLoadGame] = useState([]);
     const characterRedux = useSelector(characterDetailData);
     const dataCredentialsRdx = useSelector(userData);
-    const gameRdx = useSelector(gameDetailData);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const params = characterRedux.choosenCharacter.id;
     const token = dataCredentialsRdx.credentials.token
 
+    // SAVE AT REDUX INGAME STATE
     dispatch(addState({ choosenState: false}))
 
+    // USEEFFECT TO CHECK IF USER IS LOGGED IN
     useEffect(() => {
         if (!dataCredentialsRdx.credentials.token) {
           navigate("/");
         }
       }, []);
 
+    // USEEFFECT TO BRING LOADGAMES IF USER ARE LOGGED IN
     useEffect(() => {
-        if (dataCredentialsRdx?.credentials?.token && loadGames.length === 0) {
-          bringLoadGames(params, dataCredentialsRdx?.credentials.token)
-            .then((result) => {
-                setLoadGames(result?.data?.data);
-                console.log(result?.data?.data);
-                console.log(loadGames);
-            })
-            .catch((error) => console.log(error));
-        }}, [loadGames]);
+      if (dataCredentialsRdx?.credentials?.token && loadGames.length === 0) {
+        bringLoadGames(params, dataCredentialsRdx?.credentials.token)
+          .then((result) => {
+            if (result.data.data.length != 0){
+              setLoadGames(result?.data?.data);
+            }
+          })
+          .catch((error) => console.log(error));
+    }}, [loadGames]);
 
+    // FUNCTION TO GO TO SELECTGAME
     const goSelectGame = () => {
         setTimeout(()=>{
           navigate("/selectGame");
         },500)
     }
 
+    // FUNCTION TO SELECT GAME
     const selectedSavedGame = (selectedGame) => {
 
         dispatch(addGame({choosenGame: selectedGame}))
 
         const array = selectedGame.games_stages
-        console.log(selectedGame);
-        console.log(selectedGame.games_stages[array.length - 1].stage_id);
         const stageId = selectedGame.games_stages[array.length - 1].stage_id
-
         let params = selectedGame.id
 
         getBadgesByGameId(params)
             .then((result) => {
-              console.log("traer badges",result);
               const selectBadge = result?.data?.data
               dispatch(addBadge({ choosenBadge: selectBadge}))
-            //   console.log(selectBadge);
-              // setBadge(result?.data?.data);
-              // console.log(result.data);
             })
             .catch((error) => console.log(error));
         
@@ -93,27 +88,24 @@ export const LoadGame = () => {
         
         setTimeout(()=>{
             navigate(stageNavigate[stageId]);
-            console.log(stageNavigate[stageId]);
         },500)
     }
 
+    // FUNCTION TO DELETE LOADGAME
     const deleteLoadGame = () => {
-        console.log(selectedLoadGame);
         let params = selectedLoadGame.id
         deleteSavedGameByUser(params, token)
         .then(action => {
-            console.log("borro juego", action)
             bringLoadGames(params, dataCredentialsRdx?.credentials.token)
             .then((result) => {
                 setLoadGames(result?.data?.data);
-                console.log(result?.data?.data);
-                console.log(loadGames);
             })
             .catch((error) => console.log(error))
           })
         .catch((error) => console.log(error));
     }
 
+    // DELETE LOADGAME CONFIRMATION MODAL
     function MyVerticallyCenteredModal(props) {
         return (
           <Modal
@@ -125,12 +117,12 @@ export const LoadGame = () => {
           >
             <Modal.Header closeButton>
               <Modal.Title id="contained-modal-title-vcenter">
-                Deletion Saved Game
+                Eliminar juego guardado
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <p>
-                Are you sure to delete saved game? 
+                ¿Estás seguro de querer eliminar esta partida? 
               </p>
             </Modal.Body>
             <Modal.Footer>
@@ -155,7 +147,7 @@ export const LoadGame = () => {
                         {loadGames.length > 0 ? (
                             <>
                             <div className='loadGamesBox'>
-                                <div className='text-center actionTitle'>Load Game</div>
+                                <div className='text-center actionTitle'>Load Games</div>
                                 <div className='selectPjText'>No se mostrarán los juegos finalizados</div>
                                 {loadGames.map((load) => {
                                 return (

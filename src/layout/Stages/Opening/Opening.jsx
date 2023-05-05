@@ -18,25 +18,27 @@ export const Opening = () => {
 
   const dataCredentialsRdx = useSelector(userData);
   const gameRdx = useSelector(gameDetailData)
-  
   const [index, setIndex] = useState(0);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const array = gameRdx.choosenGame.games_stages;
 
+  // SAVE AT REDUX INGAME STATE
+  dispatch(addState({ choosenState: false}))
+
+  // USEEFFECT TO CHECK IF USER IS LOGGED IN
   useEffect(() => {
     if (!dataCredentialsRdx.credentials.token && (gameRdx.choosenGame.games_stages[array.length - 1].stage_id != 1)) {
       navigate("/");
     }
   }, []);
 
-  dispatch(addState({ choosenState: false}))
-
-  const handleSelect = (selectedIndex, e) => {
+  // HANDLE
+  const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
 
-  const navigate = useNavigate();
-
+  // START GAME BUTTON
   const goStage01 = () => {
       setTimeout(()=>{
         navigate("/stage01");

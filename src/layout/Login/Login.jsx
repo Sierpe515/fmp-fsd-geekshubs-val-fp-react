@@ -12,8 +12,6 @@ import { validate } from "../../helpers/useful";
 import { logMe } from "../../services/apiCalls";
 import { TurnPhone } from "../../components/TurnPhone/TurnPhone";
 import { addState } from "../inGameSlice";
-// import { decodeToken } from "react-jwt";
-// import jwt_decode from "jwt-decode";
 import logImg from "../../image/logImg.png";
 import wellImg from "../../image/wellImg.png";
 
@@ -23,8 +21,17 @@ export const Login = () => {
   const dispatch = useDispatch();
   const credentialsRdx = useSelector(userData);
 
+  // SAVE AT REDUX INGAME STATE
   dispatch(addState({ choosenState: false}))
+  
+  // USEEFFECT TO CHECK IF USER IS LOGGED IN
+  useEffect(() => {
+    if (credentialsRdx.credentials.token) {
+      navigate("/");
+    }
+  }, []);
 
+  // HOOKS
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -37,17 +44,9 @@ export const Login = () => {
   });
 
   const [welcome, setWelcome] = useState("");
-
   const [btnMessage, setBtnMessage] = useState("")
 
-  // console.log(credentialsRdx.credentials);
-
-  useEffect(() => {
-    if (credentialsRdx.credentials.token) {
-      navigate("/");
-    }
-  }, []);
-
+  // HANDLER TO SAVE VALUE AT HOOK
   const newCredentials = (e) => {
     setCredentials((prevState) => ({
       ...prevState,
@@ -55,6 +54,7 @@ export const Login = () => {
     }));
   };
 
+  // FUNCTION TO CHECK ERROR AT VALIDATION
   const checkError2 = (e) => {
     let error = "";
     let checked = validate(
@@ -71,6 +71,7 @@ export const Login = () => {
     }));
   };
 
+  // LOGIN FUNCTION
   const logIn = () => {
 
     logMe(credentials)
@@ -112,7 +113,6 @@ export const Login = () => {
               ) : (
                 <>
               <Form.Group className="mb-3 formBox" controlId="formBasicEmail" >
-                {/* <Form.Label>Email address</Form.Label> */}
                 <Form.Control
                   className={
                     btnMessage === ""
@@ -128,7 +128,6 @@ export const Login = () => {
               </Form.Group>
                 <Form.Text className="errorMessage">{credentialsError.emailError}</Form.Text>
               <Form.Group className="mb-3 formBox" controlId="formBasicPassword">
-                {/* <Form.Label>Password</Form.Label> */}
                 <Form.Control
                   className={
                     btnMessage === ""
