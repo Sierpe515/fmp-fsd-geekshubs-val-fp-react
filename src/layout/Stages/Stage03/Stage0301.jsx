@@ -293,7 +293,7 @@ export const Stage0301 = () => {
         <div className="solutionBox" id="solutionBox">
           <div className="solutionText text-center">
             <p>¡Lo has hecho bien! Pero vamos a revisar la respuesta.</p>
-            <p>Este problema es una buena introducción a la lógica disyuntiva. Puesto que dados dos enunciados, significa que al menos un enunciado es cierto. Si el enunciado fuera falso, entonces ambos enunciados lo serían. En el caso del problema que has superado con éxito, supongase que Shasha es caótica, entonces su enunciado tiene que ser falso. Eso querría decir que ni es cierto que ella sea caótica, ni que B sea Legal. Por lo tanto se diría que Shasha no es caótica, lo que sería una contradicción. Por lo que tiene que ser legal.</p>
+            <p>Este problema es una buena introducción a la lógica disyuntiva. Puesto que dados dos enunciados, significa que al menos un enunciado es cierto. Si el enunciado fuera falso, entonces ambos enunciados lo serían. En el caso del problema que has superado con éxito, supongase que Shasha es caótica, entonces su enunciado tiene que ser falso. Eso querría decir que ni es cierto que ella sea caótica, ni que Sherboroug sea Legal. Por lo tanto se diría que Shasha no es caótica, lo que sería una contradicción. Por lo que tiene que ser legal.</p>
             <p>Habiendo establecido que Shasha es legal, su enunciado tiene que ser cierto. De las dos posibilidades del enunciado, sólo puede ser cierta la segunda. Por tanto, Sherboroug es caótico.</p>
             <p>De este modo, Shasha y Sherboroug son ambos legales.</p>
           </div>

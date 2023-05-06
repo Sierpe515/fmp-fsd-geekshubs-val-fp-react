@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 export const redirection = (stageId) => {
+    const navigate = useNavigate();
     const stageNavigate = {
         null: "/",
         1: "/stage01",
@@ -19,5 +20,5 @@ export const redirection = (stageId) => {
         14: "/stage0603",
     };
 
-    useNavigate(stageNavigate[stageId]);
+    navigate(stageNavigate[stageId]);
 }

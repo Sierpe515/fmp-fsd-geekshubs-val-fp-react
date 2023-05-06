@@ -78,7 +78,7 @@ export const Stage0401 = () => {
     </Popover>
   ); 
 
-    // SAVE ANSWER FUNCTION
+  // SAVE ANSWER FUNCTION
   const saveAnswer = () => {
 
     if (answer == 15 || answer == 17) {
@@ -330,7 +330,7 @@ export const Stage0401 = () => {
           <div className="textBox03">
             <div  className='scrollText font0401'>
               <p className='easyText'>Durante tu viaje, te informaron de que para encontrar la salida de Oniria, tendrías que atravesar 
-              Transilsueño. Siguiendo las instrucciones de Akumato, atravesando un lúgubre y tenebroso camino bañado de una oscuridad incesante y 
+              Transilsueño. Siguiendo las instrucciones de {gameRdx.choosenGame.games_stages[array.length - 2].stage_id == 3 ? ("Akumato") : ("")}{gameRdx.choosenGame.games_stages[array.length - 2].stage_id == 4 ? ("Tarso") : ("")}{gameRdx.choosenGame.games_stages[array.length - 2].stage_id == 5 ? ("Pestilencio") : ("")}, atravesando un lúgubre y tenebroso camino bañado de una oscuridad incesante y 
               envuelto entre árboles desnudos y zarzas, no tardaste en llegar</p>
               <p className='easyText'>Una de las peculiaridades de esta tierra es que la habitan, no sólo caóticos y legales, sino 
               tambien neutrales, que a veces dicen la verdad y otras mienten.</p>

@@ -51,7 +51,7 @@ export const GameOver2 = () => {
         ironías de la vida, en Oniria está despierto. Por supuesto no tiene intención de plantearte un problema lógico 
         y te da muerte de inmediato sin que tengas siquiera una pequeña oportunidad.</p>
         <p>No sólo no vas a poder volver al mundo despierto, si no que tampoco sigue viva tu conciencia dentro de Oniria, que 
-        si pudiera se preguntarías si podrías haberte esforzado más.</p>
+        si pudiera se preguntaría si podrías haberte esforzado más.</p>
       </div>
       <div className='homeBtn btnMargin07' onClick={()=> goHome()}>Home</div>
     </Container>

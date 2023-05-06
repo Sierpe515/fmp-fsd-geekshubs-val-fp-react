@@ -50,7 +50,7 @@ export const GameOver1 = () => {
         <p>No es la locura lo que ha acabado contigo, sino el no haber sido capaz de escoger la estatua correcta. Llevaste 
             a toda tu tripulación a una muerte segura, lo que no representa una gran perdida para nadie, salvo para ti.</p>
         <p>No sólo no vas a poder volver al mundo despierto, si no que tampoco sigue viva tu conciencia dentro de Oniria, que 
-            si pudiera se preguntarías si podrías haberte esforzado más.</p>
+            si pudiera se preguntaría si podrías haberte esforzado más.</p>
       </div>
       <div className='homeBtn' onClick={()=> goHome()}>Home</div>
     </Container>
