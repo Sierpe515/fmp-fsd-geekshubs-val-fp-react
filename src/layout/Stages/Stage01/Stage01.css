@@ -94,6 +94,11 @@
     font-weight: bold;
 }
 
+.confirmBtn:hover {
+    background-color: darkred;
+    border: 2px solid black;
+}
+
 .shawxText {
     color: greenyellow;
     font-weight: bold;
