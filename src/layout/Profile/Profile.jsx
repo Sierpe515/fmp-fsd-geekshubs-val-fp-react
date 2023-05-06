@@ -69,7 +69,6 @@ export const Profile = () => {
     if (users.name === "") {
       getProfile(ReduxCredentials.credentials.token)
         .then((result) => {
-          console.log(result);
           setUsers({
             userName: result.data.data.userName,
             name: result.data.data.name,
@@ -105,8 +104,6 @@ export const Profile = () => {
   });
 
   const newDataUserUpdate = (e) => {
-    console.log(users);
-    console.log(dataUserUpdate);
     setDataUserUpdate((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
@@ -230,7 +227,6 @@ export const Profile = () => {
       };
       updateNameProfile(nameProfile, token)
         .then((action) => {
-          console.log(action);
           setUsers((prevState) => ({
             ...prevState,
             name: action.data.data.name,
@@ -246,7 +242,6 @@ export const Profile = () => {
       };
       updateSurnameProfile(surnameProfile, token)
         .then((action) => {
-          console.log(action);
           setUsers((prevState) => ({
             ...prevState,
             surname: action.data.data.surname,
@@ -262,7 +257,6 @@ export const Profile = () => {
       };
       updateEmailProfile(emailProfile, token)
         .then((action) => {
-          console.log(action);
           setUsers((prevState) => ({
             ...prevState,
             email: action.data.data.email,
@@ -275,7 +269,6 @@ export const Profile = () => {
   
   // FUNCTION TO CHOOSE BIRTHDATE AND UPDATE
   const chooseDay = (day) => {
-    console.log(dayjs(day).format("YYYY-MM-DD"));
     if (dayjs(day).isBefore(dayjs())) {
       setBDay(dayjs(day).format("YYYY-MM-DD"));
     } else {

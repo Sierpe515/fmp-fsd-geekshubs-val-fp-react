@@ -1,6 +1,7 @@
 .roleIcon {
     height: 5em;
     margin: 1vh;
+    cursor: pointer;
 }
 
 .userDataBox {

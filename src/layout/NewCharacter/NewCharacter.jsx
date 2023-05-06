@@ -43,7 +43,6 @@ export const NewCharacter = () => {
 
     // SAVE VALUE AT NAME HOOK
     const newCharacter = (e) => {
-        console.log(character);
         setCharacter((prevState) => ({
           ...prevState,
           [e.target.name]: e.target.value,

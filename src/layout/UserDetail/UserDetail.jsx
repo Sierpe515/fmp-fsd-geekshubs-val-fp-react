@@ -230,7 +230,7 @@ export const UserDetail = () => {
                         <p><strong>Nombre:</strong> {userDetailRedux?.choosenObject?.name}</p>
                         <p><strong>Apellido:</strong> {userDetailRedux?.choosenObject?.surname}</p>
                         <p><strong>Email:</strong> {userDetailRedux?.choosenObject?.email}</p>
-                        <p><strong>Rol:</strong> {userDetailRedux?.choosenObject?.role_id}</p>
+                        <p><strong>Rol:</strong> {userDetailRedux?.choosenObject?.role_id == 1 ? ("Admin") : ("Player")}</p>
                         <p><strong>Fecha de Nacimiento:</strong> {dayjs(userDetailRedux.choosenObject.birthdate).format('YYYY-MMMM-DD')}</p>
                     </div>
                 </Col>

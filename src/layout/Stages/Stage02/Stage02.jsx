@@ -204,7 +204,7 @@ export const Stage02 = () => {
       <div>
       <Row>
           <Col><div className='selectPjText text-center'>Selecciona tu apariencia</div ></Col>
-          <Col xxl={12} xl={12} md={12} sm={12} className="welcomeBox pjsContainer d-flex align-items-center text-center">
+          <Col xxl={12} xl={12} md={12} sm={12} className="welcomeBox pjsContainer1 d-flex align-items-center text-center">
               {characterImage.length > 0 ? (
                   <>
                   <div className='scrollBox'>

@@ -3,18 +3,10 @@
     background-image: url('../../image/home.jpg');
     background-size: cover;
     background-position: center;
-    /* z-index: -4; */
 }
 .title {
-    /* height: 2em; */
-    /* width: 30vw; */
     display: none;
 }
-
-/* .titleText {
-    font-family: 'flesh';
-    font-size: 3rem;
-} */
 
 .logo {
     height: 3em;
@@ -26,7 +18,6 @@
 }
 
 .welcomeText {
-    /* margin-top: 11vh; */
     font-weight: bold;
     font-size: xx-large;
     color: rgb(46, 46, 46);
@@ -34,10 +25,6 @@
     text-shadow: 1px 0 goldenrod, -1px 0 goldenrod, 0 1px goldenrod, 0 -1px goldenrod,
              1px 1px goldenrod, -1px -1px goldenrod, 1px -1px goldenrod, -1px 1px goldenrod;
 }
-
-/* .noCharMargin {
-    margin-left: -9vw;
-} */
 
 .selectPjText {
     font-weight: bold;
@@ -50,12 +37,23 @@
 }
 
 .pjsContainer {
-    /* background-color: rgba(135, 207, 235, 0.274); */
+    overflow-x:scroll;
+    width:100%;
+}
+
+.pjsContainer1 {
     overflow-x:scroll;
     width:100%;
 }
 
 .pjsContainer::-webkit-scrollbar {
+    width: 0;
+}
+
+.pjsContainer1::-webkit-scrollbar {
+    background-image: url(../../image/bgDir1.png);
+    background-size: cover;
+    background-position: center;
     width: 0;
 }
 
