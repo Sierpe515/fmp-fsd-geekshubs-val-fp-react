@@ -15,7 +15,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { characterDetailData } from "../../characterSlice";
 import { addBadge } from "../../badgeSlice";
 import { addState } from "../../inGameSlice";
 import './Stage0603.css'
@@ -30,19 +29,18 @@ import { changeState } from "../../clueSlice";
 export const Stage0603 = () => {
   const gameRdx = useSelector(gameDetailData);
   const dataCredentialsRdx = useSelector(userData);
-  const characterRdx = useSelector(characterDetailData);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   let token = dataCredentialsRdx.credentials.token;
 
-  // SAVE AT REDUX INGAME STATE
-  dispatch(addState({ choosenState: true }))
-
-  // SAVE AT REDUX CLUE SHOW STATE
-  dispatch(changeState({ clueState: false }))
-
+  
   // USEEFFECT TO CHECK IF USER IS LOGGED IN AND THE CORRECT STAGE
   useEffect(() => {
+    // SAVE AT REDUX INGAME STATE
+    dispatch(addState({ choosenState: true }))
+    // SAVE AT REDUX CLUE SHOW STATE
+    dispatch(changeState({ clueState: false }))
+    
     let params = gameRdx.choosenGame.id
     bringLoadGamesById(params, token)
     .then(result => {

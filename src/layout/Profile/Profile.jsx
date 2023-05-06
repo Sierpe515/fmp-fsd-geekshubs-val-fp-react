@@ -33,10 +33,9 @@ export const Profile = () => {
   let token = ReduxCredentials.credentials.token;
 
   // SAVE AT REDUX INGAME STATE
-  dispatch(addState({ choosenState: false }));
-
   // USEEFFECT TO CHECK IF USER IS LOGGED IN
   useEffect(() => {
+    dispatch(addState({ choosenState: false }));
     if (!ReduxCredentials.credentials.token) {
       navigate("/");
     }

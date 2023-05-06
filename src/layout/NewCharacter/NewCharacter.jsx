@@ -19,11 +19,10 @@ export const NewCharacter = () => {
     const dataCredentialsRdx = useSelector(userData);
     let token = dataCredentialsRdx.credentials.token
 
-    // SAVE AT REDUX INGAME STATE
-    dispatch(addState({ choosenState: false}))
-
+    // SAVE AT REDUX INGAME STATE 
     // USEEFFECT TO CHECK IF USER IS LOGGED IN
     useEffect(() => {
+        dispatch(addState({ choosenState: false}))
         if (!dataCredentialsRdx.credentials.token) {
           navigate("/");
         }

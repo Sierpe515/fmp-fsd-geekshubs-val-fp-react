@@ -21,11 +21,9 @@ export const UsersList = () => {
   const isAdmin = ReduxCredentials.credentials.userRole?.includes("Admin")
 
   // SAVE AT REDUX INGAME STATE
-  dispatch(addState({ choosenState: false}))
-
-
   // USEEFFECT TO CHECK ADMIN ROLE
   useEffect(() => {
+    dispatch(addState({ choosenState: false}))
     {isAdmin ? ("") : (navigate('/'))}
   }, []);
 

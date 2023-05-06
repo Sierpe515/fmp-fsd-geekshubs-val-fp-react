@@ -29,12 +29,11 @@ export const GameBar = () => {
 
   // FUNCTION TO RECOGNIZE GAME IS OVER
   const gameOver = () => {
-    console.log("Game Over");
     let dataFinished = { 
       id: gameRdx.choosenGame.id,
       finished: true }
     updateFinished(dataFinished, token)
-    .then(console.log("Game Finished"))
+    .then()
     .catch((error) => console.log(error));
     navigate("/gameOver")
   }

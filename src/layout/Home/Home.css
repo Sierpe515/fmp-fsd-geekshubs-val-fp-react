@@ -87,6 +87,8 @@
 
 .pjName {
     margin-bottom: 1vh;
+    text-shadow: 1px 0 goldenrod, -1px 0 goldenrod, 0 1px goldenrod, 0 -1px goldenrod,
+             1px 1px goldenrod, -1px -1px goldenrod, 1px -1px goldenrod, -1px 1px goldenrod;
 }
 
 .pjBox {

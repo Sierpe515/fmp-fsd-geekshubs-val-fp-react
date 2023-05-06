@@ -32,10 +32,8 @@ export const UserDetail = () => {
     let params = (userDetailRedux.choosenObject.id);
     let token = (credentialsRdx.credentials.token);
 
-    // SAVE AT REDUX INGAME STATE
-    dispatch(addState({ choosenState: false}))
-
-
+    
+    
     const [userRole, setUserRole] = useState("");
     const [gameId, setGameId] = useState("");
     const [savedGames, setSavedGames] = useState([]);
@@ -49,9 +47,11 @@ export const UserDetail = () => {
     const handleShow1 = () => setShow1(true);
     const handleShow2 = () => setShow2(true);
     const [modalShow, setModalShow] = React.useState(false);
-
+    
+    // SAVE AT REDUX INGAME STATE
     // USEEFFECT TO CHECK ADMIN ROLE
     useEffect(() => {
+        dispatch(addState({ choosenState: false}))
       {credentialsRdx.credentials.userRole?.includes("Admin") ? ("") : (navigate('/'))}      
     }, []);
 

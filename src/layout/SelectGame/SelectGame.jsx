@@ -25,15 +25,15 @@ export const SelectGame = () => {
   const dispatch = useDispatch();
   let token = dataCredentialsRdx.credentials.token;
   
+  // SAVE AT REDUX INGAME STATE
   // USEEFFECT TO CHECK IF USER IS LOGGED IN
   useEffect(() => {
+    dispatch(addState({ choosenState: false }));
       if (!dataCredentialsRdx.credentials.token) {
         navigate("/");
       }
   }, []);
 
-  // SAVE AT REDUX INGAME STATE
-  dispatch(addState({ choosenState: false }));
   
   // HOOKS
   const [selectGames, setSelectGames] = useState([]);
@@ -156,7 +156,7 @@ export const SelectGame = () => {
                             () => {
                             chooseGame(sGames.id), setModalShow(true);
                             }
-                          ) : ("")}
+                          ) : (() => {})}
                           key={sGames.id}
                         >
                           <div>

@@ -29,8 +29,7 @@ export const NavBar = () => {
   return (
     <Navbar className='navBarDesign' expand="lg">
       <Container fluid className='navBarBox'>
-        <Navbar.Brand className='nBScroll' href="#">
-          <img className='logo2' src={logo2} alt="" />
+        <Navbar.Brand className='nBScroll' as={Link} to='/home'><img className='logo2' src={logo2} alt="" />
           Oniria</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" className='nBScroll' />
         <Navbar.Collapse id="navbarScroll">
@@ -39,14 +38,14 @@ export const NavBar = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link className='navWhite' as={Link} to='/'>Home</Nav.Link>
+            <Nav.Link id='toHome' className='navWhite' as={Link} to='/'>Home</Nav.Link>
             {/* TERNARY TO DETECT ADMIN AND GIVE ACCESS TO ADMIN AREA */}
             {dataCredentialsRdx.credentials.token ? (
               dataCredentialsRdx.credentials.userRole?.includes('Admin') ? (
                 <>
                 <NavDropdown title="Admin Area" id="navbarScrollingDropdown2">
-                  <NavDropdown.Item eventKey="1"><Link as={Link} to='/usersList'>
-                    Users List</Link>
+                  <NavDropdown.Item id='ddAdmin' eventKey="1" as={Link} to='/usersList'>
+                    Users List
                   </NavDropdown.Item>
                 </NavDropdown>
                 </>
@@ -61,9 +60,9 @@ export const NavBar = () => {
                   title={dataCredentialsRdx.credentials.userName}
                   id="dropdown-menu-align-end"
                 >
-                  <Dropdown.Item eventKey="2"><Link as={Link} to='/profile'>Profile</Link></Dropdown.Item>
+                  <Dropdown.Item id='dd1' eventKey="2" as={Link} to='/profile'>Profile</Dropdown.Item>
                   <Dropdown.Divider />
-                  <Dropdown.Item eventKey="3" onClick={() => {logOut()}}>Log Out</Dropdown.Item>
+                  <Dropdown.Item id='dd2' eventKey="3" onClick={() => {logOut()}}>Log Out</Dropdown.Item>
                 </DropdownButton>
                 
               ) : (

@@ -23,10 +23,9 @@ export const Register = () => {
   const dispatch = useDispatch();
   
   // SAVE AT REDUX INGAME STATE
-  dispatch(addState({ choosenState: false}))
-  
   // USEEFFECT TO CHECK IF USER IS LOGGED IN
   useEffect(() => {
+    dispatch(addState({ choosenState: false}))
     if (dataCredentialsRdx.credentials.token) {
       navigate("/");
     }

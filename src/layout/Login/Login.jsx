@@ -22,10 +22,9 @@ export const Login = () => {
   const credentialsRdx = useSelector(userData);
 
   // SAVE AT REDUX INGAME STATE
-  dispatch(addState({ choosenState: false}))
-  
   // USEEFFECT TO CHECK IF USER IS LOGGED IN
   useEffect(() => {
+    dispatch(addState({ choosenState: false}))
     if (credentialsRdx.credentials.token) {
       navigate("/");
     }

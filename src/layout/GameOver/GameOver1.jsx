@@ -18,9 +18,8 @@ export const GameOver1 = () => {
   let token = dataCredentialsRdx.credentials.token
 
   // SAVE AT REDUX INGAME STATE
-  dispatch(addState({ choosenState: false}))
-
   // USEEFFECT TO CONTROL PLAYER PERMISSIONS AND REDIRECT
+  dispatch(addState({ choosenState: false}))
   useEffect(() => {
     let params = gameRdx.choosenGame.id
     bringLoadGamesById(params, token)

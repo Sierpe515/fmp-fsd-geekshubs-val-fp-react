@@ -34,14 +34,14 @@ export const Stage0303 = () => {
   const dispatch = useDispatch();
   let token = dataCredentialsRdx.credentials.token;
 
-  // SAVE AT REDUX INGAME STATE
-  dispatch(addState({ choosenState: true}))
-
-  // SAVE AT REDUX SHOWING CLUE STATE
-  dispatch(changeState({ clueState: false }))
-
+  
   // USEEFFECT TO CHECK IF USER IS LOGGED IN AND THE CORRECT STAGE
   useEffect(() => {
+    // SAVE AT REDUX INGAME STATE
+    dispatch(addState({ choosenState: true}))
+    // SAVE AT REDUX SHOWING CLUE STATE
+    dispatch(changeState({ clueState: false }))
+    
     let params = gameRdx.choosenGame.id
     bringLoadGamesById(params, token)
     .then(result => {

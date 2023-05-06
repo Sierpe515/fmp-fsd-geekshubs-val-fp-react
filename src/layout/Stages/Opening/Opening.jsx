@@ -24,10 +24,9 @@ export const Opening = () => {
   const array = gameRdx.choosenGame.games_stages;
 
   // SAVE AT REDUX INGAME STATE
-  dispatch(addState({ choosenState: false}))
-
   // USEEFFECT TO CHECK IF USER IS LOGGED IN
   useEffect(() => {
+    dispatch(addState({ choosenState: false}))
     if (!dataCredentialsRdx.credentials.token && (gameRdx.choosenGame.games_stages[array.length - 1].stage_id != 1)) {
       navigate("/");
     }

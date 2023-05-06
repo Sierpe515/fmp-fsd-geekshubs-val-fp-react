@@ -26,11 +26,10 @@ export const Stage01 = () => {
   let token = dataCredentialsRdx.credentials.token
   const array = gameRedux.choosenGame.games_stages
 
-  // SAVE AT REDUX INGAME STATE
-  dispatch(addState({ choosenState: false}))
-
+  // SAVE AT REDUX INGAME STATE 
   // USEEFFECT TO CHECK IF USER IS LOGGED IN AND THE CORRECT STAGE
   useEffect(() => {
+    dispatch(addState({ choosenState: false}))
     let params = gameRedux.choosenGame.id
     bringLoadGamesById(params, token)
     .then(result => {
