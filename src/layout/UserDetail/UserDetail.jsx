@@ -183,7 +183,7 @@ export const UserDetail = () => {
 
 
      return (
-        <Container fluid className="homeContainerMin d-flex flex-column justify-content-between">
+        <Container fluid className="homeContainerMin homeBg d-flex flex-column justify-content-center">
             <TurnPhone/>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -224,7 +224,7 @@ export const UserDetail = () => {
             </Modal>
             <Row className="d-flex justify-content-center align-items-center flex-column">
                 <Col xxl={5} xl={5} sm={10} className="my-3">
-                    <div className='logRegContainer d-flex flex-column justify-content-center text-center'>
+                    <div className='newPjContainer loadGamesContainer userDataBox d-flex flex-column justify-content-center text-center'>
                         <h1 className="text-center">User Detail Admin</h1>
                         <p><strong>Username:</strong> {userDetailRedux?.choosenObject?.userName}</p>
                         <p><strong>Nombre:</strong> {userDetailRedux?.choosenObject?.name}</p>
@@ -234,12 +234,12 @@ export const UserDetail = () => {
                         <p><strong>Fecha de Nacimiento:</strong> {dayjs(userDetailRedux.choosenObject.birthdate).format('YYYY-MMMM-DD')}</p>
                     </div>
                 </Col>
-                <Col>
-                    <div className="d-flex flex-column justify-content-center text-center">
+                <Col xxl={5} xl={5} sm={10} className="my-3 d-flex justify-content-center">
+                    <div className="newPjContainer loadGamesContainer charDivWidth d-flex flex-column justify-content-center align-items-center text-center">
                         {userDetailRedux?.choosenObject?.characters.map((pj) => {
                         return (
                             <>
-                            <div className="userBox" onClick={() => {selected(pj), setModalShow(true)}} key={pj.id}>
+                            <div className="charBox" onClick={() => {selected(pj), setModalShow(true)}} key={pj.id}>
                             Nombre de personaje: <strong>{pj.name}</strong> 
                             </div>
                             <MyVerticallyCenteredModal
@@ -261,7 +261,7 @@ export const UserDetail = () => {
                         overlay={popoverHoverFocus1}
                     >                   
                         <div onClick={()=> chooseRole('1')}
-                            className={userRole === "1" ? ('roleDiv roleDivChoosen d-flex justify-content-center align-items-center') : ('roleDiv d-flex justify-content-center align-items-center')}>
+                            className='roleDiv roleDivChoosen d-flex justify-content-center align-items-center'>
                                 <img className='roleIcon' src={ role1 } alt="" />
                                 </div>
                     </OverlayTrigger>
@@ -271,18 +271,20 @@ export const UserDetail = () => {
                         overlay={popoverHoverFocus2}
                     >       
                         <div onClick={()=> chooseRole('2')}
-                            className={userRole === "2" ? ('roleDiv roleDivChoosen d-flex justify-content-center align-items-center') : ('roleDiv d-flex justify-content-center align-items-center')}>
+                            className='roleDiv roleDivChoosen d-flex justify-content-center align-items-center'>
                                 <img className='roleIcon' src={ role2 } alt="" />
                                 </div>
                     </OverlayTrigger>
                 </Col>
                 <Col className="d-flex justify-content-center">
-                    <div className="deleteButton" name="button" onClick={()=> updateUserRole()}>Add role</div>
+                    <div className="adminButton" name="button" onClick={()=> updateUserRole()}>Add role</div>
                 </Col>
                 </div>
             </Row>
             <Row className="justify-content-center">
-                <div className="deleteButton d-flex justify-content-center" name="button" onClick={()=> handleShow1()}>Delete User</div>
+                <div>
+                    <div className="adminButton d-flex justify-content-center" name="button" onClick={()=> handleShow1()}>Delete User</div>
+                </div>
             </Row>
         </Container>
      )

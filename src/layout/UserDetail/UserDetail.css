@@ -1,3 +1,48 @@
 .roleIcon {
     height: 5em;
+    margin: 1vh;
+}
+
+.userDataBox {
+    color: white;
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+}
+
+.charDivWidth {
+    width: 40vw;
+}
+
+.charBox {
+    background-color: rgba(240, 255, 246, 0.603);
+    margin-bottom: 1vh;
+    border: 2px solid darkgoldenrod;
+    border-radius: 5px;
+    padding: 0.5vh;
+    cursor: pointer;
+}
+
+.charBox:hover {
+    background-color: rgba(240, 248, 255, 0.582);
+}
+
+.addRoleContainer {
+    background-color: rgba(33, 35, 37, 0.247);
+    width: 40vw;
+    border: 2px solid darkgoldenrod;
+    border-radius: 10px;
+}
+
+.adminButton {
+    background-color: rgb(104, 2, 2);
+    padding: 1vh;
+    border-radius: 5px;
+    border: 2px solid darkgoldenrod;
+    margin: 1vh;
+    color: white;
+    cursor: pointer;
+}
+
+.adminButton:hover {
+    background-color: darkred;
 }

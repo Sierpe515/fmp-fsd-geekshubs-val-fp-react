@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { addChoosen } from '../userDetailSlice';
 import { addState } from '../inGameSlice';
 import { TurnPhone } from '../../components/TurnPhone/TurnPhone';
+import './UserList.css'
 
 export const UsersList = () => {
   const [users, setUsers] = useState([]);
@@ -51,17 +52,17 @@ export const UsersList = () => {
   return (
     <Container
       fluid
-      className="homeContainerMin d-flex flex-column justify-content-between"
+      className="homeContainerMin homeBg d-flex flex-column justify-content-center"
     >
       <TurnPhone/>
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
-          <div className="logRegContainer d-flex flex-column justify-content-center align-items-center text-center">      
+          <div className="newPjContainer loadGamesContainer d-flex flex-column justify-content-center align-items-center text-center">      
             {users.length > 0 ? (
               <div>
                 {users.map((persona) => {
                   return (
-                    <div className="userBox" onClick={() => selected(persona)} key={persona.id}>
+                    <div className="userListBox" onClick={() => selected(persona)} key={persona.id}>
                       <strong>Username:</strong> {persona.userName}
                     </div>
                   );

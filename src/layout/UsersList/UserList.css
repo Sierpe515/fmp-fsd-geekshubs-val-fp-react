@@ -1,0 +1,10 @@
+
+.userListBox {
+    background-color: rgba(240, 243, 255, 0.39);
+    margin-bottom: 1vh;
+    padding: 1vh;
+    border-radius: 5px;
+    border: 2px solid darkgoldenrod;
+    color: black;
+    cursor: pointer;
+}

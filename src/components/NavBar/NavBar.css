@@ -6,7 +6,7 @@
     align-items: center;
     padding: 0 !important;
     /* color: white !important; */
-    z-index: 5;
+    z-index: 500;
 }
 
 .navBarBox {
