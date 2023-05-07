@@ -37,6 +37,8 @@ Given that this time we had full autonomy to choose the kind of project we wante
 Among other things, the user will be able to register and log in the application and, once inside, will be able to create characters with which to play as many games as they want. 
 The administrator also has the faculties to enter in the administration area and being able to see a list of every user and manage various sections as of them as of their saved games. 
 However, the bulk of the functionalities of this app is found in the game itself and its mechanics, which I expect make of it an interesting and entertaining game with which improve the logical abilities of the user. 
+
+[Youtube video](https://youtu.be/_lYQZ0qEGb8)
 </p>
   
 
@@ -128,6 +130,7 @@ In this occasion, I developed a game. For this reason, an interface has had to b
 The main topic of the game is the world of deep dreams. This has given me a great deal of freedom to design the game levels, given that I was not limited to a one theme which gave coherence to the product, I was able to develop levels with any theme. 
 Can be said, that every menu and elements have been created with the intention to be intuitive for the user and of easy access to be simple moving through the different pages which make the application. 
 Even though both images and fonts have been used to give the application that unique videogame atmosphere, every effort has been made to ensure that these elements do not hinder user accessibility.
+![Captura1](https://user-images.githubusercontent.com/121863208/236702092-f7cb24a0-17a0-4d05-a09d-135a7d6a4757.JPG)
 
 
 ## The Game
@@ -136,6 +139,8 @@ It is a game created exclusively for this occasion, graphic adventure type but v
 The objective of the game is to overcome a series of stages before reaching the final stage, which will be a real challenge for any logic’s fan.
 It should be said that all the problems raised in the game and that the player must overcome, always have a single possible solution that can be deduced with the information shown to the user in each stage. 
 It should be said that this game has been developed, as mentioned before, mainly using React technology, which, in any case, is not intended for game development. But given the characteristics of the game, which is similar to the behavior of web pages, the result has been, in our opinion, quite optimal and satisfactory. 
+![mont1](https://user-images.githubusercontent.com/121863208/236702170-a032d419-ed57-4a89-a63c-18da69829064.jpg)
+
 
 ## How it is played
 
@@ -144,6 +149,8 @@ Using the application is very simple, since it works like any web page. Once the
 The important thing to be able to progress properly in the game is to know that, with each mistake made by the player, a madness point will be accumulated, which will be displayed on the screen. Depending on the level selected for the game, the madness that the character can withstand will be higher or lower.
 It is no less important to know that with certain successes, the player will be able to win achievements (badges), which can be exchanged for clues that will help to solve the problem of the stage in which he is. Achievements, once used, will be consumed, and disappear from the player's view. 
 Finally, after choosing a right answer, the player will be able to access the explanation of the problem whose solution has been correct, so that they can understand (if they wish) the reasons that should have led them to select said answer. Therefore, an explanation of the logical reasoning that the player must have carried out before responding will be shown on the screen. 
+![b4](https://user-images.githubusercontent.com/121863208/236702201-0ec59a5e-2d13-4c0c-b2b0-77bd7f357e5e.png)
+
 
 ## Atmosphere 
 
@@ -152,6 +159,8 @@ The idea arose in one of those endless nights in which it is almost impossible t
 The first thing we find when we enter the game is a strong visual component, generated thanks to the images that we have borrowed from Artstation (link) and whose artists and studios we thank. I would like to give a special mention to Edouard Guiton (link), who has provided us with the images for most of the pnjs in the game.
 Attempts have been made to give the game a fuzzy dreamlike atmosphere. Almost a nebula of confusion. Because you already know how dreams are, diffuse and unpredictable.
 For all these reasons, the game draws a certain influence from the most classic graphic adventures, such as Monkey Island, Grim Fandango, Broken Sword and many more. But also games of another genre and completely different settings, such as Diablo, to also achieve a certain darkness and danger in certain stages.
+![monkey](https://user-images.githubusercontent.com/121863208/236702283-21afaf90-1486-4ecc-9d4d-24fcb797bc22.jpg)
+
 Thanks to this great diversity, we can find stages set in reptilian cities, other oriental ones with Onis, dungeons, etc. And also a rich variety of characters, whether they are vampires, humanoid turtles or cats, infernal beings, and a long etc. 
 
 
