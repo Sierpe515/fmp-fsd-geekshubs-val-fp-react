@@ -8,7 +8,6 @@
 .box03 {
     height: 55vh;
     width: 80vw;
-    /* background-color: aliceblue; */
     display: flex;
     z-index: 5;
     margin: 0;
@@ -19,14 +18,12 @@
 .img1Box03 {
     width: 20%;
     height: 100%;
-    /* background-color: beige; */
     z-index: 6;
 }
 
 .img2Box03 {
     width: 10%;
     height: 100%;
-    /* background-color: beige; */
     z-index: 6;
 }
 
@@ -43,7 +40,6 @@
 .textBox03 {
     width: 80%;
     height: 100%;
-    /* background-color: blue; */
     background-color: rgba(37, 37, 37, 0.658);
     border-radius: 10px;
     border: 2px solid darkgoldenrod;
@@ -60,7 +56,6 @@
     height: 35vh;
     width: 80vw;
     margin-left: 20vw;
-    /* background-color: rgba(0, 255, 255, 0.363); */
     display: flex;
     justify-content: space-around;
     z-index: 1;
@@ -87,7 +82,6 @@
 
 .homeBtn03 {
     border-radius: 5px;
-    /* background-color: rgb(36, 36, 36); */
     background-image: url('../../../image/button.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -98,7 +92,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* margin-bottom: 1em; */
     cursor: pointer;
     font-family: 'diablo';
     margin-top: 0.4vh;

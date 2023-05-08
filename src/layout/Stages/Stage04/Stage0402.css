@@ -9,7 +9,6 @@
 .img1Box0402 {
     width: 15%;
     height: 100%;
-    /* background-color: beige; */
     z-index: 6;
 }
 
@@ -17,13 +16,11 @@
     height: 50vh;
     position: absolute;
     z-index: 10;
-    /* left: 8vw; */
 }
 
 .textBox0402 {
     width: 70%;
     height: 100%;
-    /* background-color: blue; */
     background-color: rgba(37, 37, 37, 0.658);
     border-radius: 10px;
     border: 2px solid darkgoldenrod;
@@ -34,7 +31,6 @@
 .img2Box0402 {
     width: 10%;
     height: 100%;
-    /* background-color: beige; */
     z-index: 6;
 }
 

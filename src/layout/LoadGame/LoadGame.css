@@ -10,7 +10,6 @@
 .loadGamesBox {
     display: flex;
     flex-direction: column;
-    /* border: 1px solid black; */
 }
 
 .loadDiv {
@@ -36,31 +35,21 @@
     display: none;
 }
 
-/* .newGameBtn {
-    text-align: center;
-    background-color: darkred;
-    color: white;
-    border-radius: 10px;
-    margin: 0.5em;
-} */
 
 @media (min-height: 600px){
     .lgImgBox {
         display: block;
         width: 20em;
         height: 100%;
-        /* background-color: aliceblue; */
     }
 
     .lgBgImg {
-        /* background-color: aqua; */
         height: 100%;
         display: flex;
         align-items: end;
     }
 
     .lgImg {
-        /* background-color: bisque; */
         background-image: url('../../image/lgImg1.png');
         background-position: center;
         height: 25em;

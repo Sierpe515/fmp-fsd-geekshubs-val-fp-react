@@ -68,8 +68,6 @@
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.192);
     margin: 0px 10px;
-    /* min-width:150px;
-    min-height:113px; */
     padding: 0px;
     display: flex;
     justify-content: center;
@@ -105,13 +103,9 @@
     color: red;
 }
 
-/* .welcomeBox {
-    padding-left: 10vw;
-} */
 
 .homeBtn {
     border-radius: 5px;
-    /* background-color: rgb(36, 36, 36); */
     background-image: url('../../image/button.png');
     background-size: cover;
     color: white;
@@ -150,7 +144,6 @@
     }
 
     .title {
-        /* height: 3em; */
         font-size: x-large;
         font-weight: bold;
         margin: 0;

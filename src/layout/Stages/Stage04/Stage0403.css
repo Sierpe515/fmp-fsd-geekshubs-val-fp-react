@@ -12,7 +12,6 @@
 .box0403 {
     height: 55vh;
     width: 80vw;
-    /* background-color: aliceblue; */
     display: flex;
     z-index: 5;
     margin: 0;
@@ -23,7 +22,6 @@
 .img1Box0403 {
     width: 23%;
     height: 100%;
-    /* background-color: beige; */
     z-index: 6;
 }
 
@@ -33,7 +31,6 @@
 
 .font0403 {
     font-size: 2.5vh;
-    /* height: 55em; */
     height: 100vh;
 }
 
@@ -57,9 +54,3 @@
     text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
              1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
 }
-
-/* @media (min-height: 600px){
-    .font0403 {
-        height: 40em;
-    }
-} */

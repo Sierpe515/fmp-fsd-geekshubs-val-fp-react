@@ -1,8 +1,4 @@
 .registerSendDeac {
-    /* height: 2em;
-    width: 100%; */
-    /* background-color: lightgray; */
-    /* border: 1px solid white; */
     background-image: url('../../image/buttonInactive.png');
     background-size: cover;
     width: 11em;
@@ -19,19 +15,15 @@
 
 .registerSendAct {
     cursor: pointer;
-    /* background-color: rgb(253, 55, 55); */
     background-image: url('../../image/button.png');
-    /* border: 1px solid darkred; */
 }
 
 .errorMessage {
     color: rgb(177, 2, 2);
-    /* margin-top: -0.5em; */
 }
 
 .registerSendAct:hover {
     transition: 1s;
-    /* background-color: darkred; */
     background-image: url('../../image/buttonHover.png');
 }
 
@@ -43,7 +35,6 @@
 
 .formBox {
     display: flex;
-    /* margin: 0.5em; */
     margin-bottom: 0.25em;
     width: 90%;
 }

@@ -19,16 +19,12 @@
 .pValue {
     width: 13em;
     color: rgb(197, 197, 197);
-    /* font-family: 'seagram'; */
 }
 
 .block {
     display: block;
 }
 
-/* .inputHeight {
-    height: 2em;
-} */
 
 @media (min-height: 600px){
     .pType {

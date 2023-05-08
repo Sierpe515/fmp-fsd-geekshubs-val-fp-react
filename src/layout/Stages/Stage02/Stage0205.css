@@ -2,7 +2,6 @@
 .box02 {
     height: 55vh;
     width: 90vw;
-    /* background-color: aliceblue; */
     display: flex;
     z-index: 5;
     margin: 0;
@@ -16,7 +15,6 @@
 .imgBox02 {
     width: 15%;
     height: 100%;
-    /* background-color: beige; */
     z-index: 6;
 }
 
@@ -33,7 +31,6 @@
 .textBox02 {
     width: 70%;
     height: 100%;
-    /* background-color: blue; */
     background-color: rgba(37, 37, 37, 0.658);
     border-radius: 10px;
     border: 2px solid darkgoldenrod;
@@ -48,7 +45,6 @@
 .btnBox02 {
     height: 35vh;
     width: 90vw;
-    /* background-color: rgba(0, 255, 255, 0.363); */
     display: flex;
     justify-content: space-around;
     z-index: 1;
