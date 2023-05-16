@@ -20,6 +20,12 @@
 
 .errorMessage {
     color: rgb(177, 2, 2);
+    font-weight: bold;
+    text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black,
+             1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+    margin-top: -0.5vh;
+    margin-bottom: 1vh;
+
 }
 
 .registerSendAct:hover {

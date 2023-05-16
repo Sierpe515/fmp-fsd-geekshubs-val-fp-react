@@ -114,7 +114,7 @@ export const Login = () => {
               <Form.Group className="mb-3 formBox" controlId="formBasicEmail" >
                 <Form.Control
                   className={
-                    btnMessage === ""
+                    credentialsError.emailError === ""
                       ? "inputBasicDesign"
                       : "inputBasicDesign inputErrorDesign"
                   }
@@ -129,7 +129,7 @@ export const Login = () => {
               <Form.Group className="mb-3 formBox" controlId="formBasicPassword">
                 <Form.Control
                   className={
-                    btnMessage === ""
+                    credentialsError.passwordError === ""
                       ? "inputBasicDesign"
                       : "inputBasicDesign inputErrorDesign"
                   }
