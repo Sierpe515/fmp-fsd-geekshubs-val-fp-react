@@ -24,7 +24,7 @@ import { TurnPhone } from "../../components/TurnPhone/TurnPhone";
 import { stageData } from "../stageSlice";
 import Chart from 'chart.js/auto'
 
- 
+
 export const StagesDetail = () => {
 
     // const userDetailRedux = useSelector(userDetailData);
@@ -36,8 +36,8 @@ export const StagesDetail = () => {
     // let params = (userDetailRedux.choosenObject.id);
     let token = (credentialsRdx.credentials.token);
 
-    
-    
+
+
     // const [userRole, setUserRole] = useState("");
     // const [gameId, setGameId] = useState("");
     // const [savedGames, setSavedGames] = useState([]);
@@ -51,12 +51,12 @@ export const StagesDetail = () => {
     // const handleShow1 = () => setShow1(true);
     // const handleShow2 = () => setShow2(true);
     // const [modalShow, setModalShow] = React.useState(false);
-    
+
     // SAVE AT REDUX INGAME STATE
     // USEEFFECT TO CHECK ADMIN ROLE
     useEffect(() => {
         dispatch(addState({ choosenState: false}))
-        {credentialsRdx.credentials.userRole?.includes("Admin") ? ("") : (navigate('/'))}      
+        {credentialsRdx.credentials.userRole?.includes("Admin") ? ("") : (navigate('/'))}
     }, []);
 
     useEffect(() => {
@@ -69,53 +69,69 @@ export const StagesDetail = () => {
             // const recuento34 = result.data.reduce((contador, { answer_id }) => answer_id == '2' ? contador += 1 : contador, 0)
             // console.log(recuento33);
             // console.log(recuento34);
-    
+
             const resultado = {}
             result.data.forEach(el => (resultado[el.answer_id] = resultado[el.answer_id] + 1 || 1))
             console.log(resultado);
-            console.log(resultado[1]);
+            // console.log(resultado[1]);
             // const result33 = (resultado[33])
-    
+
             (async function() {
-                if (stageRdx.choosenStage.id == 1){
-                    const data = [
-                      { year: "Respuesta 1", count: resultado[1] },
-                      { year: "Respuesta 2", count: resultado[2] },
-                      { year: "NS/NR", count: resultado[null] },
-                    ];
-                    new Chart(
-                      document.getElementById('adminStatistics'),
-                      {type: 'bar',
-                      data: {
-                          labels: data.map(row => row.year),
-                          datasets: [
-                              {label: 'Respuestas de los jugadores',
-                              data: data.map(row => row.count)
-                      }]}});
+
+                const data = [];
+
+                for(let elemento in resultado){
+                    data.push({ year: `Respuesta ${elemento}`, count: resultado[elemento] })
                 }
 
-                if (stageRdx.choosenStage.id == 2){
-                    const data = [
-                      { year: "Respuesta 1", count: resultado[3] },
-                      { year: "Respuesta 2", count: resultado[4] },
-                      { year: "Respuesta 2", count: resultado[5] },
-                      { year: "NS/NR", count: resultado[null] },
-                    ];
-                    new Chart(
-                      document.getElementById('adminStatistics'),
-                      {type: 'bar',
-                      data: {
-                          labels: data.map(row => row.year),
-                          datasets: [
-                              {label: 'Respuestas de los jugadores',
-                              data: data.map(row => row.count)
-                      }]}});
-                }
-            
+                new Chart(
+                          document.getElementById('adminStatistics'),
+                          {type: 'bar',
+                          data: {
+                              labels: data.map(row => row.year),
+                              datasets: [
+                                  {label: 'Respuestas de los jugadores',
+                                  data: data.map(row => row.count)
+                          }]}});
+                // if (stageRdx.choosenStage.id == 1){
+                //     const data = [
+                //       { year: "Respuesta 1", count: resultado[1] },
+                //       { year: "Respuesta 2", count: resultado[2] },
+                //       { year: "NS/NR", count: resultado[null] },
+                //     ];
+                //     new Chart(
+                //       document.getElementById('adminStatistics'),
+                //       {type: 'bar',
+                //       data: {
+                //           labels: data.map(row => row.year),
+                //           datasets: [
+                //               {label: 'Respuestas de los jugadores',
+                //               data: data.map(row => row.count)
+                //       }]}});
+                // }
+
+                // if (stageRdx.choosenStage.id == 2){
+                //     const data = [
+                //       { year: "Respuesta 1", count: resultado[3] },
+                //       { year: "Respuesta 2", count: resultado[4] },
+                //       { year: "Respuesta 2", count: resultado[5] },
+                //       { year: "NS/NR", count: resultado[null] },
+                //     ];
+                //     new Chart(
+                //       document.getElementById('adminStatistics'),
+                //       {type: 'bar',
+                //       data: {
+                //           labels: data.map(row => row.year),
+                //           datasets: [
+                //               {label: 'Respuestas de los jugadores',
+                //               data: data.map((row,i) => row.count)
+                //       }]}});
+                // }
+
             })();
           })
           .catch((error) => console.log(error))
-    
+
     }, [stageRdx]);
 
 
@@ -131,7 +147,7 @@ export const StagesDetail = () => {
                     </div>
                 </Col>
                 <Col xxl={5} xl={5} sm={10} className="my-3 d-flex justify-content-center">
-                    <div>
+                    <div className='newPjContainer'>
                         <canvas className="statisticTable" id="adminStatistics"></canvas>
                     </div>
                 </Col>
