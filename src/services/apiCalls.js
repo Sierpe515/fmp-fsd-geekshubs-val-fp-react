@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const root = "http://localhost:8000/api"
-const root = "https://laravel-proof-production.up.railway.app/api"
+const root = "http://localhost:8000/api"
+// const root = "https://laravel-proof-production.up.railway.app/api"
 
 export const RegisterMe = async (body) => {
 
@@ -291,4 +291,14 @@ export const updateFinished = async (dataFinished, token) => {
   };
 
     return await axios.put(`${root}/games/updateFinished`, dataFinished, config);
+}
+
+export const bringGamesStagesByStageId = async (params) => {
+
+  return await axios.get(`${root}/gamesStages/${params}`);
+}
+
+export const bringStages = async () => {
+
+  return await axios.get(`${root}/stagesNF`);
 }

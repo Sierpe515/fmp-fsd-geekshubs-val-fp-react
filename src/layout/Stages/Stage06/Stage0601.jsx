@@ -5,6 +5,7 @@ import { addGame, gameDetailData } from "../../gameSlice";
 import { userData } from "../../userSlice";
 import {
   bringAnswerById,
+  bringGamesStagesByStageId,
   bringLoadGamesById,
   createBagdeGame,
   getBadgesByGameId,
@@ -25,10 +26,14 @@ import Popover from 'react-bootstrap/Popover';
 import { TurnPhone } from "../../../components/TurnPhone/TurnPhone";
 import { ClueBox } from "../../../components/ClueBox/ClueBox";
 import { changeState } from "../../clueSlice";
+import Chart from 'chart.js/auto'
+import { modifyState, statisticData } from "../../statisticSlice";
+
 
 export const Stage0601 = () => {
   const gameRdx = useSelector(gameDetailData);
   const dataCredentialsRdx = useSelector(userData);
+  const statisticRdx = useSelector(statisticData)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   let token = dataCredentialsRdx.credentials.token;
@@ -40,6 +45,8 @@ export const Stage0601 = () => {
     dispatch(addState({ choosenState: true }))
     // SAVE AT REDUX CLUE SHOW STATE
     dispatch(changeState({ clueState: false }))
+    // SAVE AT REDUX CLUE SHOW STATE
+    dispatch(modifyState({ statisticState: false }))
 
     let params = gameRdx.choosenGame.id
     bringLoadGamesById(params, token)
@@ -268,6 +275,65 @@ export const Stage0601 = () => {
 
   const [modalShow, setModalShow] = React.useState(false);
 
+  useEffect(() => {
+    if (statisticRdx.statisticState == true){
+      let array = gameRdx.choosenGame.games_stages
+      let params = gameRdx.choosenGame.games_stages[array.length - 1].stage_id
+      bringGamesStagesByStageId(params)
+      .then(result => {
+        console.log(result);
+        const recuento33 = result.data.reduce((contador, { answer_id }) => answer_id == '33' ? contador += 1 : contador, 0)
+        if (statisticRdx.statisticData != recuento33) {dispatch(modifyState({ statisticData: recuento33}))}
+        // console.log(statisticRdx);
+        // const recuento34 = result.data.reduce((contador, { answer_id }) => answer_id == '34' ? contador += 1 : contador, 0)
+        // console.log(recuento34);
+        // console.log(recuento33);
+
+        // const resultado = {}
+        // result.data.forEach(el => (resultado[el.answer_id] = resultado[el.answer_id] + 1 || 1))
+        // console.log(resultado);
+        // console.log(resultado[33]);
+        // const result33 = (resultado[33])
+
+        (async function() {
+          const data = [
+            { year: "Estatua I", count: 1 },
+            { year: "Estatua II", count: 2 },
+            { year: "Estatua III", count: 1 },
+            { year: "Estatua IV", count: 2 },
+            { year: "Estatua V", count: 2 },
+            { year: "Estatua VI", count: 3 },
+            { year: "Estatua VII", count: recuento33 },
+            { year: "Estatua VIII", count: 2 },
+            { year: "Estatua IX", count: 2 },
+          ];
+        
+          new Chart(
+            document.getElementById('st0601statistics'),
+            {
+              type: 'bar',
+              data: {
+                labels: data.map(row => row.year),
+                datasets: [
+                  {
+                    label: 'Respuestas de otros jugadores',
+                    data: data.map(row => row.count)
+                  }
+                ]
+              }
+            }
+          );
+        })();
+      })
+      .catch((error) => console.log(error))
+    }
+
+  }, [statisticRdx]);
+
+  const closeStatistic = () => {
+    dispatch(modifyState({ statisticState: false}))
+  }
+
   return (
     <Container
       fluid
@@ -307,6 +373,16 @@ export const Stage0601 = () => {
               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
             </svg>
           </div>
+        </div>
+        <div>
+            <div className={statisticRdx.statisticState == true ? "statisticBox" : "statisticBox statisticBoxHide"}>
+              <canvas className="statisticTable" id="st0601statistics"></canvas>
+              <div className='closeDialogue' onClick={()=> {closeStatistic()}}>Close 
+            <svg className='closeIcon bi bi-x-circle-fill' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+            </svg>
+          </div>
+            </div>
         </div>
         <div className="box0403">
           <div className="img1Box0403">

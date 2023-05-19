@@ -10,6 +10,9 @@ import { consumeBadgesByGameBadgeId, getBadgesByGameId, updateFinished } from '.
 import { changeState } from '../../layout/clueSlice';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
+import { modifyState } from '../../layout/statisticSlice';
 
 export const GameBar = () => {
 
@@ -41,27 +44,40 @@ export const GameBar = () => {
   // FUNTION TO SELECT BADGE AND SAVE IN REDUX
   const selectionBadge = (sBadge) => {
     dispatch(selectBadge({ selectedBadge: sBadge}))
-    console.log(sBadge);
   }
 
   // FUNTION TO USE BADGE
   const useBadge = () => {
-    dispatch(changeState({ clueState: true}))
-    let body = {id: badgeRdx.selectedBadge}
-        consumeBadgesByGameBadgeId(body)
-        .then((result) => {
-            let params = gameRdx.choosenGame.id;
-    
-                  getBadgesByGameId(params)
-                    .then((result) => {
-                      console.log("traer badges", result);
-                      const selectBadge = result?.data?.data;
-                      dispatch(addBadge({ choosenBadge: selectBadge }));
-                      console.log(selectBadge);
-                    })
-                    .catch((error) => console.log(error))
-                })
-        .catch((error) => console.log(error));
+    if (badgeRdx.selectedBadge.badge.id == 2){
+      dispatch(changeState({ clueState: true}))
+      let body = {id: badgeRdx.selectedBadge.id}
+          consumeBadgesByGameBadgeId(body)
+          .then((result) => {
+              let params = gameRdx.choosenGame.id;
+                    getBadgesByGameId(params)
+                      .then((result) => {
+                        const selectBadge = result?.data?.data;
+                        dispatch(addBadge({ choosenBadge: selectBadge }));
+                      })
+                      .catch((error) => console.log(error))
+                  })
+          .catch((error) => console.log(error));
+    }
+    if (badgeRdx.selectedBadge.badge.id == 3){
+      dispatch(modifyState({ statisticState: true}))
+      // let body = {id: badgeRdx.selectedBadge.id}
+      //     consumeBadgesByGameBadgeId(body)
+      //     .then((result) => {
+      //         let params = gameRdx.choosenGame.id;
+      //               getBadgesByGameId(params)
+      //                 .then((result) => {
+      //                   const selectBadge = result?.data?.data;
+      //                   dispatch(addBadge({ choosenBadge: selectBadge }));
+      //                 })
+      //                 .catch((error) => console.log(error))
+      //             })
+      //     .catch((error) => console.log(error));
+    }
   }
 
   // MODAL CONTENT TO USE BADGE
@@ -89,6 +105,19 @@ export const GameBar = () => {
     );
   }
 
+  // POPOVERS
+  const popoverHoverFocus1 = (
+    <Popover className="popoverBadge" id="popover-trigger-hover-focus" title="Popover bottom">
+      Consume para obtener una pista.
+    </Popover>
+  );
+  
+  const popoverHoverFocus2 = (
+    <Popover className="popoverBadge" id="popover-trigger-hover-focus" title="Popover bottom">
+      Consume para ver qué han respondido otros soñadores.
+    </Popover>
+  ); 
+
   return (
     <div className='gameBar'>
       {inGameState == true ? (
@@ -106,10 +135,17 @@ export const GameBar = () => {
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                   />
-                  <div className="badgeBox gameBadge" onClick={() => {selectionBadge(medal.id), setModalShow(true)}} key={medal.id}>
-                    <img className='badgeImage' src={medal.badge.image} alt={medal.id} />
-                    <div className='badgeName'>{medal.badge.name}</div>
-                  </div>
+                    <OverlayTrigger
+                      key={medal.id}
+                      trigger={['hover', 'focus']}
+                      placement="right"
+                      overlay={(medal.badge.id == 2 ? popoverHoverFocus1 : "") || (medal.badge.id == 3 ? popoverHoverFocus2 : "")}
+                    >
+                      <div className="badgeBox gameBadge" onClick={() => {selectionBadge(medal), setModalShow(true)}} key={medal.id}>
+                          <img className='badgeImage' src={medal.badge.image} alt={medal.id} />
+                          <div className='badgeName'>{medal.badge.name}</div>
+                      </div>
+                    </OverlayTrigger>
                   </>
                 );
               })}

@@ -33,6 +33,8 @@ import { GameOver } from '../GameOver/GameOver';
 import { GameOver1 } from '../GameOver/GameOver1';
 import { GameOver2 } from '../GameOver/GameOver2';
 import { GameOver3 } from '../GameOver/GameOver3';
+import { StagesList } from '../StagesList/StagesList';
+import { StagesDetail } from '../StagesDetail/StagesDetail';
 
 
 export const Body = () => {
@@ -45,6 +47,8 @@ export const Body = () => {
             <Route path='/login' element={<Login/>}/>
             <Route path='/usersList' element={<UsersList/>}/>
             <Route path='/userDetail' element={<UserDetail/>}/>
+            <Route path='/stagesList' element={<StagesList/>}/>
+            <Route path='/stagesDetail' element={<StagesDetail/>}/>
             <Route path='/profile' element={<Profile/>}/>
             <Route path='/loadGame' element={<LoadGame/>}/>
             <Route path='/selectGame' element={<SelectGame/>}/>

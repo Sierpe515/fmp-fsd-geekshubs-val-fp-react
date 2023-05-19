@@ -78,6 +78,19 @@
     background-image: url('../../image/madness2.png');
 }
 
+.popoverBadge {
+    background-color: rgba(37, 37, 37, 0.658);
+    border: 2px solid darkcyan;
+    font-weight: bold;
+    color: rgb(46, 46, 46);
+    font-family: 'gothical';
+    text-shadow: 1px 0 rgb(8, 197, 197), -1px 0 rgb(8, 197, 197), 0 1px rgb(8, 197, 197), 0 -1px rgb(8, 197, 197),
+             1px 1px rgb(8, 197, 197), -1px -1px rgb(8, 197, 197), 1px -1px rgb(8, 197, 197), -1px 1px rgb(8, 197, 197);
+    padding-left: 1vw;
+    padding-right: 1vw;
+    font-size: x-large;
+}
+
 
 @media (min-height: 576px){
     .gameBar{

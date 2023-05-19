@@ -13,6 +13,8 @@ import gameStageSlice from '../layout/gameStageSlice';
 import badgeSlice from '../layout/badgeSlice';
 import inGameSlice from '../layout/inGameSlice';
 import clueSlice from '../layout/clueSlice';
+import statisticSlice from '../layout/statisticSlice';
+import stageSlice from '../layout/stageSlice';
 
 const reducers = combineReducers({
     user: userSlice,
@@ -22,7 +24,9 @@ const reducers = combineReducers({
     character: characterSlice,
     badge: badgeSlice,
     inGame: inGameSlice,
-    clue: clueSlice
+    clue: clueSlice,
+    statistic: statisticSlice,
+    stage: stageSlice
 })
 
 const persistConfig = {

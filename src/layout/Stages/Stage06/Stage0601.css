@@ -15,3 +15,27 @@
              1px 1px goldenrod, -1px -1px goldenrod, 1px -1px goldenrod, -1px 1px goldenrod;
     font-size: 2.5vh;
 }
+
+.statisticBox {
+    position: absolute;
+    height: 60vh;
+    width: 80vw;
+    z-index: 200;
+    /* left: -1000em; */
+    background-color: rgba(37, 37, 37, 0.918);
+    border-radius: 10px;
+    border: 2px solid darkgoldenrod;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.statisticBoxHide {
+    left: -1000em;
+}
+
+.statisticTable {
+    height: 50vh !important;
+    /* width: 70vw !important; */
+    /* background-color: aliceblue; */
+}

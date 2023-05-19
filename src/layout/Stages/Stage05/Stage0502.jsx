@@ -71,7 +71,6 @@ export const Stage0502 = () => {
   const [answer, setAnswer] = useState("");
 
   const chooseAnswer = (resp) => {
-    console.log(resp);
     setAnswer(resp);
   };
 
