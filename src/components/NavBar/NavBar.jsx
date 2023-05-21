@@ -47,6 +47,9 @@ export const NavBar = () => {
                   <NavDropdown.Item id='ddAdmin' eventKey="1" as={Link} to='/usersList'>
                     Users List
                   </NavDropdown.Item>
+                  <NavDropdown.Item id='ddAdmin' eventKey="4" as={Link} to='/stagesList'>
+                    Stages List
+                  </NavDropdown.Item>
                 </NavDropdown>
                 </>
               ):('')

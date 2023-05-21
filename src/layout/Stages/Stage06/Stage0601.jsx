@@ -284,6 +284,7 @@ export const Stage0601 = () => {
         console.log(result);
         const recuento33 = result.data.reduce((contador, { answer_id }) => answer_id == '33' ? contador += 1 : contador, 0)
         if (statisticRdx.statisticData != recuento33) {dispatch(modifyState({ statisticData: recuento33}))}
+
         // console.log(statisticRdx);
         // const recuento34 = result.data.reduce((contador, { answer_id }) => answer_id == '34' ? contador += 1 : contador, 0)
         // console.log(recuento34);

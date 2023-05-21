@@ -65,18 +65,18 @@ export const GameBar = () => {
     }
     if (badgeRdx.selectedBadge.badge.id == 3){
       dispatch(modifyState({ statisticState: true}))
-      // let body = {id: badgeRdx.selectedBadge.id}
-      //     consumeBadgesByGameBadgeId(body)
-      //     .then((result) => {
-      //         let params = gameRdx.choosenGame.id;
-      //               getBadgesByGameId(params)
-      //                 .then((result) => {
-      //                   const selectBadge = result?.data?.data;
-      //                   dispatch(addBadge({ choosenBadge: selectBadge }));
-      //                 })
-      //                 .catch((error) => console.log(error))
-      //             })
-      //     .catch((error) => console.log(error));
+      let body = {id: badgeRdx.selectedBadge.id}
+          consumeBadgesByGameBadgeId(body)
+          .then((result) => {
+              let params = gameRdx.choosenGame.id;
+                    getBadgesByGameId(params)
+                      .then((result) => {
+                        const selectBadge = result?.data?.data;
+                        dispatch(addBadge({ choosenBadge: selectBadge }));
+                      })
+                      .catch((error) => console.log(error))
+                  })
+          .catch((error) => console.log(error));
     }
   }
 
