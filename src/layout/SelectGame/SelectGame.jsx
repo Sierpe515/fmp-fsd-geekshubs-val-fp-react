@@ -54,6 +54,7 @@ export const SelectGame = () => {
 
   // CHOOICES FUNCTIONS
   const chooseGame = (game) => {
+    console.log(game);
     setSelectedGame(game);
   };
 
@@ -68,40 +69,41 @@ export const SelectGame = () => {
       return
     }
 
-    let dataGame = {
-      character_id: characterRedux.choosenCharacter.id,
-      select_game_id: selectedGame,
-      difficulty: difficulty,
-    };
-
-    createNewGame(dataGame, token)
-      .then((action) => {
-        let dataSavedGame = {
-          game_id: action.data.data.id,
-          stage_id: 1,
-        };
-        createSavedGame(dataSavedGame, token)
-          .then((result) => {
-            let params = result.data.data.game_id;
-            bringLoadGamesById(params, token).then((result) => {
-              const selectGame = result.data.data[0];
-              dispatch(addGame({ choosenGame: selectGame }));
-
-              let params = selectGame.id;
-              getBadgesByGameId(params)
-                .then((result) => {
-                  const selectBadge = result?.data?.data;
-                  dispatch(addBadge({ choosenBadge: selectBadge }));
-                })
-                .catch((error) => console.log(error));
-            });
-          })
-          .catch((error) => console.log(error));
-        setTimeout(() => {
-          navigate("/opening");
-        }, 500);
-      })
-      .catch((error) => console.log(error));
+    if (selectedGame == 1){
+      let dataGame = {
+        character_id: characterRedux.choosenCharacter.id,
+        select_game_id: selectedGame,
+        difficulty: difficulty,
+      };
+      createNewGame(dataGame, token)
+        .then((action) => {
+          let dataSavedGame = {
+            game_id: action.data.data.id,
+            stage_id: 1,
+          };
+          createSavedGame(dataSavedGame, token)
+            .then((result) => {
+              let params = result.data.data.game_id;
+              bringLoadGamesById(params, token).then((result) => {
+                const selectGame = result.data.data[0];
+                dispatch(addGame({ choosenGame: selectGame }));
+  
+                let params = selectGame.id;
+                getBadgesByGameId(params)
+                  .then((result) => {
+                    const selectBadge = result?.data?.data;
+                    dispatch(addBadge({ choosenBadge: selectBadge }));
+                  })
+                  .catch((error) => console.log(error));
+              });
+            })
+            .catch((error) => console.log(error));
+          setTimeout(() => {
+            navigate("/opening");
+          }, 500);
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   // SELECTION DIFFICULTY LEVEL MODAL
