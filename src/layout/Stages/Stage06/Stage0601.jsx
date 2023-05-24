@@ -175,9 +175,10 @@ export const Stage0601 = () => {
                     id: gameRdx.choosenGame.id,
                     finished: true }
                   updateFinished(dataFinished, token)
-                  .then()
+                  .then(
+                    navigate("/gameOver1")
+                  )
                   .catch((error) => console.log(error));
-                  navigate("/gameOver1")
                 })
                 .catch((error) => console.log(error));
             })
